@@ -444,6 +444,20 @@ namespace GOTHIC_ENGINE {
 
     // --- Start ------------------------------------------------------------------------------------------------------------
 
+    // Neuere Steamworks-SDKs (z. B. 1.65) fuehren die Zugriffe nur noch in neueren Fassungen (SteamFriends_v018,
+    // SteamUtils_v011). Die flachen Funktionen derselben DLL passen immer zu den Zeigern, die sie selbst ausgibt -
+    // darum die neueste vorhandene Fassung nehmen, die alte bleibt Rueckfall fuer aeltere DLLs.
+    template<class T> static bool SteamProcAny(T& fn, std::initializer_list<const char*> names, std::string& missing) {
+        for (const char* n : names) {
+            fn = (T)GetProcAddress(SteamApi.dll, n);
+            if (fn)
+                return true;
+        }
+        if (missing.empty())
+            missing = *names.begin();
+        return false;
+    }
+
     template<class T> static bool SteamProc(T& fn, const char* name, std::string& missing) {
         fn = (T)GetProcAddress(SteamApi.dll, name);
         if (!fn && missing.empty())
@@ -473,10 +487,10 @@ namespace GOTHIC_ENGINE {
         SteamProc(SteamApi.InitFlat, "SteamAPI_InitFlat", missing);
         SteamProc(SteamApi.RunCallbacks, "SteamAPI_RunCallbacks", missing);
         SteamProc(SteamApi.RegisterCallback, "SteamAPI_RegisterCallback", missing);
-        SteamProc(SteamApi.Friends, "SteamAPI_SteamFriends_v017", missing);
+        SteamProcAny(SteamApi.Friends, { "SteamAPI_SteamFriends_v018", "SteamAPI_SteamFriends_v017" }, missing);
         SteamProc(SteamApi.Networking, "SteamAPI_SteamNetworking_v006", missing);
         SteamProc(SteamApi.User, "SteamAPI_SteamUser_v023", missing);
-        SteamProc(SteamApi.Utils, "SteamAPI_SteamUtils_v010", missing);
+        SteamProcAny(SteamApi.Utils, { "SteamAPI_SteamUtils_v011", "SteamAPI_SteamUtils_v010" }, missing);
         SteamProc(SteamApi.GetSteamID, "SteamAPI_ISteamUser_GetSteamID", missing);
         SteamProc(SteamApi.LoggedOn, "SteamAPI_ISteamUser_BLoggedOn", missing);
         SteamProc(SteamApi.GetAppID, "SteamAPI_ISteamUtils_GetAppID", missing);

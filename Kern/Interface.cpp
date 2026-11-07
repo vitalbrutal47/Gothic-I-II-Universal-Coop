@@ -8,6 +8,7 @@
 #include <intrin.h>
 #include <DbgHelp.h>
 #include <ctime>
+#include <chrono> // VS2022 (v143): std::chrono::system_clock kommt nicht mehr ueber andere Header mit
 
 #include "UnionAfx.h"
 #include <gdiplus.h>

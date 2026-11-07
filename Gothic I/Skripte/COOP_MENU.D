@@ -83,6 +83,7 @@ const int COOP_VAL_DX = 2500;
 const int COOP_Y0     = 1450;    // erste Zeile
 const int COOP_DY     = 420;     // Zeilenabstand
 const int COOP_ROW_DY = 380;     // Zeilenhöhe
+const int COOP_SYNC_DY = 530;    // PvP: Abgleich hat 8 Zeilen - etwas enger als MENU_OPT_DY (600), damit der Hinweis ueber "Zurueck" (MENU_BACK_Y) bleibt
 const int COOP_OPT_Y  = 1600;    // u5: erste Zeile der COOP-Einstellungen wie unter Othello (Gothic 1: MENU_OPT_START_Y 2200)
 
 // --- Hauptmenü: nur unser Eintrag COOP - GothicCoop (ab u5) hängt ihn zur Laufzeit in Gothics MENU_MAIN ein ----------
@@ -1805,6 +1806,7 @@ instance MENUITEM_COOPNG_VERSION(C_MENU_ITEM_DEF)
 // 1 getrennt, coopAutoSaveEvery 0 aus 1-6 = 3/5/10/15/20/30 min, coopConnectTake 0 Host-Stand 1 eigener Stand (GothicCoop belegt vor).
 // u105: Auto-Sicherung auch alle 3 min - eigener Eintrag coopAutoSaveEvery (bis u104 coopAutoSave ohne 3 min, GothicCoop übernimmt
 // ihn einmal).
+// PvP: coopPvp 0 aus 1 an - Spieler koennen sich gegenseitig treffen (Host gibt vor).
 // u32: coopWorldChange 0 gemeinsam 1 getrennt - Weltwechsel (gemeinsam: wer durch einen Weltübergang geht, bestätigt, die
 // anderen kommen mit).
 instance MENU_OPT_COOP_SYNC(C_MENU_DEF)
@@ -1825,9 +1827,11 @@ instance MENU_OPT_COOP_SYNC(C_MENU_DEF)
 	items[12] = "MENUITEM_OPTSYNC_CONNECT_CHOICE";
 	items[13] = "MENUITEM_COOPSYNC_WORLDCHANGE";
 	items[14] = "MENUITEM_OPTSYNC_WORLDCHANGE_CHOICE";
-	items[15] = "MENUITEM_OPTCOOPSYNC_NOTE";
-	items[16] = "MENUITEM_OPTCOOP_BACK";
-	items[17] = "MENUITEM_OPTCOOPSYNC_VERSION";
+	items[15] = "MENUITEM_COOPSYNC_PVP";
+	items[16] = "MENUITEM_OPTSYNC_PVP_CHOICE";
+	items[17] = "MENUITEM_OPTCOOPSYNC_NOTE";
+	items[18] = "MENUITEM_OPTCOOP_BACK";
+	items[19] = "MENUITEM_OPTCOOPSYNC_VERSION";
 	defaultoutgame = 1;
 	defaultingame = 1;
 	flags = flags | MENU_SHOW_INFO;
@@ -1851,7 +1855,7 @@ instance MENUITEM_COOPSYNC_QUESTS(C_MENU_ITEM_DEF)
 	text[0] = "Quests";
 	text[1] = "Quest-Fortschritt: erzählte Dialoge, Variablen, NPC-Zustände, Quest-EP - beide auf demselben Stand.";
 	posx = 1000;
-	posy = COOP_OPT_Y + MENU_OPT_DY * 0;
+	posy = COOP_OPT_Y + COOP_SYNC_DY * 0;
 	dimx = 4000;
 	dimy = 600;
 	onselaction[0] = SEL_ACTION_UNDEF;
@@ -1866,7 +1870,7 @@ instance MENUITEM_OPTSYNC_QUESTS_CHOICE(C_MENU_ITEM_DEF)
 	text[0] = "an|aus";
 	fontname = MENU_FONT_SMALL;
 	posx = 5000;
-	posy = COOP_OPT_Y + MENU_OPT_DY * 0 + MENU_CHOICE_YPLUS;
+	posy = COOP_OPT_Y + COOP_SYNC_DY * 0 + MENU_CHOICE_YPLUS;
 	dimx = MENU_SLIDER_DX;
 	dimy = MENU_CHOICE_DY;
 	onchgsetoption = "coopSyncQuests";
@@ -1882,7 +1886,7 @@ instance MENUITEM_COOPSYNC_LOG(C_MENU_ITEM_DEF)
 	text[0] = "Tagebuch";
 	text[1] = "Tagebuch-Themen und -Einträge des einen erscheinen auch beim anderen.";
 	posx = 1000;
-	posy = COOP_OPT_Y + MENU_OPT_DY * 1;
+	posy = COOP_OPT_Y + COOP_SYNC_DY * 1;
 	dimx = 4000;
 	dimy = 600;
 	onselaction[0] = SEL_ACTION_UNDEF;
@@ -1897,7 +1901,7 @@ instance MENUITEM_OPTSYNC_LOG_CHOICE(C_MENU_ITEM_DEF)
 	text[0] = "an|aus";
 	fontname = MENU_FONT_SMALL;
 	posx = 5000;
-	posy = COOP_OPT_Y + MENU_OPT_DY * 1 + MENU_CHOICE_YPLUS;
+	posy = COOP_OPT_Y + COOP_SYNC_DY * 1 + MENU_CHOICE_YPLUS;
 	dimx = MENU_SLIDER_DX;
 	dimy = MENU_CHOICE_DY;
 	onchgsetoption = "coopSyncLog";
@@ -1913,7 +1917,7 @@ instance MENUITEM_COOPSYNC_WORLD(C_MENU_ITEM_DEF)
 	text[0] = "Gegenstände/Truhen";
 	text[1] = "Truhen und Gegenstände am Boden: der Host führt den Bestand, was einer nimmt, ist für beide weg.";
 	posx = 1000;
-	posy = COOP_OPT_Y + MENU_OPT_DY * 2;
+	posy = COOP_OPT_Y + COOP_SYNC_DY * 2;
 	dimx = 4000;
 	dimy = 600;
 	onselaction[0] = SEL_ACTION_UNDEF;
@@ -1928,7 +1932,7 @@ instance MENUITEM_OPTSYNC_WORLD_CHOICE(C_MENU_ITEM_DEF)
 	text[0] = "an|aus";
 	fontname = MENU_FONT_SMALL;
 	posx = 5000;
-	posy = COOP_OPT_Y + MENU_OPT_DY * 2 + MENU_CHOICE_YPLUS;
+	posy = COOP_OPT_Y + COOP_SYNC_DY * 2 + MENU_CHOICE_YPLUS;
 	dimx = MENU_SLIDER_DX;
 	dimy = MENU_CHOICE_DY;
 	onchgsetoption = "coopSyncWorld";
@@ -1944,7 +1948,7 @@ instance MENUITEM_COOPSYNC_SAVES(C_MENU_ITEM_DEF)
 	text[0] = "Spielstände";
 	text[1] = "Gemeinsam: zusammen speichern und laden, Abgleich-Sicherungen. Getrennt: jeder speichert und lädt selbst.";
 	posx = 1000;
-	posy = COOP_OPT_Y + MENU_OPT_DY * 3;
+	posy = COOP_OPT_Y + COOP_SYNC_DY * 3;
 	dimx = 4000;
 	dimy = 600;
 	onselaction[0] = SEL_ACTION_UNDEF;
@@ -1959,7 +1963,7 @@ instance MENUITEM_OPTSYNC_SAVES_CHOICE(C_MENU_ITEM_DEF)
 	text[0] = "gemeinsam|getrennt";
 	fontname = MENU_FONT_SMALL;
 	posx = 5000;
-	posy = COOP_OPT_Y + MENU_OPT_DY * 3 + MENU_CHOICE_YPLUS;
+	posy = COOP_OPT_Y + COOP_SYNC_DY * 3 + MENU_CHOICE_YPLUS;
 	dimx = MENU_SLIDER_DX;
 	dimy = MENU_CHOICE_DY;
 	onchgsetoption = "coopSyncSaves";
@@ -1975,7 +1979,7 @@ instance MENUITEM_COOPSYNC_AUTOSAVE(C_MENU_ITEM_DEF)
 	text[0] = "Auto-Sicherung";
 	text[1] = "Gemeinsame Sicherung des Hosts in festen Abständen (reservierte Slots 6-9), der Mitspieler speichert mit.";
 	posx = 1000;
-	posy = COOP_OPT_Y + MENU_OPT_DY * 4;
+	posy = COOP_OPT_Y + COOP_SYNC_DY * 4;
 	dimx = 4000;
 	dimy = 600;
 	onselaction[0] = SEL_ACTION_UNDEF;
@@ -1990,7 +1994,7 @@ instance MENUITEM_OPTSYNC_AUTOSAVE_CHOICE(C_MENU_ITEM_DEF)
 	text[0] = "aus|3 min|5 min|10 min|15 min|20 min|30 min";
 	fontname = MENU_FONT_SMALL;
 	posx = 5000;
-	posy = COOP_OPT_Y + MENU_OPT_DY * 4 + MENU_CHOICE_YPLUS;
+	posy = COOP_OPT_Y + COOP_SYNC_DY * 4 + MENU_CHOICE_YPLUS;
 	dimx = MENU_SLIDER_DX;
 	dimy = MENU_CHOICE_DY;
 	onchgsetoption = "coopAutoSaveEvery";
@@ -2006,7 +2010,7 @@ instance MENUITEM_COOPSYNC_CONNECT(C_MENU_ITEM_DEF)
 	text[0] = "Beim Verbinden";
 	text[1] = "Verbindet sich ein Mitspieler im Spiel: Stand des Hosts übernehmen (eigener Held bleibt) oder eigenen behalten.";
 	posx = 1000;
-	posy = COOP_OPT_Y + MENU_OPT_DY * 5;
+	posy = COOP_OPT_Y + COOP_SYNC_DY * 5;
 	dimx = 4000;
 	dimy = 600;
 	onselaction[0] = SEL_ACTION_UNDEF;
@@ -2021,7 +2025,7 @@ instance MENUITEM_OPTSYNC_CONNECT_CHOICE(C_MENU_ITEM_DEF)
 	text[0] = "Host-Stand|eigener Stand";
 	fontname = MENU_FONT_SMALL;
 	posx = 5000;
-	posy = COOP_OPT_Y + MENU_OPT_DY * 5 + MENU_CHOICE_YPLUS;
+	posy = COOP_OPT_Y + COOP_SYNC_DY * 5 + MENU_CHOICE_YPLUS;
 	dimx = MENU_SLIDER_DX;
 	dimy = MENU_CHOICE_DY;
 	onchgsetoption = "coopConnectTake";
@@ -2037,7 +2041,7 @@ instance MENUITEM_COOPSYNC_WORLDCHANGE(C_MENU_ITEM_DEF)
 	text[0] = "Weltwechsel";
 	text[1] = "Geht einer durch einen Weltübergang: alle wechseln gemeinsam (wer durchgeht, bestätigt vorher) oder jeder für sich.";
 	posx = 1000;
-	posy = COOP_OPT_Y + MENU_OPT_DY * 6;
+	posy = COOP_OPT_Y + COOP_SYNC_DY * 6;
 	dimx = 4000;
 	dimy = 600;
 	onselaction[0] = SEL_ACTION_UNDEF;
@@ -2052,7 +2056,7 @@ instance MENUITEM_OPTSYNC_WORLDCHANGE_CHOICE(C_MENU_ITEM_DEF)
 	text[0] = "gemeinsam|getrennt";
 	fontname = MENU_FONT_SMALL;
 	posx = 5000;
-	posy = COOP_OPT_Y + MENU_OPT_DY * 6 + MENU_CHOICE_YPLUS;
+	posy = COOP_OPT_Y + COOP_SYNC_DY * 6 + MENU_CHOICE_YPLUS;
 	dimx = MENU_SLIDER_DX;
 	dimy = MENU_CHOICE_DY;
 	onchgsetoption = "coopWorldChange";
@@ -2062,13 +2066,44 @@ instance MENUITEM_OPTSYNC_WORLDCHANGE_CHOICE(C_MENU_ITEM_DEF)
 	userString[2] = "together|separate";
 };
 
+instance MENUITEM_COOPSYNC_PVP(C_MENU_ITEM_DEF)
+{
+	backpic = MENU_ITEM_BACK_PIC;
+	text[0] = "PvP";
+	text[1] = "Spieler gegen Spieler: die Helden können sich gegenseitig treffen (Nahkampf, Fernkampf, Magie). Menschen gehen meist bewusstlos zu Boden.";
+	posx = 1000;
+	posy = COOP_OPT_Y + COOP_SYNC_DY * 7;
+	dimx = 4000;
+	dimy = 600;
+	onselaction[0] = SEL_ACTION_UNDEF;
+	flags = flags | IT_EFFECTS_NEXT;
+	userString[2] = "PvP"; userString[3] = "Player versus player: the heroes can hit each other (melee, ranged, magic). Humans usually go down unconscious.";
+};
+
+instance MENUITEM_OPTSYNC_PVP_CHOICE(C_MENU_ITEM_DEF)
+{
+	backpic = MENU_CHOICE_BACK_PIC;
+	type = MENU_ITEM_CHOICEBOX;
+	text[0] = "aus|an";
+	fontname = MENU_FONT_SMALL;
+	posx = 5000;
+	posy = COOP_OPT_Y + COOP_SYNC_DY * 7 + MENU_CHOICE_YPLUS;
+	dimx = MENU_SLIDER_DX;
+	dimy = MENU_CHOICE_DY;
+	onchgsetoption = "coopPvp";
+	onchgsetoptionsection = "GOTHICCOOP";
+	flags = flags & ~IT_SELECTABLE;
+	flags = flags | IT_TXT_CENTER;
+	userString[2] = "off|on";
+};
+
 instance MENUITEM_OPTCOOPSYNC_NOTE(C_MENU_ITEM_DEF)
 {
 	fontname = MENU_FONT_SMALL;
 	text[0] = "Gilt im Coop für alle Spieler, der Host gibt sie vor.";
 	type = MENU_ITEM_TEXT;
 	posx = 0;
-	posy = COOP_OPT_Y + MENU_OPT_DY * 7;
+	posy = COOP_OPT_Y + COOP_SYNC_DY * 8;
 	dimx = 8192;
 	dimy = 350;
 	flags = IT_CHROMAKEYED | IT_TRANSPARENT | IT_TXT_CENTER;

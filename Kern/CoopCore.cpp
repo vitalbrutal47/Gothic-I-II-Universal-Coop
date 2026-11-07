@@ -9,7 +9,7 @@ namespace GOTHIC_ENGINE {
     // OthelloCompatLog/DiagSeconds nicht (Plan Phase 1, Schritt 1). Hier steht nur engine-neutraler Code (Windows-Aufrufe,
     // keine Engine-Stelle); Othello-Eigenes bleibt in OthelloCompat.cpp.
 
-#define COOP_FASSUNG "u200"
+#define COOP_FASSUNG "u200-pvp1"   // 07.11.2026: PvP (Fork vitalbrutal47)
 
     // Auswahl je Engine, z. B. Adressen: COOP_ENGINE_SWITCH(G1, G1A, G2, G2A). ENGINE wird erst an der Stelle des Gebrauchs
     // eingesetzt - in Mehr-Engine-Builds (MP x2/x4) bindet Interface.cpp Sources.h je Engine neu ein.

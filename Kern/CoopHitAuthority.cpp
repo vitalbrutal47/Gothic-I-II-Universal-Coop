@@ -31,6 +31,21 @@ namespace GOTHIC_ENGINE {
     // Konfiguration: coopClientHitAuthority (true), coopHitReachExtraCm (150), coopHitAngleDeg (75), coopHitRangedMaxCm (5000).
 
     void CoopNoWhirl(oCNpc* npc);   // v100 (C21, Hooks.cpp): ZS_ATTACK-Neustart ohne Ueberraschungs-Sprung
+    bool CoopRulePvp();             // PvP (CoopDifficulty.cpp, Host gibt vor)
+
+    // --- PvP: Spieler gegen Spieler (07.11.2026) -------------------------------------------------------------------------------
+    //
+    // Nutzer: "in das coop menue pvp einbauen damit ich und mein kollege uns gegenseitig angreifen koennen". Menue COOP ->
+    // Einstellungen -> Abgleich: "PvP" aus/an (Gothic.ini [GOTHICCOOP] coopPvp), der Host gibt vor (SYNC_COOP_RULES "pv").
+    // Bisher verwarf GT jeden Treffer des eigenen Helden auf eine Coop-Figur (oCNpc_OnDamage_Hit/_Sound: Angreifer = Held, Ziel =
+    // Coop-Spieler). Jetzt am Eingang von oCNpc::OnDamage (Hooks.cpp, beide Rollen):
+    // - PvP aus: der Treffer auf die Figur wird ganz verworfen (auch kein Zucken der Figur beim Client mehr).
+    // - PvP an: der Angreifer meldet den Treffer wie ein NPC-Schlag (SYNC_ATTACKS mit "swing" und "pvp", Rohschaden aus seiner
+    //   Engine, Staerke/Geschick seines Helden). Der Getroffene entscheidet wie bei NPC-Schlaegen (Reichweite, Blickrichtung,
+    //   eigene Parade/Ausweichsprung; Fernkampf/Magie: Reichweite und freie Sicht) und laesst seine Engine den Treffer mit dem
+    //   Rohwert ausfuehren (Ruestung, Bewusstlos/Tod). CreateHit der Figur geht hier nicht - Figuren haben Staerke COOP_MAGIC_NUMBER
+    //   (RemoteNpc.cpp); darum bekommt die Figur fuer 1 s die Werte des echten Helden. Ergebnis wie bisher als SYNC_HIT_RESULT
+    //   (Client ueber CoopSwingPulse, Host-Held hier neu ueber CoopPvpHostPending).
 
 #if COOP_BUILD(Hit)   // u3: bis u2 nur G1 - Freigabe je Engine in CoopCore.cpp
 
@@ -298,6 +313,90 @@ namespace GOTHIC_ENGINE {
                 CoopHitNpcName(attacker).c_str());
     }
 
+    // PvP: Figur bekommt kurz die Werte des angreifenden Helden (Staerke/Geschick), danach wieder COOP_MAGIC_NUMBER usw.
+    struct CoopPvpStatHold {
+        oCNpc* fig;
+        int str;
+        int dex;
+        long long until;
+    };
+    static std::vector<CoopPvpStatHold> CoopPvpStatHolds;
+
+    static void CoopPvpHoldStats(oCNpc* fig, int str, int dex) {
+        if (!fig || str < 0 || dex < 0)
+            return;
+        bool known = false;
+        for (auto& h : CoopPvpStatHolds) {
+            if (h.fig == fig) {
+                h.until = CurrentMs + 1000;
+                known = true;
+            }
+        }
+        if (!known)
+            CoopPvpStatHolds.push_back({ fig, fig->GetAttribute(NPC_ATR_STRENGTH), fig->GetAttribute(NPC_ATR_DEXTERITY), CurrentMs + 1000 });
+        fig->SetAttribute(NPC_ATR_STRENGTH, str);
+        fig->SetAttribute(NPC_ATR_DEXTERITY, dex);
+    }
+
+    static void CoopPvpStatPulse(bool all) {
+        for (size_t i = 0; i < CoopPvpStatHolds.size();) {
+            const CoopPvpStatHold h = CoopPvpStatHolds[i];
+            if (!all && h.until > CurrentMs) {
+                i++;
+                continue;
+            }
+            if (PlayerNpcs.count(h.fig)) {
+                h.fig->SetAttribute(NPC_ATR_STRENGTH, h.str);
+                h.fig->SetAttribute(NPC_ATR_DEXTERITY, h.dex);
+            }
+            CoopPvpStatHolds.erase(CoopPvpStatHolds.begin() + i);
+        }
+    }
+
+    // PvP, Host: Treffer einer Figur auf den Host-Helden - Ergebnis kurz danach an die Clients (wie CoopSwingPulse beim Client)
+    struct CoopPvpHostPending {
+        std::string name;
+        int hpBefore;
+        unsigned long mode;
+        long long at;
+    };
+    static std::vector<CoopPvpHostPending> CoopPvpHostPendings;
+    static bool CoopPvpHostDown = false;
+
+    // Aus dem Haken auf oCNpc::OnDamage (Hooks.cpp, Host und Client): der eigene Held trifft die Figur eines Mitspielers.
+    void CoopPvpReport(oCNpc* fig, oCNpc::oSDamageDescriptor& d) {
+        auto pn = PlayerNpcs.find(fig);
+        if (pn == PlayerNpcs.end() || !player)
+            return;
+        if (player->IsDead() || player->IsUnconscious() || fig->IsDead() || fig->IsUnconscious()) {
+            SwingLog("PvP: eigener Held -> %s - einer liegt schon, nicht gemeldet", pn->second.ToChar());
+            return;
+        }
+        const bool ranged = (d.enuModeWeapon & 4) != 0 || (d.enuModeWeapon & 8) != 0 || d.pFXHit != NULL;
+        json att;
+        att["target"] = pn->second.ToChar();
+        att["damage"] = -1.0f;
+        att["isUnconscious"] = 0;
+        att["isDead"] = false;
+        att["damageMode"] = d.enuModeDamage;
+        att["swing"] = 1;
+        att["pvp"] = 1;
+        att["raw"] = d.fDamageTotal;
+        att["wm"] = d.enuModeWeapon;
+        att["rng"] = ranged ? 1 : 0;
+        att["str"] = player->GetAttribute(NPC_ATR_STRENGTH);
+        att["dex"] = player->GetAttribute(NPC_ATR_DEXTERITY);
+        json j;
+        j["type"] = SYNC_ATTACKS;
+        j["id"] = MyselfId.ToChar();
+        j["att"] = json::array();
+        j["att"].push_back(att);
+        CoopTraceCount(TRACE_SENT, SYNC_ATTACKS);
+        ReadyToSendJsons.enqueue(j);
+        SwingLog("PvP: eigener Held -> %s gemeldet (%s, roh %.0f, Waffe %lu) - der Getroffene entscheidet", pn->second.ToChar(),
+            ranged ? "Fernkampf/Magie" : "Nahkampf", d.fDamageTotal, (unsigned long)d.enuModeWeapon);
+    }
+
     // SYNC_HIT_RESULT vom Client (Host und andere Clients): Puppe spiegelt den Zustand des Helden.
     void CoopApplyHitResult(oCNpc* puppet, json& u, const std::string& who) {
         if (!puppet)
@@ -441,8 +540,17 @@ namespace GOTHIC_ENGINE {
         const unsigned long mode = a.contains("damageMode") && a["damageMode"].is_number() ? a["damageMode"].get<unsigned long>() : 0;
         const float raw = a.contains("raw") && a["raw"].is_number() ? a["raw"].get<float>() : 0.f;
         const bool ranged = a.contains("rng") && a["rng"].is_number() && a["rng"].get<int>() != 0;
+        const bool pvp = a.contains("pvp") && a["pvp"].is_number() && a["pvp"].get<int>() != 0;
         if (!player)
             return;
+        if (pvp && !CoopRulePvp()) {
+            SwingLog("PvP: %s trifft mich - PvP ist aus, zaehlt nicht", an);
+            return;
+        }
+        if (pvp && attacker && !PlayerNpcs.count(attacker)) {
+            SwingLog("PvP: %s ist keine Coop-Figur - zaehlt nicht", an);
+            return;
+        }
         if (!attacker || !attacker->GetHomeWorld() || attacker->vobLeafList.GetNum() == 0 || !attacker->GetModel()) {
             SwingLog("%s: hier nicht in der Welt - zaehlt nicht", an);
             return;
@@ -508,6 +616,19 @@ namespace GOTHIC_ENGINE {
         p.used = false;
         CoopSwingPermits.push_back(p);
         attacker->SetEnemy(player);
+        if (pvp) {
+            // Figur: Werte des echten Helden statt COOP_MAGIC_NUMBER, Treffer mit dem Rohwert des Angreifers
+            const int str = a.contains("str") && a["str"].is_number() ? a["str"].get<int>() : 0;
+            const int dex = a.contains("dex") && a["dex"].is_number() ? a["dex"].get<int>() : 0;
+            CoopPvpHoldStats(attacker, str, dex);
+            const int hpBefore = player->GetAttribute(NPC_ATR_HITPOINTS);
+            if (ServerThread)
+                CoopPvpHostPendings.push_back({ std::string(an), hpBefore, mode, CurrentMs });
+            player->GetEM(false)->OnDamage(player, attacker, raw > 0.f ? raw : 1.f, mode, ph);
+            SwingLog("PvP: %s trifft mich (%s, roh %.0f, Staerke %d) - eigene Engine rechnet, HP %d -> %d", an, why, raw, str, hpBefore,
+                player->GetAttribute(NPC_ATR_HITPOINTS));
+            return;
+        }
         CoopCreateHitFn createHit = ranged ? NULL : CoopResolveCreateHit();
         oCAniCtrl_Human* ctrl = attacker->GetAnictrl();
         if (createHit && ctrl) {
@@ -617,6 +738,43 @@ namespace GOTHIC_ENGINE {
     void CoopSwingPulse() {
         CoopHitTestTrigger();   // u186
         CoopSwingFrame++;
+        CoopPvpStatPulse(false);   // PvP
+        if (ServerThread && player) {   // PvP: Ergebnis am Host-Helden an die Clients
+            for (size_t i = 0; i < CoopPvpHostPendings.size();) {
+                const CoopPvpHostPending s = CoopPvpHostPendings[i];
+                if (s.at + 300 > CurrentMs) {
+                    i++;
+                    continue;
+                }
+                CoopPvpHostPendings.erase(CoopPvpHostPendings.begin() + i);
+                const int hp = player->GetAttribute(NPC_ATR_HITPOINTS);
+                const int dmg = s.hpBefore > hp ? s.hpBefore - hp : 0;
+                const bool dead = player->IsDead() != 0;
+                const bool unc = player->IsUnconscious() != 0;
+                json j;
+                j["att"] = s.name;
+                j["dmg"] = dmg;
+                j["hp"] = hp;
+                j["hpmax"] = player->GetAttribute(NPC_ATR_HITPOINTSMAX);
+                j["unc"] = unc ? 1 : 0;
+                j["dead"] = dead ? 1 : 0;
+                j["mode"] = s.mode;
+                CoopSendHitResult(j);
+                if (unc && !dead)
+                    CoopPvpHostDown = true;
+                SwingLog("PvP-Ergebnis: %s traf den Host-Helden, Schaden %d, HP %d -> %d%s%s - an die Clients", s.name.c_str(), dmg,
+                    s.hpBefore, hp, unc ? ", bewusstlos" : "", dead ? ", tot" : "");
+            }
+            if (CoopPvpHostDown && !player->IsUnconscious()) {
+                CoopPvpHostDown = false;
+                if (!player->IsDead()) {
+                    json j;
+                    j["wake"] = 1;
+                    CoopSendHitResult(j);
+                    SwingLog("PvP: Host-Held steht wieder auf - an die Clients");
+                }
+            }
+        }
         if (!ClientThread || ServerThread || !player)
             return;
         for (size_t i = 0; i < CoopSwingPendings.size();) {
@@ -671,12 +829,16 @@ namespace GOTHIC_ENGINE {
         CoopPunishMarks.clear();
         CoopSwingPermits.clear();
         CoopSwingPendings.clear();
+        CoopPvpStatPulse(true);
+        CoopPvpHostPendings.clear();
+        CoopPvpHostDown = false;
     }
 
 #else   // Modul in dieser Engine nicht freigegeben (CoopModulesReport)
     void CoopHitWorldGone() {}
     bool CoopClientHitAuthority() { return false; }
     void CoopSwingReport(oCNpc*, oCNpc*, oCNpc::oSDamageDescriptor&) {}
+    void CoopPvpReport(oCNpc*, oCNpc::oSDamageDescriptor&) {}
     void CoopFightSound(oCNpc*, oCNpc*) {}
     void CoopApplyHitResult(oCNpc*, json&, const std::string&) {}
     void CoopClientSwing(oCNpc*, const char*, json&) {}

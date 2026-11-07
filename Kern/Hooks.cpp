@@ -198,6 +198,14 @@ namespace GOTHIC_ENGINE {
     CInvoke<void(__thiscall*)(oCNpc*, oCNpc::oSDamageDescriptor&)> Ivk_oCNpc_OnDamage_Coop(CoopAddr::oCNpc_OnDamage, &oCNpc_OnDamage_Coop,
         COOP_IVK(HooksExt));
     void __fastcall oCNpc_OnDamage_Coop(oCNpc* _this, void* vtable, oCNpc::oSDamageDescriptor& d) {
+        // PvP (CoopHitAuthority.cpp): der eigene Held trifft die Figur eines Mitspielers - nie hier ausfuehren. PvP an: dem
+        // Getroffenen melden, er entscheidet und rechnet; PvP aus: verwerfen.
+        if ((ServerThread || ClientThread) && !IsCoopPaused && _this && _this != player && player && d.pNpcAttacker == player &&
+            PlayerNpcs.count(_this)) {
+            if (CoopRulePvp())
+                CoopPvpReport(_this, d);
+            return;
+        }
         if (ServerThread && !IsCoopPaused && _this && _this != player && PlayerNpcs.count(_this) && CoopClientHitAuthority()) {
             oCNpc* a = d.pNpcAttacker;
             // v72: ein NPC, den ein Client im Kampf fuehrt, ist hier Puppe - seine Treffer rechnet der Client selbst
@@ -702,13 +710,14 @@ namespace GOTHIC_ENGINE {
             }
         }
         // v36: Coop-Figur wie der Spieler (vorher derselbe Zufallszweig - die Haltung zur Figur ist aber neutral, er griff nie)
-        if (ServerThread && damdesc.pNpcAttacker && PlayerNpcs.count(damdesc.pNpcAttacker)) {
+        // PvP: eine Figur trifft den Host-Helden - keine NPC-Reaktion (Ziel, Bestrafung) daraus
+        if (ServerThread && damdesc.pNpcAttacker && PlayerNpcs.count(damdesc.pNpcAttacker) && _this != player) {
             CoopCombatRetarget(_this, damdesc.pNpcAttacker);
             CoopPunishMark(damdesc.pNpcAttacker, _this);   // v54 (C13): auch ohne Kampfgeraeusch (z. B. Zauber)
             CoopNoteFigureHit(_this, damdesc.pNpcAttacker);   // v98 (C20): gleich folgendes ZS_REACTTODAMAGE -> Angriff
         }
         // v50 (C10): Treffer eines Spielers auf einen NPC ohne Schadens-Wahrnehmung (Othellos ZS_SAW)
-        if (ServerThread && damdesc.pNpcAttacker && (damdesc.pNpcAttacker == player || PlayerNpcs.count(damdesc.pNpcAttacker)))
+        if (ServerThread && damdesc.pNpcAttacker && _this != player && (damdesc.pNpcAttacker == player || PlayerNpcs.count(damdesc.pNpcAttacker)))
             CoopEnsureDamagePerception(_this);
         // v53: vom Client bestaetigter Schlag eines NPCs auf den eigenen Helden (CoopHitAuthority.cpp) - hier rechnet die eigene
         // Engine den Schaden (Ruestung, Werte, Othellos Abzug). Nur mit Erlaubnis, sonst wie bisher verworfen (unten).
@@ -717,7 +726,7 @@ namespace GOTHIC_ENGINE {
         if (ClientThread && !ServerThread && _this == player && damdesc.pNpcAttacker && damdesc.pNpcAttacker != player &&
             damdesc.fDamageTotal != COOP_MAGIC_NUMBER && CoopSwingPermitTake(damdesc.pNpcAttacker)) {
             CoopSwingHitBegin(damdesc, _this->GetAttribute(NPC_ATR_HITPOINTS));
-            CoopScaleBegin(_this, CoopDiffEnemyFactor());
+            CoopScaleBegin(_this, PlayerNpcs.count(damdesc.pNpcAttacker) ? 1.f : CoopDiffEnemyFactor());   // PvP: ohne Gegner-Faktor
             Ivk_oCNpc_OnDamage_Hit(_this, damdesc);
             CoopScaleEnd();
             return;

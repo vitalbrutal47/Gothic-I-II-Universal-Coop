@@ -59,6 +59,7 @@ namespace GOTHIC_ENGINE {
     void CoopRuleAutoSaveTest(int min, int ms);   // u105: Testlauf
     bool CoopRuleTakeOnConnect();
     bool CoopRuleWorldTogether();   // u32
+    bool CoopRulePvp();   // PvP: Spieler koennen sich gegenseitig treffen (coopPvp 0 aus | 1 an)
     void CoopRulesSendSoon();
 
     float CoopDiffPlayerFactor();
@@ -118,11 +119,12 @@ namespace GOTHIC_ENGINE {
         int preset = 1, dp = 2, de = 2, hp = 2, xa = 5, xp = 6, xr = 1;   // Indizes
         int sq = 0, sl = 0, sw = 0, ss = 0, sa = 3, st = 0;              // v75: Abgleich (0 = an / gemeinsam / uebernehmen)
         int wc = 0;                                                      // u32: Weltwechsel 0 gemeinsam, 1 getrennt
+        int pv = 0;                                                      // PvP 0 aus, 1 an
         bool SameDifficulty(const DiffRules& o) const {
             return preset == o.preset && dp == o.dp && de == o.de && hp == o.hp && xa == o.xa && xp == o.xp && xr == o.xr;
         }
         bool SameSync(const DiffRules& o) const {
-            return sq == o.sq && sl == o.sl && sw == o.sw && ss == o.ss && sa == o.sa && st == o.st && wc == o.wc;
+            return sq == o.sq && sl == o.sl && sw == o.sw && ss == o.ss && sa == o.sa && st == o.st && wc == o.wc && pv == o.pv;
         }
         bool operator==(const DiffRules& o) const { return SameDifficulty(o) && SameSync(o); }
         bool operator!=(const DiffRules& o) const { return !(*this == o); }
@@ -170,6 +172,7 @@ namespace GOTHIC_ENGINE {
         r.sa = DiffClamp(r.sa, SyncAutoZahl, 3);   // u105: Index in SyncAutoMin (Vorgabe 10 min)
         r.st = DiffClamp(r.st, 2, 0);
         r.wc = DiffClamp(r.wc, 2, 0);   // u32
+        r.pv = DiffClamp(r.pv, 2, 0);   // PvP
         if (r.preset < 4) {
             r.dp = DiffPresetIdx[r.preset][0];
             r.de = DiffPresetIdx[r.preset][1];
@@ -219,6 +222,7 @@ namespace GOTHIC_ENGINE {
         if (!zoptions->EntryExists(sec, "coopConnectTake"))
             zoptions->WriteInt(sec, "coopConnectTake", jsonBool("coopTakeHostStateOnConnect", true) ? 0 : 1, 0);
         if (!zoptions->EntryExists(sec, "coopWorldChange")) zoptions->WriteInt(sec, "coopWorldChange", 0, 0);   // u32: gemeinsam
+        if (!zoptions->EntryExists(sec, "coopPvp")) zoptions->WriteInt(sec, "coopPvp", 0, 0);   // PvP: aus
     }
 
     // roh aus Gothic.ini (ohne Stufe anzuwenden) - fuer das Menue
@@ -242,6 +246,7 @@ namespace GOTHIC_ENGINE {
         r.sa = zoptions->ReadInt(sec, "coopAutoSaveEvery", 3);   // u105
         r.st = zoptions->ReadInt(sec, "coopConnectTake", 0);
         r.wc = zoptions->ReadInt(sec, "coopWorldChange", 0);   // u32
+        r.pv = zoptions->ReadInt(sec, "coopPvp", 0);   // PvP
         return r;
     }
 
@@ -302,17 +307,17 @@ namespace GOTHIC_ENGINE {
 
     // v75: Abgleich-Regeln (im Coop die des Hosts)
     static std::string SyncDescribe(const DiffRules& r, bool en = false) {
-        char b[300];
+        char b[400];
         const std::string autoMin = std::to_string(SyncAutoMin[r.sa]) + " min";
         if (en)
-            _snprintf(b, sizeof(b), "quests %s, diary %s, items/chests %s, saves %s, autosave %s, on connect %s, world change %s",
+            _snprintf(b, sizeof(b), "quests %s, diary %s, items/chests %s, saves %s, autosave %s, on connect %s, world change %s, PvP %s",
                 r.sq ? "off" : "on", r.sl ? "off" : "on", r.sw ? "off" : "on", r.ss ? "separate" : "shared", r.sa ? autoMin.c_str() : "off",
-                r.st ? "own state" : "host state", r.wc ? "separate" : "together");
+                r.st ? "own state" : "host state", r.wc ? "separate" : "together", r.pv ? "on" : "off");
         else
             _snprintf(b, sizeof(b), "Quests %s, Tagebuch %s, Gegenst" COOP_AE "nde/Truhen %s, Spielst" COOP_AE "nde %s, Auto-Sicherung %s, "
-                "beim Verbinden %s, Weltwechsel %s", r.sq ? "aus" : "an", r.sl ? "aus" : "an", r.sw ? "aus" : "an",
+                "beim Verbinden %s, Weltwechsel %s, PvP %s", r.sq ? "aus" : "an", r.sl ? "aus" : "an", r.sw ? "aus" : "an",
                 r.ss ? "getrennt" : "gemeinsam", r.sa ? autoMin.c_str() : "aus", r.st ? "eigener Stand" : "Host-Stand",
-                r.wc ? "getrennt" : "gemeinsam");
+                r.wc ? "getrennt" : "gemeinsam", r.pv ? "an" : "aus");
         b[sizeof(b) - 1] = 0;
         return b;
     }
@@ -324,6 +329,7 @@ namespace GOTHIC_ENGINE {
     int CoopRuleAutoSaveMinutes() { return SyncAutoMin[DiffEff().sa]; }
     bool CoopRuleTakeOnConnect() { return DiffEff().st == 0; }
     bool CoopRuleWorldTogether() { return DiffEff().wc == 0; }   // u32
+    bool CoopRulePvp() { return DiffEff().pv != 0; }   // PvP
     void CoopRulesSendSoon() { DiffNextSendMs = 0; }   // Host: neuer Mitspieler - Regeln gleich schicken
 
     // Faktor fuer den Schaden des eigenen Helden an einem NPC (Schaden der Spieler). v70: "Leben der Gegner" sind echte
@@ -586,6 +592,7 @@ namespace GOTHIC_ENGINE {
         j["sam"] = SyncAutoMin[r.sa];                  // ... und die Minuten
         j["st"] = r.st;
         j["wc"] = r.wc;   // u32
+        j["pv"] = r.pv;   // PvP
         CoopTraceCount(TRACE_SENT, SYNC_COOP_RULES);
         ReadyToSendJsons.enqueue(j);
     }
@@ -611,6 +618,7 @@ namespace GOTHIC_ENGINE {
         r.sa = e.contains("sam") ? SyncAutoIdx(geti("sam", 10)) : SyncAutoIdxAusAlt(geti("sa", 2));   // u105: Minuten, bis u104 Index
         r.st = geti("st", 0);
         r.wc = geti("wc", 0);   // u32
+        r.pv = geti("pv", 0);   // PvP (aeltere Hosts schicken nichts -> aus)
         r = DiffNormalized(r);
         if (!DiffHostValid || r != DiffHost) {
             DiffHost = r;
@@ -821,6 +829,7 @@ namespace GOTHIC_ENGINE {
     void CoopRuleAutoSaveTest(int, int) {}   // u105
     bool CoopRuleTakeOnConnect() { return true; }
     bool CoopRuleWorldTogether() { return true; }   // u32
+    bool CoopRulePvp() { return false; }   // PvP
     void CoopRulesSendSoon() {}
     float CoopDiffPlayerFactor() { return 1.f; }
     float CoopDiffEnemyFactor() { return 1.f; }

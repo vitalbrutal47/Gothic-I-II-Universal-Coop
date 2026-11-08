@@ -207,6 +207,45 @@ namespace GOTHIC_ENGINE {
         CoopPeerWorlds.erase(id);
     }
 
+    // u201 (3 Spieler, 08.11.2026): Beim Ende/Start einer Verbindung alle gemerkten Mitspieler vergessen. Bisher nahm nur
+    // PLAYER_DISCONNECT einen Eintrag heraus - trennte sich ein Client selbst (oder der Host ging), bevor die Meldung fuer
+    // einen anderen Client kam, blieb dessen alte Kennung (z. B. FRIEND_2) samt Lage stehen. Nach dem Wiederverbinden mit neuer
+    // Kennung galt sie als "Mitspieler ohne Figur" (CoopFollowPoints) - ein dritter Verfolgungspunkt 190 m weg, an dem NPCs
+    // eingesetzt wurden, die der Host nie fuehrte ("ohne Abgleich - stehen hier still"). Log FRIEND_5, Punkt 3 bei 11613/1495/-10827.
+    void CoopWorldsResetPeers(const char* why) {
+        if (CoopPeerWorlds.empty())
+            return;
+        CoopWorldsLog("%u gemerkte Mitspieler vergessen (%s)", (unsigned)CoopPeerWorlds.size(), why);
+        CoopPeerWorlds.clear();
+    }
+
+    // u201 (3 Spieler, 08.11.2026): Hinweis im Chat, wenn der Host viele NPCs schickt, die es in der eigenen Welt nicht gibt.
+    // Ursache im Test: "Spielstaende getrennt" - ein Client lud seinen eigenen Stand (Tag 47, 554 NPCs), der Host spielte ein
+    // neues Spiel (Tag 0, 1055 NPCs). Die NPCs des Hosts fehlten bei ihm, die vorhandenen passten nicht ("NPCs laden nicht").
+    static int UnknownHintLoads = -1;
+    static size_t UnknownHintBase = 0;
+    static bool UnknownHintShown = false;
+    static void CoopUnknownNpcHintPulse() {
+        if (!ClientThread || ServerThread || IsLoadingLevel || !player)
+            return;
+        if (UnknownHintLoads != CoopWorldLoads) {   // je Ladevorgang neu zaehlen
+            UnknownHintLoads = CoopWorldLoads;
+            UnknownHintBase = DiagUnknownIds.size();
+            UnknownHintShown = false;
+            return;
+        }
+        if (UnknownHintShown || DiagUnknownIds.size() < UnknownHintBase + 15)
+            return;
+        UnknownHintShown = true;
+        const int fresh = (int)(DiagUnknownIds.size() - UnknownHintBase);
+        CoopWorldsLog("%d NPC-Namen des Hosts gibt es hier nicht - anderer Spielstand als der Host? (Hinweis im Chat)", fresh);
+        ChatLog(string::Combine(CoopTr(
+            "Mindestens %i NPCs des Hosts gibt es in deiner Welt nicht - du spielst wohl einen anderen Spielstand als der Host. "
+            "Tritt dem Spiel des Hosts bei (COOP > Abgleich: Spielst\xE4nde gemeinsam), dann laden die NPCs.",
+            "At least %i of the host's NPCs do not exist in your world - you are probably playing a different savegame than the host. "
+            "Join the host's game (COOP > Sync: shared savegames) so the NPCs load."), fresh), zCOLOR(255, 200, 80, 255));
+    }
+
     // Plugin.cpp LoadBegin/LoadEnd: eigener Schluessel neu
     void CoopWorldsLoadBegin() {
         CoopWorldKeyMine = 0;
@@ -222,6 +261,7 @@ namespace GOTHIC_ENGINE {
 
     // Game_Loop: Meldungen im Chat (wer ist wo)
     void CoopWorldsPulse() {
+        CoopUnknownNpcHintPulse();   // u201
         if (!CoopWorldsOn() || (!ServerThread && !ClientThread) || IsLoadingLevel || !player)
             return;
         const int mine = CoopWorldKey();

@@ -1080,18 +1080,40 @@ namespace GOTHIC_ENGINE {
             }
             else {
                 const auto& p = *Lobby.peers.begin();
+                // u201 (3-4 Spieler): alle Verbundenen nennen; gemeinsam ist ein Stand nur, wenn ihn jeder Mitspieler hat.
+                // Bisher stand hier nur der erste Mitspieler (Test 08.11.: FRIEND_3 kam dazu, angezeigt blieb "FRIEND_2 verbunden").
                 int both = 0;
-                for (auto& s : Lobby.listSids)   // v93: Staende aus dem Coop-Archiv
-                    if (p.second.have.count(s))
+                for (auto& s : Lobby.listSids) {   // v93: Staende aus dem Coop-Archiv
+                    bool all = true;
+                    for (auto& q : Lobby.peers)
+                        if (!q.second.have.count(s)) {
+                            all = false;
+                            break;
+                        }
+                    if (all)
                         both++;
-                _snprintf(b, sizeof(b), CoopTr("%s verbunden (Fassung %s). Gemeinsame St" COOP_AE "nde: %d.", "%s connected (version %s). Shared saves: %d."), p.first.c_str(), p.second.ver.c_str(), both);
+                }
+                bool othelloDiff = false;
+                std::string names;
+                for (auto& q : Lobby.peers) {
+                    if (!names.empty())
+                        names += ", ";
+                    names += q.first;
+                    if (q.second.othello != LobbyOthelloStamp())
+                        othelloDiff = true;
+                }
+                if (Lobby.peers.size() == 1)
+                    _snprintf(b, sizeof(b), CoopTr("%s verbunden (Fassung %s). Gemeinsame St" COOP_AE "nde: %d.", "%s connected (version %s). Shared saves: %d."), p.first.c_str(), p.second.ver.c_str(), both);
+                else
+                    _snprintf(b, sizeof(b), CoopTr("%s verbunden (%d Spieler, Fassung %s). Gemeinsame St" COOP_AE "nde: %d.", "%s connected (%d players, version %s). Shared saves: %d."),
+                        names.c_str(), (int)Lobby.peers.size() + 1, p.second.ver.c_str(), both);
                 b[sizeof(b) - 1] = 0;
                 l1 = b;
                 l2 = both > 0 ? CoopTr("Jetzt \"Spielstand w" COOP_AE "hlen\" - oder \"Neues Spiel\" (beide starten).", "Now \"Choose save\" - or \"New game\" (both start).")   // v91
                               : CoopTr("Kein gemeinsamer Stand - \"Spielstand w" COOP_AE "hlen\" (anderen laden) oder \"Neues Spiel\".", "No shared save - \"Choose save\" (load another) or \"New game\".");
                 if (!LobbyJointSaves())   // v75
                     l2 = CoopTr("Spielst" COOP_AE "nde getrennt (Einstellungen > COOP > Abgleich): der Mitspieler l" COOP_AE "dt nicht mit.", "Separate saves (Settings > COOP > Sync): your partner does not load along.");
-                if (p.second.othello != LobbyOthelloStamp())
+                if (othelloDiff)
                     l2 = CoopTr("Achtung: Othello-Skripte unterscheiden sich! ", "Warning: Othello scripts differ! ") + l2;
             }
         }

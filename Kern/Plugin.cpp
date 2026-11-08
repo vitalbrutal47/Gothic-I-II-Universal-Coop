@@ -165,6 +165,7 @@ namespace GOTHIC_ENGINE {
         ServerThread = &t;
         MyselfId = "HOST";
         Myself = NULL;   // neu mit der Kennung HOST anlegen (Game_Loop)
+        CoopWorldsResetPeers("Host gestartet");   // u201: alte Kennungen frueherer Sitzungen vergessen
         CoopSaveSyncRoleStart(true);   // v76: gemerkter Held aus einer Client-Verbindung gilt nicht mehr
         CoopLookApplyOwn("Host gestartet");   // v40: im Hauptmenue noch kein Held - dann nach dem Laden (LoadEnd)
     }
@@ -183,6 +184,7 @@ namespace GOTHIC_ENGINE {
         t.Detach();
         ClientThread = &t;
         Myself = NULL;
+        CoopWorldsResetPeers("Client gestartet");   // u201: alte Kennungen frueherer Sitzungen vergessen
 
         if (player && ogame) {   // v40: siehe oben (Uhrzeit kommt nach dem Laden vom Host)
             ogame->SetTime(ogame->GetWorldTimer()->GetDay(), 12, 00);
@@ -195,6 +197,7 @@ namespace GOTHIC_ENGINE {
         CoopCamStop("Verbindung beendet");   // v44
         CoopSaveSyncConnectionEnded();        // v71: offene Uebernahme/Auftraege dieser Verbindung verwerfen
         CoopLeadClear("Verbindung beendet");  // v72
+        CoopWorldsResetPeers("Verbindung beendet");   // u201: sonst Geister-Verfolgungspunkt nach dem Wiederverbinden
         ClientThread = NULL;
         CoopClientState = 0;
         CoopClientStop = 0;
@@ -226,6 +229,7 @@ namespace GOTHIC_ENGINE {
         Myself = NULL;
         BroadcastNpcs.clear();   // nur der Host sendet NPCs
         CoopLeadClear("Host beendet");   // v72
+        CoopWorldsResetPeers("Host beendet");   // u201
         CoopSaveSyncPeersReset();   // v40: im Hauptmenue darf der Host auch mit Mitspieler enden (ENet meldet kein DISCONNECT mehr)
     }
 

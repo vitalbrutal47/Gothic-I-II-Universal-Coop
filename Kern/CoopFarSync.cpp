@@ -110,6 +110,10 @@ namespace GOTHIC_ENGINE {
             const CoopPeerWorld& pw = kv.second;
             if (kv.first == MyselfId.ToChar() || !pw.hasPos || !pw.key || pw.key != mine || PlayerNameToNpc.count(string(kv.first.c_str())))
                 continue;
+            // u201 (3 Spieler): nur fuer die ersten Sekunden nach einem Weltwechsel gedacht - wer seit 30 s nichts geschickt hat,
+            // ist kein Verfolgungspunkt (alte Kennung eines getrennten Spielers stand sonst dauerhaft als Punkt 3 in der Welt).
+            if (CurrentMs - pw.lastMs > 30000)
+                continue;
             out[n++] = zVEC3(pw.pos[0], pw.pos[1], pw.pos[2]);
         }
         return n;

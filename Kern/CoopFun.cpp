@@ -116,6 +116,68 @@ namespace GOTHIC_ENGINE {
         return true;
     }
 
+    // u203b (Nutzer: "wenn man stirbt soll man nach 30 sec in der basis wieder spawnen"): Tod des eigenen Helden im Fun-Spiel -
+    // nach 30 s wieder aufstehen (volle Lebenspunkte, wie die Coop-Wiederbelebung RemoteNpc::UpdateRevived) am Startpunkt des
+    // eigenen Lagers. Bewusstlos (Nahkampf zwischen Menschen) bleibt wie im Spiel.
+    static long long CoopFunDeadSince = 0;
+    static int CoopFunDeadShown = -1;
+
+    static const char* CoopFunBaseWp(int guild) {
+        switch (guild) {
+        case 2: return "NW_CITY_HABOUR_KASERN_CENTRE_01";    // GIL_MIL
+        case 7: return "NW_BIGFARM_HOUSE_OUT_05";            // GIL_SLD
+        case 5: return "NW_MONASTERY_PLACE_03";              // GIL_NOV
+        case 9: return "NW_CASTLEMINE_TOWER_CAMPFIRE_01";    // GIL_BDT
+        default: return NULL;
+        }
+    }
+
+    static void CoopFunPrint(const char* text) {
+        if (!screen)
+            return;
+        zCOLOR col(255, 220, 120, 255);
+        screen->PrintTimedCX(2600, zSTRING(text), 4500.0f, &col);
+    }
+
+    static void CoopFunRespawnPulse(long long now) {
+        if (!player->IsDead()) {
+            CoopFunDeadSince = 0;
+            CoopFunDeadShown = -1;
+            return;
+        }
+        if (!CoopFunDeadSince) {
+            CoopFunDeadSince = now;
+            FunLog("eigener Held tot - Wiederbeleben im Lager in 30 s");
+        }
+        const int left = 30 - (int)((now - CoopFunDeadSince) / 1000);
+        if (left > 0) {
+            const int step = left > 5 ? (left + 4) / 5 * 5 : left;   // 30, 25, ... 10, 5, 4, 3, 2, 1
+            if (step != CoopFunDeadShown) {
+                CoopFunDeadShown = step;
+                char b[120];
+                _snprintf(b, sizeof(b), "Du bist gefallen - in %d Sekunden stehst du im Lager wieder auf.", left);
+                b[sizeof(b) - 1] = 0;
+                CoopFunPrint(b);
+            }
+            return;
+        }
+        CoopFunDeadSince = 0;
+        CoopFunDeadShown = -1;
+        zVEC3 pos = player->GetPositionWorld();
+        const char* wpName = CoopFunBaseWp(player->guild);
+        zCWorld* w = ogame->GetGameWorld();
+        zCWaypoint* wp = (wpName && w && w->wayNet) ? w->wayNet->GetWaypoint(zSTRING(wpName)) : NULL;
+        if (wp)
+            pos = wp->GetPositionWorld();
+        player->StopFaceAni("T_HURT");
+        player->SetWeaponMode2(NPC_WEAPON_NONE);
+        player->SetAttribute(NPC_ATR_HITPOINTS, player->GetAttribute(NPC_ATR_HITPOINTSMAX));
+        CoopResetPosSafe(player, pos);
+        player->SetBodyState(0);   // BS_STAND
+        CoopFunPrint("Du bist wieder im Lager.");
+        FunLog("Held wiederbelebt bei %s", wp ? wpName : "der Leiche (kein Lager-Wegpunkt)");
+    }
+
     // UnionHooks.cpp: Game_Loop (immer, auch ohne Verbindung)
     void CoopFunPulse() {
 #if ENGINE == Engine_G2A
@@ -129,6 +191,7 @@ namespace GOTHIC_ENGINE {
         if (!active)
             return;
         const long long now = GetCurrentMs();
+        CoopFunRespawnPulse(now);
         if (now < CoopFunNextTick)
             return;
         CoopFunNextTick = now + 10000;

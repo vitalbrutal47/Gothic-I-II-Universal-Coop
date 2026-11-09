@@ -1083,7 +1083,31 @@ namespace GOTHIC_ENGINE {
             return true;
         }
 
-        return Ivk_oCNpc_CanUse(_this, n);
+        const int r = Ivk_oCNpc_CanUse(_this, n);
+        // u203c (Nutzer im Fun-Modus: "den bogen kann ich nicht auswaehlen" - im Inventar nicht anlegbar): Bogen/Armbrust des
+        // eigenen Helden. Protokollieren, warum Gothic ablehnt; erfuellt der Held alle Bedingungen der Waffe, im Fun-Spiel zulassen.
+        if (_this == player && n && (n->flags & (ITM_FLAG_BOW | ITM_FLAG_CROSSBOW))) {
+            bool condsOk = true;
+            char b[200] = "";
+            for (int i = 0; i < ITM_COND_MAX; i++) {
+                if (n->cond_atr[i] <= 0)
+                    continue;
+                const int have = _this->GetAttribute(n->cond_atr[i]);
+                if (have < n->cond_value[i])
+                    condsOk = false;
+                char p[48];
+                _snprintf(p, sizeof(p), " Attribut %d: hat %d, braucht %d;", n->cond_atr[i], have, n->cond_value[i]);
+                strncat(b, p, sizeof(b) - strlen(b) - 1);
+            }
+            static int logged = 0;
+            if (logged++ < 40)
+                OthelloCompatLog("[%lld s, %s] Fernkampfwaffe anlegen: %s -> Gothic %s,%s Munition %d (hat %d)", DiagSeconds(), DiagRole(),
+                    n->GetInstanceName().ToChar(), r ? "ja" : "NEIN", b, n->munition,
+                    n->munition > 0 ? _this->inventory2.GetAmount(n->munition) : -1);
+            if (!r && condsOk && CoopFunActive())
+                return true;
+        }
+        return r;
     }
 
     void __fastcall oCWorld_RemoveVob(oCWorld*, void*, zCVob*);

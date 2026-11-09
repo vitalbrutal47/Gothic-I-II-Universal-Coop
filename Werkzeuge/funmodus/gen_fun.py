@@ -65,11 +65,17 @@ _groups = OrderedDict()
 for wp, inst, tier in cand:
     if wp.startswith(("NW_BIGFARM_ALLEE", "NW_CASTLEMINE_TROLL")):
         continue
-    _groups.setdefault("_".join(wp.split("_")[:3]), []).append((wp, inst, min(tier, 3)))
+    _groups.setdefault("_".join(wp.split("_")[:3]), []).append((wp, inst, min(tier, 2)))
 SLOTS = []
+# u203c (Nutzer: "die mobs sollen mehr ausgeglichen verteilt werden"): je Gebiet hoechstens 4 Punkte, gleichmaessig aus der Liste
+# gezogen (bisher alle - dichte Haufen in Hoehlen und an Freipunkten, z. B. 36 an FP_ROAM_NW, 12 Skelette in einer Gruft), dafuer
+# 3 Monster je Punkt; Startstufe hoechstens 2, Stufe steigt mit dem Kapitel
 for _k, _v in _groups.items():
-    SLOTS += _v   # u203b (Nutzer: "mehr mobs damit man mehr ep sammeln kann"): alle Punkte statt jeder dritte
-SLOTS = [x for x in SLOTS for _ in range(2)]   # je Punkt zwei Monster (eigene Instanzen, damit jedes einzeln nachkommt)
+    if len(_v) > 4:
+        _step = len(_v) / 4.0
+        _v = [_v[int(i * _step)] for i in range(4)]
+    SLOTS += _v
+SLOTS = [x for x in SLOTS for _ in range(3)]   # je Punkt drei Monster (eigene Instanzen, damit jedes einzeln nachkommt)
 RESPAWN_TAKTE = 9   # Takte zu 10 s - 90 Sekunden nach dem Tod
 
 # ------------------------------------------------------------------------------------------------------------------
@@ -171,13 +177,13 @@ GUILD_WARE = {
 }
 
 # Bosse an der Taverne je Kapitel: Grundart, Name, Lebensfaktor (x10), Groesse
-BOSSES = [
-    ("Gobbo_Warrior", "Goblin-Häuptling", 40, "1.5"),
-    ("Bloodhound", "Bluthund der Taverne", 30, "1.4"),
-    ("Shadowbeast", "Schattenfürst", 25, "1.3"),
-    ("FireWaran", "Feuerechse", 30, "1.4"),
-    ("Troll", "Bergtroll", 15, "1.15"),
-    ("Troll_Black", "Schwarzer Troll", 12, "1.15"),
+BOSSES = [   # u203c (Nutzer: "die bosse etwas schwaecher machen"): leichtere Arten, weniger Lebenspunkte
+    ("Gobbo_Warrior", "Goblin-Häuptling", 15, "1.3"),
+    ("Razor", "Reißzahn der Taverne", 12, "1.25"),
+    ("Bloodhound", "Bluthund der Taverne", 12, "1.25"),
+    ("Shadowbeast", "Schattenfürst", 10, "1.2"),
+    ("FireWaran", "Feuerechse", 10, "1.2"),
+    ("Troll", "Bergtroll", 8, "1.1"),
 ]
 BOSS_WP = "NW_TAVERNE_CROSS"
 

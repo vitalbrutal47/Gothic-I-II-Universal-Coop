@@ -3342,13 +3342,19 @@ func void Rtn_Follow_9644()
 func void Fun_Haltung(var C_NPC n, var int gil)
 {
 	var int soll;
-	if (!Hlp_IsValidNpc(n)) { return; };
+	if (!Hlp_IsValidNpc(n))
+	{
+		return;
+	};
 	if (gil == GIL_NONE)
 	{
 		soll = ATT_NEUTRAL;
-		if (Fun_GildeVonHaendler(n) == hero.guild) { soll = ATT_FRIENDLY; };
+		if (Fun_GildeVonHaendler(n) == Npc_GetTrueGuild(hero))
+		{
+			soll = ATT_FRIENDLY;
+		};
 	}
-	else if (gil == hero.guild)
+	else if (gil == Npc_GetTrueGuild(hero))
 	{
 		soll = ATT_FRIENDLY;
 	}
@@ -3364,7 +3370,10 @@ func void Fun_Haltung(var C_NPC n, var int gil)
 func void Fun_Haltungen()
 {
 	var C_NPC n;
-	if (hero.guild == GIL_NONE) { return; };
+	if (Npc_GetTrueGuild(hero) == GIL_NONE)
+	{
+		return;
+	};
 	n = Hlp_GetNpc(FUN_HAENDLER_MIL);
 	Fun_Haltung(n, GIL_NONE);
 	n = Hlp_GetNpc(FUN_HAENDLER_SLD);
@@ -3418,7 +3427,10 @@ func void Fun_Haltungen()
 // Kapitel: Anzeige und Belohnung je PC, sobald FUN_KAPITEL steigt (auch wenn der Mitspieler den Stein benutzt hat)
 func void Fun_KapitelPruefen()
 {
-	if (FUNL_KAPITEL_GESEHEN >= FUN_KAPITEL) { return; };
+	if (FUNL_KAPITEL_GESEHEN >= FUN_KAPITEL)
+	{
+		return;
+	};
 	if (FUNL_KAPITEL_GESEHEN == 0)
 	{
 		FUNL_KAPITEL_GESEHEN = FUN_KAPITEL;
@@ -3428,7 +3440,10 @@ func void Fun_KapitelPruefen()
 	Kapitel = FUN_KAPITEL;
 	hero.lp = hero.lp + 5;
 	CreateInvItems(hero, ItMi_Gold, 300 * FUN_KAPITEL);
-	if (hero.guild == GIL_NOV) { Npc_SetTalentSkill(hero, NPC_TALENT_MAGE, FUN_KAPITEL); };
+	if (Npc_GetTrueGuild(hero) == GIL_NOV)
+	{
+		Npc_SetTalentSkill(hero, NPC_TALENT_MAGE, FUN_KAPITEL);
+	};
 	if (FUN_KAPITEL == 2) { IntroduceChapter("Kapitel 2", "Die Händler haben neue Ware", "chapter2.tga", "chapter_01.wav", 6000); };
 	if (FUN_KAPITEL == 3) { IntroduceChapter("Kapitel 3", "Die Wälder werden gefährlicher", "chapter2.tga", "chapter_01.wav", 6000); };
 	if (FUN_KAPITEL == 4) { IntroduceChapter("Kapitel 4", "Die Lager rüsten auf", "chapter4.tga", "chapter_01.wav", 6000); };
@@ -4155,7 +4170,7 @@ func void DIA_Fun_Komm_Info()
 {
 	AI_Output(other, self, "DIA_Addon_Matt_FollowMe_15_00"); //Komm mit.
 	self.aivar[AIV_PARTYMEMBER] = TRUE;
-	Print(ConcatStrings(self.name[0], " folgt dir."));
+	Print(ConcatStrings(self.name, " folgt dir."));
 	AI_StopProcessInfos(self);
 	Npc_ExchangeRoutine(self, "FOLLOW");
 };
@@ -4171,7 +4186,7 @@ func void DIA_Fun_Warte_Info()
 {
 	AI_Output(other, self, "DIA_Addon_Diego_WarteHier_15_00"); //Warte hier!
 	self.aivar[AIV_PARTYMEMBER] = FALSE;
-	Print(ConcatStrings(self.name[0], " geht zurück ins Lager."));
+	Print(ConcatStrings(self.name, " geht zurück ins Lager."));
 	AI_StopProcessInfos(self);
 	Npc_ExchangeRoutine(self, "START");
 };
@@ -4187,11 +4202,11 @@ func void Fun_Ware(var C_NPC slf, var int itm, var int anz)
 
 func void Fun_HaendlerWare(var C_NPC slf)
 {
-	var int gold;
-	gold = Npc_HasItems(slf, ItMi_Gold);
-	if (gold < FUN_HAENDLER_GOLD)
+	var int vorrat;
+	vorrat = Npc_HasItems(slf, ItMi_Gold);
+	if (vorrat < FUN_HAENDLER_GOLD)
 	{
-		CreateInvItems(slf, ItMi_Gold, FUN_HAENDLER_GOLD - gold);
+		CreateInvItems(slf, ItMi_Gold, FUN_HAENDLER_GOLD - vorrat);
 	};
 	if (FUN_KAPITEL >= 1)
 	{
@@ -4960,7 +4975,10 @@ func void Fun_Platz00()   // FP_ROAM_BIGFARM_LAKE_CAVE_01 (Original: Gobbo_Green
 		};
 	};
 	FUNL_T00 = FUNL_T00 + 1;
-	if (FUNL_T00 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T00 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T00 = 0;
 	if (t == 2) { Wld_InsertNpc(FUN_M00_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_01"); }
 	else if (t == 3) { Wld_InsertNpc(FUN_M00_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_01"); }
@@ -4992,7 +5010,10 @@ func void Fun_Platz01()   // FP_ROAM_BIGFARM_LAKE_CAVE_04 (Original: Gobbo_Green
 		};
 	};
 	FUNL_T01 = FUNL_T01 + 1;
-	if (FUNL_T01 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T01 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T01 = 0;
 	if (t == 2) { Wld_InsertNpc(FUN_M01_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_04"); }
 	else if (t == 3) { Wld_InsertNpc(FUN_M01_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_04"); }
@@ -5024,7 +5045,10 @@ func void Fun_Platz02()   // FP_ROAM_BIGFARM_LAKE_CAVE_07 (Original: Gobbo_Black
 		};
 	};
 	FUNL_T02 = FUNL_T02 + 1;
-	if (FUNL_T02 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T02 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T02 = 0;
 	if (t == 2) { Wld_InsertNpc(FUN_M02_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_07"); }
 	else if (t == 3) { Wld_InsertNpc(FUN_M02_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_07"); }
@@ -5056,7 +5080,10 @@ func void Fun_Platz03()   // FP_ROAM_BIGFARM_LAKE_CAVE_11 (Original: Gobbo_Black
 		};
 	};
 	FUNL_T03 = FUNL_T03 + 1;
-	if (FUNL_T03 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T03 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T03 = 0;
 	if (t == 2) { Wld_InsertNpc(FUN_M03_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_11"); }
 	else if (t == 3) { Wld_InsertNpc(FUN_M03_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_11"); }
@@ -5087,7 +5114,10 @@ func void Fun_Platz04()   // FP_ROAM_CASTLEMINE2_01 (Original: Skeleton)
 		};
 	};
 	FUNL_T04 = FUNL_T04 + 1;
-	if (FUNL_T04 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T04 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T04 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M04_T3, "FP_ROAM_CASTLEMINE2_01"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M04_T4, "FP_ROAM_CASTLEMINE2_01"); }
@@ -5117,7 +5147,10 @@ func void Fun_Platz05()   // FP_ROAM_CASTLEMINE2_04 (Original: Skeleton)
 		};
 	};
 	FUNL_T05 = FUNL_T05 + 1;
-	if (FUNL_T05 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T05 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T05 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M05_T3, "FP_ROAM_CASTLEMINE2_04"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M05_T4, "FP_ROAM_CASTLEMINE2_04"); }
@@ -5147,7 +5180,10 @@ func void Fun_Platz06()   // FP_ROAM_CASTLEMINE2_07 (Original: Skeleton)
 		};
 	};
 	FUNL_T06 = FUNL_T06 + 1;
-	if (FUNL_T06 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T06 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T06 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M06_T3, "FP_ROAM_CASTLEMINE2_07"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M06_T4, "FP_ROAM_CASTLEMINE2_07"); }
@@ -5177,7 +5213,10 @@ func void Fun_Platz07()   // FP_ROAM_CASTLEMINE2_11 (Original: Zombie03)
 		};
 	};
 	FUNL_T07 = FUNL_T07 + 1;
-	if (FUNL_T07 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T07 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T07 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M07_T3, "FP_ROAM_CASTLEMINE2_11"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M07_T4, "FP_ROAM_CASTLEMINE2_11"); }
@@ -5208,7 +5247,10 @@ func void Fun_Platz08()   // FP_ROAM_NW_BIGFARMFORESTCAVE_01 (Original: Gobbo_Bl
 		};
 	};
 	FUNL_T08 = FUNL_T08 + 1;
-	if (FUNL_T08 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T08 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T08 = 0;
 	if (t == 2) { Wld_InsertNpc(FUN_M08_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_01"); }
 	else if (t == 3) { Wld_InsertNpc(FUN_M08_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_01"); }
@@ -5240,7 +5282,10 @@ func void Fun_Platz09()   // FP_ROAM_NW_BIGFARMFORESTCAVE_04 (Original: Gobbo_Bl
 		};
 	};
 	FUNL_T09 = FUNL_T09 + 1;
-	if (FUNL_T09 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T09 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T09 = 0;
 	if (t == 2) { Wld_InsertNpc(FUN_M09_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_04"); }
 	else if (t == 3) { Wld_InsertNpc(FUN_M09_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_04"); }
@@ -5272,7 +5317,10 @@ func void Fun_Platz10()   // FP_ROAM_NW_BIGFARMFORESTCAVE_08 (Original: Gobbo_Gr
 		};
 	};
 	FUNL_T10 = FUNL_T10 + 1;
-	if (FUNL_T10 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T10 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T10 = 0;
 	if (t == 2) { Wld_InsertNpc(FUN_M10_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_08"); }
 	else if (t == 3) { Wld_InsertNpc(FUN_M10_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_08"); }
@@ -5303,7 +5351,10 @@ func void Fun_Platz11()   // FP_ROAM_NW_TROLLAREA_RUINS_05 (Original: Snapper)
 		};
 	};
 	FUNL_T11 = FUNL_T11 + 1;
-	if (FUNL_T11 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T11 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T11 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M11_T3, "FP_ROAM_NW_TROLLAREA_RUINS_05"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M11_T4, "FP_ROAM_NW_TROLLAREA_RUINS_05"); }
@@ -5334,7 +5385,10 @@ func void Fun_Platz12()   // FP_ROAM_NW_TROLLAREA_RUINS_14 (Original: Giant_Rat)
 		};
 	};
 	FUNL_T12 = FUNL_T12 + 1;
-	if (FUNL_T12 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T12 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T12 = 0;
 	if (t == 0) { Wld_InsertNpc(FUN_M12_T0, "FP_ROAM_NW_TROLLAREA_RUINS_14"); }
 	else if (t == 1) { Wld_InsertNpc(FUN_M12_T1, "FP_ROAM_NW_TROLLAREA_RUINS_14"); }
@@ -5366,7 +5420,10 @@ func void Fun_Platz13()   // FP_ROAM_NW_TROLLAREA_RUINS_22 (Original: Bloodfly)
 		};
 	};
 	FUNL_T13 = FUNL_T13 + 1;
-	if (FUNL_T13 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T13 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T13 = 0;
 	if (t == 0) { Wld_InsertNpc(FUN_M13_T0, "FP_ROAM_NW_TROLLAREA_RUINS_22"); }
 	else if (t == 1) { Wld_InsertNpc(FUN_M13_T1, "FP_ROAM_NW_TROLLAREA_RUINS_22"); }
@@ -5397,7 +5454,10 @@ func void Fun_Platz14()   // FP_ROAM_NW_TROLLAREA_RUINS_29 (Original: Waran)
 		};
 	};
 	FUNL_T14 = FUNL_T14 + 1;
-	if (FUNL_T14 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T14 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T14 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M14_T3, "FP_ROAM_NW_TROLLAREA_RUINS_29"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M14_T4, "FP_ROAM_NW_TROLLAREA_RUINS_29"); }
@@ -5428,7 +5488,10 @@ func void Fun_Platz15()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02 (Original: Gobbo
 		};
 	};
 	FUNL_T15 = FUNL_T15 + 1;
-	if (FUNL_T15 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T15 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T15 = 0;
 	if (t == 2) { Wld_InsertNpc(FUN_M15_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02"); }
 	else if (t == 3) { Wld_InsertNpc(FUN_M15_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02"); }
@@ -5460,7 +5523,10 @@ func void Fun_Platz16()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06 (Original: Gobbo
 		};
 	};
 	FUNL_T16 = FUNL_T16 + 1;
-	if (FUNL_T16 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T16 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T16 = 0;
 	if (t == 2) { Wld_InsertNpc(FUN_M16_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06"); }
 	else if (t == 3) { Wld_InsertNpc(FUN_M16_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06"); }
@@ -5491,7 +5557,10 @@ func void Fun_Platz17()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10 (Original: Gobbo
 		};
 	};
 	FUNL_T17 = FUNL_T17 + 1;
-	if (FUNL_T17 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T17 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T17 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M17_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M17_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10"); }
@@ -5522,7 +5591,10 @@ func void Fun_Platz18()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14 (Original: Gobbo
 		};
 	};
 	FUNL_T18 = FUNL_T18 + 1;
-	if (FUNL_T18 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T18 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T18 = 0;
 	if (t == 2) { Wld_InsertNpc(FUN_M18_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14"); }
 	else if (t == 3) { Wld_InsertNpc(FUN_M18_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14"); }
@@ -5553,7 +5625,10 @@ func void Fun_Platz19()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21 (Original: Minec
 		};
 	};
 	FUNL_T19 = FUNL_T19 + 1;
-	if (FUNL_T19 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T19 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T19 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M19_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M19_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21"); }
@@ -5584,7 +5659,10 @@ func void Fun_Platz20()   // FP_ROAM_RITUALFOREST_CAVE_05 (Original: Giant_Rat)
 		};
 	};
 	FUNL_T20 = FUNL_T20 + 1;
-	if (FUNL_T20 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T20 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T20 = 0;
 	if (t == 0) { Wld_InsertNpc(FUN_M20_T0, "FP_ROAM_RITUALFOREST_CAVE_05"); }
 	else if (t == 1) { Wld_InsertNpc(FUN_M20_T1, "FP_ROAM_RITUALFOREST_CAVE_05"); }
@@ -5615,7 +5693,10 @@ func void Fun_Platz21()   // FP_ROAM_RITUALFOREST_CAVE_09 (Original: Skeleton)
 		};
 	};
 	FUNL_T21 = FUNL_T21 + 1;
-	if (FUNL_T21 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T21 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T21 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M21_T3, "FP_ROAM_RITUALFOREST_CAVE_09"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M21_T4, "FP_ROAM_RITUALFOREST_CAVE_09"); }
@@ -5646,7 +5727,10 @@ func void Fun_Platz22()   // FP_ROAM_TROLLAREA_SEA_01 (Original: Bloodfly)
 		};
 	};
 	FUNL_T22 = FUNL_T22 + 1;
-	if (FUNL_T22 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T22 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T22 = 0;
 	if (t == 0) { Wld_InsertNpc(FUN_M22_T0, "FP_ROAM_TROLLAREA_SEA_01"); }
 	else if (t == 1) { Wld_InsertNpc(FUN_M22_T1, "FP_ROAM_TROLLAREA_SEA_01"); }
@@ -5678,7 +5762,10 @@ func void Fun_Platz23()   // FP_ROAM_TROLLAREA_SEA_04 (Original: Bloodfly)
 		};
 	};
 	FUNL_T23 = FUNL_T23 + 1;
-	if (FUNL_T23 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T23 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T23 = 0;
 	if (t == 0) { Wld_InsertNpc(FUN_M23_T0, "FP_ROAM_TROLLAREA_SEA_04"); }
 	else if (t == 1) { Wld_InsertNpc(FUN_M23_T1, "FP_ROAM_TROLLAREA_SEA_04"); }
@@ -5710,7 +5797,10 @@ func void Fun_Platz24()   // NW_BIGFARM_FOREST_02 (Original: Giant_Bug)
 		};
 	};
 	FUNL_T24 = FUNL_T24 + 1;
-	if (FUNL_T24 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T24 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T24 = 0;
 	if (t == 1) { Wld_InsertNpc(FUN_M24_T1, "NW_BIGFARM_FOREST_02"); }
 	else if (t == 2) { Wld_InsertNpc(FUN_M24_T2, "NW_BIGFARM_FOREST_02"); }
@@ -5742,7 +5832,10 @@ func void Fun_Platz25()   // NW_BIGFARM_LAKE_03_MOVEMENT (Original: Keiler)
 		};
 	};
 	FUNL_T25 = FUNL_T25 + 1;
-	if (FUNL_T25 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T25 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T25 = 0;
 	if (t == 1) { Wld_InsertNpc(FUN_M25_T1, "NW_BIGFARM_LAKE_03_MOVEMENT"); }
 	else if (t == 2) { Wld_InsertNpc(FUN_M25_T2, "NW_BIGFARM_LAKE_03_MOVEMENT"); }
@@ -5774,7 +5867,10 @@ func void Fun_Platz26()   // NW_BIGFARM_LAKE_MONSTER_BLOODFLY (Original: Bloodfl
 		};
 	};
 	FUNL_T26 = FUNL_T26 + 1;
-	if (FUNL_T26 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T26 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T26 = 0;
 	if (t == 0) { Wld_InsertNpc(FUN_M26_T0, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY"); }
 	else if (t == 1) { Wld_InsertNpc(FUN_M26_T1, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY"); }
@@ -5806,7 +5902,10 @@ func void Fun_Platz27()   // NW_BIGMILL_05 (Original: Scavenger)
 		};
 	};
 	FUNL_T27 = FUNL_T27 + 1;
-	if (FUNL_T27 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T27 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T27 = 0;
 	if (t == 0) { Wld_InsertNpc(FUN_M27_T0, "NW_BIGMILL_05"); }
 	else if (t == 1) { Wld_InsertNpc(FUN_M27_T1, "NW_BIGMILL_05"); }
@@ -5838,7 +5937,10 @@ func void Fun_Platz28()   // NW_BIGMILL_FARM3_03 (Original: Scavenger)
 		};
 	};
 	FUNL_T28 = FUNL_T28 + 1;
-	if (FUNL_T28 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T28 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T28 = 0;
 	if (t == 0) { Wld_InsertNpc(FUN_M28_T0, "NW_BIGMILL_FARM3_03"); }
 	else if (t == 1) { Wld_InsertNpc(FUN_M28_T1, "NW_BIGMILL_FARM3_03"); }
@@ -5869,7 +5971,10 @@ func void Fun_Platz29()   // NW_CASTLEMINE_06 (Original: MinecrawlerWarrior)
 		};
 	};
 	FUNL_T29 = FUNL_T29 + 1;
-	if (FUNL_T29 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T29 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T29 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M29_T3, "NW_CASTLEMINE_06"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M29_T4, "NW_CASTLEMINE_06"); }
@@ -5899,7 +6004,10 @@ func void Fun_Platz30()   // NW_CASTLEMINE_10 (Original: MinecrawlerWarrior)
 		};
 	};
 	FUNL_T30 = FUNL_T30 + 1;
-	if (FUNL_T30 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T30 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T30 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M30_T3, "NW_CASTLEMINE_10"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M30_T4, "NW_CASTLEMINE_10"); }
@@ -5929,7 +6037,10 @@ func void Fun_Platz31()   // NW_CASTLEMINE_12 (Original: Minecrawler)
 		};
 	};
 	FUNL_T31 = FUNL_T31 + 1;
-	if (FUNL_T31 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T31 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T31 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M31_T3, "NW_CASTLEMINE_12"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M31_T4, "NW_CASTLEMINE_12"); }
@@ -5959,7 +6070,10 @@ func void Fun_Platz32()   // NW_CASTLEMINE_13 (Original: Minecrawler)
 		};
 	};
 	FUNL_T32 = FUNL_T32 + 1;
-	if (FUNL_T32 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T32 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T32 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M32_T3, "NW_CASTLEMINE_13"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M32_T4, "NW_CASTLEMINE_13"); }
@@ -5989,7 +6103,10 @@ func void Fun_Platz33()   // NW_CRYPT_MONSTER02 (Original: Gobbo_skeleton)
 		};
 	};
 	FUNL_T33 = FUNL_T33 + 1;
-	if (FUNL_T33 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T33 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T33 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M33_T3, "NW_CRYPT_MONSTER02"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M33_T4, "NW_CRYPT_MONSTER02"); }
@@ -6019,7 +6136,10 @@ func void Fun_Platz34()   // NW_CRYPT_MONSTER04 (Original: Lesser_skeleton)
 		};
 	};
 	FUNL_T34 = FUNL_T34 + 1;
-	if (FUNL_T34 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T34 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T34 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M34_T3, "NW_CRYPT_MONSTER04"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M34_T4, "NW_CRYPT_MONSTER04"); }
@@ -6049,7 +6169,10 @@ func void Fun_Platz35()   // NW_CRYPT_MONSTER06 (Original: Lesser_skeleton)
 		};
 	};
 	FUNL_T35 = FUNL_T35 + 1;
-	if (FUNL_T35 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T35 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T35 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M35_T3, "NW_CRYPT_MONSTER06"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M35_T4, "NW_CRYPT_MONSTER06"); }
@@ -6079,7 +6202,10 @@ func void Fun_Platz36()   // NW_CRYPT_MONSTER08 (Original: Gobbo_skeleton)
 		};
 	};
 	FUNL_T36 = FUNL_T36 + 1;
-	if (FUNL_T36 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T36 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T36 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M36_T3, "NW_CRYPT_MONSTER08"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M36_T4, "NW_CRYPT_MONSTER08"); }
@@ -6110,7 +6236,10 @@ func void Fun_Platz37()   // NW_FARM3_BIGWOOD_02 (Original: Scavenger)
 		};
 	};
 	FUNL_T37 = FUNL_T37 + 1;
-	if (FUNL_T37 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T37 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T37 = 0;
 	if (t == 0) { Wld_InsertNpc(FUN_M37_T0, "NW_FARM3_BIGWOOD_02"); }
 	else if (t == 1) { Wld_InsertNpc(FUN_M37_T1, "NW_FARM3_BIGWOOD_02"); }
@@ -6142,7 +6271,10 @@ func void Fun_Platz38()   // NW_FARM3_MOUNTAINLAKE_03 (Original: Lurker)
 		};
 	};
 	FUNL_T38 = FUNL_T38 + 1;
-	if (FUNL_T38 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T38 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T38 = 0;
 	if (t == 2) { Wld_InsertNpc(FUN_M38_T2, "NW_FARM3_MOUNTAINLAKE_03"); }
 	else if (t == 3) { Wld_InsertNpc(FUN_M38_T3, "NW_FARM3_MOUNTAINLAKE_03"); }
@@ -6174,7 +6306,10 @@ func void Fun_Platz39()   // NW_FARM3_PATH_11_SMALLRIVERMID_02 (Original: Lurker
 		};
 	};
 	FUNL_T39 = FUNL_T39 + 1;
-	if (FUNL_T39 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T39 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T39 = 0;
 	if (t == 2) { Wld_InsertNpc(FUN_M39_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_02"); }
 	else if (t == 3) { Wld_InsertNpc(FUN_M39_T3, "NW_FARM3_PATH_11_SMALLRIVERMID_02"); }
@@ -6206,7 +6341,10 @@ func void Fun_Platz40()   // NW_FARM3_PATH_11_SMALLRIVER_04 (Original: Lurker)
 		};
 	};
 	FUNL_T40 = FUNL_T40 + 1;
-	if (FUNL_T40 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T40 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T40 = 0;
 	if (t == 2) { Wld_InsertNpc(FUN_M40_T2, "NW_FARM3_PATH_11_SMALLRIVER_04"); }
 	else if (t == 3) { Wld_InsertNpc(FUN_M40_T3, "NW_FARM3_PATH_11_SMALLRIVER_04"); }
@@ -6238,7 +6376,10 @@ func void Fun_Platz41()   // NW_FARM3_PATH_11_SMALLRIVER_17 (Original: Lurker)
 		};
 	};
 	FUNL_T41 = FUNL_T41 + 1;
-	if (FUNL_T41 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T41 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T41 = 0;
 	if (t == 2) { Wld_InsertNpc(FUN_M41_T2, "NW_FARM3_PATH_11_SMALLRIVER_17"); }
 	else if (t == 3) { Wld_InsertNpc(FUN_M41_T3, "NW_FARM3_PATH_11_SMALLRIVER_17"); }
@@ -6270,7 +6411,10 @@ func void Fun_Platz42()   // NW_FARM3_PATH_12_MONSTER_01 (Original: Keiler)
 		};
 	};
 	FUNL_T42 = FUNL_T42 + 1;
-	if (FUNL_T42 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T42 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T42 = 0;
 	if (t == 1) { Wld_InsertNpc(FUN_M42_T1, "NW_FARM3_PATH_12_MONSTER_01"); }
 	else if (t == 2) { Wld_InsertNpc(FUN_M42_T2, "NW_FARM3_PATH_12_MONSTER_01"); }
@@ -6302,7 +6446,10 @@ func void Fun_Platz43()   // NW_FARM4_WOOD_MONSTER_MORE_01 (Original: Giant_Bug)
 		};
 	};
 	FUNL_T43 = FUNL_T43 + 1;
-	if (FUNL_T43 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T43 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T43 = 0;
 	if (t == 1) { Wld_InsertNpc(FUN_M43_T1, "NW_FARM4_WOOD_MONSTER_MORE_01"); }
 	else if (t == 2) { Wld_InsertNpc(FUN_M43_T2, "NW_FARM4_WOOD_MONSTER_MORE_01"); }
@@ -6334,7 +6481,10 @@ func void Fun_Platz44()   // NW_FARM4_WOOD_MONSTER_N_3 (Original: Giant_Bug)
 		};
 	};
 	FUNL_T44 = FUNL_T44 + 1;
-	if (FUNL_T44 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T44 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T44 = 0;
 	if (t == 1) { Wld_InsertNpc(FUN_M44_T1, "NW_FARM4_WOOD_MONSTER_N_3"); }
 	else if (t == 2) { Wld_InsertNpc(FUN_M44_T2, "NW_FARM4_WOOD_MONSTER_N_3"); }
@@ -6366,7 +6516,10 @@ func void Fun_Platz45()   // NW_FARM4_WOOD_NEARPEASANT2_12 (Original: Giant_Bug)
 		};
 	};
 	FUNL_T45 = FUNL_T45 + 1;
-	if (FUNL_T45 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T45 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T45 = 0;
 	if (t == 1) { Wld_InsertNpc(FUN_M45_T1, "NW_FARM4_WOOD_NEARPEASANT2_12"); }
 	else if (t == 2) { Wld_InsertNpc(FUN_M45_T2, "NW_FARM4_WOOD_NEARPEASANT2_12"); }
@@ -6398,7 +6551,10 @@ func void Fun_Platz46()   // NW_FARM4_WOOD_NEARPEASANT2_8 (Original: Wolf)
 		};
 	};
 	FUNL_T46 = FUNL_T46 + 1;
-	if (FUNL_T46 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T46 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T46 = 0;
 	if (t == 1) { Wld_InsertNpc(FUN_M46_T1, "NW_FARM4_WOOD_NEARPEASANT2_8"); }
 	else if (t == 2) { Wld_InsertNpc(FUN_M46_T2, "NW_FARM4_WOOD_NEARPEASANT2_8"); }
@@ -6430,7 +6586,10 @@ func void Fun_Platz47()   // NW_MAGECAVE_20 (Original: Meatbug)
 		};
 	};
 	FUNL_T47 = FUNL_T47 + 1;
-	if (FUNL_T47 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T47 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T47 = 0;
 	if (t == 0) { Wld_InsertNpc(FUN_M47_T0, "NW_MAGECAVE_20"); }
 	else if (t == 1) { Wld_InsertNpc(FUN_M47_T1, "NW_MAGECAVE_20"); }
@@ -6461,7 +6620,10 @@ func void Fun_Platz48()   // NW_MAGECAVE_23 (Original: Minecrawler)
 		};
 	};
 	FUNL_T48 = FUNL_T48 + 1;
-	if (FUNL_T48 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T48 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T48 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M48_T3, "NW_MAGECAVE_23"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M48_T4, "NW_MAGECAVE_23"); }
@@ -6491,7 +6653,10 @@ func void Fun_Platz49()   // NW_MAGECAVE_27 (Original: MinecrawlerWarrior)
 		};
 	};
 	FUNL_T49 = FUNL_T49 + 1;
-	if (FUNL_T49 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T49 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T49 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M49_T3, "NW_MAGECAVE_27"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M49_T4, "NW_MAGECAVE_27"); }
@@ -6522,7 +6687,10 @@ func void Fun_Platz50()   // NW_SAGITTA_MOREMONSTER_01 (Original: Wolf)
 		};
 	};
 	FUNL_T50 = FUNL_T50 + 1;
-	if (FUNL_T50 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T50 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T50 = 0;
 	if (t == 1) { Wld_InsertNpc(FUN_M50_T1, "NW_SAGITTA_MOREMONSTER_01"); }
 	else if (t == 2) { Wld_InsertNpc(FUN_M50_T2, "NW_SAGITTA_MOREMONSTER_01"); }
@@ -6554,7 +6722,10 @@ func void Fun_Platz51()   // NW_TAVERNE_TROLLAREA_MONSTER_03_01M1 (Original: Gia
 		};
 	};
 	FUNL_T51 = FUNL_T51 + 1;
-	if (FUNL_T51 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T51 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T51 = 0;
 	if (t == 1) { Wld_InsertNpc(FUN_M51_T1, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1"); }
 	else if (t == 2) { Wld_InsertNpc(FUN_M51_T2, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1"); }
@@ -6586,7 +6757,10 @@ func void Fun_Platz52()   // NW_TROLLAREA_BRIGDE_05 (Original: Giant_Rat)
 		};
 	};
 	FUNL_T52 = FUNL_T52 + 1;
-	if (FUNL_T52 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T52 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T52 = 0;
 	if (t == 0) { Wld_InsertNpc(FUN_M52_T0, "NW_TROLLAREA_BRIGDE_05"); }
 	else if (t == 1) { Wld_InsertNpc(FUN_M52_T1, "NW_TROLLAREA_BRIGDE_05"); }
@@ -6618,7 +6792,10 @@ func void Fun_Platz53()   // NW_TROLLAREA_NOVCHASE_01 (Original: Molerat)
 		};
 	};
 	FUNL_T53 = FUNL_T53 + 1;
-	if (FUNL_T53 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T53 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T53 = 0;
 	if (t == 0) { Wld_InsertNpc(FUN_M53_T0, "NW_TROLLAREA_NOVCHASE_01"); }
 	else if (t == 1) { Wld_InsertNpc(FUN_M53_T1, "NW_TROLLAREA_NOVCHASE_01"); }
@@ -6650,7 +6827,10 @@ func void Fun_Platz54()   // NW_TROLLAREA_PATH_08 (Original: Lurker)
 		};
 	};
 	FUNL_T54 = FUNL_T54 + 1;
-	if (FUNL_T54 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T54 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T54 = 0;
 	if (t == 2) { Wld_InsertNpc(FUN_M54_T2, "NW_TROLLAREA_PATH_08"); }
 	else if (t == 3) { Wld_InsertNpc(FUN_M54_T3, "NW_TROLLAREA_PATH_08"); }
@@ -6682,7 +6862,10 @@ func void Fun_Platz55()   // NW_TROLLAREA_PATH_38_MONSTER (Original: Bloodfly)
 		};
 	};
 	FUNL_T55 = FUNL_T55 + 1;
-	if (FUNL_T55 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T55 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T55 = 0;
 	if (t == 0) { Wld_InsertNpc(FUN_M55_T0, "NW_TROLLAREA_PATH_38_MONSTER"); }
 	else if (t == 1) { Wld_InsertNpc(FUN_M55_T1, "NW_TROLLAREA_PATH_38_MONSTER"); }
@@ -6714,7 +6897,10 @@ func void Fun_Platz56()   // NW_TROLLAREA_PATH_71_MONSTER (Original: Lurker)
 		};
 	};
 	FUNL_T56 = FUNL_T56 + 1;
-	if (FUNL_T56 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T56 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T56 = 0;
 	if (t == 2) { Wld_InsertNpc(FUN_M56_T2, "NW_TROLLAREA_PATH_71_MONSTER"); }
 	else if (t == 3) { Wld_InsertNpc(FUN_M56_T3, "NW_TROLLAREA_PATH_71_MONSTER"); }
@@ -6746,7 +6932,10 @@ func void Fun_Platz57()   // NW_TROLLAREA_PLANE_04 (Original: Scavenger)
 		};
 	};
 	FUNL_T57 = FUNL_T57 + 1;
-	if (FUNL_T57 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T57 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T57 = 0;
 	if (t == 0) { Wld_InsertNpc(FUN_M57_T0, "NW_TROLLAREA_PLANE_04"); }
 	else if (t == 1) { Wld_InsertNpc(FUN_M57_T1, "NW_TROLLAREA_PLANE_04"); }
@@ -6778,7 +6967,10 @@ func void Fun_Platz58()   // NW_TROLLAREA_PORTALTEMPEL_06 (Original: Giant_Rat)
 		};
 	};
 	FUNL_T58 = FUNL_T58 + 1;
-	if (FUNL_T58 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T58 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T58 = 0;
 	if (t == 0) { Wld_InsertNpc(FUN_M58_T0, "NW_TROLLAREA_PORTALTEMPEL_06"); }
 	else if (t == 1) { Wld_InsertNpc(FUN_M58_T1, "NW_TROLLAREA_PORTALTEMPEL_06"); }
@@ -6810,7 +7002,10 @@ func void Fun_Platz59()   // NW_TROLLAREA_PORTALTEMPEL_12 (Original: Giant_Rat)
 		};
 	};
 	FUNL_T59 = FUNL_T59 + 1;
-	if (FUNL_T59 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T59 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T59 = 0;
 	if (t == 0) { Wld_InsertNpc(FUN_M59_T0, "NW_TROLLAREA_PORTALTEMPEL_12"); }
 	else if (t == 1) { Wld_InsertNpc(FUN_M59_T1, "NW_TROLLAREA_PORTALTEMPEL_12"); }
@@ -6841,7 +7036,10 @@ func void Fun_Platz60()   // NW_TROLLAREA_PORTALTEMPEL_17_A (Original: Gobbo_Ske
 		};
 	};
 	FUNL_T60 = FUNL_T60 + 1;
-	if (FUNL_T60 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T60 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T60 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M60_T3, "NW_TROLLAREA_PORTALTEMPEL_17_A"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M60_T4, "NW_TROLLAREA_PORTALTEMPEL_17_A"); }
@@ -6872,7 +7070,10 @@ func void Fun_Platz61()   // NW_TROLLAREA_RITUALFOREST_04_MONSTER (Original: Mol
 		};
 	};
 	FUNL_T61 = FUNL_T61 + 1;
-	if (FUNL_T61 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T61 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T61 = 0;
 	if (t == 0) { Wld_InsertNpc(FUN_M61_T0, "NW_TROLLAREA_RITUALFOREST_04_MONSTER"); }
 	else if (t == 1) { Wld_InsertNpc(FUN_M61_T1, "NW_TROLLAREA_RITUALFOREST_04_MONSTER"); }
@@ -6904,7 +7105,10 @@ func void Fun_Platz62()   // NW_TROLLAREA_RITUALPATH_032 (Original: Bloodfly)
 		};
 	};
 	FUNL_T62 = FUNL_T62 + 1;
-	if (FUNL_T62 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T62 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T62 = 0;
 	if (t == 0) { Wld_InsertNpc(FUN_M62_T0, "NW_TROLLAREA_RITUALPATH_032"); }
 	else if (t == 1) { Wld_InsertNpc(FUN_M62_T1, "NW_TROLLAREA_RITUALPATH_032"); }
@@ -6935,7 +7139,10 @@ func void Fun_Platz63()   // NW_TROLLAREA_RITUAL_13 (Original: Gobbo_Skeleton)
 		};
 	};
 	FUNL_T63 = FUNL_T63 + 1;
-	if (FUNL_T63 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T63 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T63 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M63_T3, "NW_TROLLAREA_RITUAL_13"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M63_T4, "NW_TROLLAREA_RITUAL_13"); }
@@ -6965,7 +7172,10 @@ func void Fun_Platz64()   // NW_TROLLAREA_RIVERSIDECAVE_02 (Original: Shadowbeas
 		};
 	};
 	FUNL_T64 = FUNL_T64 + 1;
-	if (FUNL_T64 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T64 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T64 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M64_T3, "NW_TROLLAREA_RIVERSIDECAVE_02"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M64_T4, "NW_TROLLAREA_RIVERSIDECAVE_02"); }
@@ -6996,7 +7206,10 @@ func void Fun_Platz65()   // NW_TROLLAREA_RUINS_14 (Original: Gobbo_Black)
 		};
 	};
 	FUNL_T65 = FUNL_T65 + 1;
-	if (FUNL_T65 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T65 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T65 = 0;
 	if (t == 2) { Wld_InsertNpc(FUN_M65_T2, "NW_TROLLAREA_RUINS_14"); }
 	else if (t == 3) { Wld_InsertNpc(FUN_M65_T3, "NW_TROLLAREA_RUINS_14"); }
@@ -7027,7 +7240,10 @@ func void Fun_Platz66()   // NW_TROLLAREA_RUINS_32 (Original: Waran)
 		};
 	};
 	FUNL_T66 = FUNL_T66 + 1;
-	if (FUNL_T66 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T66 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T66 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M66_T3, "NW_TROLLAREA_RUINS_32"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M66_T4, "NW_TROLLAREA_RUINS_32"); }
@@ -7058,7 +7274,10 @@ func void Fun_Platz67()   // NW_TROLLAREA_TROLLLAKECAVE_02 (Original: Giant_Rat)
 		};
 	};
 	FUNL_T67 = FUNL_T67 + 1;
-	if (FUNL_T67 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T67 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T67 = 0;
 	if (t == 0) { Wld_InsertNpc(FUN_M67_T0, "NW_TROLLAREA_TROLLLAKECAVE_02"); }
 	else if (t == 1) { Wld_InsertNpc(FUN_M67_T1, "NW_TROLLAREA_TROLLLAKECAVE_02"); }
@@ -7090,7 +7309,10 @@ func void Fun_Platz68()   // NW_TROLLAREA_TROLLLAKECAVE_09 (Original: Gobbo_Gree
 		};
 	};
 	FUNL_T68 = FUNL_T68 + 1;
-	if (FUNL_T68 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T68 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T68 = 0;
 	if (t == 2) { Wld_InsertNpc(FUN_M68_T2, "NW_TROLLAREA_TROLLLAKECAVE_09"); }
 	else if (t == 3) { Wld_InsertNpc(FUN_M68_T3, "NW_TROLLAREA_TROLLLAKECAVE_09"); }
@@ -7121,7 +7343,10 @@ func void Fun_Platz69()   // NW_TROLLAREA_TROLLROCKCAVE_03 (Original: Skeleton)
 		};
 	};
 	FUNL_T69 = FUNL_T69 + 1;
-	if (FUNL_T69 < FUN_RESPAWN_TAKTE) { return; };
+	if (FUNL_T69 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
 	FUNL_T69 = 0;
 	if (t == 3) { Wld_InsertNpc(FUN_M69_T3, "NW_TROLLAREA_TROLLROCKCAVE_03"); }
 	else if (t == 4) { Wld_InsertNpc(FUN_M69_T4, "NW_TROLLAREA_TROLLROCKCAVE_03"); }
@@ -7147,7 +7372,10 @@ func void Fun_Boss()
 		return;
 	};
 	FUNL_BOSS_T = FUNL_BOSS_T + 1;
-	if (FUNL_BOSS_T < FUN_BOSS_TAKTE) { return; };
+	if (FUNL_BOSS_T < FUN_BOSS_TAKTE)
+	{
+		return;
+	};
 	FUNL_BOSS_T = 0;
 	if (Fun_KapitelNr() == 1) { Wld_InsertNpc(FUN_BOSS_K1, "NW_TAVERNE_CROSS"); }
 	else if (Fun_KapitelNr() == 2) { Wld_InsertNpc(FUN_BOSS_K2, "NW_TAVERNE_CROSS"); }
@@ -7313,7 +7541,10 @@ func void Fun_Lager()
 
 func void FUN_TAKT_HOST()
 {
-	if (!FUN_AKTIV) { return; };
+	if (!FUN_AKTIV)
+	{
+		return;
+	};
 	Fun_Platz00();
 	Fun_Platz01();
 	Fun_Platz02();
@@ -7390,8 +7621,11 @@ func void FUN_TAKT_HOST()
 
 func void FUN_TAKT_ALLE()
 {
-	if (!FUN_AKTIV) { return; };
-	if (hero.guild == GIL_NONE)
+	if (!FUN_AKTIV)
+	{
+		return;
+	};
+	if (Npc_GetTrueGuild(hero) == GIL_NONE)
 	{
 		Fun_HeldStart(COOP_FUNGILDE());
 	};

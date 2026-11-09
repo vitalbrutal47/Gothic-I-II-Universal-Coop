@@ -68,8 +68,9 @@ for wp, inst, tier in cand:
     _groups.setdefault("_".join(wp.split("_")[:3]), []).append((wp, inst, min(tier, 3)))
 SLOTS = []
 for _k, _v in _groups.items():
-    SLOTS += _v[::3] if len(_v) > 3 else _v[:1]
-RESPAWN_TAKTE = 12   # Takte zu 10 s - 2 Minuten nach dem Tod
+    SLOTS += _v   # u203b (Nutzer: "mehr mobs damit man mehr ep sammeln kann"): alle Punkte statt jeder dritte
+SLOTS = [x for x in SLOTS for _ in range(2)]   # je Punkt zwei Monster (eigene Instanzen, damit jedes einzeln nachkommt)
+RESPAWN_TAKTE = 9   # Takte zu 10 s - 90 Sekunden nach dem Tod
 
 # ------------------------------------------------------------------------------------------------------------------
 GUILDS = [   # Kuerzel, Gilde, Lagername, Heldenstart, Haendlerpunkt, 5 Begleiterpunkte, Ruestung Begleiter, Waffe, Overlay
@@ -135,6 +136,20 @@ COMMON = {
         ("ItMw_2H_Special_04", 1), ("ItMw_Drachenschneide", 1), ("ItMw_2H_Special_03", 1), ("ItRw_Bow_H_04", 1),
         ("ItRw_Crossbow_H_02", 1)],
 }
+# u203b (Nutzer: "fuege ruestung und mana hinzu ... bei dem haendler"): jeder Haendler hat zusaetzlich Ruestungen fuer alle
+# und Manatraenke (auch Kriegergilden) - ab dem jeweiligen Kapitel
+EXTRA_ALLE = {
+    1: [("ItPo_Mana_01", 20), ("ITAR_Leather_L", 1), ("ITAR_BAU_L", 1)],
+    2: [("ItPo_Mana_02", 10), ("ITAR_BDT_M", 1), ("ITAR_SLD_L", 1), ("ITAR_MIL_L", 1), ("ITAR_PIR_L_Addon", 1)],
+    3: [("ITAR_DJG_Crawler", 1), ("ITAR_SLD_M", 1), ("ITAR_MIL_M", 1), ("ITAR_PIR_M_Addon", 1), ("ItPo_Mana_Addon_04", 3)],
+    4: [("ItPo_Mana_03", 10), ("ITAR_SLD_H", 1), ("ITAR_DJG_L", 1), ("ITAR_PIR_H_Addon", 1), ("ITAR_Thorus_Addon", 1)],
+    5: [("ITAR_DJG_M", 1), ("ITAR_PAL_M", 1), ("ITAR_OreBaron_Addon", 1), ("ItPo_Perm_Mana", 1)],
+    6: [("ITAR_DJG_H", 1), ("ITAR_PAL_H", 1), ("ITAR_Raven_Addon", 1), ("ItAr_FireArmor_Addon", 1)],
+}
+for _k, _l in EXTRA_ALLE.items():
+    _have = {i for i, _ in COMMON[_k]}
+    COMMON[_k] += [x for x in _l if x[0] not in _have]
+
 GUILD_WARE = {
     "MIL": {1: [("ITAR_MIL_L", 1)], 2: [("ITAR_MIL_M", 1)], 3: [("ITAR_PAL_M", 1), ("ItMw_1h_Pal_Sword", 1),
             ("ItMw_2h_Pal_Sword", 1)], 4: [("ItRu_PalLightHeal", 1), ("ItRu_PalHolyBolt", 1)],
@@ -242,7 +257,7 @@ for si, (wp, orig, base) in enumerate(SLOTS):
     for t in range(base, min(7, base + 5) + 1):
         kind = TIERS[t][si % 3]
         proto, body = mon(kind)
-        w(f"instance FUN_M{si:02d}_T{t} ({proto})")
+        w(f"instance FUN_M{si:03d}_T{t} ({proto})")
         w("{")
         w(body)
         w(f"\tFun_MobBeute({t});")
@@ -548,6 +563,9 @@ w("\tif (hero.attribute[ATR_DEXTERITY] < 30) { hero.attribute[ATR_DEXTERITY] = 3
 w("\tif (hero.attribute[ATR_HITPOINTS_MAX] < 100) { hero.attribute[ATR_HITPOINTS_MAX] = 100; };")
 w("\thero.attribute[ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];")
 w("\thero.lp = hero.lp + 10;")
+w("\tif (hero.attribute[ATR_MANA_MAX] < 20) { hero.attribute[ATR_MANA_MAX] = 20; };")
+w("\thero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];")
+w("\tCreateInvItems(hero, ItPo_Mana_01, 3);")
 for i in range(14):
     pass
 w("\tPLAYER_TALENT_TAKEANIMALTROPHY[TROPHY_Teeth] = TRUE;")
@@ -671,7 +689,7 @@ for tinst, g in traders:
 for cinst, gil, wp in companions:
     w(f'\tWld_InsertNpc({cinst}, "{wp}");')
 for si, (wp, orig, base) in enumerate(SLOTS):
-    w(f'\tWld_InsertNpc(FUN_M{si:02d}_T{base}, "{wp}");')
+    w(f'\tWld_InsertNpc(FUN_M{si:03d}_T{base}, "{wp}");')
 w(f'\tWld_InsertNpc(FUN_BOSS_K1, "{BOSS_WP}");')
 w("};")
 w()
@@ -708,12 +726,12 @@ w()
 sect("takt")
 w("// --- Takt (GothicCoop alle 10 s) -------------------------------------------------------------------------------------")
 for si, (wp, orig, base) in enumerate(SLOTS):
-    w(f"var int FUNL_T{si:02d};")
+    w(f"var int FUNL_T{si:03d};")
 w("var int FUNL_BEGL_T;")
 w()
 for si, (wp, orig, base) in enumerate(SLOTS):
     tiers = list(range(base, min(7, base + 5) + 1))
-    w(f"func void Fun_Platz{si:02d}()   // {wp} (Original: {orig})")
+    w(f"func void Fun_Platz{si:03d}()   // {wp} (Original: {orig})")
     w("{")
     w("\tvar C_NPC m;")
     w("\tvar int t;")
@@ -721,26 +739,26 @@ for si, (wp, orig, base) in enumerate(SLOTS):
     w(f"\tif (t > {tiers[-1]}) {{ t = {tiers[-1]}; }};")
     for i, t in enumerate(tiers):
         kw = "if" if i == 0 else "else if"
-        w(f"\t{kw} (t == {t}) {{ m = Hlp_GetNpc(FUN_M{si:02d}_T{t}); }}")
-    w("\telse { m = Hlp_GetNpc(FUN_M%02d_T%d); };" % (si, tiers[0]))
+        w(f"\t{kw} (t == {t}) {{ m = Hlp_GetNpc(FUN_M{si:03d}_T{t}); }}")
+    w("\telse { m = Hlp_GetNpc(FUN_M%03d_T%d); };" % (si, tiers[0]))
     w("\tif (Hlp_IsValidNpc(m))")
     w("\t{")
     w("\t\tif (!Npc_IsDead(m))")
     w("\t\t{")
-    w(f"\t\t\tFUNL_T{si:02d} = 0;")
+    w(f"\t\t\tFUNL_T{si:03d} = 0;")
     w("\t\t\treturn;")
     w("\t\t};")
     w("\t};")
-    w(f"\tFUNL_T{si:02d} = FUNL_T{si:02d} + 1;")
-    w(f"\tif (FUNL_T{si:02d} < FUN_RESPAWN_TAKTE)")
+    w(f"\tFUNL_T{si:03d} = FUNL_T{si:03d} + 1;")
+    w(f"\tif (FUNL_T{si:03d} < FUN_RESPAWN_TAKTE)")
     w("\t{")
     w("\t\treturn;")
     w("\t};")
-    w(f"\tFUNL_T{si:02d} = 0;")
+    w(f"\tFUNL_T{si:03d} = 0;")
     for i, t in enumerate(tiers):
         kw = "if" if i == 0 else "else if"
-        w(f'\t{kw} (t == {t}) {{ Wld_InsertNpc(FUN_M{si:02d}_T{t}, "{wp}"); }}')
-    w(f'\telse {{ Wld_InsertNpc(FUN_M{si:02d}_T{tiers[0]}, "{wp}"); }};')
+        w(f'\t{kw} (t == {t}) {{ Wld_InsertNpc(FUN_M{si:03d}_T{t}, "{wp}"); }}')
+    w(f'\telse {{ Wld_InsertNpc(FUN_M{si:03d}_T{tiers[0]}, "{wp}"); }};')
     w("};")
 w()
 sect("hilfe")
@@ -820,7 +838,7 @@ w("\t{")
 w("\t\treturn;")
 w("\t};")
 for si in range(len(SLOTS)):
-    w(f"\tFun_Platz{si:02d}();")
+    w(f"\tFun_Platz{si:03d}();")
 w("\tFun_Boss();")
 w("\tFun_Lager();")
 w("};")

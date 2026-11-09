@@ -21,7 +21,7 @@ var int FUN_KAPITEL;            // 1-6, steigt mit dem Kapitelstein
 var int FUNL_KAPITEL_GESEHEN;   // je PC: zuletzt angezeigtes Kapitel
 var int FUNL_BOSS_T;            // je PC (Host): Takte seit dem Tod des Bosses
 var int FUNL_BEGL_KAP;          // je PC (Host): Kapitel, für das die Begleiter zuletzt verstärkt wurden
-const int FUN_RESPAWN_TAKTE = 12;
+const int FUN_RESPAWN_TAKTE = 9;
 const int FUN_BOSS_TAKTE = 18;
 const int FUN_BEGL_TAKTE = 30;
 const int FUN_HAENDLER_GOLD = 100000;
@@ -96,2505 +96,10923 @@ func void Fun_MobBeute(var int stufe)
 	CreateInvItems(self, ItMi_Gold, 4 + stufe * 8);
 };
 
-instance FUN_M00_T2 (Mst_Default_Giant_Bug)
+instance FUN_M000_T2 (Mst_Default_Giant_Bug)
 {
 	B_SetVisuals_Giant_Bug();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(2);
 };
-instance FUN_M00_T3 (Mst_Default_Snapper)
+instance FUN_M000_T3 (Mst_Default_Snapper)
 {
 	B_SetVisuals_Snapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M00_T4 (Mst_Default_Razor)
+instance FUN_M000_T4 (Mst_Default_Razor)
 {
 	Set_Razor_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M00_T5 (Mst_Default_Warg)
+instance FUN_M000_T5 (Mst_Default_Warg)
 {
 	B_SetVisuals_Warg();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(5);
 };
-instance FUN_M00_T6 (Mst_Default_DragonSnapper)
+instance FUN_M000_T6 (Mst_Default_DragonSnapper)
 {
 	B_SetVisuals_DragonSnapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(6);
 };
-instance FUN_M00_T7 (Mst_Default_Troll_Black)
+instance FUN_M000_T7 (Mst_Default_Troll_Black)
 {
 	B_SetVisuals_Troll_Black();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(7);
 };
-instance FUN_M01_T2 (Mst_Default_Gobbo_Black)
+instance FUN_M001_T2 (Mst_Default_Gobbo_Black)
 {
 	B_SetVisuals_Gobbo_Black();
 	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
 	Fun_MobBeute(2);
 };
-instance FUN_M01_T3 (Mst_Default_Waran)
+instance FUN_M001_T3 (Mst_Default_Waran)
 {
 	B_SetVisuals_Waran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M01_T4 (Mst_Default_Bloodhound)
+instance FUN_M001_T4 (Mst_Default_Bloodhound)
 {
 	Set_Bloodhound_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M01_T5 (Mst_Default_Shadowbeast)
+instance FUN_M001_T5 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(5);
 };
-instance FUN_M01_T6 (Mst_Default_Troll)
+instance FUN_M001_T6 (Mst_Default_Troll)
 {
 	B_SetVisuals_Troll();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(6);
 };
-instance FUN_M01_T7 (Mst_Default_Troll)
+instance FUN_M001_T7 (Mst_Default_Troll)
 {
 	B_SetVisuals_Troll();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(7);
 };
-instance FUN_M02_T2 (Mst_Default_Lurker)
+instance FUN_M002_T2 (Mst_Default_Lurker)
 {
 	B_SetVisuals_Lurker();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(2);
 };
-instance FUN_M02_T3 (Mst_Default_Gobbo_Warrior)
+instance FUN_M002_T3 (Mst_Default_Gobbo_Warrior)
 {
 	B_SetVisuals_Gobbo_Warrior();
 	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
 	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
 	Fun_MobBeute(3);
 };
-instance FUN_M02_T4 (Mst_Default_StoneGolem)
+instance FUN_M002_T4 (Mst_Default_StoneGolem)
 {
 	B_SetVisuals_StoneGolem();
 	Npc_SetToFistMode	(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M02_T5 (Mst_Default_FireWaran)
+instance FUN_M002_T5 (Mst_Default_FireWaran)
 {
 	B_SetVisuals_FireWaran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(5);
 };
-instance FUN_M02_T6 (Mst_Default_Shadowbeast)
+instance FUN_M002_T6 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(6);
 };
-instance FUN_M02_T7 (Mst_Default_DragonSnapper)
+instance FUN_M002_T7 (Mst_Default_DragonSnapper)
 {
 	B_SetVisuals_DragonSnapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(7);
 };
-instance FUN_M03_T2 (Mst_Default_Giant_Bug)
+instance FUN_M003_T2 (Mst_Default_Giant_Bug)
 {
 	B_SetVisuals_Giant_Bug();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(2);
 };
-instance FUN_M03_T3 (Mst_Default_Snapper)
+instance FUN_M003_T3 (Mst_Default_Snapper)
 {
 	B_SetVisuals_Snapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M03_T4 (Mst_Default_Razor)
+instance FUN_M003_T4 (Mst_Default_Razor)
 {
 	Set_Razor_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M03_T5 (Mst_Default_Warg)
+instance FUN_M003_T5 (Mst_Default_Warg)
 {
 	B_SetVisuals_Warg();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(5);
 };
-instance FUN_M03_T6 (Mst_Default_DragonSnapper)
+instance FUN_M003_T6 (Mst_Default_DragonSnapper)
 {
 	B_SetVisuals_DragonSnapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(6);
 };
-instance FUN_M03_T7 (Mst_Default_Troll_Black)
+instance FUN_M003_T7 (Mst_Default_Troll_Black)
 {
 	B_SetVisuals_Troll_Black();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(7);
 };
-instance FUN_M04_T3 (Mst_Default_Waran)
-{
-	B_SetVisuals_Waran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M04_T4 (Mst_Default_Bloodhound)
-{
-	Set_Bloodhound_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M04_T5 (Mst_Default_Shadowbeast)
-{
-	B_SetVisuals_Shadowbeast();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 2);
-	Fun_MobBeute(5);
-};
-instance FUN_M04_T6 (Mst_Default_Troll)
-{
-	B_SetVisuals_Troll();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M04_T7 (Mst_Default_Troll)
-{
-	B_SetVisuals_Troll();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M05_T3 (Mst_Default_Gobbo_Warrior)
-{
-	B_SetVisuals_Gobbo_Warrior();
-	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
-	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
-	Fun_MobBeute(3);
-};
-instance FUN_M05_T4 (Mst_Default_StoneGolem)
-{
-	B_SetVisuals_StoneGolem();
-	Npc_SetToFistMode	(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M05_T5 (Mst_Default_FireWaran)
-{
-	B_SetVisuals_FireWaran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(5);
-};
-instance FUN_M05_T6 (Mst_Default_Shadowbeast)
-{
-	B_SetVisuals_Shadowbeast();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 2);
-	Fun_MobBeute(6);
-};
-instance FUN_M05_T7 (Mst_Default_DragonSnapper)
-{
-	B_SetVisuals_DragonSnapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M06_T3 (Mst_Default_Snapper)
-{
-	B_SetVisuals_Snapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M06_T4 (Mst_Default_Razor)
-{
-	Set_Razor_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M06_T5 (Mst_Default_Warg)
-{
-	B_SetVisuals_Warg();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(5);
-};
-instance FUN_M06_T6 (Mst_Default_DragonSnapper)
-{
-	B_SetVisuals_DragonSnapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M06_T7 (Mst_Default_Troll_Black)
-{
-	B_SetVisuals_Troll_Black();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M07_T3 (Mst_Default_Waran)
-{
-	B_SetVisuals_Waran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M07_T4 (Mst_Default_Bloodhound)
-{
-	Set_Bloodhound_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M07_T5 (Mst_Default_Shadowbeast)
-{
-	B_SetVisuals_Shadowbeast();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 2);
-	Fun_MobBeute(5);
-};
-instance FUN_M07_T6 (Mst_Default_Troll)
-{
-	B_SetVisuals_Troll();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M07_T7 (Mst_Default_Troll)
-{
-	B_SetVisuals_Troll();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M08_T2 (Mst_Default_Lurker)
-{
-	B_SetVisuals_Lurker();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(2);
-};
-instance FUN_M08_T3 (Mst_Default_Gobbo_Warrior)
-{
-	B_SetVisuals_Gobbo_Warrior();
-	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
-	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
-	Fun_MobBeute(3);
-};
-instance FUN_M08_T4 (Mst_Default_StoneGolem)
-{
-	B_SetVisuals_StoneGolem();
-	Npc_SetToFistMode	(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M08_T5 (Mst_Default_FireWaran)
-{
-	B_SetVisuals_FireWaran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(5);
-};
-instance FUN_M08_T6 (Mst_Default_Shadowbeast)
-{
-	B_SetVisuals_Shadowbeast();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 2);
-	Fun_MobBeute(6);
-};
-instance FUN_M08_T7 (Mst_Default_DragonSnapper)
-{
-	B_SetVisuals_DragonSnapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M09_T2 (Mst_Default_Giant_Bug)
-{
-	B_SetVisuals_Giant_Bug();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(2);
-};
-instance FUN_M09_T3 (Mst_Default_Snapper)
-{
-	B_SetVisuals_Snapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M09_T4 (Mst_Default_Razor)
-{
-	Set_Razor_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M09_T5 (Mst_Default_Warg)
-{
-	B_SetVisuals_Warg();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(5);
-};
-instance FUN_M09_T6 (Mst_Default_DragonSnapper)
-{
-	B_SetVisuals_DragonSnapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M09_T7 (Mst_Default_Troll_Black)
-{
-	B_SetVisuals_Troll_Black();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M10_T2 (Mst_Default_Gobbo_Black)
+instance FUN_M004_T2 (Mst_Default_Gobbo_Black)
 {
 	B_SetVisuals_Gobbo_Black();
 	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
 	Fun_MobBeute(2);
 };
-instance FUN_M10_T3 (Mst_Default_Waran)
+instance FUN_M004_T3 (Mst_Default_Waran)
 {
 	B_SetVisuals_Waran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M10_T4 (Mst_Default_Bloodhound)
+instance FUN_M004_T4 (Mst_Default_Bloodhound)
 {
 	Set_Bloodhound_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M10_T5 (Mst_Default_Shadowbeast)
+instance FUN_M004_T5 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(5);
 };
-instance FUN_M10_T6 (Mst_Default_Troll)
+instance FUN_M004_T6 (Mst_Default_Troll)
 {
 	B_SetVisuals_Troll();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(6);
 };
-instance FUN_M10_T7 (Mst_Default_Troll)
+instance FUN_M004_T7 (Mst_Default_Troll)
 {
 	B_SetVisuals_Troll();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(7);
 };
-instance FUN_M11_T3 (Mst_Default_Gobbo_Warrior)
+instance FUN_M005_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M005_T3 (Mst_Default_Gobbo_Warrior)
 {
 	B_SetVisuals_Gobbo_Warrior();
 	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
 	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
 	Fun_MobBeute(3);
 };
-instance FUN_M11_T4 (Mst_Default_StoneGolem)
+instance FUN_M005_T4 (Mst_Default_StoneGolem)
 {
 	B_SetVisuals_StoneGolem();
 	Npc_SetToFistMode	(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M11_T5 (Mst_Default_FireWaran)
+instance FUN_M005_T5 (Mst_Default_FireWaran)
 {
 	B_SetVisuals_FireWaran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(5);
 };
-instance FUN_M11_T6 (Mst_Default_Shadowbeast)
+instance FUN_M005_T6 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(6);
 };
-instance FUN_M11_T7 (Mst_Default_DragonSnapper)
+instance FUN_M005_T7 (Mst_Default_DragonSnapper)
 {
 	B_SetVisuals_DragonSnapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(7);
 };
-instance FUN_M12_T0 (Mst_Default_Giant_Rat)
+instance FUN_M006_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M006_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M006_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M006_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M006_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M006_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M007_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M007_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M007_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M007_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M007_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M007_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M008_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M008_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M008_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M008_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M008_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M008_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M009_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M009_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M009_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M009_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M009_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M009_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M010_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M010_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M010_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M010_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M010_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M010_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M011_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M011_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M011_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M011_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M011_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M011_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M012_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M012_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M012_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M012_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M012_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M012_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M013_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M013_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M013_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M013_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M013_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M013_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M014_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M014_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M014_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M014_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M014_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M014_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M015_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M015_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M015_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M015_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M015_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M015_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M016_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M016_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M016_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M016_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M016_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M016_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M017_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M017_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M017_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M017_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M017_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M017_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M018_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M018_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M018_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M018_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M018_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M018_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M019_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M019_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M019_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M019_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M019_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M019_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M020_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M020_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M020_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M020_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M020_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M020_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M021_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M021_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M021_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M021_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M021_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M021_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M022_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M022_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M022_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M022_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M022_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M023_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M023_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M023_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M023_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M023_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M024_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M024_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M024_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M024_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M024_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M025_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M025_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M025_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M025_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M025_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M026_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M026_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M026_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M026_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M026_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M027_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M027_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M027_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M027_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M027_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M028_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M028_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M028_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M028_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M028_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M029_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M029_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M029_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M029_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M029_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M030_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M030_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M030_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M030_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M030_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M031_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M031_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M031_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M031_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M031_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M032_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M032_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M032_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M032_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M032_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M033_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M033_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M033_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M033_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M033_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M034_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M034_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M034_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M034_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M034_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M035_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M035_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M035_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M035_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M035_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M036_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M036_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M036_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M036_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M036_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M037_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M037_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M037_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M037_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M037_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M038_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M038_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M038_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M038_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M038_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M039_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M039_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M039_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M039_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M039_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M040_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M040_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M040_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M040_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M040_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M041_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M041_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M041_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M041_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M041_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M042_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M042_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M042_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M042_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M042_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M043_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M043_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M043_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M043_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M043_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M044_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M044_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M044_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M044_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M044_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M045_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M045_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M045_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M045_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M045_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M046_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M046_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M046_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M046_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M046_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M046_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M047_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M047_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M047_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M047_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M047_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M047_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M048_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M048_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M048_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M048_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M048_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M049_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M049_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M049_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M049_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M049_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M050_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M050_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M050_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M050_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M050_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M050_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M051_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M051_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M051_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M051_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M051_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M051_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M052_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M052_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M052_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M052_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M052_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M052_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M053_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M053_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M053_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M053_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M053_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M053_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M054_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M054_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M054_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M054_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M054_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M054_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M055_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M055_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M055_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M055_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M055_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M055_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M056_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M056_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M056_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M056_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M056_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M056_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M057_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M057_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M057_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M057_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M057_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M057_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M058_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M058_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M058_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M058_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M058_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M058_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M059_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M059_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M059_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M059_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M059_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M059_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M060_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M060_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M060_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M060_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M060_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M060_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M061_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M061_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M061_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M061_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M061_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M061_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M062_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M062_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M062_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M062_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M062_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M062_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M063_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M063_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M063_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M063_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M063_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M063_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M064_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M064_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M064_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M064_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M064_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M065_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M065_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M065_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M065_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M065_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M066_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M066_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M066_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M066_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M066_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M067_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M067_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M067_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M067_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M067_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M068_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M068_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M068_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M068_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M068_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M069_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M069_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M069_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M069_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M069_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M070_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M070_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M070_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M070_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M070_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M070_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M071_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M071_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M071_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M071_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M071_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M071_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M072_T0 (Mst_Default_Giant_Rat)
 {
 	B_SetVisuals_Giant_Rat();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(0);
 };
-instance FUN_M12_T1 (Mst_Default_Wolf)
+instance FUN_M072_T1 (Mst_Default_Wolf)
 {
 	B_SetVisuals_Wolf();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(1);
 };
-instance FUN_M12_T2 (Mst_Default_Giant_Bug)
+instance FUN_M072_T2 (Mst_Default_Giant_Bug)
 {
 	B_SetVisuals_Giant_Bug();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(2);
 };
-instance FUN_M12_T3 (Mst_Default_Snapper)
+instance FUN_M072_T3 (Mst_Default_Snapper)
 {
 	B_SetVisuals_Snapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M12_T4 (Mst_Default_Razor)
+instance FUN_M072_T4 (Mst_Default_Razor)
 {
 	Set_Razor_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M12_T5 (Mst_Default_Warg)
+instance FUN_M072_T5 (Mst_Default_Warg)
 {
 	B_SetVisuals_Warg();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(5);
 };
-instance FUN_M13_T0 (Mst_Default_Molerat)
+instance FUN_M073_T0 (Mst_Default_Molerat)
 {
 	B_SetVisuals_Molerat();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(0);
 };
-instance FUN_M13_T1 (Mst_Default_Scavenger)
+instance FUN_M073_T1 (Mst_Default_Scavenger)
 {
 	B_SetVisuals_Scavenger();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(1);
 };
-instance FUN_M13_T2 (Mst_Default_Gobbo_Black)
+instance FUN_M073_T2 (Mst_Default_Gobbo_Black)
 {
 	B_SetVisuals_Gobbo_Black();
 	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
 	Fun_MobBeute(2);
 };
-instance FUN_M13_T3 (Mst_Default_Waran)
+instance FUN_M073_T3 (Mst_Default_Waran)
 {
 	B_SetVisuals_Waran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M13_T4 (Mst_Default_Bloodhound)
+instance FUN_M073_T4 (Mst_Default_Bloodhound)
 {
 	Set_Bloodhound_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M13_T5 (Mst_Default_Shadowbeast)
+instance FUN_M073_T5 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(5);
 };
-instance FUN_M14_T3 (Mst_Default_Gobbo_Warrior)
+instance FUN_M074_T3 (Mst_Default_Gobbo_Warrior)
 {
 	B_SetVisuals_Gobbo_Warrior();
 	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
 	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
 	Fun_MobBeute(3);
 };
-instance FUN_M14_T4 (Mst_Default_StoneGolem)
+instance FUN_M074_T4 (Mst_Default_StoneGolem)
 {
 	B_SetVisuals_StoneGolem();
 	Npc_SetToFistMode	(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M14_T5 (Mst_Default_FireWaran)
+instance FUN_M074_T5 (Mst_Default_FireWaran)
 {
 	B_SetVisuals_FireWaran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(5);
 };
-instance FUN_M14_T6 (Mst_Default_Shadowbeast)
+instance FUN_M074_T6 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(6);
 };
-instance FUN_M14_T7 (Mst_Default_DragonSnapper)
+instance FUN_M074_T7 (Mst_Default_DragonSnapper)
 {
 	B_SetVisuals_DragonSnapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(7);
 };
-instance FUN_M15_T2 (Mst_Default_Giant_Bug)
-{
-	B_SetVisuals_Giant_Bug();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(2);
-};
-instance FUN_M15_T3 (Mst_Default_Snapper)
+instance FUN_M075_T3 (Mst_Default_Snapper)
 {
 	B_SetVisuals_Snapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M15_T4 (Mst_Default_Razor)
+instance FUN_M075_T4 (Mst_Default_Razor)
 {
 	Set_Razor_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M15_T5 (Mst_Default_Warg)
+instance FUN_M075_T5 (Mst_Default_Warg)
 {
 	B_SetVisuals_Warg();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(5);
 };
-instance FUN_M15_T6 (Mst_Default_DragonSnapper)
+instance FUN_M075_T6 (Mst_Default_DragonSnapper)
 {
 	B_SetVisuals_DragonSnapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(6);
 };
-instance FUN_M15_T7 (Mst_Default_Troll_Black)
+instance FUN_M075_T7 (Mst_Default_Troll_Black)
 {
 	B_SetVisuals_Troll_Black();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(7);
 };
-instance FUN_M16_T2 (Mst_Default_Gobbo_Black)
-{
-	B_SetVisuals_Gobbo_Black();
-	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
-	Fun_MobBeute(2);
-};
-instance FUN_M16_T3 (Mst_Default_Waran)
-{
-	B_SetVisuals_Waran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M16_T4 (Mst_Default_Bloodhound)
-{
-	Set_Bloodhound_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M16_T5 (Mst_Default_Shadowbeast)
-{
-	B_SetVisuals_Shadowbeast();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 2);
-	Fun_MobBeute(5);
-};
-instance FUN_M16_T6 (Mst_Default_Troll)
-{
-	B_SetVisuals_Troll();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M16_T7 (Mst_Default_Troll)
-{
-	B_SetVisuals_Troll();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M17_T3 (Mst_Default_Gobbo_Warrior)
-{
-	B_SetVisuals_Gobbo_Warrior();
-	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
-	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
-	Fun_MobBeute(3);
-};
-instance FUN_M17_T4 (Mst_Default_StoneGolem)
-{
-	B_SetVisuals_StoneGolem();
-	Npc_SetToFistMode	(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M17_T5 (Mst_Default_FireWaran)
-{
-	B_SetVisuals_FireWaran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(5);
-};
-instance FUN_M17_T6 (Mst_Default_Shadowbeast)
-{
-	B_SetVisuals_Shadowbeast();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 2);
-	Fun_MobBeute(6);
-};
-instance FUN_M17_T7 (Mst_Default_DragonSnapper)
-{
-	B_SetVisuals_DragonSnapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M18_T2 (Mst_Default_Giant_Bug)
-{
-	B_SetVisuals_Giant_Bug();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(2);
-};
-instance FUN_M18_T3 (Mst_Default_Snapper)
-{
-	B_SetVisuals_Snapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M18_T4 (Mst_Default_Razor)
-{
-	Set_Razor_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M18_T5 (Mst_Default_Warg)
-{
-	B_SetVisuals_Warg();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(5);
-};
-instance FUN_M18_T6 (Mst_Default_DragonSnapper)
-{
-	B_SetVisuals_DragonSnapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M18_T7 (Mst_Default_Troll_Black)
-{
-	B_SetVisuals_Troll_Black();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M19_T3 (Mst_Default_Waran)
-{
-	B_SetVisuals_Waran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M19_T4 (Mst_Default_Bloodhound)
-{
-	Set_Bloodhound_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M19_T5 (Mst_Default_Shadowbeast)
-{
-	B_SetVisuals_Shadowbeast();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 2);
-	Fun_MobBeute(5);
-};
-instance FUN_M19_T6 (Mst_Default_Troll)
-{
-	B_SetVisuals_Troll();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M19_T7 (Mst_Default_Troll)
-{
-	B_SetVisuals_Troll();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M20_T0 (Mst_Default_Bloodfly)
-{
-	B_SetVisuals_Bloodfly();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(0);
-};
-instance FUN_M20_T1 (Mst_Default_Keiler)
-{
-	B_SetVisuals_Keiler();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(1);
-};
-instance FUN_M20_T2 (Mst_Default_Lurker)
-{
-	B_SetVisuals_Lurker();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(2);
-};
-instance FUN_M20_T3 (Mst_Default_Gobbo_Warrior)
-{
-	B_SetVisuals_Gobbo_Warrior();
-	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
-	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
-	Fun_MobBeute(3);
-};
-instance FUN_M20_T4 (Mst_Default_StoneGolem)
-{
-	B_SetVisuals_StoneGolem();
-	Npc_SetToFistMode	(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M20_T5 (Mst_Default_FireWaran)
-{
-	B_SetVisuals_FireWaran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(5);
-};
-instance FUN_M21_T3 (Mst_Default_Snapper)
-{
-	B_SetVisuals_Snapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M21_T4 (Mst_Default_Razor)
-{
-	Set_Razor_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M21_T5 (Mst_Default_Warg)
-{
-	B_SetVisuals_Warg();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(5);
-};
-instance FUN_M21_T6 (Mst_Default_DragonSnapper)
-{
-	B_SetVisuals_DragonSnapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M21_T7 (Mst_Default_Troll_Black)
-{
-	B_SetVisuals_Troll_Black();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M22_T0 (Mst_Default_Molerat)
+instance FUN_M076_T0 (Mst_Default_Molerat)
 {
 	B_SetVisuals_Molerat();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(0);
 };
-instance FUN_M22_T1 (Mst_Default_Scavenger)
+instance FUN_M076_T1 (Mst_Default_Scavenger)
 {
 	B_SetVisuals_Scavenger();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(1);
 };
-instance FUN_M22_T2 (Mst_Default_Gobbo_Black)
+instance FUN_M076_T2 (Mst_Default_Gobbo_Black)
 {
 	B_SetVisuals_Gobbo_Black();
 	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
 	Fun_MobBeute(2);
 };
-instance FUN_M22_T3 (Mst_Default_Waran)
+instance FUN_M076_T3 (Mst_Default_Waran)
 {
 	B_SetVisuals_Waran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M22_T4 (Mst_Default_Bloodhound)
+instance FUN_M076_T4 (Mst_Default_Bloodhound)
 {
 	Set_Bloodhound_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M22_T5 (Mst_Default_Shadowbeast)
+instance FUN_M076_T5 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(5);
 };
-instance FUN_M23_T0 (Mst_Default_Bloodfly)
+instance FUN_M077_T0 (Mst_Default_Bloodfly)
 {
 	B_SetVisuals_Bloodfly();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(0);
 };
-instance FUN_M23_T1 (Mst_Default_Keiler)
+instance FUN_M077_T1 (Mst_Default_Keiler)
 {
 	B_SetVisuals_Keiler();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(1);
 };
-instance FUN_M23_T2 (Mst_Default_Lurker)
+instance FUN_M077_T2 (Mst_Default_Lurker)
 {
 	B_SetVisuals_Lurker();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(2);
 };
-instance FUN_M23_T3 (Mst_Default_Gobbo_Warrior)
+instance FUN_M077_T3 (Mst_Default_Gobbo_Warrior)
 {
 	B_SetVisuals_Gobbo_Warrior();
 	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
 	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
 	Fun_MobBeute(3);
 };
-instance FUN_M23_T4 (Mst_Default_StoneGolem)
+instance FUN_M077_T4 (Mst_Default_StoneGolem)
 {
 	B_SetVisuals_StoneGolem();
 	Npc_SetToFistMode	(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M23_T5 (Mst_Default_FireWaran)
+instance FUN_M077_T5 (Mst_Default_FireWaran)
 {
 	B_SetVisuals_FireWaran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(5);
 };
-instance FUN_M24_T1 (Mst_Default_Wolf)
-{
-	B_SetVisuals_Wolf();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(1);
-};
-instance FUN_M24_T2 (Mst_Default_Giant_Bug)
-{
-	B_SetVisuals_Giant_Bug();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(2);
-};
-instance FUN_M24_T3 (Mst_Default_Snapper)
-{
-	B_SetVisuals_Snapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M24_T4 (Mst_Default_Razor)
-{
-	Set_Razor_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M24_T5 (Mst_Default_Warg)
-{
-	B_SetVisuals_Warg();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(5);
-};
-instance FUN_M24_T6 (Mst_Default_DragonSnapper)
-{
-	B_SetVisuals_DragonSnapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M25_T1 (Mst_Default_Scavenger)
-{
-	B_SetVisuals_Scavenger();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(1);
-};
-instance FUN_M25_T2 (Mst_Default_Gobbo_Black)
-{
-	B_SetVisuals_Gobbo_Black();
-	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
-	Fun_MobBeute(2);
-};
-instance FUN_M25_T3 (Mst_Default_Waran)
-{
-	B_SetVisuals_Waran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M25_T4 (Mst_Default_Bloodhound)
-{
-	Set_Bloodhound_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M25_T5 (Mst_Default_Shadowbeast)
-{
-	B_SetVisuals_Shadowbeast();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 2);
-	Fun_MobBeute(5);
-};
-instance FUN_M25_T6 (Mst_Default_Troll)
-{
-	B_SetVisuals_Troll();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M26_T0 (Mst_Default_Bloodfly)
-{
-	B_SetVisuals_Bloodfly();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(0);
-};
-instance FUN_M26_T1 (Mst_Default_Keiler)
-{
-	B_SetVisuals_Keiler();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(1);
-};
-instance FUN_M26_T2 (Mst_Default_Lurker)
-{
-	B_SetVisuals_Lurker();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(2);
-};
-instance FUN_M26_T3 (Mst_Default_Gobbo_Warrior)
-{
-	B_SetVisuals_Gobbo_Warrior();
-	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
-	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
-	Fun_MobBeute(3);
-};
-instance FUN_M26_T4 (Mst_Default_StoneGolem)
-{
-	B_SetVisuals_StoneGolem();
-	Npc_SetToFistMode	(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M26_T5 (Mst_Default_FireWaran)
-{
-	B_SetVisuals_FireWaran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(5);
-};
-instance FUN_M27_T0 (Mst_Default_Giant_Rat)
+instance FUN_M078_T0 (Mst_Default_Giant_Rat)
 {
 	B_SetVisuals_Giant_Rat();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(0);
 };
-instance FUN_M27_T1 (Mst_Default_Wolf)
+instance FUN_M078_T1 (Mst_Default_Wolf)
 {
 	B_SetVisuals_Wolf();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(1);
 };
-instance FUN_M27_T2 (Mst_Default_Giant_Bug)
+instance FUN_M078_T2 (Mst_Default_Giant_Bug)
 {
 	B_SetVisuals_Giant_Bug();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(2);
 };
-instance FUN_M27_T3 (Mst_Default_Snapper)
+instance FUN_M078_T3 (Mst_Default_Snapper)
 {
 	B_SetVisuals_Snapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M27_T4 (Mst_Default_Razor)
+instance FUN_M078_T4 (Mst_Default_Razor)
 {
 	Set_Razor_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M27_T5 (Mst_Default_Warg)
+instance FUN_M078_T5 (Mst_Default_Warg)
 {
 	B_SetVisuals_Warg();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(5);
 };
-instance FUN_M28_T0 (Mst_Default_Molerat)
+instance FUN_M079_T0 (Mst_Default_Molerat)
 {
 	B_SetVisuals_Molerat();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(0);
 };
-instance FUN_M28_T1 (Mst_Default_Scavenger)
+instance FUN_M079_T1 (Mst_Default_Scavenger)
 {
 	B_SetVisuals_Scavenger();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(1);
 };
-instance FUN_M28_T2 (Mst_Default_Gobbo_Black)
+instance FUN_M079_T2 (Mst_Default_Gobbo_Black)
 {
 	B_SetVisuals_Gobbo_Black();
 	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
 	Fun_MobBeute(2);
 };
-instance FUN_M28_T3 (Mst_Default_Waran)
+instance FUN_M079_T3 (Mst_Default_Waran)
 {
 	B_SetVisuals_Waran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M28_T4 (Mst_Default_Bloodhound)
+instance FUN_M079_T4 (Mst_Default_Bloodhound)
 {
 	Set_Bloodhound_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M28_T5 (Mst_Default_Shadowbeast)
+instance FUN_M079_T5 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(5);
 };
-instance FUN_M29_T3 (Mst_Default_Gobbo_Warrior)
+instance FUN_M080_T3 (Mst_Default_Gobbo_Warrior)
 {
 	B_SetVisuals_Gobbo_Warrior();
 	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
 	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
 	Fun_MobBeute(3);
 };
-instance FUN_M29_T4 (Mst_Default_StoneGolem)
+instance FUN_M080_T4 (Mst_Default_StoneGolem)
 {
 	B_SetVisuals_StoneGolem();
 	Npc_SetToFistMode	(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M29_T5 (Mst_Default_FireWaran)
+instance FUN_M080_T5 (Mst_Default_FireWaran)
 {
 	B_SetVisuals_FireWaran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(5);
 };
-instance FUN_M29_T6 (Mst_Default_Shadowbeast)
+instance FUN_M080_T6 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(6);
 };
-instance FUN_M29_T7 (Mst_Default_DragonSnapper)
+instance FUN_M080_T7 (Mst_Default_DragonSnapper)
 {
 	B_SetVisuals_DragonSnapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(7);
 };
-instance FUN_M30_T3 (Mst_Default_Snapper)
+instance FUN_M081_T3 (Mst_Default_Snapper)
 {
 	B_SetVisuals_Snapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M30_T4 (Mst_Default_Razor)
+instance FUN_M081_T4 (Mst_Default_Razor)
 {
 	Set_Razor_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M30_T5 (Mst_Default_Warg)
+instance FUN_M081_T5 (Mst_Default_Warg)
 {
 	B_SetVisuals_Warg();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(5);
 };
-instance FUN_M30_T6 (Mst_Default_DragonSnapper)
+instance FUN_M081_T6 (Mst_Default_DragonSnapper)
 {
 	B_SetVisuals_DragonSnapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(6);
 };
-instance FUN_M30_T7 (Mst_Default_Troll_Black)
+instance FUN_M081_T7 (Mst_Default_Troll_Black)
 {
 	B_SetVisuals_Troll_Black();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(7);
 };
-instance FUN_M31_T3 (Mst_Default_Waran)
+instance FUN_M082_T3 (Mst_Default_Waran)
 {
 	B_SetVisuals_Waran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M31_T4 (Mst_Default_Bloodhound)
+instance FUN_M082_T4 (Mst_Default_Bloodhound)
 {
 	Set_Bloodhound_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M31_T5 (Mst_Default_Shadowbeast)
+instance FUN_M082_T5 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(5);
 };
-instance FUN_M31_T6 (Mst_Default_Troll)
+instance FUN_M082_T6 (Mst_Default_Troll)
 {
 	B_SetVisuals_Troll();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(6);
 };
-instance FUN_M31_T7 (Mst_Default_Troll)
+instance FUN_M082_T7 (Mst_Default_Troll)
 {
 	B_SetVisuals_Troll();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(7);
 };
-instance FUN_M32_T3 (Mst_Default_Gobbo_Warrior)
+instance FUN_M083_T3 (Mst_Default_Gobbo_Warrior)
 {
 	B_SetVisuals_Gobbo_Warrior();
 	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
 	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
 	Fun_MobBeute(3);
 };
-instance FUN_M32_T4 (Mst_Default_StoneGolem)
+instance FUN_M083_T4 (Mst_Default_StoneGolem)
 {
 	B_SetVisuals_StoneGolem();
 	Npc_SetToFistMode	(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M32_T5 (Mst_Default_FireWaran)
+instance FUN_M083_T5 (Mst_Default_FireWaran)
 {
 	B_SetVisuals_FireWaran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(5);
 };
-instance FUN_M32_T6 (Mst_Default_Shadowbeast)
+instance FUN_M083_T6 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(6);
 };
-instance FUN_M32_T7 (Mst_Default_DragonSnapper)
+instance FUN_M083_T7 (Mst_Default_DragonSnapper)
 {
 	B_SetVisuals_DragonSnapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(7);
 };
-instance FUN_M33_T3 (Mst_Default_Snapper)
+instance FUN_M084_T3 (Mst_Default_Snapper)
 {
 	B_SetVisuals_Snapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M33_T4 (Mst_Default_Razor)
+instance FUN_M084_T4 (Mst_Default_Razor)
 {
 	Set_Razor_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M33_T5 (Mst_Default_Warg)
+instance FUN_M084_T5 (Mst_Default_Warg)
 {
 	B_SetVisuals_Warg();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(5);
 };
-instance FUN_M33_T6 (Mst_Default_DragonSnapper)
+instance FUN_M084_T6 (Mst_Default_DragonSnapper)
 {
 	B_SetVisuals_DragonSnapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(6);
 };
-instance FUN_M33_T7 (Mst_Default_Troll_Black)
+instance FUN_M084_T7 (Mst_Default_Troll_Black)
 {
 	B_SetVisuals_Troll_Black();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(7);
 };
-instance FUN_M34_T3 (Mst_Default_Waran)
+instance FUN_M085_T3 (Mst_Default_Waran)
 {
 	B_SetVisuals_Waran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M34_T4 (Mst_Default_Bloodhound)
+instance FUN_M085_T4 (Mst_Default_Bloodhound)
 {
 	Set_Bloodhound_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M34_T5 (Mst_Default_Shadowbeast)
+instance FUN_M085_T5 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(5);
 };
-instance FUN_M34_T6 (Mst_Default_Troll)
+instance FUN_M085_T6 (Mst_Default_Troll)
 {
 	B_SetVisuals_Troll();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(6);
 };
-instance FUN_M34_T7 (Mst_Default_Troll)
+instance FUN_M085_T7 (Mst_Default_Troll)
 {
 	B_SetVisuals_Troll();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(7);
 };
-instance FUN_M35_T3 (Mst_Default_Gobbo_Warrior)
+instance FUN_M086_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M086_T3 (Mst_Default_Gobbo_Warrior)
 {
 	B_SetVisuals_Gobbo_Warrior();
 	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
 	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
 	Fun_MobBeute(3);
 };
-instance FUN_M35_T4 (Mst_Default_StoneGolem)
+instance FUN_M086_T4 (Mst_Default_StoneGolem)
 {
 	B_SetVisuals_StoneGolem();
 	Npc_SetToFistMode	(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M35_T5 (Mst_Default_FireWaran)
+instance FUN_M086_T5 (Mst_Default_FireWaran)
 {
 	B_SetVisuals_FireWaran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(5);
 };
-instance FUN_M35_T6 (Mst_Default_Shadowbeast)
+instance FUN_M086_T6 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(6);
 };
-instance FUN_M35_T7 (Mst_Default_DragonSnapper)
+instance FUN_M086_T7 (Mst_Default_DragonSnapper)
 {
 	B_SetVisuals_DragonSnapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(7);
 };
-instance FUN_M36_T3 (Mst_Default_Snapper)
+instance FUN_M087_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M087_T3 (Mst_Default_Snapper)
 {
 	B_SetVisuals_Snapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M36_T4 (Mst_Default_Razor)
+instance FUN_M087_T4 (Mst_Default_Razor)
 {
 	Set_Razor_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M36_T5 (Mst_Default_Warg)
+instance FUN_M087_T5 (Mst_Default_Warg)
 {
 	B_SetVisuals_Warg();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(5);
 };
-instance FUN_M36_T6 (Mst_Default_DragonSnapper)
+instance FUN_M087_T6 (Mst_Default_DragonSnapper)
 {
 	B_SetVisuals_DragonSnapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(6);
 };
-instance FUN_M36_T7 (Mst_Default_Troll_Black)
+instance FUN_M087_T7 (Mst_Default_Troll_Black)
 {
 	B_SetVisuals_Troll_Black();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(7);
 };
-instance FUN_M37_T0 (Mst_Default_Molerat)
+instance FUN_M088_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M088_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M088_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M088_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M088_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M088_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M089_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M089_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M089_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M089_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M089_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M089_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M090_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M090_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M090_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M090_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M090_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M090_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M091_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M091_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M091_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M091_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M091_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M091_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M092_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M092_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M092_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M092_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M092_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M092_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M093_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M093_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M093_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M093_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M093_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M093_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M094_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M094_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M094_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M094_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M094_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M094_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M095_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M095_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M095_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M095_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M095_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M095_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M096_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M096_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M096_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M096_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M096_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M096_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M097_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M097_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M097_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M097_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M097_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M097_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M098_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M098_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M098_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M098_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M098_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M098_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M099_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M099_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M099_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M099_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M099_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M099_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M100_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M100_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M100_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M100_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M100_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M101_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M101_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M101_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M101_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M101_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M102_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M102_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M102_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M102_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M102_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M102_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M103_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M103_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M103_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M103_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M103_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M103_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M104_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M104_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M104_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M104_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M104_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M104_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M105_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M105_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M105_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M105_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M105_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M105_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M106_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M106_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M106_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M106_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M106_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M106_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M107_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M107_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M107_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M107_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M107_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M107_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M108_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M108_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M108_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M108_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M108_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M109_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M109_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M109_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M109_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M109_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M110_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M110_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M110_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M110_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M110_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M111_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M111_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M111_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M111_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M111_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M112_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M112_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M112_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M112_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M112_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M113_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M113_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M113_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M113_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M113_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M114_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M114_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M114_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M114_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M114_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M115_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M115_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M115_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M115_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M115_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M116_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M116_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M116_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M116_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M116_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M117_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M117_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M117_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M117_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M117_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M118_T0 (Mst_Default_Molerat)
 {
 	B_SetVisuals_Molerat();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(0);
 };
-instance FUN_M37_T1 (Mst_Default_Scavenger)
+instance FUN_M118_T1 (Mst_Default_Scavenger)
 {
 	B_SetVisuals_Scavenger();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(1);
 };
-instance FUN_M37_T2 (Mst_Default_Gobbo_Black)
+instance FUN_M118_T2 (Mst_Default_Gobbo_Black)
 {
 	B_SetVisuals_Gobbo_Black();
 	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
 	Fun_MobBeute(2);
 };
-instance FUN_M37_T3 (Mst_Default_Waran)
+instance FUN_M118_T3 (Mst_Default_Waran)
 {
 	B_SetVisuals_Waran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M37_T4 (Mst_Default_Bloodhound)
+instance FUN_M118_T4 (Mst_Default_Bloodhound)
 {
 	Set_Bloodhound_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M37_T5 (Mst_Default_Shadowbeast)
+instance FUN_M118_T5 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(5);
 };
-instance FUN_M38_T2 (Mst_Default_Lurker)
-{
-	B_SetVisuals_Lurker();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(2);
-};
-instance FUN_M38_T3 (Mst_Default_Gobbo_Warrior)
-{
-	B_SetVisuals_Gobbo_Warrior();
-	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
-	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
-	Fun_MobBeute(3);
-};
-instance FUN_M38_T4 (Mst_Default_StoneGolem)
-{
-	B_SetVisuals_StoneGolem();
-	Npc_SetToFistMode	(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M38_T5 (Mst_Default_FireWaran)
-{
-	B_SetVisuals_FireWaran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(5);
-};
-instance FUN_M38_T6 (Mst_Default_Shadowbeast)
-{
-	B_SetVisuals_Shadowbeast();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 2);
-	Fun_MobBeute(6);
-};
-instance FUN_M38_T7 (Mst_Default_DragonSnapper)
-{
-	B_SetVisuals_DragonSnapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M39_T2 (Mst_Default_Giant_Bug)
-{
-	B_SetVisuals_Giant_Bug();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(2);
-};
-instance FUN_M39_T3 (Mst_Default_Snapper)
-{
-	B_SetVisuals_Snapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M39_T4 (Mst_Default_Razor)
-{
-	Set_Razor_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M39_T5 (Mst_Default_Warg)
-{
-	B_SetVisuals_Warg();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(5);
-};
-instance FUN_M39_T6 (Mst_Default_DragonSnapper)
-{
-	B_SetVisuals_DragonSnapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M39_T7 (Mst_Default_Troll_Black)
-{
-	B_SetVisuals_Troll_Black();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M40_T2 (Mst_Default_Gobbo_Black)
-{
-	B_SetVisuals_Gobbo_Black();
-	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
-	Fun_MobBeute(2);
-};
-instance FUN_M40_T3 (Mst_Default_Waran)
-{
-	B_SetVisuals_Waran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M40_T4 (Mst_Default_Bloodhound)
-{
-	Set_Bloodhound_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M40_T5 (Mst_Default_Shadowbeast)
-{
-	B_SetVisuals_Shadowbeast();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 2);
-	Fun_MobBeute(5);
-};
-instance FUN_M40_T6 (Mst_Default_Troll)
-{
-	B_SetVisuals_Troll();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M40_T7 (Mst_Default_Troll)
-{
-	B_SetVisuals_Troll();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M41_T2 (Mst_Default_Lurker)
-{
-	B_SetVisuals_Lurker();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(2);
-};
-instance FUN_M41_T3 (Mst_Default_Gobbo_Warrior)
-{
-	B_SetVisuals_Gobbo_Warrior();
-	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
-	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
-	Fun_MobBeute(3);
-};
-instance FUN_M41_T4 (Mst_Default_StoneGolem)
-{
-	B_SetVisuals_StoneGolem();
-	Npc_SetToFistMode	(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M41_T5 (Mst_Default_FireWaran)
-{
-	B_SetVisuals_FireWaran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(5);
-};
-instance FUN_M41_T6 (Mst_Default_Shadowbeast)
-{
-	B_SetVisuals_Shadowbeast();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 2);
-	Fun_MobBeute(6);
-};
-instance FUN_M41_T7 (Mst_Default_DragonSnapper)
-{
-	B_SetVisuals_DragonSnapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M42_T1 (Mst_Default_Wolf)
-{
-	B_SetVisuals_Wolf();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(1);
-};
-instance FUN_M42_T2 (Mst_Default_Giant_Bug)
-{
-	B_SetVisuals_Giant_Bug();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(2);
-};
-instance FUN_M42_T3 (Mst_Default_Snapper)
-{
-	B_SetVisuals_Snapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M42_T4 (Mst_Default_Razor)
-{
-	Set_Razor_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M42_T5 (Mst_Default_Warg)
-{
-	B_SetVisuals_Warg();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(5);
-};
-instance FUN_M42_T6 (Mst_Default_DragonSnapper)
-{
-	B_SetVisuals_DragonSnapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M43_T1 (Mst_Default_Scavenger)
-{
-	B_SetVisuals_Scavenger();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(1);
-};
-instance FUN_M43_T2 (Mst_Default_Gobbo_Black)
-{
-	B_SetVisuals_Gobbo_Black();
-	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
-	Fun_MobBeute(2);
-};
-instance FUN_M43_T3 (Mst_Default_Waran)
-{
-	B_SetVisuals_Waran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M43_T4 (Mst_Default_Bloodhound)
-{
-	Set_Bloodhound_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M43_T5 (Mst_Default_Shadowbeast)
-{
-	B_SetVisuals_Shadowbeast();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 2);
-	Fun_MobBeute(5);
-};
-instance FUN_M43_T6 (Mst_Default_Troll)
-{
-	B_SetVisuals_Troll();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M44_T1 (Mst_Default_Keiler)
-{
-	B_SetVisuals_Keiler();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(1);
-};
-instance FUN_M44_T2 (Mst_Default_Lurker)
-{
-	B_SetVisuals_Lurker();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(2);
-};
-instance FUN_M44_T3 (Mst_Default_Gobbo_Warrior)
-{
-	B_SetVisuals_Gobbo_Warrior();
-	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
-	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
-	Fun_MobBeute(3);
-};
-instance FUN_M44_T4 (Mst_Default_StoneGolem)
-{
-	B_SetVisuals_StoneGolem();
-	Npc_SetToFistMode	(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M44_T5 (Mst_Default_FireWaran)
-{
-	B_SetVisuals_FireWaran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(5);
-};
-instance FUN_M44_T6 (Mst_Default_Shadowbeast)
-{
-	B_SetVisuals_Shadowbeast();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 2);
-	Fun_MobBeute(6);
-};
-instance FUN_M45_T1 (Mst_Default_Wolf)
-{
-	B_SetVisuals_Wolf();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(1);
-};
-instance FUN_M45_T2 (Mst_Default_Giant_Bug)
-{
-	B_SetVisuals_Giant_Bug();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(2);
-};
-instance FUN_M45_T3 (Mst_Default_Snapper)
-{
-	B_SetVisuals_Snapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M45_T4 (Mst_Default_Razor)
-{
-	Set_Razor_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M45_T5 (Mst_Default_Warg)
-{
-	B_SetVisuals_Warg();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(5);
-};
-instance FUN_M45_T6 (Mst_Default_DragonSnapper)
-{
-	B_SetVisuals_DragonSnapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M46_T1 (Mst_Default_Scavenger)
-{
-	B_SetVisuals_Scavenger();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(1);
-};
-instance FUN_M46_T2 (Mst_Default_Gobbo_Black)
-{
-	B_SetVisuals_Gobbo_Black();
-	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
-	Fun_MobBeute(2);
-};
-instance FUN_M46_T3 (Mst_Default_Waran)
-{
-	B_SetVisuals_Waran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M46_T4 (Mst_Default_Bloodhound)
-{
-	Set_Bloodhound_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M46_T5 (Mst_Default_Shadowbeast)
-{
-	B_SetVisuals_Shadowbeast();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 2);
-	Fun_MobBeute(5);
-};
-instance FUN_M46_T6 (Mst_Default_Troll)
-{
-	B_SetVisuals_Troll();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M47_T0 (Mst_Default_Bloodfly)
+instance FUN_M119_T0 (Mst_Default_Bloodfly)
 {
 	B_SetVisuals_Bloodfly();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(0);
 };
-instance FUN_M47_T1 (Mst_Default_Keiler)
+instance FUN_M119_T1 (Mst_Default_Keiler)
 {
 	B_SetVisuals_Keiler();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(1);
 };
-instance FUN_M47_T2 (Mst_Default_Lurker)
+instance FUN_M119_T2 (Mst_Default_Lurker)
 {
 	B_SetVisuals_Lurker();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(2);
 };
-instance FUN_M47_T3 (Mst_Default_Gobbo_Warrior)
+instance FUN_M119_T3 (Mst_Default_Gobbo_Warrior)
 {
 	B_SetVisuals_Gobbo_Warrior();
 	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
 	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
 	Fun_MobBeute(3);
 };
-instance FUN_M47_T4 (Mst_Default_StoneGolem)
+instance FUN_M119_T4 (Mst_Default_StoneGolem)
 {
 	B_SetVisuals_StoneGolem();
 	Npc_SetToFistMode	(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M47_T5 (Mst_Default_FireWaran)
+instance FUN_M119_T5 (Mst_Default_FireWaran)
 {
 	B_SetVisuals_FireWaran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(5);
 };
-instance FUN_M48_T3 (Mst_Default_Snapper)
+instance FUN_M120_T3 (Mst_Default_Snapper)
 {
 	B_SetVisuals_Snapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M48_T4 (Mst_Default_Razor)
+instance FUN_M120_T4 (Mst_Default_Razor)
 {
 	Set_Razor_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M48_T5 (Mst_Default_Warg)
+instance FUN_M120_T5 (Mst_Default_Warg)
 {
 	B_SetVisuals_Warg();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(5);
 };
-instance FUN_M48_T6 (Mst_Default_DragonSnapper)
+instance FUN_M120_T6 (Mst_Default_DragonSnapper)
 {
 	B_SetVisuals_DragonSnapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(6);
 };
-instance FUN_M48_T7 (Mst_Default_Troll_Black)
+instance FUN_M120_T7 (Mst_Default_Troll_Black)
 {
 	B_SetVisuals_Troll_Black();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(7);
 };
-instance FUN_M49_T3 (Mst_Default_Waran)
+instance FUN_M121_T3 (Mst_Default_Waran)
 {
 	B_SetVisuals_Waran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M49_T4 (Mst_Default_Bloodhound)
+instance FUN_M121_T4 (Mst_Default_Bloodhound)
 {
 	Set_Bloodhound_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M49_T5 (Mst_Default_Shadowbeast)
+instance FUN_M121_T5 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(5);
 };
-instance FUN_M49_T6 (Mst_Default_Troll)
+instance FUN_M121_T6 (Mst_Default_Troll)
 {
 	B_SetVisuals_Troll();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(6);
 };
-instance FUN_M49_T7 (Mst_Default_Troll)
+instance FUN_M121_T7 (Mst_Default_Troll)
 {
 	B_SetVisuals_Troll();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(7);
 };
-instance FUN_M50_T1 (Mst_Default_Keiler)
-{
-	B_SetVisuals_Keiler();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(1);
-};
-instance FUN_M50_T2 (Mst_Default_Lurker)
-{
-	B_SetVisuals_Lurker();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(2);
-};
-instance FUN_M50_T3 (Mst_Default_Gobbo_Warrior)
+instance FUN_M122_T3 (Mst_Default_Gobbo_Warrior)
 {
 	B_SetVisuals_Gobbo_Warrior();
 	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
 	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
 	Fun_MobBeute(3);
 };
-instance FUN_M50_T4 (Mst_Default_StoneGolem)
+instance FUN_M122_T4 (Mst_Default_StoneGolem)
 {
 	B_SetVisuals_StoneGolem();
 	Npc_SetToFistMode	(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M50_T5 (Mst_Default_FireWaran)
+instance FUN_M122_T5 (Mst_Default_FireWaran)
 {
 	B_SetVisuals_FireWaran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(5);
 };
-instance FUN_M50_T6 (Mst_Default_Shadowbeast)
+instance FUN_M122_T6 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(6);
 };
-instance FUN_M51_T1 (Mst_Default_Wolf)
+instance FUN_M122_T7 (Mst_Default_DragonSnapper)
 {
-	B_SetVisuals_Wolf();
+	B_SetVisuals_DragonSnapper();
 	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(1);
+	Fun_MobBeute(7);
 };
-instance FUN_M51_T2 (Mst_Default_Giant_Bug)
-{
-	B_SetVisuals_Giant_Bug();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(2);
-};
-instance FUN_M51_T3 (Mst_Default_Snapper)
+instance FUN_M123_T3 (Mst_Default_Snapper)
 {
 	B_SetVisuals_Snapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M51_T4 (Mst_Default_Razor)
+instance FUN_M123_T4 (Mst_Default_Razor)
 {
 	Set_Razor_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M51_T5 (Mst_Default_Warg)
+instance FUN_M123_T5 (Mst_Default_Warg)
 {
 	B_SetVisuals_Warg();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(5);
 };
-instance FUN_M51_T6 (Mst_Default_DragonSnapper)
+instance FUN_M123_T6 (Mst_Default_DragonSnapper)
 {
 	B_SetVisuals_DragonSnapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(6);
 };
-instance FUN_M52_T0 (Mst_Default_Molerat)
+instance FUN_M123_T7 (Mst_Default_Troll_Black)
 {
-	B_SetVisuals_Molerat();
+	B_SetVisuals_Troll_Black();
 	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(0);
+	Fun_MobBeute(7);
 };
-instance FUN_M52_T1 (Mst_Default_Scavenger)
-{
-	B_SetVisuals_Scavenger();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(1);
-};
-instance FUN_M52_T2 (Mst_Default_Gobbo_Black)
-{
-	B_SetVisuals_Gobbo_Black();
-	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
-	Fun_MobBeute(2);
-};
-instance FUN_M52_T3 (Mst_Default_Waran)
+instance FUN_M124_T3 (Mst_Default_Waran)
 {
 	B_SetVisuals_Waran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M52_T4 (Mst_Default_Bloodhound)
+instance FUN_M124_T4 (Mst_Default_Bloodhound)
 {
 	Set_Bloodhound_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M52_T5 (Mst_Default_Shadowbeast)
+instance FUN_M124_T5 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(5);
 };
-instance FUN_M53_T0 (Mst_Default_Bloodfly)
+instance FUN_M124_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M124_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M125_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M125_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M125_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M125_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M125_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M126_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M126_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M126_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M126_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M126_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M127_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M127_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M127_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M127_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M127_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M128_T0 (Mst_Default_Bloodfly)
 {
 	B_SetVisuals_Bloodfly();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(0);
 };
-instance FUN_M53_T1 (Mst_Default_Keiler)
+instance FUN_M128_T1 (Mst_Default_Keiler)
 {
 	B_SetVisuals_Keiler();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(1);
 };
-instance FUN_M53_T2 (Mst_Default_Lurker)
+instance FUN_M128_T2 (Mst_Default_Lurker)
 {
 	B_SetVisuals_Lurker();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(2);
 };
-instance FUN_M53_T3 (Mst_Default_Gobbo_Warrior)
+instance FUN_M128_T3 (Mst_Default_Gobbo_Warrior)
 {
 	B_SetVisuals_Gobbo_Warrior();
 	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
 	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
 	Fun_MobBeute(3);
 };
-instance FUN_M53_T4 (Mst_Default_StoneGolem)
+instance FUN_M128_T4 (Mst_Default_StoneGolem)
 {
 	B_SetVisuals_StoneGolem();
 	Npc_SetToFistMode	(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M53_T5 (Mst_Default_FireWaran)
+instance FUN_M128_T5 (Mst_Default_FireWaran)
 {
 	B_SetVisuals_FireWaran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(5);
 };
-instance FUN_M54_T2 (Mst_Default_Giant_Bug)
-{
-	B_SetVisuals_Giant_Bug();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(2);
-};
-instance FUN_M54_T3 (Mst_Default_Snapper)
-{
-	B_SetVisuals_Snapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M54_T4 (Mst_Default_Razor)
-{
-	Set_Razor_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M54_T5 (Mst_Default_Warg)
-{
-	B_SetVisuals_Warg();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(5);
-};
-instance FUN_M54_T6 (Mst_Default_DragonSnapper)
-{
-	B_SetVisuals_DragonSnapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M54_T7 (Mst_Default_Troll_Black)
-{
-	B_SetVisuals_Troll_Black();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M55_T0 (Mst_Default_Molerat)
-{
-	B_SetVisuals_Molerat();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(0);
-};
-instance FUN_M55_T1 (Mst_Default_Scavenger)
-{
-	B_SetVisuals_Scavenger();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(1);
-};
-instance FUN_M55_T2 (Mst_Default_Gobbo_Black)
-{
-	B_SetVisuals_Gobbo_Black();
-	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
-	Fun_MobBeute(2);
-};
-instance FUN_M55_T3 (Mst_Default_Waran)
-{
-	B_SetVisuals_Waran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M55_T4 (Mst_Default_Bloodhound)
-{
-	Set_Bloodhound_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M55_T5 (Mst_Default_Shadowbeast)
-{
-	B_SetVisuals_Shadowbeast();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 2);
-	Fun_MobBeute(5);
-};
-instance FUN_M56_T2 (Mst_Default_Lurker)
-{
-	B_SetVisuals_Lurker();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(2);
-};
-instance FUN_M56_T3 (Mst_Default_Gobbo_Warrior)
-{
-	B_SetVisuals_Gobbo_Warrior();
-	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
-	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
-	Fun_MobBeute(3);
-};
-instance FUN_M56_T4 (Mst_Default_StoneGolem)
-{
-	B_SetVisuals_StoneGolem();
-	Npc_SetToFistMode	(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M56_T5 (Mst_Default_FireWaran)
-{
-	B_SetVisuals_FireWaran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(5);
-};
-instance FUN_M56_T6 (Mst_Default_Shadowbeast)
-{
-	B_SetVisuals_Shadowbeast();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 2);
-	Fun_MobBeute(6);
-};
-instance FUN_M56_T7 (Mst_Default_DragonSnapper)
-{
-	B_SetVisuals_DragonSnapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M57_T0 (Mst_Default_Giant_Rat)
+instance FUN_M129_T0 (Mst_Default_Giant_Rat)
 {
 	B_SetVisuals_Giant_Rat();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(0);
 };
-instance FUN_M57_T1 (Mst_Default_Wolf)
+instance FUN_M129_T1 (Mst_Default_Wolf)
 {
 	B_SetVisuals_Wolf();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(1);
 };
-instance FUN_M57_T2 (Mst_Default_Giant_Bug)
+instance FUN_M129_T2 (Mst_Default_Giant_Bug)
 {
 	B_SetVisuals_Giant_Bug();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(2);
 };
-instance FUN_M57_T3 (Mst_Default_Snapper)
+instance FUN_M129_T3 (Mst_Default_Snapper)
 {
 	B_SetVisuals_Snapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M57_T4 (Mst_Default_Razor)
+instance FUN_M129_T4 (Mst_Default_Razor)
 {
 	Set_Razor_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M57_T5 (Mst_Default_Warg)
+instance FUN_M129_T5 (Mst_Default_Warg)
 {
 	B_SetVisuals_Warg();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(5);
 };
-instance FUN_M58_T0 (Mst_Default_Molerat)
+instance FUN_M130_T0 (Mst_Default_Molerat)
 {
 	B_SetVisuals_Molerat();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(0);
 };
-instance FUN_M58_T1 (Mst_Default_Scavenger)
+instance FUN_M130_T1 (Mst_Default_Scavenger)
 {
 	B_SetVisuals_Scavenger();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(1);
 };
-instance FUN_M58_T2 (Mst_Default_Gobbo_Black)
+instance FUN_M130_T2 (Mst_Default_Gobbo_Black)
 {
 	B_SetVisuals_Gobbo_Black();
 	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
 	Fun_MobBeute(2);
 };
-instance FUN_M58_T3 (Mst_Default_Waran)
+instance FUN_M130_T3 (Mst_Default_Waran)
 {
 	B_SetVisuals_Waran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M58_T4 (Mst_Default_Bloodhound)
+instance FUN_M130_T4 (Mst_Default_Bloodhound)
 {
 	Set_Bloodhound_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M58_T5 (Mst_Default_Shadowbeast)
+instance FUN_M130_T5 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(5);
 };
-instance FUN_M59_T0 (Mst_Default_Bloodfly)
+instance FUN_M131_T0 (Mst_Default_Bloodfly)
 {
 	B_SetVisuals_Bloodfly();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(0);
 };
-instance FUN_M59_T1 (Mst_Default_Keiler)
+instance FUN_M131_T1 (Mst_Default_Keiler)
 {
 	B_SetVisuals_Keiler();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(1);
 };
-instance FUN_M59_T2 (Mst_Default_Lurker)
+instance FUN_M131_T2 (Mst_Default_Lurker)
 {
 	B_SetVisuals_Lurker();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(2);
 };
-instance FUN_M59_T3 (Mst_Default_Gobbo_Warrior)
+instance FUN_M131_T3 (Mst_Default_Gobbo_Warrior)
 {
 	B_SetVisuals_Gobbo_Warrior();
 	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
 	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
 	Fun_MobBeute(3);
 };
-instance FUN_M59_T4 (Mst_Default_StoneGolem)
+instance FUN_M131_T4 (Mst_Default_StoneGolem)
 {
 	B_SetVisuals_StoneGolem();
 	Npc_SetToFistMode	(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M59_T5 (Mst_Default_FireWaran)
+instance FUN_M131_T5 (Mst_Default_FireWaran)
 {
 	B_SetVisuals_FireWaran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(5);
 };
-instance FUN_M60_T3 (Mst_Default_Snapper)
+instance FUN_M132_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M132_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M132_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M132_T3 (Mst_Default_Snapper)
 {
 	B_SetVisuals_Snapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M60_T4 (Mst_Default_Razor)
+instance FUN_M132_T4 (Mst_Default_Razor)
 {
 	Set_Razor_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M60_T5 (Mst_Default_Warg)
+instance FUN_M132_T5 (Mst_Default_Warg)
 {
 	B_SetVisuals_Warg();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(5);
 };
-instance FUN_M60_T6 (Mst_Default_DragonSnapper)
-{
-	B_SetVisuals_DragonSnapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M60_T7 (Mst_Default_Troll_Black)
-{
-	B_SetVisuals_Troll_Black();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M61_T0 (Mst_Default_Molerat)
+instance FUN_M133_T0 (Mst_Default_Molerat)
 {
 	B_SetVisuals_Molerat();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(0);
 };
-instance FUN_M61_T1 (Mst_Default_Scavenger)
+instance FUN_M133_T1 (Mst_Default_Scavenger)
 {
 	B_SetVisuals_Scavenger();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(1);
 };
-instance FUN_M61_T2 (Mst_Default_Gobbo_Black)
+instance FUN_M133_T2 (Mst_Default_Gobbo_Black)
 {
 	B_SetVisuals_Gobbo_Black();
 	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
 	Fun_MobBeute(2);
 };
-instance FUN_M61_T3 (Mst_Default_Waran)
+instance FUN_M133_T3 (Mst_Default_Waran)
 {
 	B_SetVisuals_Waran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M61_T4 (Mst_Default_Bloodhound)
+instance FUN_M133_T4 (Mst_Default_Bloodhound)
 {
 	Set_Bloodhound_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M61_T5 (Mst_Default_Shadowbeast)
+instance FUN_M133_T5 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(5);
 };
-instance FUN_M62_T0 (Mst_Default_Bloodfly)
+instance FUN_M134_T0 (Mst_Default_Bloodfly)
 {
 	B_SetVisuals_Bloodfly();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(0);
 };
-instance FUN_M62_T1 (Mst_Default_Keiler)
+instance FUN_M134_T1 (Mst_Default_Keiler)
 {
 	B_SetVisuals_Keiler();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(1);
 };
-instance FUN_M62_T2 (Mst_Default_Lurker)
+instance FUN_M134_T2 (Mst_Default_Lurker)
 {
 	B_SetVisuals_Lurker();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(2);
 };
-instance FUN_M62_T3 (Mst_Default_Gobbo_Warrior)
+instance FUN_M134_T3 (Mst_Default_Gobbo_Warrior)
 {
 	B_SetVisuals_Gobbo_Warrior();
 	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
 	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
 	Fun_MobBeute(3);
 };
-instance FUN_M62_T4 (Mst_Default_StoneGolem)
+instance FUN_M134_T4 (Mst_Default_StoneGolem)
 {
 	B_SetVisuals_StoneGolem();
 	Npc_SetToFistMode	(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M62_T5 (Mst_Default_FireWaran)
+instance FUN_M134_T5 (Mst_Default_FireWaran)
 {
 	B_SetVisuals_FireWaran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(5);
 };
-instance FUN_M63_T3 (Mst_Default_Snapper)
+instance FUN_M135_T0 (Mst_Default_Giant_Rat)
 {
-	B_SetVisuals_Snapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M63_T4 (Mst_Default_Razor)
-{
-	Set_Razor_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M63_T5 (Mst_Default_Warg)
-{
-	B_SetVisuals_Warg();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(5);
-};
-instance FUN_M63_T6 (Mst_Default_DragonSnapper)
-{
-	B_SetVisuals_DragonSnapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M63_T7 (Mst_Default_Troll_Black)
-{
-	B_SetVisuals_Troll_Black();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M64_T3 (Mst_Default_Waran)
-{
-	B_SetVisuals_Waran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M64_T4 (Mst_Default_Bloodhound)
-{
-	Set_Bloodhound_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M64_T5 (Mst_Default_Shadowbeast)
-{
-	B_SetVisuals_Shadowbeast();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 2);
-	Fun_MobBeute(5);
-};
-instance FUN_M64_T6 (Mst_Default_Troll)
-{
-	B_SetVisuals_Troll();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M64_T7 (Mst_Default_Troll)
-{
-	B_SetVisuals_Troll();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M65_T2 (Mst_Default_Lurker)
-{
-	B_SetVisuals_Lurker();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(2);
-};
-instance FUN_M65_T3 (Mst_Default_Gobbo_Warrior)
-{
-	B_SetVisuals_Gobbo_Warrior();
-	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
-	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
-	Fun_MobBeute(3);
-};
-instance FUN_M65_T4 (Mst_Default_StoneGolem)
-{
-	B_SetVisuals_StoneGolem();
-	Npc_SetToFistMode	(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M65_T5 (Mst_Default_FireWaran)
-{
-	B_SetVisuals_FireWaran();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(5);
-};
-instance FUN_M65_T6 (Mst_Default_Shadowbeast)
-{
-	B_SetVisuals_Shadowbeast();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 2);
-	Fun_MobBeute(6);
-};
-instance FUN_M65_T7 (Mst_Default_DragonSnapper)
-{
-	B_SetVisuals_DragonSnapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M66_T3 (Mst_Default_Snapper)
-{
-	B_SetVisuals_Snapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(3);
-};
-instance FUN_M66_T4 (Mst_Default_Razor)
-{
-	Set_Razor_Visuals();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(4);
-};
-instance FUN_M66_T5 (Mst_Default_Warg)
-{
-	B_SetVisuals_Warg();
-	Npc_SetToFistMode(self);
-	CreateInvItems (self, ItFoMuttonRaw, 1);
-	Fun_MobBeute(5);
-};
-instance FUN_M66_T6 (Mst_Default_DragonSnapper)
-{
-	B_SetVisuals_DragonSnapper();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(6);
-};
-instance FUN_M66_T7 (Mst_Default_Troll_Black)
-{
-	B_SetVisuals_Troll_Black();
-	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
-};
-instance FUN_M67_T0 (Mst_Default_Molerat)
-{
-	B_SetVisuals_Molerat();
+	B_SetVisuals_Giant_Rat();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(0);
 };
-instance FUN_M67_T1 (Mst_Default_Scavenger)
+instance FUN_M135_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M135_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M135_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M135_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M135_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M136_T1 (Mst_Default_Scavenger)
 {
 	B_SetVisuals_Scavenger();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(1);
 };
-instance FUN_M67_T2 (Mst_Default_Gobbo_Black)
+instance FUN_M136_T2 (Mst_Default_Gobbo_Black)
 {
 	B_SetVisuals_Gobbo_Black();
 	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
 	Fun_MobBeute(2);
 };
-instance FUN_M67_T3 (Mst_Default_Waran)
+instance FUN_M136_T3 (Mst_Default_Waran)
 {
 	B_SetVisuals_Waran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M67_T4 (Mst_Default_Bloodhound)
+instance FUN_M136_T4 (Mst_Default_Bloodhound)
 {
 	Set_Bloodhound_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M67_T5 (Mst_Default_Shadowbeast)
+instance FUN_M136_T5 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(5);
 };
-instance FUN_M68_T2 (Mst_Default_Lurker)
+instance FUN_M136_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M137_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M137_T2 (Mst_Default_Lurker)
 {
 	B_SetVisuals_Lurker();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(2);
 };
-instance FUN_M68_T3 (Mst_Default_Gobbo_Warrior)
+instance FUN_M137_T3 (Mst_Default_Gobbo_Warrior)
 {
 	B_SetVisuals_Gobbo_Warrior();
 	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
 	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
 	Fun_MobBeute(3);
 };
-instance FUN_M68_T4 (Mst_Default_StoneGolem)
+instance FUN_M137_T4 (Mst_Default_StoneGolem)
 {
 	B_SetVisuals_StoneGolem();
 	Npc_SetToFistMode	(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M68_T5 (Mst_Default_FireWaran)
+instance FUN_M137_T5 (Mst_Default_FireWaran)
 {
 	B_SetVisuals_FireWaran();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(5);
 };
-instance FUN_M68_T6 (Mst_Default_Shadowbeast)
+instance FUN_M137_T6 (Mst_Default_Shadowbeast)
 {
 	B_SetVisuals_Shadowbeast();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 2);
 	Fun_MobBeute(6);
 };
-instance FUN_M68_T7 (Mst_Default_DragonSnapper)
+instance FUN_M138_T1 (Mst_Default_Wolf)
 {
-	B_SetVisuals_DragonSnapper();
+	B_SetVisuals_Wolf();
 	Npc_SetToFistMode(self);
-	Fun_MobBeute(7);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
 };
-instance FUN_M69_T3 (Mst_Default_Snapper)
+instance FUN_M138_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M138_T3 (Mst_Default_Snapper)
 {
 	B_SetVisuals_Snapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(3);
 };
-instance FUN_M69_T4 (Mst_Default_Razor)
+instance FUN_M138_T4 (Mst_Default_Razor)
 {
 	Set_Razor_Visuals();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(4);
 };
-instance FUN_M69_T5 (Mst_Default_Warg)
+instance FUN_M138_T5 (Mst_Default_Warg)
 {
 	B_SetVisuals_Warg();
 	Npc_SetToFistMode(self);
 	CreateInvItems (self, ItFoMuttonRaw, 1);
 	Fun_MobBeute(5);
 };
-instance FUN_M69_T6 (Mst_Default_DragonSnapper)
+instance FUN_M138_T6 (Mst_Default_DragonSnapper)
 {
 	B_SetVisuals_DragonSnapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(6);
 };
-instance FUN_M69_T7 (Mst_Default_Troll_Black)
+instance FUN_M139_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M139_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M139_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M139_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M139_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M139_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M140_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M140_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M140_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M140_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M140_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M140_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M141_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M141_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M141_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M141_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M141_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M141_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M142_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M142_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M142_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M142_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M142_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M142_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M143_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M143_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M143_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M143_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M143_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M143_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M144_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M144_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M144_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M144_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M144_T7 (Mst_Default_Troll_Black)
 {
 	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M145_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M145_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M145_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M145_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M145_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M146_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M146_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M146_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M146_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M146_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M146_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M147_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M147_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M147_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M147_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M147_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M147_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M148_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M148_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M148_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M148_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M148_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M148_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M149_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M149_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M149_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M149_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M149_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M149_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M150_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M150_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M150_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M150_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M150_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M150_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M151_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M151_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M151_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M151_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M151_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M151_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M152_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M152_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M152_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M152_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M152_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M153_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M153_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M153_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M153_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M153_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M154_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M154_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M154_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M154_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M154_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M155_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M155_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M155_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M155_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M155_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M156_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M156_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M156_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M156_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M156_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M157_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M157_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M157_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M157_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M157_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M158_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M158_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M158_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M158_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M158_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M159_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M159_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M159_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M159_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M159_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M160_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M160_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M160_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M160_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M160_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M161_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M161_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M161_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M161_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M161_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M162_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M162_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M162_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M162_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M162_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M163_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M163_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M163_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M163_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M163_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M164_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M164_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M164_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M164_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M164_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M165_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M165_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M165_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M165_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M165_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M166_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M166_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M166_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M166_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M166_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M167_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M167_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M167_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M167_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M167_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M168_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M168_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M168_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M168_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M168_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M168_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M169_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M169_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M169_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M169_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M169_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M169_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M170_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M170_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M170_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M170_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M170_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M170_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M171_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M171_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M171_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M171_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M171_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M171_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M172_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M172_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M172_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M172_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M172_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M172_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M173_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M173_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M173_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M173_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M173_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M173_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M174_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M174_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M174_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M174_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M174_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M174_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M175_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M175_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M175_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M175_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M175_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M175_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M176_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M176_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M176_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M176_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M176_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M176_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M177_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M177_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M177_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M177_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M177_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M177_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M178_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M178_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M178_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M178_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M178_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M178_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M179_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M179_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M179_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M179_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M179_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M179_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M180_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M180_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M180_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M180_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M180_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M180_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M181_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M181_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M181_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M181_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M181_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M181_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M182_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M182_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M182_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M182_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M182_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M182_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M183_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M183_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M183_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M183_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M183_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M183_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M184_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M184_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M184_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M184_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M184_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M184_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M185_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M185_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M185_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M185_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M185_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M185_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M186_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M186_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M186_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M186_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M186_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M186_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M187_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M187_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M187_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M187_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M187_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M187_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M188_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M188_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M188_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M188_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M188_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M188_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M189_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M189_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M189_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M189_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M189_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M189_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M190_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M190_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M190_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M190_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M190_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M190_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M191_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M191_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M191_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M191_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M191_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M191_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M192_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M192_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M192_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M192_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M192_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M192_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M193_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M193_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M193_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M193_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M193_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M193_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M194_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M194_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M194_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M194_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M194_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M194_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M195_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M195_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M195_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M195_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M195_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M195_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M196_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M196_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M196_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M196_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M196_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M196_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M197_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M197_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M197_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M197_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M197_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M197_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M198_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M198_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M198_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M198_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M198_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M198_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M199_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M199_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M199_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M199_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M199_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M199_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M200_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M200_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M200_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M200_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M200_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M201_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M201_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M201_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M201_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M201_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M202_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M202_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M202_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M202_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M202_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M202_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M203_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M203_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M203_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M203_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M203_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M203_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M204_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M204_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M204_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M204_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M204_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M204_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M205_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M205_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M205_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M205_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M205_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M205_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M206_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M206_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M206_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M206_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M206_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M206_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M207_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M207_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M207_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M207_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M207_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M207_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M208_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M208_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M208_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M208_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M208_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M208_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M209_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M209_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M209_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M209_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M209_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M209_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M210_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M210_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M210_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M210_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M210_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M210_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M211_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M211_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M211_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M211_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M211_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M211_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M212_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M212_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M212_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M212_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M212_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M212_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M213_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M213_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M213_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M213_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M213_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M213_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M214_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M214_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M214_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M214_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M214_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M214_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M215_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M215_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M215_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M215_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M215_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M215_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M216_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M216_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M216_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M216_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M216_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M216_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M217_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M217_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M217_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M217_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M217_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M217_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M218_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M218_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M218_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M218_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M218_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M218_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M219_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M219_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M219_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M219_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M219_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M219_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M220_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M220_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M220_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M220_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M220_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M220_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M221_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M221_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M221_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M221_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M221_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M221_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M222_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M222_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M222_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M222_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M222_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M223_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M223_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M223_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M223_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M223_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M224_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M224_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M224_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M224_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M224_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M225_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M225_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M225_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M225_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M225_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M226_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M226_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M226_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M226_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M226_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M226_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M227_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M227_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M227_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M227_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M227_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M227_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M228_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M228_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M228_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M228_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M228_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M228_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M229_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M229_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M229_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M229_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M229_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M229_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M230_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M230_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M230_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M230_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M230_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M230_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M231_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M231_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M231_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M231_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M231_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M231_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M232_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M232_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M232_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M232_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M232_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M232_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M233_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M233_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M233_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M233_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M233_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M233_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M234_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M234_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M234_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M234_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M234_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M234_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M235_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M235_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M235_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M235_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M235_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M235_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M236_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M236_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M236_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M236_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M236_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M236_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M237_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M237_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M237_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M237_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M237_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M237_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M238_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M238_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M238_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M238_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M238_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M238_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M239_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M239_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M239_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M239_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M239_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M239_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M240_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M240_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M240_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M240_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M240_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M240_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M241_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M241_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M241_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M241_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M241_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M241_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M242_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M242_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M242_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M242_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M242_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M242_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M243_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M243_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M243_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M243_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M243_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M243_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M244_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M244_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M244_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M244_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M244_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M244_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M245_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M245_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M245_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M245_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M245_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M245_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M246_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M246_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M246_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M246_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M246_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M246_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M247_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M247_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M247_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M247_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M247_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M247_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M248_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M248_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M248_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M248_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M248_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M248_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M249_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M249_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M249_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M249_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M249_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M249_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M250_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M250_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M250_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M250_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M250_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M250_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M251_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M251_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M251_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M251_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M251_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M251_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M252_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M252_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M252_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M252_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M252_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M253_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M253_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M253_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M253_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M253_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M254_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M254_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M254_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M254_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M254_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M254_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M255_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M255_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M255_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M255_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M255_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M255_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M256_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M256_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M256_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M256_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M256_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M256_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M257_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M257_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M257_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M257_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M257_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M257_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M258_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M258_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M258_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M258_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M258_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M258_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M259_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M259_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M259_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M259_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M259_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M259_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M260_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M260_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M260_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M260_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M260_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M260_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M261_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M261_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M261_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M261_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M261_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M261_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M262_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M262_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M262_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M262_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M262_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M262_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M263_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M263_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M263_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M263_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M263_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M263_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M264_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M264_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M264_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M264_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M264_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M264_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M265_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M265_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M265_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M265_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M265_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M265_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M266_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M266_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M266_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M266_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M266_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M267_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M267_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M267_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M267_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M267_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M268_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M268_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M268_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M268_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M268_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M269_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M269_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M269_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M269_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M269_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M270_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M270_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M270_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M270_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M270_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M271_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M271_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M271_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M271_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M271_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M272_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M272_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M272_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M272_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M272_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M272_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M273_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M273_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M273_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M273_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M273_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M273_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M274_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M274_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M274_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M274_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M274_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M274_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M275_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M275_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M275_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M275_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M275_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M275_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M276_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M276_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M276_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M276_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M276_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M276_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M277_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M277_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M277_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M277_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M277_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M277_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M278_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M278_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M278_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M278_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M278_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M278_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M279_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M279_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M279_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M279_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M279_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M279_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M280_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M280_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M280_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M280_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M280_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M281_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M281_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M281_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M281_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M281_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M282_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M282_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M282_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M282_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M282_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M283_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M283_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M283_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M283_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M283_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M284_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M284_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M284_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M284_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M284_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M285_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M285_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M285_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M285_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M285_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M286_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M286_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M286_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M286_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M286_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M286_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M287_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M287_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M287_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M287_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M287_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M287_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M288_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M288_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M288_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M288_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M288_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M288_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M289_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M289_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M289_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M289_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M289_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M289_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M290_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M290_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M290_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M290_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M290_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M291_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M291_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M291_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M291_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M291_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M292_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M292_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M292_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M292_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M292_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M293_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M293_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M293_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M293_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M293_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M294_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M294_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M294_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M294_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M294_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M294_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M295_T0 (Mst_Default_Molerat)
+{
+	B_SetVisuals_Molerat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M295_T1 (Mst_Default_Scavenger)
+{
+	B_SetVisuals_Scavenger();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M295_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M295_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M295_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M295_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M296_T0 (Mst_Default_Bloodfly)
+{
+	B_SetVisuals_Bloodfly();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(0);
+};
+instance FUN_M296_T1 (Mst_Default_Keiler)
+{
+	B_SetVisuals_Keiler();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M296_T2 (Mst_Default_Lurker)
+{
+	B_SetVisuals_Lurker();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M296_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M296_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M296_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M297_T0 (Mst_Default_Giant_Rat)
+{
+	B_SetVisuals_Giant_Rat();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(0);
+};
+instance FUN_M297_T1 (Mst_Default_Wolf)
+{
+	B_SetVisuals_Wolf();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(1);
+};
+instance FUN_M297_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M297_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M297_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M297_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M298_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M298_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M298_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M298_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M298_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M299_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M299_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M299_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M299_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M299_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M300_T2 (Mst_Default_Giant_Bug)
+{
+	B_SetVisuals_Giant_Bug();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(2);
+};
+instance FUN_M300_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M300_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M300_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M300_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M300_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M301_T2 (Mst_Default_Gobbo_Black)
+{
+	B_SetVisuals_Gobbo_Black();
+	Npc_SetToFightMode (self, ItMw_1h_Bau_Mace);
+	Fun_MobBeute(2);
+};
+instance FUN_M301_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M301_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M301_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M301_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M301_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M302_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M302_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M302_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M302_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M302_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M303_T3 (Mst_Default_Snapper)
+{
+	B_SetVisuals_Snapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M303_T4 (Mst_Default_Razor)
+{
+	Set_Razor_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M303_T5 (Mst_Default_Warg)
+{
+	B_SetVisuals_Warg();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 1);
+	Fun_MobBeute(5);
+};
+instance FUN_M303_T6 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M303_T7 (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M304_T3 (Mst_Default_Waran)
+{
+	B_SetVisuals_Waran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(3);
+};
+instance FUN_M304_T4 (Mst_Default_Bloodhound)
+{
+	Set_Bloodhound_Visuals();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M304_T5 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(5);
+};
+instance FUN_M304_T6 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(6);
+};
+instance FUN_M304_T7 (Mst_Default_Troll)
+{
+	B_SetVisuals_Troll();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(7);
+};
+instance FUN_M305_T3 (Mst_Default_Gobbo_Warrior)
+{
+	B_SetVisuals_Gobbo_Warrior();
+	Npc_SetToFightMode (self, ItMw_1h_Misc_Sword);
+	Mdl_SetModelScale(self, 1.15, 1.15, 1.15);
+	Fun_MobBeute(3);
+};
+instance FUN_M305_T4 (Mst_Default_StoneGolem)
+{
+	B_SetVisuals_StoneGolem();
+	Npc_SetToFistMode	(self);
+	Fun_MobBeute(4);
+};
+instance FUN_M305_T5 (Mst_Default_FireWaran)
+{
+	B_SetVisuals_FireWaran();
+	Npc_SetToFistMode(self);
+	Fun_MobBeute(5);
+};
+instance FUN_M305_T6 (Mst_Default_Shadowbeast)
+{
+	B_SetVisuals_Shadowbeast();
+	Npc_SetToFistMode(self);
+	CreateInvItems (self, ItFoMuttonRaw, 2);
+	Fun_MobBeute(6);
+};
+instance FUN_M305_T7 (Mst_Default_DragonSnapper)
+{
+	B_SetVisuals_DragonSnapper();
 	Npc_SetToFistMode(self);
 	Fun_MobBeute(7);
 };
@@ -4270,6 +12688,9 @@ func void Fun_HaendlerWare(var C_NPC slf)
 		Fun_Ware(slf, ItRw_Bow_L_03, 1);
 		Fun_Ware(slf, ItRw_Crossbow_L_01, 1);
 		Fun_Ware(slf, ItRw_Mil_Crossbow, 1);
+		Fun_Ware(slf, ItPo_Mana_01, 20);
+		Fun_Ware(slf, ITAR_Leather_L, 1);
+		Fun_Ware(slf, ITAR_BAU_L, 1);
 		if (slf.id == 9601)
 		{
 			Fun_Ware(slf, ITAR_MIL_L, 1);
@@ -4303,6 +12724,11 @@ func void Fun_HaendlerWare(var C_NPC slf)
 		Fun_Ware(slf, ItRw_Bow_L_04, 1);
 		Fun_Ware(slf, ItRw_Bow_M_01, 1);
 		Fun_Ware(slf, ItRw_Crossbow_L_02, 1);
+		Fun_Ware(slf, ItPo_Mana_02, 10);
+		Fun_Ware(slf, ITAR_BDT_M, 1);
+		Fun_Ware(slf, ITAR_SLD_L, 1);
+		Fun_Ware(slf, ITAR_MIL_L, 1);
+		Fun_Ware(slf, ITAR_PIR_L_Addon, 1);
 		if (slf.id == 9601)
 		{
 			Fun_Ware(slf, ITAR_MIL_M, 1);
@@ -4337,6 +12763,11 @@ func void Fun_HaendlerWare(var C_NPC slf)
 		Fun_Ware(slf, ItRw_Bow_M_02, 1);
 		Fun_Ware(slf, ItRw_Bow_M_03, 1);
 		Fun_Ware(slf, ItRw_Crossbow_M_01, 1);
+		Fun_Ware(slf, ITAR_DJG_Crawler, 1);
+		Fun_Ware(slf, ITAR_SLD_M, 1);
+		Fun_Ware(slf, ITAR_MIL_M, 1);
+		Fun_Ware(slf, ITAR_PIR_M_Addon, 1);
+		Fun_Ware(slf, ItPo_Mana_Addon_04, 3);
 		if (slf.id == 9601)
 		{
 			Fun_Ware(slf, ITAR_PAL_M, 1);
@@ -4372,6 +12803,11 @@ func void Fun_HaendlerWare(var C_NPC slf)
 		Fun_Ware(slf, ItRw_Bow_M_04, 1);
 		Fun_Ware(slf, ItRw_Bow_H_01, 1);
 		Fun_Ware(slf, ItRw_Crossbow_M_02, 1);
+		Fun_Ware(slf, ItPo_Mana_03, 10);
+		Fun_Ware(slf, ITAR_SLD_H, 1);
+		Fun_Ware(slf, ITAR_DJG_L, 1);
+		Fun_Ware(slf, ITAR_PIR_H_Addon, 1);
+		Fun_Ware(slf, ITAR_Thorus_Addon, 1);
 		if (slf.id == 9601)
 		{
 			Fun_Ware(slf, ItRu_PalLightHeal, 1);
@@ -4409,6 +12845,10 @@ func void Fun_HaendlerWare(var C_NPC slf)
 		Fun_Ware(slf, ItRw_Bow_H_02, 1);
 		Fun_Ware(slf, ItRw_Bow_H_03, 1);
 		Fun_Ware(slf, ItRw_Crossbow_H_01, 1);
+		Fun_Ware(slf, ITAR_DJG_M, 1);
+		Fun_Ware(slf, ITAR_PAL_M, 1);
+		Fun_Ware(slf, ITAR_OreBaron_Addon, 1);
+		Fun_Ware(slf, ItPo_Perm_Mana, 1);
 		if (slf.id == 9601)
 		{
 			Fun_Ware(slf, ITAR_PAL_H, 1);
@@ -4442,6 +12882,10 @@ func void Fun_HaendlerWare(var C_NPC slf)
 		Fun_Ware(slf, ItMw_2H_Special_03, 1);
 		Fun_Ware(slf, ItRw_Bow_H_04, 1);
 		Fun_Ware(slf, ItRw_Crossbow_H_02, 1);
+		Fun_Ware(slf, ITAR_DJG_H, 1);
+		Fun_Ware(slf, ITAR_PAL_H, 1);
+		Fun_Ware(slf, ITAR_Raven_Addon, 1);
+		Fun_Ware(slf, ItAr_FireArmor_Addon, 1);
 		if (slf.id == 9601)
 		{
 			Fun_Ware(slf, ItRu_PalFullHeal, 1);
@@ -4747,6 +13191,12 @@ func void Fun_HeldStart(var int wahl)
 	};
 	hero.attribute[ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];
 	hero.lp = hero.lp + 10;
+	if (hero.attribute[ATR_MANA_MAX] < 20)
+	{
+		hero.attribute[ATR_MANA_MAX] = 20;
+	};
+	hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
+	CreateInvItems(hero, ItPo_Mana_01, 3);
 	PLAYER_TALENT_TAKEANIMALTROPHY[TROPHY_Teeth] = TRUE;
 	PLAYER_TALENT_TAKEANIMALTROPHY[TROPHY_Claws] = TRUE;
 	PLAYER_TALENT_TAKEANIMALTROPHY[TROPHY_Fur] = TRUE;
@@ -4848,76 +13298,312 @@ func void Fun_Startup()
 	Wld_InsertNpc(FUN_BDT_3, "NW_CASTLEMINE_TOWER_STAND_01");
 	Wld_InsertNpc(FUN_BDT_4, "NW_CASTLEMINE_TOWER_STAND_02");
 	Wld_InsertNpc(FUN_BDT_5, "NW_CASTLEMINE_TOWER_REP_HUT");
-	Wld_InsertNpc(FUN_M00_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
-	Wld_InsertNpc(FUN_M01_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
-	Wld_InsertNpc(FUN_M02_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
-	Wld_InsertNpc(FUN_M03_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
-	Wld_InsertNpc(FUN_M04_T3, "FP_ROAM_CASTLEMINE2_01");
-	Wld_InsertNpc(FUN_M05_T3, "FP_ROAM_CASTLEMINE2_04");
-	Wld_InsertNpc(FUN_M06_T3, "FP_ROAM_CASTLEMINE2_07");
-	Wld_InsertNpc(FUN_M07_T3, "FP_ROAM_CASTLEMINE2_11");
-	Wld_InsertNpc(FUN_M08_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
-	Wld_InsertNpc(FUN_M09_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
-	Wld_InsertNpc(FUN_M10_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
-	Wld_InsertNpc(FUN_M11_T3, "FP_ROAM_NW_TROLLAREA_RUINS_05");
-	Wld_InsertNpc(FUN_M12_T0, "FP_ROAM_NW_TROLLAREA_RUINS_14");
-	Wld_InsertNpc(FUN_M13_T0, "FP_ROAM_NW_TROLLAREA_RUINS_22");
-	Wld_InsertNpc(FUN_M14_T3, "FP_ROAM_NW_TROLLAREA_RUINS_29");
-	Wld_InsertNpc(FUN_M15_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
-	Wld_InsertNpc(FUN_M16_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
-	Wld_InsertNpc(FUN_M17_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
-	Wld_InsertNpc(FUN_M18_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
-	Wld_InsertNpc(FUN_M19_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
-	Wld_InsertNpc(FUN_M20_T0, "FP_ROAM_RITUALFOREST_CAVE_05");
-	Wld_InsertNpc(FUN_M21_T3, "FP_ROAM_RITUALFOREST_CAVE_09");
-	Wld_InsertNpc(FUN_M22_T0, "FP_ROAM_TROLLAREA_SEA_01");
-	Wld_InsertNpc(FUN_M23_T0, "FP_ROAM_TROLLAREA_SEA_04");
-	Wld_InsertNpc(FUN_M24_T1, "NW_BIGFARM_FOREST_02");
-	Wld_InsertNpc(FUN_M25_T1, "NW_BIGFARM_LAKE_03_MOVEMENT");
-	Wld_InsertNpc(FUN_M26_T0, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
-	Wld_InsertNpc(FUN_M27_T0, "NW_BIGMILL_05");
-	Wld_InsertNpc(FUN_M28_T0, "NW_BIGMILL_FARM3_03");
-	Wld_InsertNpc(FUN_M29_T3, "NW_CASTLEMINE_06");
-	Wld_InsertNpc(FUN_M30_T3, "NW_CASTLEMINE_10");
-	Wld_InsertNpc(FUN_M31_T3, "NW_CASTLEMINE_12");
-	Wld_InsertNpc(FUN_M32_T3, "NW_CASTLEMINE_13");
-	Wld_InsertNpc(FUN_M33_T3, "NW_CRYPT_MONSTER02");
-	Wld_InsertNpc(FUN_M34_T3, "NW_CRYPT_MONSTER04");
-	Wld_InsertNpc(FUN_M35_T3, "NW_CRYPT_MONSTER06");
-	Wld_InsertNpc(FUN_M36_T3, "NW_CRYPT_MONSTER08");
-	Wld_InsertNpc(FUN_M37_T0, "NW_FARM3_BIGWOOD_02");
-	Wld_InsertNpc(FUN_M38_T2, "NW_FARM3_MOUNTAINLAKE_03");
-	Wld_InsertNpc(FUN_M39_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
-	Wld_InsertNpc(FUN_M40_T2, "NW_FARM3_PATH_11_SMALLRIVER_04");
-	Wld_InsertNpc(FUN_M41_T2, "NW_FARM3_PATH_11_SMALLRIVER_17");
-	Wld_InsertNpc(FUN_M42_T1, "NW_FARM3_PATH_12_MONSTER_01");
-	Wld_InsertNpc(FUN_M43_T1, "NW_FARM4_WOOD_MONSTER_MORE_01");
-	Wld_InsertNpc(FUN_M44_T1, "NW_FARM4_WOOD_MONSTER_N_3");
-	Wld_InsertNpc(FUN_M45_T1, "NW_FARM4_WOOD_NEARPEASANT2_12");
-	Wld_InsertNpc(FUN_M46_T1, "NW_FARM4_WOOD_NEARPEASANT2_8");
-	Wld_InsertNpc(FUN_M47_T0, "NW_MAGECAVE_20");
-	Wld_InsertNpc(FUN_M48_T3, "NW_MAGECAVE_23");
-	Wld_InsertNpc(FUN_M49_T3, "NW_MAGECAVE_27");
-	Wld_InsertNpc(FUN_M50_T1, "NW_SAGITTA_MOREMONSTER_01");
-	Wld_InsertNpc(FUN_M51_T1, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
-	Wld_InsertNpc(FUN_M52_T0, "NW_TROLLAREA_BRIGDE_05");
-	Wld_InsertNpc(FUN_M53_T0, "NW_TROLLAREA_NOVCHASE_01");
-	Wld_InsertNpc(FUN_M54_T2, "NW_TROLLAREA_PATH_08");
-	Wld_InsertNpc(FUN_M55_T0, "NW_TROLLAREA_PATH_38_MONSTER");
-	Wld_InsertNpc(FUN_M56_T2, "NW_TROLLAREA_PATH_71_MONSTER");
-	Wld_InsertNpc(FUN_M57_T0, "NW_TROLLAREA_PLANE_04");
-	Wld_InsertNpc(FUN_M58_T0, "NW_TROLLAREA_PORTALTEMPEL_06");
-	Wld_InsertNpc(FUN_M59_T0, "NW_TROLLAREA_PORTALTEMPEL_12");
-	Wld_InsertNpc(FUN_M60_T3, "NW_TROLLAREA_PORTALTEMPEL_17_A");
-	Wld_InsertNpc(FUN_M61_T0, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
-	Wld_InsertNpc(FUN_M62_T0, "NW_TROLLAREA_RITUALPATH_032");
-	Wld_InsertNpc(FUN_M63_T3, "NW_TROLLAREA_RITUAL_13");
-	Wld_InsertNpc(FUN_M64_T3, "NW_TROLLAREA_RIVERSIDECAVE_02");
-	Wld_InsertNpc(FUN_M65_T2, "NW_TROLLAREA_RUINS_14");
-	Wld_InsertNpc(FUN_M66_T3, "NW_TROLLAREA_RUINS_32");
-	Wld_InsertNpc(FUN_M67_T0, "NW_TROLLAREA_TROLLLAKECAVE_02");
-	Wld_InsertNpc(FUN_M68_T2, "NW_TROLLAREA_TROLLLAKECAVE_09");
-	Wld_InsertNpc(FUN_M69_T3, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	Wld_InsertNpc(FUN_M000_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
+	Wld_InsertNpc(FUN_M001_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
+	Wld_InsertNpc(FUN_M002_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_02");
+	Wld_InsertNpc(FUN_M003_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_02");
+	Wld_InsertNpc(FUN_M004_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_03");
+	Wld_InsertNpc(FUN_M005_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_03");
+	Wld_InsertNpc(FUN_M006_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	Wld_InsertNpc(FUN_M007_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	Wld_InsertNpc(FUN_M008_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_05");
+	Wld_InsertNpc(FUN_M009_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_05");
+	Wld_InsertNpc(FUN_M010_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_06");
+	Wld_InsertNpc(FUN_M011_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_06");
+	Wld_InsertNpc(FUN_M012_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	Wld_InsertNpc(FUN_M013_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	Wld_InsertNpc(FUN_M014_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_08");
+	Wld_InsertNpc(FUN_M015_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_08");
+	Wld_InsertNpc(FUN_M016_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_10");
+	Wld_InsertNpc(FUN_M017_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_10");
+	Wld_InsertNpc(FUN_M018_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	Wld_InsertNpc(FUN_M019_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	Wld_InsertNpc(FUN_M020_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_13");
+	Wld_InsertNpc(FUN_M021_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_13");
+	Wld_InsertNpc(FUN_M022_T3, "FP_ROAM_CASTLEMINE2_01");
+	Wld_InsertNpc(FUN_M023_T3, "FP_ROAM_CASTLEMINE2_01");
+	Wld_InsertNpc(FUN_M024_T3, "FP_ROAM_CASTLEMINE2_02");
+	Wld_InsertNpc(FUN_M025_T3, "FP_ROAM_CASTLEMINE2_02");
+	Wld_InsertNpc(FUN_M026_T3, "FP_ROAM_CASTLEMINE2_03");
+	Wld_InsertNpc(FUN_M027_T3, "FP_ROAM_CASTLEMINE2_03");
+	Wld_InsertNpc(FUN_M028_T3, "FP_ROAM_CASTLEMINE2_04");
+	Wld_InsertNpc(FUN_M029_T3, "FP_ROAM_CASTLEMINE2_04");
+	Wld_InsertNpc(FUN_M030_T3, "FP_ROAM_CASTLEMINE2_05");
+	Wld_InsertNpc(FUN_M031_T3, "FP_ROAM_CASTLEMINE2_05");
+	Wld_InsertNpc(FUN_M032_T3, "FP_ROAM_CASTLEMINE2_06");
+	Wld_InsertNpc(FUN_M033_T3, "FP_ROAM_CASTLEMINE2_06");
+	Wld_InsertNpc(FUN_M034_T3, "FP_ROAM_CASTLEMINE2_07");
+	Wld_InsertNpc(FUN_M035_T3, "FP_ROAM_CASTLEMINE2_07");
+	Wld_InsertNpc(FUN_M036_T3, "FP_ROAM_CASTLEMINE2_09");
+	Wld_InsertNpc(FUN_M037_T3, "FP_ROAM_CASTLEMINE2_09");
+	Wld_InsertNpc(FUN_M038_T3, "FP_ROAM_CASTLEMINE2_10");
+	Wld_InsertNpc(FUN_M039_T3, "FP_ROAM_CASTLEMINE2_10");
+	Wld_InsertNpc(FUN_M040_T3, "FP_ROAM_CASTLEMINE2_11");
+	Wld_InsertNpc(FUN_M041_T3, "FP_ROAM_CASTLEMINE2_11");
+	Wld_InsertNpc(FUN_M042_T3, "FP_ROAM_CASTLEMINE2_12");
+	Wld_InsertNpc(FUN_M043_T3, "FP_ROAM_CASTLEMINE2_12");
+	Wld_InsertNpc(FUN_M044_T3, "FP_ROAM_CASTLEMINE2_13");
+	Wld_InsertNpc(FUN_M045_T3, "FP_ROAM_CASTLEMINE2_13");
+	Wld_InsertNpc(FUN_M046_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
+	Wld_InsertNpc(FUN_M047_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
+	Wld_InsertNpc(FUN_M048_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_02");
+	Wld_InsertNpc(FUN_M049_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_02");
+	Wld_InsertNpc(FUN_M050_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_03");
+	Wld_InsertNpc(FUN_M051_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_03");
+	Wld_InsertNpc(FUN_M052_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
+	Wld_InsertNpc(FUN_M053_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
+	Wld_InsertNpc(FUN_M054_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_05");
+	Wld_InsertNpc(FUN_M055_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_05");
+	Wld_InsertNpc(FUN_M056_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_07");
+	Wld_InsertNpc(FUN_M057_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_07");
+	Wld_InsertNpc(FUN_M058_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	Wld_InsertNpc(FUN_M059_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	Wld_InsertNpc(FUN_M060_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_10");
+	Wld_InsertNpc(FUN_M061_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_10");
+	Wld_InsertNpc(FUN_M062_T1, "FP_ROAM_NW_TROLLAREA_RUINS_01");
+	Wld_InsertNpc(FUN_M063_T1, "FP_ROAM_NW_TROLLAREA_RUINS_01");
+	Wld_InsertNpc(FUN_M064_T3, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	Wld_InsertNpc(FUN_M065_T3, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	Wld_InsertNpc(FUN_M066_T3, "FP_ROAM_NW_TROLLAREA_RUINS_09");
+	Wld_InsertNpc(FUN_M067_T3, "FP_ROAM_NW_TROLLAREA_RUINS_09");
+	Wld_InsertNpc(FUN_M068_T3, "FP_ROAM_NW_TROLLAREA_RUINS_10");
+	Wld_InsertNpc(FUN_M069_T3, "FP_ROAM_NW_TROLLAREA_RUINS_10");
+	Wld_InsertNpc(FUN_M070_T0, "FP_ROAM_NW_TROLLAREA_RUINS_14");
+	Wld_InsertNpc(FUN_M071_T0, "FP_ROAM_NW_TROLLAREA_RUINS_14");
+	Wld_InsertNpc(FUN_M072_T0, "FP_ROAM_NW_TROLLAREA_RUINS_15");
+	Wld_InsertNpc(FUN_M073_T0, "FP_ROAM_NW_TROLLAREA_RUINS_15");
+	Wld_InsertNpc(FUN_M074_T3, "FP_ROAM_NW_TROLLAREA_RUINS_21");
+	Wld_InsertNpc(FUN_M075_T3, "FP_ROAM_NW_TROLLAREA_RUINS_21");
+	Wld_InsertNpc(FUN_M076_T0, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	Wld_InsertNpc(FUN_M077_T0, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	Wld_InsertNpc(FUN_M078_T0, "FP_ROAM_NW_TROLLAREA_RUINS_24");
+	Wld_InsertNpc(FUN_M079_T0, "FP_ROAM_NW_TROLLAREA_RUINS_24");
+	Wld_InsertNpc(FUN_M080_T3, "FP_ROAM_NW_TROLLAREA_RUINS_28");
+	Wld_InsertNpc(FUN_M081_T3, "FP_ROAM_NW_TROLLAREA_RUINS_28");
+	Wld_InsertNpc(FUN_M082_T3, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	Wld_InsertNpc(FUN_M083_T3, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	Wld_InsertNpc(FUN_M084_T3, "FP_ROAM_NW_TROLLAREA_RUINS_30");
+	Wld_InsertNpc(FUN_M085_T3, "FP_ROAM_NW_TROLLAREA_RUINS_30");
+	Wld_InsertNpc(FUN_M086_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_01");
+	Wld_InsertNpc(FUN_M087_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_01");
+	Wld_InsertNpc(FUN_M088_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
+	Wld_InsertNpc(FUN_M089_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
+	Wld_InsertNpc(FUN_M090_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_03");
+	Wld_InsertNpc(FUN_M091_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_03");
+	Wld_InsertNpc(FUN_M092_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05");
+	Wld_InsertNpc(FUN_M093_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05");
+	Wld_InsertNpc(FUN_M094_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	Wld_InsertNpc(FUN_M095_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	Wld_InsertNpc(FUN_M096_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07");
+	Wld_InsertNpc(FUN_M097_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07");
+	Wld_InsertNpc(FUN_M098_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_09");
+	Wld_InsertNpc(FUN_M099_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_09");
+	Wld_InsertNpc(FUN_M100_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	Wld_InsertNpc(FUN_M101_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	Wld_InsertNpc(FUN_M102_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_11");
+	Wld_InsertNpc(FUN_M103_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_11");
+	Wld_InsertNpc(FUN_M104_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_12");
+	Wld_InsertNpc(FUN_M105_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_12");
+	Wld_InsertNpc(FUN_M106_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	Wld_InsertNpc(FUN_M107_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	Wld_InsertNpc(FUN_M108_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_16");
+	Wld_InsertNpc(FUN_M109_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_16");
+	Wld_InsertNpc(FUN_M110_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_20");
+	Wld_InsertNpc(FUN_M111_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_20");
+	Wld_InsertNpc(FUN_M112_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	Wld_InsertNpc(FUN_M113_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	Wld_InsertNpc(FUN_M114_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_23");
+	Wld_InsertNpc(FUN_M115_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_23");
+	Wld_InsertNpc(FUN_M116_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_26");
+	Wld_InsertNpc(FUN_M117_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_26");
+	Wld_InsertNpc(FUN_M118_T0, "FP_ROAM_RITUALFOREST_CAVE_05");
+	Wld_InsertNpc(FUN_M119_T0, "FP_ROAM_RITUALFOREST_CAVE_05");
+	Wld_InsertNpc(FUN_M120_T3, "FP_ROAM_RITUALFOREST_CAVE_07");
+	Wld_InsertNpc(FUN_M121_T3, "FP_ROAM_RITUALFOREST_CAVE_07");
+	Wld_InsertNpc(FUN_M122_T3, "FP_ROAM_RITUALFOREST_CAVE_08");
+	Wld_InsertNpc(FUN_M123_T3, "FP_ROAM_RITUALFOREST_CAVE_08");
+	Wld_InsertNpc(FUN_M124_T3, "FP_ROAM_RITUALFOREST_CAVE_09");
+	Wld_InsertNpc(FUN_M125_T3, "FP_ROAM_RITUALFOREST_CAVE_09");
+	Wld_InsertNpc(FUN_M126_T3, "FP_ROAM_RITUALFOREST_CAVE_11");
+	Wld_InsertNpc(FUN_M127_T3, "FP_ROAM_RITUALFOREST_CAVE_11");
+	Wld_InsertNpc(FUN_M128_T0, "FP_ROAM_TROLLAREA_SEA_01");
+	Wld_InsertNpc(FUN_M129_T0, "FP_ROAM_TROLLAREA_SEA_01");
+	Wld_InsertNpc(FUN_M130_T0, "FP_ROAM_TROLLAREA_SEA_02");
+	Wld_InsertNpc(FUN_M131_T0, "FP_ROAM_TROLLAREA_SEA_02");
+	Wld_InsertNpc(FUN_M132_T0, "FP_ROAM_TROLLAREA_SEA_03");
+	Wld_InsertNpc(FUN_M133_T0, "FP_ROAM_TROLLAREA_SEA_03");
+	Wld_InsertNpc(FUN_M134_T0, "FP_ROAM_TROLLAREA_SEA_04");
+	Wld_InsertNpc(FUN_M135_T0, "FP_ROAM_TROLLAREA_SEA_04");
+	Wld_InsertNpc(FUN_M136_T1, "NW_BIGFARM_FOREST_02");
+	Wld_InsertNpc(FUN_M137_T1, "NW_BIGFARM_FOREST_02");
+	Wld_InsertNpc(FUN_M138_T1, "NW_BIGFARM_FOREST_03_NAVIGATION");
+	Wld_InsertNpc(FUN_M139_T1, "NW_BIGFARM_FOREST_03_NAVIGATION");
+	Wld_InsertNpc(FUN_M140_T1, "NW_BIGFARM_LAKE_03_MOVEMENT");
+	Wld_InsertNpc(FUN_M141_T1, "NW_BIGFARM_LAKE_03_MOVEMENT");
+	Wld_InsertNpc(FUN_M142_T1, "NW_BIGFARM_LAKE_03_MOVEMENT3");
+	Wld_InsertNpc(FUN_M143_T1, "NW_BIGFARM_LAKE_03_MOVEMENT3");
+	Wld_InsertNpc(FUN_M144_T3, "NW_BIGFARM_LAKE_03_MOVEMENT5");
+	Wld_InsertNpc(FUN_M145_T3, "NW_BIGFARM_LAKE_03_MOVEMENT5");
+	Wld_InsertNpc(FUN_M146_T0, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
+	Wld_InsertNpc(FUN_M147_T0, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
+	Wld_InsertNpc(FUN_M148_T0, "NW_BIGMILL_05");
+	Wld_InsertNpc(FUN_M149_T0, "NW_BIGMILL_05");
+	Wld_InsertNpc(FUN_M150_T0, "NW_BIGMILL_FARM3_03");
+	Wld_InsertNpc(FUN_M151_T0, "NW_BIGMILL_FARM3_03");
+	Wld_InsertNpc(FUN_M152_T3, "NW_CASTLEMINE_06");
+	Wld_InsertNpc(FUN_M153_T3, "NW_CASTLEMINE_06");
+	Wld_InsertNpc(FUN_M154_T3, "NW_CASTLEMINE_10");
+	Wld_InsertNpc(FUN_M155_T3, "NW_CASTLEMINE_10");
+	Wld_InsertNpc(FUN_M156_T3, "NW_CASTLEMINE_12");
+	Wld_InsertNpc(FUN_M157_T3, "NW_CASTLEMINE_12");
+	Wld_InsertNpc(FUN_M158_T3, "NW_CASTLEMINE_13");
+	Wld_InsertNpc(FUN_M159_T3, "NW_CASTLEMINE_13");
+	Wld_InsertNpc(FUN_M160_T3, "NW_CRYPT_MONSTER02");
+	Wld_InsertNpc(FUN_M161_T3, "NW_CRYPT_MONSTER02");
+	Wld_InsertNpc(FUN_M162_T3, "NW_CRYPT_MONSTER04");
+	Wld_InsertNpc(FUN_M163_T3, "NW_CRYPT_MONSTER04");
+	Wld_InsertNpc(FUN_M164_T3, "NW_CRYPT_MONSTER06");
+	Wld_InsertNpc(FUN_M165_T3, "NW_CRYPT_MONSTER06");
+	Wld_InsertNpc(FUN_M166_T3, "NW_CRYPT_MONSTER08");
+	Wld_InsertNpc(FUN_M167_T3, "NW_CRYPT_MONSTER08");
+	Wld_InsertNpc(FUN_M168_T0, "NW_FARM3_BIGWOOD_02");
+	Wld_InsertNpc(FUN_M169_T0, "NW_FARM3_BIGWOOD_02");
+	Wld_InsertNpc(FUN_M170_T1, "NW_FARM3_BIGWOOD_03");
+	Wld_InsertNpc(FUN_M171_T1, "NW_FARM3_BIGWOOD_03");
+	Wld_InsertNpc(FUN_M172_T2, "NW_FARM3_MOUNTAINLAKE_03");
+	Wld_InsertNpc(FUN_M173_T2, "NW_FARM3_MOUNTAINLAKE_03");
+	Wld_InsertNpc(FUN_M174_T2, "NW_FARM3_MOUNTAINLAKE_MONSTER_01");
+	Wld_InsertNpc(FUN_M175_T2, "NW_FARM3_MOUNTAINLAKE_MONSTER_01");
+	Wld_InsertNpc(FUN_M176_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	Wld_InsertNpc(FUN_M177_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	Wld_InsertNpc(FUN_M178_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_03");
+	Wld_InsertNpc(FUN_M179_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_03");
+	Wld_InsertNpc(FUN_M180_T2, "NW_FARM3_PATH_11_SMALLRIVER_02");
+	Wld_InsertNpc(FUN_M181_T2, "NW_FARM3_PATH_11_SMALLRIVER_02");
+	Wld_InsertNpc(FUN_M182_T2, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	Wld_InsertNpc(FUN_M183_T2, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	Wld_InsertNpc(FUN_M184_T0, "NW_FARM3_PATH_11_SMALLRIVER_08");
+	Wld_InsertNpc(FUN_M185_T0, "NW_FARM3_PATH_11_SMALLRIVER_08");
+	Wld_InsertNpc(FUN_M186_T0, "NW_FARM3_PATH_11_SMALLRIVER_10");
+	Wld_InsertNpc(FUN_M187_T0, "NW_FARM3_PATH_11_SMALLRIVER_10");
+	Wld_InsertNpc(FUN_M188_T2, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	Wld_InsertNpc(FUN_M189_T2, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	Wld_InsertNpc(FUN_M190_T2, "NW_FARM3_PATH_11_SMALLRIVER_20");
+	Wld_InsertNpc(FUN_M191_T2, "NW_FARM3_PATH_11_SMALLRIVER_20");
+	Wld_InsertNpc(FUN_M192_T0, "NW_FARM3_PATH_11_SMALLRIVER_24");
+	Wld_InsertNpc(FUN_M193_T0, "NW_FARM3_PATH_11_SMALLRIVER_24");
+	Wld_InsertNpc(FUN_M194_T1, "NW_FARM3_PATH_12_MONSTER_01");
+	Wld_InsertNpc(FUN_M195_T1, "NW_FARM3_PATH_12_MONSTER_01");
+	Wld_InsertNpc(FUN_M196_T1, "NW_FARM3_PATH_12_MONSTER_03");
+	Wld_InsertNpc(FUN_M197_T1, "NW_FARM3_PATH_12_MONSTER_03");
+	Wld_InsertNpc(FUN_M198_T1, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	Wld_InsertNpc(FUN_M199_T1, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	Wld_InsertNpc(FUN_M200_T3, "NW_FARM4_WOOD_MONSTER_MORE_02");
+	Wld_InsertNpc(FUN_M201_T3, "NW_FARM4_WOOD_MONSTER_MORE_02");
+	Wld_InsertNpc(FUN_M202_T1, "NW_FARM4_WOOD_MONSTER_N_2");
+	Wld_InsertNpc(FUN_M203_T1, "NW_FARM4_WOOD_MONSTER_N_2");
+	Wld_InsertNpc(FUN_M204_T1, "NW_FARM4_WOOD_MONSTER_N_3");
+	Wld_InsertNpc(FUN_M205_T1, "NW_FARM4_WOOD_MONSTER_N_3");
+	Wld_InsertNpc(FUN_M206_T1, "NW_FARM4_WOOD_NAVIGATION_09");
+	Wld_InsertNpc(FUN_M207_T1, "NW_FARM4_WOOD_NAVIGATION_09");
+	Wld_InsertNpc(FUN_M208_T0, "NW_FARM4_WOOD_NEARPEASANT2_10");
+	Wld_InsertNpc(FUN_M209_T0, "NW_FARM4_WOOD_NEARPEASANT2_10");
+	Wld_InsertNpc(FUN_M210_T1, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	Wld_InsertNpc(FUN_M211_T1, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	Wld_InsertNpc(FUN_M212_T0, "NW_FARM4_WOOD_NEARPEASANT2_14");
+	Wld_InsertNpc(FUN_M213_T0, "NW_FARM4_WOOD_NEARPEASANT2_14");
+	Wld_InsertNpc(FUN_M214_T0, "NW_FARM4_WOOD_NEARPEASANT2_7");
+	Wld_InsertNpc(FUN_M215_T0, "NW_FARM4_WOOD_NEARPEASANT2_7");
+	Wld_InsertNpc(FUN_M216_T1, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	Wld_InsertNpc(FUN_M217_T1, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	Wld_InsertNpc(FUN_M218_T0, "NW_FARM4_WOOD_NEARPEASANT7");
+	Wld_InsertNpc(FUN_M219_T0, "NW_FARM4_WOOD_NEARPEASANT7");
+	Wld_InsertNpc(FUN_M220_T0, "NW_MAGECAVE_20");
+	Wld_InsertNpc(FUN_M221_T0, "NW_MAGECAVE_20");
+	Wld_InsertNpc(FUN_M222_T3, "NW_MAGECAVE_23");
+	Wld_InsertNpc(FUN_M223_T3, "NW_MAGECAVE_23");
+	Wld_InsertNpc(FUN_M224_T3, "NW_MAGECAVE_27");
+	Wld_InsertNpc(FUN_M225_T3, "NW_MAGECAVE_27");
+	Wld_InsertNpc(FUN_M226_T1, "NW_SAGITTA_MOREMONSTER_01");
+	Wld_InsertNpc(FUN_M227_T1, "NW_SAGITTA_MOREMONSTER_01");
+	Wld_InsertNpc(FUN_M228_T1, "NW_SAGITTA_MOREMONSTER_03");
+	Wld_InsertNpc(FUN_M229_T1, "NW_SAGITTA_MOREMONSTER_03");
+	Wld_InsertNpc(FUN_M230_T1, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	Wld_InsertNpc(FUN_M231_T1, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	Wld_InsertNpc(FUN_M232_T0, "NW_TROLLAREA_BRIGDE_05");
+	Wld_InsertNpc(FUN_M233_T0, "NW_TROLLAREA_BRIGDE_05");
+	Wld_InsertNpc(FUN_M234_T0, "NW_TROLLAREA_NOVCHASE_01");
+	Wld_InsertNpc(FUN_M235_T0, "NW_TROLLAREA_NOVCHASE_01");
+	Wld_InsertNpc(FUN_M236_T2, "NW_TROLLAREA_PATH_08");
+	Wld_InsertNpc(FUN_M237_T2, "NW_TROLLAREA_PATH_08");
+	Wld_InsertNpc(FUN_M238_T0, "NW_TROLLAREA_PATH_15_MONSTER");
+	Wld_InsertNpc(FUN_M239_T0, "NW_TROLLAREA_PATH_15_MONSTER");
+	Wld_InsertNpc(FUN_M240_T0, "NW_TROLLAREA_PATH_22_MONSTER");
+	Wld_InsertNpc(FUN_M241_T0, "NW_TROLLAREA_PATH_22_MONSTER");
+	Wld_InsertNpc(FUN_M242_T0, "NW_TROLLAREA_PATH_38_MONSTER");
+	Wld_InsertNpc(FUN_M243_T0, "NW_TROLLAREA_PATH_38_MONSTER");
+	Wld_InsertNpc(FUN_M244_T2, "NW_TROLLAREA_PATH_56");
+	Wld_InsertNpc(FUN_M245_T2, "NW_TROLLAREA_PATH_56");
+	Wld_InsertNpc(FUN_M246_T1, "NW_TROLLAREA_PATH_66_MONSTER");
+	Wld_InsertNpc(FUN_M247_T1, "NW_TROLLAREA_PATH_66_MONSTER");
+	Wld_InsertNpc(FUN_M248_T2, "NW_TROLLAREA_PATH_71_MONSTER");
+	Wld_InsertNpc(FUN_M249_T2, "NW_TROLLAREA_PATH_71_MONSTER");
+	Wld_InsertNpc(FUN_M250_T0, "NW_TROLLAREA_PATH_71_MONSTER2");
+	Wld_InsertNpc(FUN_M251_T0, "NW_TROLLAREA_PATH_71_MONSTER2");
+	Wld_InsertNpc(FUN_M252_T3, "NW_TROLLAREA_PATH_84");
+	Wld_InsertNpc(FUN_M253_T3, "NW_TROLLAREA_PATH_84");
+	Wld_InsertNpc(FUN_M254_T0, "NW_TROLLAREA_PLANE_04");
+	Wld_InsertNpc(FUN_M255_T0, "NW_TROLLAREA_PLANE_04");
+	Wld_InsertNpc(FUN_M256_T0, "NW_TROLLAREA_PLANE_07");
+	Wld_InsertNpc(FUN_M257_T0, "NW_TROLLAREA_PLANE_07");
+	Wld_InsertNpc(FUN_M258_T0, "NW_TROLLAREA_PORTALTEMPEL_06");
+	Wld_InsertNpc(FUN_M259_T0, "NW_TROLLAREA_PORTALTEMPEL_06");
+	Wld_InsertNpc(FUN_M260_T0, "NW_TROLLAREA_PORTALTEMPEL_08");
+	Wld_InsertNpc(FUN_M261_T0, "NW_TROLLAREA_PORTALTEMPEL_08");
+	Wld_InsertNpc(FUN_M262_T0, "NW_TROLLAREA_PORTALTEMPEL_09");
+	Wld_InsertNpc(FUN_M263_T0, "NW_TROLLAREA_PORTALTEMPEL_09");
+	Wld_InsertNpc(FUN_M264_T0, "NW_TROLLAREA_PORTALTEMPEL_12");
+	Wld_InsertNpc(FUN_M265_T0, "NW_TROLLAREA_PORTALTEMPEL_12");
+	Wld_InsertNpc(FUN_M266_T3, "NW_TROLLAREA_PORTALTEMPEL_15_A");
+	Wld_InsertNpc(FUN_M267_T3, "NW_TROLLAREA_PORTALTEMPEL_15_A");
+	Wld_InsertNpc(FUN_M268_T3, "NW_TROLLAREA_PORTALTEMPEL_15_B");
+	Wld_InsertNpc(FUN_M269_T3, "NW_TROLLAREA_PORTALTEMPEL_15_B");
+	Wld_InsertNpc(FUN_M270_T3, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	Wld_InsertNpc(FUN_M271_T3, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	Wld_InsertNpc(FUN_M272_T0, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	Wld_InsertNpc(FUN_M273_T0, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	Wld_InsertNpc(FUN_M274_T0, "NW_TROLLAREA_RITUALFOREST_06_MONSTER");
+	Wld_InsertNpc(FUN_M275_T0, "NW_TROLLAREA_RITUALFOREST_06_MONSTER");
+	Wld_InsertNpc(FUN_M276_T0, "NW_TROLLAREA_RITUALPATH_032");
+	Wld_InsertNpc(FUN_M277_T0, "NW_TROLLAREA_RITUALPATH_032");
+	Wld_InsertNpc(FUN_M278_T0, "NW_TROLLAREA_RITUALPATH_04");
+	Wld_InsertNpc(FUN_M279_T0, "NW_TROLLAREA_RITUALPATH_04");
+	Wld_InsertNpc(FUN_M280_T3, "NW_TROLLAREA_RITUAL_13");
+	Wld_InsertNpc(FUN_M281_T3, "NW_TROLLAREA_RITUAL_13");
+	Wld_InsertNpc(FUN_M282_T3, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	Wld_InsertNpc(FUN_M283_T3, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	Wld_InsertNpc(FUN_M284_T3, "NW_TROLLAREA_RIVERSIDECAVE_07");
+	Wld_InsertNpc(FUN_M285_T3, "NW_TROLLAREA_RIVERSIDECAVE_07");
+	Wld_InsertNpc(FUN_M286_T2, "NW_TROLLAREA_RUINS_14");
+	Wld_InsertNpc(FUN_M287_T2, "NW_TROLLAREA_RUINS_14");
+	Wld_InsertNpc(FUN_M288_T0, "NW_TROLLAREA_RUINS_17");
+	Wld_InsertNpc(FUN_M289_T0, "NW_TROLLAREA_RUINS_17");
+	Wld_InsertNpc(FUN_M290_T3, "NW_TROLLAREA_RUINS_21");
+	Wld_InsertNpc(FUN_M291_T3, "NW_TROLLAREA_RUINS_21");
+	Wld_InsertNpc(FUN_M292_T3, "NW_TROLLAREA_RUINS_32");
+	Wld_InsertNpc(FUN_M293_T3, "NW_TROLLAREA_RUINS_32");
+	Wld_InsertNpc(FUN_M294_T0, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	Wld_InsertNpc(FUN_M295_T0, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	Wld_InsertNpc(FUN_M296_T0, "NW_TROLLAREA_TROLLLAKECAVE_03A");
+	Wld_InsertNpc(FUN_M297_T0, "NW_TROLLAREA_TROLLLAKECAVE_03A");
+	Wld_InsertNpc(FUN_M298_T3, "NW_TROLLAREA_TROLLLAKECAVE_08");
+	Wld_InsertNpc(FUN_M299_T3, "NW_TROLLAREA_TROLLLAKECAVE_08");
+	Wld_InsertNpc(FUN_M300_T2, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	Wld_InsertNpc(FUN_M301_T2, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	Wld_InsertNpc(FUN_M302_T3, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	Wld_InsertNpc(FUN_M303_T3, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	Wld_InsertNpc(FUN_M304_T3, "NW_TROLLAREA_TROLLROCKCAVE_05");
+	Wld_InsertNpc(FUN_M305_T3, "NW_TROLLAREA_TROLLROCKCAVE_05");
 	Wld_InsertNpc(FUN_BOSS_K1, "NW_TAVERNE_CROSS");
 };
 
@@ -4950,79 +13636,315 @@ FUNC VOID INIT_NewWorld()
 };
 
 // --- Takt (GothicCoop alle 10 s) -------------------------------------------------------------------------------------
-var int FUNL_T00;
-var int FUNL_T01;
-var int FUNL_T02;
-var int FUNL_T03;
-var int FUNL_T04;
-var int FUNL_T05;
-var int FUNL_T06;
-var int FUNL_T07;
-var int FUNL_T08;
-var int FUNL_T09;
-var int FUNL_T10;
-var int FUNL_T11;
-var int FUNL_T12;
-var int FUNL_T13;
-var int FUNL_T14;
-var int FUNL_T15;
-var int FUNL_T16;
-var int FUNL_T17;
-var int FUNL_T18;
-var int FUNL_T19;
-var int FUNL_T20;
-var int FUNL_T21;
-var int FUNL_T22;
-var int FUNL_T23;
-var int FUNL_T24;
-var int FUNL_T25;
-var int FUNL_T26;
-var int FUNL_T27;
-var int FUNL_T28;
-var int FUNL_T29;
-var int FUNL_T30;
-var int FUNL_T31;
-var int FUNL_T32;
-var int FUNL_T33;
-var int FUNL_T34;
-var int FUNL_T35;
-var int FUNL_T36;
-var int FUNL_T37;
-var int FUNL_T38;
-var int FUNL_T39;
-var int FUNL_T40;
-var int FUNL_T41;
-var int FUNL_T42;
-var int FUNL_T43;
-var int FUNL_T44;
-var int FUNL_T45;
-var int FUNL_T46;
-var int FUNL_T47;
-var int FUNL_T48;
-var int FUNL_T49;
-var int FUNL_T50;
-var int FUNL_T51;
-var int FUNL_T52;
-var int FUNL_T53;
-var int FUNL_T54;
-var int FUNL_T55;
-var int FUNL_T56;
-var int FUNL_T57;
-var int FUNL_T58;
-var int FUNL_T59;
-var int FUNL_T60;
-var int FUNL_T61;
-var int FUNL_T62;
-var int FUNL_T63;
-var int FUNL_T64;
-var int FUNL_T65;
-var int FUNL_T66;
-var int FUNL_T67;
-var int FUNL_T68;
-var int FUNL_T69;
+var int FUNL_T000;
+var int FUNL_T001;
+var int FUNL_T002;
+var int FUNL_T003;
+var int FUNL_T004;
+var int FUNL_T005;
+var int FUNL_T006;
+var int FUNL_T007;
+var int FUNL_T008;
+var int FUNL_T009;
+var int FUNL_T010;
+var int FUNL_T011;
+var int FUNL_T012;
+var int FUNL_T013;
+var int FUNL_T014;
+var int FUNL_T015;
+var int FUNL_T016;
+var int FUNL_T017;
+var int FUNL_T018;
+var int FUNL_T019;
+var int FUNL_T020;
+var int FUNL_T021;
+var int FUNL_T022;
+var int FUNL_T023;
+var int FUNL_T024;
+var int FUNL_T025;
+var int FUNL_T026;
+var int FUNL_T027;
+var int FUNL_T028;
+var int FUNL_T029;
+var int FUNL_T030;
+var int FUNL_T031;
+var int FUNL_T032;
+var int FUNL_T033;
+var int FUNL_T034;
+var int FUNL_T035;
+var int FUNL_T036;
+var int FUNL_T037;
+var int FUNL_T038;
+var int FUNL_T039;
+var int FUNL_T040;
+var int FUNL_T041;
+var int FUNL_T042;
+var int FUNL_T043;
+var int FUNL_T044;
+var int FUNL_T045;
+var int FUNL_T046;
+var int FUNL_T047;
+var int FUNL_T048;
+var int FUNL_T049;
+var int FUNL_T050;
+var int FUNL_T051;
+var int FUNL_T052;
+var int FUNL_T053;
+var int FUNL_T054;
+var int FUNL_T055;
+var int FUNL_T056;
+var int FUNL_T057;
+var int FUNL_T058;
+var int FUNL_T059;
+var int FUNL_T060;
+var int FUNL_T061;
+var int FUNL_T062;
+var int FUNL_T063;
+var int FUNL_T064;
+var int FUNL_T065;
+var int FUNL_T066;
+var int FUNL_T067;
+var int FUNL_T068;
+var int FUNL_T069;
+var int FUNL_T070;
+var int FUNL_T071;
+var int FUNL_T072;
+var int FUNL_T073;
+var int FUNL_T074;
+var int FUNL_T075;
+var int FUNL_T076;
+var int FUNL_T077;
+var int FUNL_T078;
+var int FUNL_T079;
+var int FUNL_T080;
+var int FUNL_T081;
+var int FUNL_T082;
+var int FUNL_T083;
+var int FUNL_T084;
+var int FUNL_T085;
+var int FUNL_T086;
+var int FUNL_T087;
+var int FUNL_T088;
+var int FUNL_T089;
+var int FUNL_T090;
+var int FUNL_T091;
+var int FUNL_T092;
+var int FUNL_T093;
+var int FUNL_T094;
+var int FUNL_T095;
+var int FUNL_T096;
+var int FUNL_T097;
+var int FUNL_T098;
+var int FUNL_T099;
+var int FUNL_T100;
+var int FUNL_T101;
+var int FUNL_T102;
+var int FUNL_T103;
+var int FUNL_T104;
+var int FUNL_T105;
+var int FUNL_T106;
+var int FUNL_T107;
+var int FUNL_T108;
+var int FUNL_T109;
+var int FUNL_T110;
+var int FUNL_T111;
+var int FUNL_T112;
+var int FUNL_T113;
+var int FUNL_T114;
+var int FUNL_T115;
+var int FUNL_T116;
+var int FUNL_T117;
+var int FUNL_T118;
+var int FUNL_T119;
+var int FUNL_T120;
+var int FUNL_T121;
+var int FUNL_T122;
+var int FUNL_T123;
+var int FUNL_T124;
+var int FUNL_T125;
+var int FUNL_T126;
+var int FUNL_T127;
+var int FUNL_T128;
+var int FUNL_T129;
+var int FUNL_T130;
+var int FUNL_T131;
+var int FUNL_T132;
+var int FUNL_T133;
+var int FUNL_T134;
+var int FUNL_T135;
+var int FUNL_T136;
+var int FUNL_T137;
+var int FUNL_T138;
+var int FUNL_T139;
+var int FUNL_T140;
+var int FUNL_T141;
+var int FUNL_T142;
+var int FUNL_T143;
+var int FUNL_T144;
+var int FUNL_T145;
+var int FUNL_T146;
+var int FUNL_T147;
+var int FUNL_T148;
+var int FUNL_T149;
+var int FUNL_T150;
+var int FUNL_T151;
+var int FUNL_T152;
+var int FUNL_T153;
+var int FUNL_T154;
+var int FUNL_T155;
+var int FUNL_T156;
+var int FUNL_T157;
+var int FUNL_T158;
+var int FUNL_T159;
+var int FUNL_T160;
+var int FUNL_T161;
+var int FUNL_T162;
+var int FUNL_T163;
+var int FUNL_T164;
+var int FUNL_T165;
+var int FUNL_T166;
+var int FUNL_T167;
+var int FUNL_T168;
+var int FUNL_T169;
+var int FUNL_T170;
+var int FUNL_T171;
+var int FUNL_T172;
+var int FUNL_T173;
+var int FUNL_T174;
+var int FUNL_T175;
+var int FUNL_T176;
+var int FUNL_T177;
+var int FUNL_T178;
+var int FUNL_T179;
+var int FUNL_T180;
+var int FUNL_T181;
+var int FUNL_T182;
+var int FUNL_T183;
+var int FUNL_T184;
+var int FUNL_T185;
+var int FUNL_T186;
+var int FUNL_T187;
+var int FUNL_T188;
+var int FUNL_T189;
+var int FUNL_T190;
+var int FUNL_T191;
+var int FUNL_T192;
+var int FUNL_T193;
+var int FUNL_T194;
+var int FUNL_T195;
+var int FUNL_T196;
+var int FUNL_T197;
+var int FUNL_T198;
+var int FUNL_T199;
+var int FUNL_T200;
+var int FUNL_T201;
+var int FUNL_T202;
+var int FUNL_T203;
+var int FUNL_T204;
+var int FUNL_T205;
+var int FUNL_T206;
+var int FUNL_T207;
+var int FUNL_T208;
+var int FUNL_T209;
+var int FUNL_T210;
+var int FUNL_T211;
+var int FUNL_T212;
+var int FUNL_T213;
+var int FUNL_T214;
+var int FUNL_T215;
+var int FUNL_T216;
+var int FUNL_T217;
+var int FUNL_T218;
+var int FUNL_T219;
+var int FUNL_T220;
+var int FUNL_T221;
+var int FUNL_T222;
+var int FUNL_T223;
+var int FUNL_T224;
+var int FUNL_T225;
+var int FUNL_T226;
+var int FUNL_T227;
+var int FUNL_T228;
+var int FUNL_T229;
+var int FUNL_T230;
+var int FUNL_T231;
+var int FUNL_T232;
+var int FUNL_T233;
+var int FUNL_T234;
+var int FUNL_T235;
+var int FUNL_T236;
+var int FUNL_T237;
+var int FUNL_T238;
+var int FUNL_T239;
+var int FUNL_T240;
+var int FUNL_T241;
+var int FUNL_T242;
+var int FUNL_T243;
+var int FUNL_T244;
+var int FUNL_T245;
+var int FUNL_T246;
+var int FUNL_T247;
+var int FUNL_T248;
+var int FUNL_T249;
+var int FUNL_T250;
+var int FUNL_T251;
+var int FUNL_T252;
+var int FUNL_T253;
+var int FUNL_T254;
+var int FUNL_T255;
+var int FUNL_T256;
+var int FUNL_T257;
+var int FUNL_T258;
+var int FUNL_T259;
+var int FUNL_T260;
+var int FUNL_T261;
+var int FUNL_T262;
+var int FUNL_T263;
+var int FUNL_T264;
+var int FUNL_T265;
+var int FUNL_T266;
+var int FUNL_T267;
+var int FUNL_T268;
+var int FUNL_T269;
+var int FUNL_T270;
+var int FUNL_T271;
+var int FUNL_T272;
+var int FUNL_T273;
+var int FUNL_T274;
+var int FUNL_T275;
+var int FUNL_T276;
+var int FUNL_T277;
+var int FUNL_T278;
+var int FUNL_T279;
+var int FUNL_T280;
+var int FUNL_T281;
+var int FUNL_T282;
+var int FUNL_T283;
+var int FUNL_T284;
+var int FUNL_T285;
+var int FUNL_T286;
+var int FUNL_T287;
+var int FUNL_T288;
+var int FUNL_T289;
+var int FUNL_T290;
+var int FUNL_T291;
+var int FUNL_T292;
+var int FUNL_T293;
+var int FUNL_T294;
+var int FUNL_T295;
+var int FUNL_T296;
+var int FUNL_T297;
+var int FUNL_T298;
+var int FUNL_T299;
+var int FUNL_T300;
+var int FUNL_T301;
+var int FUNL_T302;
+var int FUNL_T303;
+var int FUNL_T304;
+var int FUNL_T305;
 var int FUNL_BEGL_T;
 
-func void Fun_Platz00()   // FP_ROAM_BIGFARM_LAKE_CAVE_01 (Original: Gobbo_Green)
+func void Fun_Platz000()   // FP_ROAM_BIGFARM_LAKE_CAVE_01 (Original: Gobbo_Green)
 {
 	var C_NPC m;
 	var int t;
@@ -5033,76 +13955,76 @@ func void Fun_Platz00()   // FP_ROAM_BIGFARM_LAKE_CAVE_01 (Original: Gobbo_Green
 	};
 	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M00_T2);
+		m = Hlp_GetNpc(FUN_M000_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M00_T3);
+		m = Hlp_GetNpc(FUN_M000_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M00_T4);
+		m = Hlp_GetNpc(FUN_M000_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M00_T5);
+		m = Hlp_GetNpc(FUN_M000_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M00_T6);
+		m = Hlp_GetNpc(FUN_M000_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M00_T7);
+		m = Hlp_GetNpc(FUN_M000_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M00_T2);
+		m = Hlp_GetNpc(FUN_M000_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T00 = 0;
+			FUNL_T000 = 0;
 			return;
 		};
 	};
-	FUNL_T00 = FUNL_T00 + 1;
-	if (FUNL_T00 < FUN_RESPAWN_TAKTE)
+	FUNL_T000 = FUNL_T000 + 1;
+	if (FUNL_T000 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T00 = 0;
+	FUNL_T000 = 0;
 	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M00_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
+		Wld_InsertNpc(FUN_M000_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M00_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
+		Wld_InsertNpc(FUN_M000_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M00_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
+		Wld_InsertNpc(FUN_M000_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M00_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
+		Wld_InsertNpc(FUN_M000_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M00_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
+		Wld_InsertNpc(FUN_M000_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M00_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
+		Wld_InsertNpc(FUN_M000_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M00_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
+		Wld_InsertNpc(FUN_M000_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
 	};
 };
-func void Fun_Platz01()   // FP_ROAM_BIGFARM_LAKE_CAVE_04 (Original: Gobbo_Green)
+func void Fun_Platz001()   // FP_ROAM_BIGFARM_LAKE_CAVE_01 (Original: Gobbo_Green)
 {
 	var C_NPC m;
 	var int t;
@@ -5113,76 +14035,76 @@ func void Fun_Platz01()   // FP_ROAM_BIGFARM_LAKE_CAVE_04 (Original: Gobbo_Green
 	};
 	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M01_T2);
+		m = Hlp_GetNpc(FUN_M001_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M01_T3);
+		m = Hlp_GetNpc(FUN_M001_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M01_T4);
+		m = Hlp_GetNpc(FUN_M001_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M01_T5);
+		m = Hlp_GetNpc(FUN_M001_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M01_T6);
+		m = Hlp_GetNpc(FUN_M001_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M01_T7);
+		m = Hlp_GetNpc(FUN_M001_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M01_T2);
+		m = Hlp_GetNpc(FUN_M001_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T01 = 0;
+			FUNL_T001 = 0;
 			return;
 		};
 	};
-	FUNL_T01 = FUNL_T01 + 1;
-	if (FUNL_T01 < FUN_RESPAWN_TAKTE)
+	FUNL_T001 = FUNL_T001 + 1;
+	if (FUNL_T001 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T01 = 0;
+	FUNL_T001 = 0;
 	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M01_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+		Wld_InsertNpc(FUN_M001_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M01_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+		Wld_InsertNpc(FUN_M001_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M01_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+		Wld_InsertNpc(FUN_M001_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M01_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+		Wld_InsertNpc(FUN_M001_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M01_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+		Wld_InsertNpc(FUN_M001_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M01_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+		Wld_InsertNpc(FUN_M001_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M01_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+		Wld_InsertNpc(FUN_M001_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
 	};
 };
-func void Fun_Platz02()   // FP_ROAM_BIGFARM_LAKE_CAVE_07 (Original: Gobbo_Black)
+func void Fun_Platz002()   // FP_ROAM_BIGFARM_LAKE_CAVE_02 (Original: Gobbo_Green)
 {
 	var C_NPC m;
 	var int t;
@@ -5193,76 +14115,76 @@ func void Fun_Platz02()   // FP_ROAM_BIGFARM_LAKE_CAVE_07 (Original: Gobbo_Black
 	};
 	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M02_T2);
+		m = Hlp_GetNpc(FUN_M002_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M02_T3);
+		m = Hlp_GetNpc(FUN_M002_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M02_T4);
+		m = Hlp_GetNpc(FUN_M002_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M02_T5);
+		m = Hlp_GetNpc(FUN_M002_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M02_T6);
+		m = Hlp_GetNpc(FUN_M002_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M02_T7);
+		m = Hlp_GetNpc(FUN_M002_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M02_T2);
+		m = Hlp_GetNpc(FUN_M002_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T02 = 0;
+			FUNL_T002 = 0;
 			return;
 		};
 	};
-	FUNL_T02 = FUNL_T02 + 1;
-	if (FUNL_T02 < FUN_RESPAWN_TAKTE)
+	FUNL_T002 = FUNL_T002 + 1;
+	if (FUNL_T002 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T02 = 0;
+	FUNL_T002 = 0;
 	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M02_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+		Wld_InsertNpc(FUN_M002_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_02");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M02_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+		Wld_InsertNpc(FUN_M002_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_02");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M02_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+		Wld_InsertNpc(FUN_M002_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_02");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M02_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+		Wld_InsertNpc(FUN_M002_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_02");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M02_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+		Wld_InsertNpc(FUN_M002_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_02");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M02_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+		Wld_InsertNpc(FUN_M002_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_02");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M02_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+		Wld_InsertNpc(FUN_M002_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_02");
 	};
 };
-func void Fun_Platz03()   // FP_ROAM_BIGFARM_LAKE_CAVE_11 (Original: Gobbo_Black)
+func void Fun_Platz003()   // FP_ROAM_BIGFARM_LAKE_CAVE_02 (Original: Gobbo_Green)
 {
 	var C_NPC m;
 	var int t;
@@ -5273,76 +14195,1516 @@ func void Fun_Platz03()   // FP_ROAM_BIGFARM_LAKE_CAVE_11 (Original: Gobbo_Black
 	};
 	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M03_T2);
+		m = Hlp_GetNpc(FUN_M003_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M03_T3);
+		m = Hlp_GetNpc(FUN_M003_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M03_T4);
+		m = Hlp_GetNpc(FUN_M003_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M03_T5);
+		m = Hlp_GetNpc(FUN_M003_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M03_T6);
+		m = Hlp_GetNpc(FUN_M003_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M03_T7);
+		m = Hlp_GetNpc(FUN_M003_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M03_T2);
+		m = Hlp_GetNpc(FUN_M003_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T03 = 0;
+			FUNL_T003 = 0;
 			return;
 		};
 	};
-	FUNL_T03 = FUNL_T03 + 1;
-	if (FUNL_T03 < FUN_RESPAWN_TAKTE)
+	FUNL_T003 = FUNL_T003 + 1;
+	if (FUNL_T003 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T03 = 0;
+	FUNL_T003 = 0;
 	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M03_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+		Wld_InsertNpc(FUN_M003_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_02");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M03_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+		Wld_InsertNpc(FUN_M003_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_02");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M03_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+		Wld_InsertNpc(FUN_M003_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_02");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M03_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+		Wld_InsertNpc(FUN_M003_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_02");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M03_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+		Wld_InsertNpc(FUN_M003_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_02");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M03_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+		Wld_InsertNpc(FUN_M003_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_02");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M03_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+		Wld_InsertNpc(FUN_M003_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_02");
 	};
 };
-func void Fun_Platz04()   // FP_ROAM_CASTLEMINE2_01 (Original: Skeleton)
+func void Fun_Platz004()   // FP_ROAM_BIGFARM_LAKE_CAVE_03 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M004_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M004_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M004_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M004_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M004_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M004_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M004_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T004 = 0;
+			return;
+		};
+	};
+	FUNL_T004 = FUNL_T004 + 1;
+	if (FUNL_T004 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T004 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M004_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_03");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M004_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M004_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M004_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_03");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M004_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_03");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M004_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M004_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_03");
+	};
+};
+func void Fun_Platz005()   // FP_ROAM_BIGFARM_LAKE_CAVE_03 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M005_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M005_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M005_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M005_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M005_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M005_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M005_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T005 = 0;
+			return;
+		};
+	};
+	FUNL_T005 = FUNL_T005 + 1;
+	if (FUNL_T005 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T005 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M005_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_03");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M005_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M005_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M005_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_03");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M005_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_03");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M005_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M005_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_03");
+	};
+};
+func void Fun_Platz006()   // FP_ROAM_BIGFARM_LAKE_CAVE_04 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M006_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M006_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M006_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M006_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M006_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M006_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M006_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T006 = 0;
+			return;
+		};
+	};
+	FUNL_T006 = FUNL_T006 + 1;
+	if (FUNL_T006 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T006 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M006_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M006_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M006_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M006_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M006_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M006_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M006_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	};
+};
+func void Fun_Platz007()   // FP_ROAM_BIGFARM_LAKE_CAVE_04 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M007_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M007_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M007_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M007_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M007_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M007_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M007_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T007 = 0;
+			return;
+		};
+	};
+	FUNL_T007 = FUNL_T007 + 1;
+	if (FUNL_T007 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T007 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M007_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M007_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M007_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M007_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M007_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M007_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M007_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	};
+};
+func void Fun_Platz008()   // FP_ROAM_BIGFARM_LAKE_CAVE_05 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M008_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M008_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M008_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M008_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M008_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M008_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M008_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T008 = 0;
+			return;
+		};
+	};
+	FUNL_T008 = FUNL_T008 + 1;
+	if (FUNL_T008 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T008 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M008_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_05");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M008_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M008_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M008_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_05");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M008_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_05");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M008_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M008_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_05");
+	};
+};
+func void Fun_Platz009()   // FP_ROAM_BIGFARM_LAKE_CAVE_05 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M009_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M009_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M009_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M009_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M009_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M009_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M009_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T009 = 0;
+			return;
+		};
+	};
+	FUNL_T009 = FUNL_T009 + 1;
+	if (FUNL_T009 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T009 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M009_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_05");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M009_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M009_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M009_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_05");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M009_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_05");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M009_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M009_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_05");
+	};
+};
+func void Fun_Platz010()   // FP_ROAM_BIGFARM_LAKE_CAVE_06 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M010_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M010_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M010_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M010_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M010_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M010_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M010_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T010 = 0;
+			return;
+		};
+	};
+	FUNL_T010 = FUNL_T010 + 1;
+	if (FUNL_T010 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T010 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M010_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_06");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M010_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_06");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M010_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_06");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M010_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_06");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M010_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_06");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M010_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_06");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M010_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_06");
+	};
+};
+func void Fun_Platz011()   // FP_ROAM_BIGFARM_LAKE_CAVE_06 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M011_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M011_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M011_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M011_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M011_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M011_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M011_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T011 = 0;
+			return;
+		};
+	};
+	FUNL_T011 = FUNL_T011 + 1;
+	if (FUNL_T011 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T011 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M011_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_06");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M011_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_06");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M011_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_06");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M011_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_06");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M011_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_06");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M011_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_06");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M011_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_06");
+	};
+};
+func void Fun_Platz012()   // FP_ROAM_BIGFARM_LAKE_CAVE_07 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M012_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M012_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M012_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M012_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M012_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M012_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M012_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T012 = 0;
+			return;
+		};
+	};
+	FUNL_T012 = FUNL_T012 + 1;
+	if (FUNL_T012 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T012 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M012_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M012_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M012_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M012_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M012_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M012_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M012_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	};
+};
+func void Fun_Platz013()   // FP_ROAM_BIGFARM_LAKE_CAVE_07 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M013_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M013_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M013_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M013_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M013_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M013_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M013_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T013 = 0;
+			return;
+		};
+	};
+	FUNL_T013 = FUNL_T013 + 1;
+	if (FUNL_T013 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T013 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M013_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M013_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M013_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M013_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M013_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M013_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M013_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	};
+};
+func void Fun_Platz014()   // FP_ROAM_BIGFARM_LAKE_CAVE_08 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M014_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M014_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M014_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M014_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M014_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M014_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M014_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T014 = 0;
+			return;
+		};
+	};
+	FUNL_T014 = FUNL_T014 + 1;
+	if (FUNL_T014 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T014 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M014_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_08");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M014_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_08");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M014_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_08");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M014_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_08");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M014_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_08");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M014_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_08");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M014_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_08");
+	};
+};
+func void Fun_Platz015()   // FP_ROAM_BIGFARM_LAKE_CAVE_08 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M015_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M015_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M015_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M015_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M015_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M015_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M015_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T015 = 0;
+			return;
+		};
+	};
+	FUNL_T015 = FUNL_T015 + 1;
+	if (FUNL_T015 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T015 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M015_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_08");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M015_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_08");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M015_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_08");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M015_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_08");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M015_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_08");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M015_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_08");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M015_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_08");
+	};
+};
+func void Fun_Platz016()   // FP_ROAM_BIGFARM_LAKE_CAVE_10 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M016_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M016_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M016_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M016_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M016_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M016_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M016_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T016 = 0;
+			return;
+		};
+	};
+	FUNL_T016 = FUNL_T016 + 1;
+	if (FUNL_T016 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T016 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M016_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_10");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M016_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_10");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M016_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_10");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M016_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_10");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M016_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_10");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M016_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_10");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M016_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_10");
+	};
+};
+func void Fun_Platz017()   // FP_ROAM_BIGFARM_LAKE_CAVE_10 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M017_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M017_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M017_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M017_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M017_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M017_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M017_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T017 = 0;
+			return;
+		};
+	};
+	FUNL_T017 = FUNL_T017 + 1;
+	if (FUNL_T017 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T017 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M017_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_10");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M017_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_10");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M017_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_10");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M017_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_10");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M017_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_10");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M017_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_10");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M017_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_10");
+	};
+};
+func void Fun_Platz018()   // FP_ROAM_BIGFARM_LAKE_CAVE_11 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M018_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M018_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M018_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M018_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M018_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M018_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M018_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T018 = 0;
+			return;
+		};
+	};
+	FUNL_T018 = FUNL_T018 + 1;
+	if (FUNL_T018 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T018 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M018_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M018_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M018_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M018_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M018_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M018_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M018_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	};
+};
+func void Fun_Platz019()   // FP_ROAM_BIGFARM_LAKE_CAVE_11 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M019_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M019_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M019_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M019_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M019_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M019_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M019_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T019 = 0;
+			return;
+		};
+	};
+	FUNL_T019 = FUNL_T019 + 1;
+	if (FUNL_T019 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T019 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M019_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M019_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M019_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M019_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M019_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M019_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M019_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	};
+};
+func void Fun_Platz020()   // FP_ROAM_BIGFARM_LAKE_CAVE_13 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M020_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M020_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M020_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M020_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M020_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M020_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M020_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T020 = 0;
+			return;
+		};
+	};
+	FUNL_T020 = FUNL_T020 + 1;
+	if (FUNL_T020 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T020 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M020_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_13");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M020_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_13");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M020_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_13");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M020_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_13");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M020_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_13");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M020_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_13");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M020_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_13");
+	};
+};
+func void Fun_Platz021()   // FP_ROAM_BIGFARM_LAKE_CAVE_13 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M021_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M021_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M021_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M021_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M021_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M021_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M021_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T021 = 0;
+			return;
+		};
+	};
+	FUNL_T021 = FUNL_T021 + 1;
+	if (FUNL_T021 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T021 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M021_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_13");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M021_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_13");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M021_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_13");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M021_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_13");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M021_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_13");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M021_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_13");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M021_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_13");
+	};
+};
+func void Fun_Platz022()   // FP_ROAM_CASTLEMINE2_01 (Original: Skeleton)
 {
 	var C_NPC m;
 	var int t;
@@ -5353,68 +15715,68 @@ func void Fun_Platz04()   // FP_ROAM_CASTLEMINE2_01 (Original: Skeleton)
 	};
 	if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M04_T3);
+		m = Hlp_GetNpc(FUN_M022_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M04_T4);
+		m = Hlp_GetNpc(FUN_M022_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M04_T5);
+		m = Hlp_GetNpc(FUN_M022_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M04_T6);
+		m = Hlp_GetNpc(FUN_M022_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M04_T7);
+		m = Hlp_GetNpc(FUN_M022_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M04_T3);
+		m = Hlp_GetNpc(FUN_M022_T3);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T04 = 0;
+			FUNL_T022 = 0;
 			return;
 		};
 	};
-	FUNL_T04 = FUNL_T04 + 1;
-	if (FUNL_T04 < FUN_RESPAWN_TAKTE)
+	FUNL_T022 = FUNL_T022 + 1;
+	if (FUNL_T022 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T04 = 0;
+	FUNL_T022 = 0;
 	if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M04_T3, "FP_ROAM_CASTLEMINE2_01");
+		Wld_InsertNpc(FUN_M022_T3, "FP_ROAM_CASTLEMINE2_01");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M04_T4, "FP_ROAM_CASTLEMINE2_01");
+		Wld_InsertNpc(FUN_M022_T4, "FP_ROAM_CASTLEMINE2_01");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M04_T5, "FP_ROAM_CASTLEMINE2_01");
+		Wld_InsertNpc(FUN_M022_T5, "FP_ROAM_CASTLEMINE2_01");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M04_T6, "FP_ROAM_CASTLEMINE2_01");
+		Wld_InsertNpc(FUN_M022_T6, "FP_ROAM_CASTLEMINE2_01");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M04_T7, "FP_ROAM_CASTLEMINE2_01");
+		Wld_InsertNpc(FUN_M022_T7, "FP_ROAM_CASTLEMINE2_01");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M04_T3, "FP_ROAM_CASTLEMINE2_01");
+		Wld_InsertNpc(FUN_M022_T3, "FP_ROAM_CASTLEMINE2_01");
 	};
 };
-func void Fun_Platz05()   // FP_ROAM_CASTLEMINE2_04 (Original: Skeleton)
+func void Fun_Platz023()   // FP_ROAM_CASTLEMINE2_01 (Original: Skeleton)
 {
 	var C_NPC m;
 	var int t;
@@ -5425,68 +15787,68 @@ func void Fun_Platz05()   // FP_ROAM_CASTLEMINE2_04 (Original: Skeleton)
 	};
 	if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M05_T3);
+		m = Hlp_GetNpc(FUN_M023_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M05_T4);
+		m = Hlp_GetNpc(FUN_M023_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M05_T5);
+		m = Hlp_GetNpc(FUN_M023_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M05_T6);
+		m = Hlp_GetNpc(FUN_M023_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M05_T7);
+		m = Hlp_GetNpc(FUN_M023_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M05_T3);
+		m = Hlp_GetNpc(FUN_M023_T3);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T05 = 0;
+			FUNL_T023 = 0;
 			return;
 		};
 	};
-	FUNL_T05 = FUNL_T05 + 1;
-	if (FUNL_T05 < FUN_RESPAWN_TAKTE)
+	FUNL_T023 = FUNL_T023 + 1;
+	if (FUNL_T023 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T05 = 0;
+	FUNL_T023 = 0;
 	if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M05_T3, "FP_ROAM_CASTLEMINE2_04");
+		Wld_InsertNpc(FUN_M023_T3, "FP_ROAM_CASTLEMINE2_01");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M05_T4, "FP_ROAM_CASTLEMINE2_04");
+		Wld_InsertNpc(FUN_M023_T4, "FP_ROAM_CASTLEMINE2_01");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M05_T5, "FP_ROAM_CASTLEMINE2_04");
+		Wld_InsertNpc(FUN_M023_T5, "FP_ROAM_CASTLEMINE2_01");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M05_T6, "FP_ROAM_CASTLEMINE2_04");
+		Wld_InsertNpc(FUN_M023_T6, "FP_ROAM_CASTLEMINE2_01");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M05_T7, "FP_ROAM_CASTLEMINE2_04");
+		Wld_InsertNpc(FUN_M023_T7, "FP_ROAM_CASTLEMINE2_01");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M05_T3, "FP_ROAM_CASTLEMINE2_04");
+		Wld_InsertNpc(FUN_M023_T3, "FP_ROAM_CASTLEMINE2_01");
 	};
 };
-func void Fun_Platz06()   // FP_ROAM_CASTLEMINE2_07 (Original: Skeleton)
+func void Fun_Platz024()   // FP_ROAM_CASTLEMINE2_02 (Original: Skeleton)
 {
 	var C_NPC m;
 	var int t;
@@ -5497,68 +15859,68 @@ func void Fun_Platz06()   // FP_ROAM_CASTLEMINE2_07 (Original: Skeleton)
 	};
 	if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M06_T3);
+		m = Hlp_GetNpc(FUN_M024_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M06_T4);
+		m = Hlp_GetNpc(FUN_M024_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M06_T5);
+		m = Hlp_GetNpc(FUN_M024_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M06_T6);
+		m = Hlp_GetNpc(FUN_M024_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M06_T7);
+		m = Hlp_GetNpc(FUN_M024_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M06_T3);
+		m = Hlp_GetNpc(FUN_M024_T3);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T06 = 0;
+			FUNL_T024 = 0;
 			return;
 		};
 	};
-	FUNL_T06 = FUNL_T06 + 1;
-	if (FUNL_T06 < FUN_RESPAWN_TAKTE)
+	FUNL_T024 = FUNL_T024 + 1;
+	if (FUNL_T024 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T06 = 0;
+	FUNL_T024 = 0;
 	if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M06_T3, "FP_ROAM_CASTLEMINE2_07");
+		Wld_InsertNpc(FUN_M024_T3, "FP_ROAM_CASTLEMINE2_02");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M06_T4, "FP_ROAM_CASTLEMINE2_07");
+		Wld_InsertNpc(FUN_M024_T4, "FP_ROAM_CASTLEMINE2_02");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M06_T5, "FP_ROAM_CASTLEMINE2_07");
+		Wld_InsertNpc(FUN_M024_T5, "FP_ROAM_CASTLEMINE2_02");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M06_T6, "FP_ROAM_CASTLEMINE2_07");
+		Wld_InsertNpc(FUN_M024_T6, "FP_ROAM_CASTLEMINE2_02");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M06_T7, "FP_ROAM_CASTLEMINE2_07");
+		Wld_InsertNpc(FUN_M024_T7, "FP_ROAM_CASTLEMINE2_02");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M06_T3, "FP_ROAM_CASTLEMINE2_07");
+		Wld_InsertNpc(FUN_M024_T3, "FP_ROAM_CASTLEMINE2_02");
 	};
 };
-func void Fun_Platz07()   // FP_ROAM_CASTLEMINE2_11 (Original: Zombie03)
+func void Fun_Platz025()   // FP_ROAM_CASTLEMINE2_02 (Original: Skeleton)
 {
 	var C_NPC m;
 	var int t;
@@ -5569,68 +15931,1508 @@ func void Fun_Platz07()   // FP_ROAM_CASTLEMINE2_11 (Original: Zombie03)
 	};
 	if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M07_T3);
+		m = Hlp_GetNpc(FUN_M025_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M07_T4);
+		m = Hlp_GetNpc(FUN_M025_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M07_T5);
+		m = Hlp_GetNpc(FUN_M025_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M07_T6);
+		m = Hlp_GetNpc(FUN_M025_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M07_T7);
+		m = Hlp_GetNpc(FUN_M025_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M07_T3);
+		m = Hlp_GetNpc(FUN_M025_T3);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T07 = 0;
+			FUNL_T025 = 0;
 			return;
 		};
 	};
-	FUNL_T07 = FUNL_T07 + 1;
-	if (FUNL_T07 < FUN_RESPAWN_TAKTE)
+	FUNL_T025 = FUNL_T025 + 1;
+	if (FUNL_T025 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T07 = 0;
+	FUNL_T025 = 0;
 	if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M07_T3, "FP_ROAM_CASTLEMINE2_11");
+		Wld_InsertNpc(FUN_M025_T3, "FP_ROAM_CASTLEMINE2_02");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M07_T4, "FP_ROAM_CASTLEMINE2_11");
+		Wld_InsertNpc(FUN_M025_T4, "FP_ROAM_CASTLEMINE2_02");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M07_T5, "FP_ROAM_CASTLEMINE2_11");
+		Wld_InsertNpc(FUN_M025_T5, "FP_ROAM_CASTLEMINE2_02");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M07_T6, "FP_ROAM_CASTLEMINE2_11");
+		Wld_InsertNpc(FUN_M025_T6, "FP_ROAM_CASTLEMINE2_02");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M07_T7, "FP_ROAM_CASTLEMINE2_11");
+		Wld_InsertNpc(FUN_M025_T7, "FP_ROAM_CASTLEMINE2_02");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M07_T3, "FP_ROAM_CASTLEMINE2_11");
+		Wld_InsertNpc(FUN_M025_T3, "FP_ROAM_CASTLEMINE2_02");
 	};
 };
-func void Fun_Platz08()   // FP_ROAM_NW_BIGFARMFORESTCAVE_01 (Original: Gobbo_Black)
+func void Fun_Platz026()   // FP_ROAM_CASTLEMINE2_03 (Original: Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M026_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M026_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M026_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M026_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M026_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M026_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T026 = 0;
+			return;
+		};
+	};
+	FUNL_T026 = FUNL_T026 + 1;
+	if (FUNL_T026 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T026 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M026_T3, "FP_ROAM_CASTLEMINE2_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M026_T4, "FP_ROAM_CASTLEMINE2_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M026_T5, "FP_ROAM_CASTLEMINE2_03");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M026_T6, "FP_ROAM_CASTLEMINE2_03");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M026_T7, "FP_ROAM_CASTLEMINE2_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M026_T3, "FP_ROAM_CASTLEMINE2_03");
+	};
+};
+func void Fun_Platz027()   // FP_ROAM_CASTLEMINE2_03 (Original: Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M027_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M027_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M027_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M027_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M027_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M027_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T027 = 0;
+			return;
+		};
+	};
+	FUNL_T027 = FUNL_T027 + 1;
+	if (FUNL_T027 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T027 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M027_T3, "FP_ROAM_CASTLEMINE2_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M027_T4, "FP_ROAM_CASTLEMINE2_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M027_T5, "FP_ROAM_CASTLEMINE2_03");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M027_T6, "FP_ROAM_CASTLEMINE2_03");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M027_T7, "FP_ROAM_CASTLEMINE2_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M027_T3, "FP_ROAM_CASTLEMINE2_03");
+	};
+};
+func void Fun_Platz028()   // FP_ROAM_CASTLEMINE2_04 (Original: Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M028_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M028_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M028_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M028_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M028_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M028_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T028 = 0;
+			return;
+		};
+	};
+	FUNL_T028 = FUNL_T028 + 1;
+	if (FUNL_T028 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T028 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M028_T3, "FP_ROAM_CASTLEMINE2_04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M028_T4, "FP_ROAM_CASTLEMINE2_04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M028_T5, "FP_ROAM_CASTLEMINE2_04");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M028_T6, "FP_ROAM_CASTLEMINE2_04");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M028_T7, "FP_ROAM_CASTLEMINE2_04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M028_T3, "FP_ROAM_CASTLEMINE2_04");
+	};
+};
+func void Fun_Platz029()   // FP_ROAM_CASTLEMINE2_04 (Original: Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M029_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M029_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M029_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M029_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M029_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M029_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T029 = 0;
+			return;
+		};
+	};
+	FUNL_T029 = FUNL_T029 + 1;
+	if (FUNL_T029 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T029 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M029_T3, "FP_ROAM_CASTLEMINE2_04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M029_T4, "FP_ROAM_CASTLEMINE2_04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M029_T5, "FP_ROAM_CASTLEMINE2_04");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M029_T6, "FP_ROAM_CASTLEMINE2_04");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M029_T7, "FP_ROAM_CASTLEMINE2_04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M029_T3, "FP_ROAM_CASTLEMINE2_04");
+	};
+};
+func void Fun_Platz030()   // FP_ROAM_CASTLEMINE2_05 (Original: Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M030_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M030_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M030_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M030_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M030_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M030_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T030 = 0;
+			return;
+		};
+	};
+	FUNL_T030 = FUNL_T030 + 1;
+	if (FUNL_T030 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T030 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M030_T3, "FP_ROAM_CASTLEMINE2_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M030_T4, "FP_ROAM_CASTLEMINE2_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M030_T5, "FP_ROAM_CASTLEMINE2_05");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M030_T6, "FP_ROAM_CASTLEMINE2_05");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M030_T7, "FP_ROAM_CASTLEMINE2_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M030_T3, "FP_ROAM_CASTLEMINE2_05");
+	};
+};
+func void Fun_Platz031()   // FP_ROAM_CASTLEMINE2_05 (Original: Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M031_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M031_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M031_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M031_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M031_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M031_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T031 = 0;
+			return;
+		};
+	};
+	FUNL_T031 = FUNL_T031 + 1;
+	if (FUNL_T031 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T031 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M031_T3, "FP_ROAM_CASTLEMINE2_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M031_T4, "FP_ROAM_CASTLEMINE2_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M031_T5, "FP_ROAM_CASTLEMINE2_05");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M031_T6, "FP_ROAM_CASTLEMINE2_05");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M031_T7, "FP_ROAM_CASTLEMINE2_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M031_T3, "FP_ROAM_CASTLEMINE2_05");
+	};
+};
+func void Fun_Platz032()   // FP_ROAM_CASTLEMINE2_06 (Original: Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M032_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M032_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M032_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M032_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M032_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M032_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T032 = 0;
+			return;
+		};
+	};
+	FUNL_T032 = FUNL_T032 + 1;
+	if (FUNL_T032 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T032 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M032_T3, "FP_ROAM_CASTLEMINE2_06");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M032_T4, "FP_ROAM_CASTLEMINE2_06");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M032_T5, "FP_ROAM_CASTLEMINE2_06");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M032_T6, "FP_ROAM_CASTLEMINE2_06");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M032_T7, "FP_ROAM_CASTLEMINE2_06");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M032_T3, "FP_ROAM_CASTLEMINE2_06");
+	};
+};
+func void Fun_Platz033()   // FP_ROAM_CASTLEMINE2_06 (Original: Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M033_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M033_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M033_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M033_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M033_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M033_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T033 = 0;
+			return;
+		};
+	};
+	FUNL_T033 = FUNL_T033 + 1;
+	if (FUNL_T033 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T033 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M033_T3, "FP_ROAM_CASTLEMINE2_06");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M033_T4, "FP_ROAM_CASTLEMINE2_06");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M033_T5, "FP_ROAM_CASTLEMINE2_06");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M033_T6, "FP_ROAM_CASTLEMINE2_06");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M033_T7, "FP_ROAM_CASTLEMINE2_06");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M033_T3, "FP_ROAM_CASTLEMINE2_06");
+	};
+};
+func void Fun_Platz034()   // FP_ROAM_CASTLEMINE2_07 (Original: Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M034_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M034_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M034_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M034_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M034_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M034_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T034 = 0;
+			return;
+		};
+	};
+	FUNL_T034 = FUNL_T034 + 1;
+	if (FUNL_T034 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T034 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M034_T3, "FP_ROAM_CASTLEMINE2_07");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M034_T4, "FP_ROAM_CASTLEMINE2_07");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M034_T5, "FP_ROAM_CASTLEMINE2_07");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M034_T6, "FP_ROAM_CASTLEMINE2_07");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M034_T7, "FP_ROAM_CASTLEMINE2_07");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M034_T3, "FP_ROAM_CASTLEMINE2_07");
+	};
+};
+func void Fun_Platz035()   // FP_ROAM_CASTLEMINE2_07 (Original: Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M035_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M035_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M035_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M035_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M035_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M035_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T035 = 0;
+			return;
+		};
+	};
+	FUNL_T035 = FUNL_T035 + 1;
+	if (FUNL_T035 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T035 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M035_T3, "FP_ROAM_CASTLEMINE2_07");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M035_T4, "FP_ROAM_CASTLEMINE2_07");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M035_T5, "FP_ROAM_CASTLEMINE2_07");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M035_T6, "FP_ROAM_CASTLEMINE2_07");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M035_T7, "FP_ROAM_CASTLEMINE2_07");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M035_T3, "FP_ROAM_CASTLEMINE2_07");
+	};
+};
+func void Fun_Platz036()   // FP_ROAM_CASTLEMINE2_09 (Original: Zombie01)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M036_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M036_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M036_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M036_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M036_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M036_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T036 = 0;
+			return;
+		};
+	};
+	FUNL_T036 = FUNL_T036 + 1;
+	if (FUNL_T036 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T036 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M036_T3, "FP_ROAM_CASTLEMINE2_09");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M036_T4, "FP_ROAM_CASTLEMINE2_09");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M036_T5, "FP_ROAM_CASTLEMINE2_09");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M036_T6, "FP_ROAM_CASTLEMINE2_09");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M036_T7, "FP_ROAM_CASTLEMINE2_09");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M036_T3, "FP_ROAM_CASTLEMINE2_09");
+	};
+};
+func void Fun_Platz037()   // FP_ROAM_CASTLEMINE2_09 (Original: Zombie01)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M037_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M037_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M037_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M037_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M037_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M037_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T037 = 0;
+			return;
+		};
+	};
+	FUNL_T037 = FUNL_T037 + 1;
+	if (FUNL_T037 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T037 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M037_T3, "FP_ROAM_CASTLEMINE2_09");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M037_T4, "FP_ROAM_CASTLEMINE2_09");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M037_T5, "FP_ROAM_CASTLEMINE2_09");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M037_T6, "FP_ROAM_CASTLEMINE2_09");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M037_T7, "FP_ROAM_CASTLEMINE2_09");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M037_T3, "FP_ROAM_CASTLEMINE2_09");
+	};
+};
+func void Fun_Platz038()   // FP_ROAM_CASTLEMINE2_10 (Original: Zombie02)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M038_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M038_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M038_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M038_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M038_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M038_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T038 = 0;
+			return;
+		};
+	};
+	FUNL_T038 = FUNL_T038 + 1;
+	if (FUNL_T038 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T038 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M038_T3, "FP_ROAM_CASTLEMINE2_10");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M038_T4, "FP_ROAM_CASTLEMINE2_10");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M038_T5, "FP_ROAM_CASTLEMINE2_10");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M038_T6, "FP_ROAM_CASTLEMINE2_10");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M038_T7, "FP_ROAM_CASTLEMINE2_10");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M038_T3, "FP_ROAM_CASTLEMINE2_10");
+	};
+};
+func void Fun_Platz039()   // FP_ROAM_CASTLEMINE2_10 (Original: Zombie02)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M039_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M039_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M039_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M039_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M039_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M039_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T039 = 0;
+			return;
+		};
+	};
+	FUNL_T039 = FUNL_T039 + 1;
+	if (FUNL_T039 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T039 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M039_T3, "FP_ROAM_CASTLEMINE2_10");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M039_T4, "FP_ROAM_CASTLEMINE2_10");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M039_T5, "FP_ROAM_CASTLEMINE2_10");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M039_T6, "FP_ROAM_CASTLEMINE2_10");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M039_T7, "FP_ROAM_CASTLEMINE2_10");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M039_T3, "FP_ROAM_CASTLEMINE2_10");
+	};
+};
+func void Fun_Platz040()   // FP_ROAM_CASTLEMINE2_11 (Original: Zombie03)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M040_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M040_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M040_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M040_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M040_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M040_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T040 = 0;
+			return;
+		};
+	};
+	FUNL_T040 = FUNL_T040 + 1;
+	if (FUNL_T040 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T040 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M040_T3, "FP_ROAM_CASTLEMINE2_11");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M040_T4, "FP_ROAM_CASTLEMINE2_11");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M040_T5, "FP_ROAM_CASTLEMINE2_11");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M040_T6, "FP_ROAM_CASTLEMINE2_11");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M040_T7, "FP_ROAM_CASTLEMINE2_11");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M040_T3, "FP_ROAM_CASTLEMINE2_11");
+	};
+};
+func void Fun_Platz041()   // FP_ROAM_CASTLEMINE2_11 (Original: Zombie03)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M041_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M041_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M041_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M041_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M041_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M041_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T041 = 0;
+			return;
+		};
+	};
+	FUNL_T041 = FUNL_T041 + 1;
+	if (FUNL_T041 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T041 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M041_T3, "FP_ROAM_CASTLEMINE2_11");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M041_T4, "FP_ROAM_CASTLEMINE2_11");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M041_T5, "FP_ROAM_CASTLEMINE2_11");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M041_T6, "FP_ROAM_CASTLEMINE2_11");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M041_T7, "FP_ROAM_CASTLEMINE2_11");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M041_T3, "FP_ROAM_CASTLEMINE2_11");
+	};
+};
+func void Fun_Platz042()   // FP_ROAM_CASTLEMINE2_12 (Original: Zombie04)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M042_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M042_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M042_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M042_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M042_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M042_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T042 = 0;
+			return;
+		};
+	};
+	FUNL_T042 = FUNL_T042 + 1;
+	if (FUNL_T042 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T042 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M042_T3, "FP_ROAM_CASTLEMINE2_12");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M042_T4, "FP_ROAM_CASTLEMINE2_12");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M042_T5, "FP_ROAM_CASTLEMINE2_12");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M042_T6, "FP_ROAM_CASTLEMINE2_12");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M042_T7, "FP_ROAM_CASTLEMINE2_12");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M042_T3, "FP_ROAM_CASTLEMINE2_12");
+	};
+};
+func void Fun_Platz043()   // FP_ROAM_CASTLEMINE2_12 (Original: Zombie04)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M043_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M043_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M043_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M043_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M043_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M043_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T043 = 0;
+			return;
+		};
+	};
+	FUNL_T043 = FUNL_T043 + 1;
+	if (FUNL_T043 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T043 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M043_T3, "FP_ROAM_CASTLEMINE2_12");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M043_T4, "FP_ROAM_CASTLEMINE2_12");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M043_T5, "FP_ROAM_CASTLEMINE2_12");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M043_T6, "FP_ROAM_CASTLEMINE2_12");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M043_T7, "FP_ROAM_CASTLEMINE2_12");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M043_T3, "FP_ROAM_CASTLEMINE2_12");
+	};
+};
+func void Fun_Platz044()   // FP_ROAM_CASTLEMINE2_13 (Original: Zombie01)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M044_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M044_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M044_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M044_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M044_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M044_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T044 = 0;
+			return;
+		};
+	};
+	FUNL_T044 = FUNL_T044 + 1;
+	if (FUNL_T044 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T044 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M044_T3, "FP_ROAM_CASTLEMINE2_13");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M044_T4, "FP_ROAM_CASTLEMINE2_13");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M044_T5, "FP_ROAM_CASTLEMINE2_13");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M044_T6, "FP_ROAM_CASTLEMINE2_13");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M044_T7, "FP_ROAM_CASTLEMINE2_13");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M044_T3, "FP_ROAM_CASTLEMINE2_13");
+	};
+};
+func void Fun_Platz045()   // FP_ROAM_CASTLEMINE2_13 (Original: Zombie01)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M045_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M045_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M045_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M045_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M045_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M045_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T045 = 0;
+			return;
+		};
+	};
+	FUNL_T045 = FUNL_T045 + 1;
+	if (FUNL_T045 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T045 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M045_T3, "FP_ROAM_CASTLEMINE2_13");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M045_T4, "FP_ROAM_CASTLEMINE2_13");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M045_T5, "FP_ROAM_CASTLEMINE2_13");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M045_T6, "FP_ROAM_CASTLEMINE2_13");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M045_T7, "FP_ROAM_CASTLEMINE2_13");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M045_T3, "FP_ROAM_CASTLEMINE2_13");
+	};
+};
+func void Fun_Platz046()   // FP_ROAM_NW_BIGFARMFORESTCAVE_01 (Original: Gobbo_Black)
 {
 	var C_NPC m;
 	var int t;
@@ -5641,76 +17443,76 @@ func void Fun_Platz08()   // FP_ROAM_NW_BIGFARMFORESTCAVE_01 (Original: Gobbo_Bl
 	};
 	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M08_T2);
+		m = Hlp_GetNpc(FUN_M046_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M08_T3);
+		m = Hlp_GetNpc(FUN_M046_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M08_T4);
+		m = Hlp_GetNpc(FUN_M046_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M08_T5);
+		m = Hlp_GetNpc(FUN_M046_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M08_T6);
+		m = Hlp_GetNpc(FUN_M046_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M08_T7);
+		m = Hlp_GetNpc(FUN_M046_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M08_T2);
+		m = Hlp_GetNpc(FUN_M046_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T08 = 0;
+			FUNL_T046 = 0;
 			return;
 		};
 	};
-	FUNL_T08 = FUNL_T08 + 1;
-	if (FUNL_T08 < FUN_RESPAWN_TAKTE)
+	FUNL_T046 = FUNL_T046 + 1;
+	if (FUNL_T046 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T08 = 0;
+	FUNL_T046 = 0;
 	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M08_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
+		Wld_InsertNpc(FUN_M046_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M08_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
+		Wld_InsertNpc(FUN_M046_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M08_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
+		Wld_InsertNpc(FUN_M046_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M08_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
+		Wld_InsertNpc(FUN_M046_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M08_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
+		Wld_InsertNpc(FUN_M046_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M08_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
+		Wld_InsertNpc(FUN_M046_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M08_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
+		Wld_InsertNpc(FUN_M046_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
 	};
 };
-func void Fun_Platz09()   // FP_ROAM_NW_BIGFARMFORESTCAVE_04 (Original: Gobbo_Black)
+func void Fun_Platz047()   // FP_ROAM_NW_BIGFARMFORESTCAVE_01 (Original: Gobbo_Black)
 {
 	var C_NPC m;
 	var int t;
@@ -5721,76 +17523,220 @@ func void Fun_Platz09()   // FP_ROAM_NW_BIGFARMFORESTCAVE_04 (Original: Gobbo_Bl
 	};
 	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M09_T2);
+		m = Hlp_GetNpc(FUN_M047_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M09_T3);
+		m = Hlp_GetNpc(FUN_M047_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M09_T4);
+		m = Hlp_GetNpc(FUN_M047_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M09_T5);
+		m = Hlp_GetNpc(FUN_M047_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M09_T6);
+		m = Hlp_GetNpc(FUN_M047_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M09_T7);
+		m = Hlp_GetNpc(FUN_M047_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M09_T2);
+		m = Hlp_GetNpc(FUN_M047_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T09 = 0;
+			FUNL_T047 = 0;
 			return;
 		};
 	};
-	FUNL_T09 = FUNL_T09 + 1;
-	if (FUNL_T09 < FUN_RESPAWN_TAKTE)
+	FUNL_T047 = FUNL_T047 + 1;
+	if (FUNL_T047 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T09 = 0;
+	FUNL_T047 = 0;
 	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M09_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
+		Wld_InsertNpc(FUN_M047_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M09_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
+		Wld_InsertNpc(FUN_M047_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M09_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
+		Wld_InsertNpc(FUN_M047_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M09_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
+		Wld_InsertNpc(FUN_M047_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M09_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
+		Wld_InsertNpc(FUN_M047_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M09_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
+		Wld_InsertNpc(FUN_M047_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M09_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
+		Wld_InsertNpc(FUN_M047_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
 	};
 };
-func void Fun_Platz10()   // FP_ROAM_NW_BIGFARMFORESTCAVE_08 (Original: Gobbo_Green)
+func void Fun_Platz048()   // FP_ROAM_NW_BIGFARMFORESTCAVE_02 (Original: Gobbo_Warrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M048_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M048_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M048_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M048_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M048_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M048_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T048 = 0;
+			return;
+		};
+	};
+	FUNL_T048 = FUNL_T048 + 1;
+	if (FUNL_T048 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T048 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M048_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M048_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M048_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_02");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M048_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_02");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M048_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M048_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_02");
+	};
+};
+func void Fun_Platz049()   // FP_ROAM_NW_BIGFARMFORESTCAVE_02 (Original: Gobbo_Warrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M049_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M049_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M049_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M049_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M049_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M049_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T049 = 0;
+			return;
+		};
+	};
+	FUNL_T049 = FUNL_T049 + 1;
+	if (FUNL_T049 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T049 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M049_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M049_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M049_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_02");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M049_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_02");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M049_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M049_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_02");
+	};
+};
+func void Fun_Platz050()   // FP_ROAM_NW_BIGFARMFORESTCAVE_03 (Original: Gobbo_Black)
 {
 	var C_NPC m;
 	var int t;
@@ -5801,380 +17747,76 @@ func void Fun_Platz10()   // FP_ROAM_NW_BIGFARMFORESTCAVE_08 (Original: Gobbo_Gr
 	};
 	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M10_T2);
+		m = Hlp_GetNpc(FUN_M050_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M10_T3);
+		m = Hlp_GetNpc(FUN_M050_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M10_T4);
+		m = Hlp_GetNpc(FUN_M050_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M10_T5);
+		m = Hlp_GetNpc(FUN_M050_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M10_T6);
+		m = Hlp_GetNpc(FUN_M050_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M10_T7);
+		m = Hlp_GetNpc(FUN_M050_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M10_T2);
+		m = Hlp_GetNpc(FUN_M050_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T10 = 0;
+			FUNL_T050 = 0;
 			return;
 		};
 	};
-	FUNL_T10 = FUNL_T10 + 1;
-	if (FUNL_T10 < FUN_RESPAWN_TAKTE)
+	FUNL_T050 = FUNL_T050 + 1;
+	if (FUNL_T050 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T10 = 0;
+	FUNL_T050 = 0;
 	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M10_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+		Wld_InsertNpc(FUN_M050_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_03");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M10_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+		Wld_InsertNpc(FUN_M050_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_03");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M10_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+		Wld_InsertNpc(FUN_M050_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_03");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M10_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+		Wld_InsertNpc(FUN_M050_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_03");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M10_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+		Wld_InsertNpc(FUN_M050_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_03");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M10_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+		Wld_InsertNpc(FUN_M050_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_03");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M10_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+		Wld_InsertNpc(FUN_M050_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_03");
 	};
 };
-func void Fun_Platz11()   // FP_ROAM_NW_TROLLAREA_RUINS_05 (Original: Snapper)
-{
-	var C_NPC m;
-	var int t;
-	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7)
-	{
-		t = 7;
-	};
-	if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M11_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M11_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M11_T5);
-	}
-	else if (t == 6)
-	{
-		m = Hlp_GetNpc(FUN_M11_T6);
-	}
-	else if (t == 7)
-	{
-		m = Hlp_GetNpc(FUN_M11_T7);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M11_T3);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T11 = 0;
-			return;
-		};
-	};
-	FUNL_T11 = FUNL_T11 + 1;
-	if (FUNL_T11 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T11 = 0;
-	if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M11_T3, "FP_ROAM_NW_TROLLAREA_RUINS_05");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M11_T4, "FP_ROAM_NW_TROLLAREA_RUINS_05");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M11_T5, "FP_ROAM_NW_TROLLAREA_RUINS_05");
-	}
-	else if (t == 6)
-	{
-		Wld_InsertNpc(FUN_M11_T6, "FP_ROAM_NW_TROLLAREA_RUINS_05");
-	}
-	else if (t == 7)
-	{
-		Wld_InsertNpc(FUN_M11_T7, "FP_ROAM_NW_TROLLAREA_RUINS_05");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M11_T3, "FP_ROAM_NW_TROLLAREA_RUINS_05");
-	};
-};
-func void Fun_Platz12()   // FP_ROAM_NW_TROLLAREA_RUINS_14 (Original: Giant_Rat)
-{
-	var C_NPC m;
-	var int t;
-	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5)
-	{
-		t = 5;
-	};
-	if (t == 0)
-	{
-		m = Hlp_GetNpc(FUN_M12_T0);
-	}
-	else if (t == 1)
-	{
-		m = Hlp_GetNpc(FUN_M12_T1);
-	}
-	else if (t == 2)
-	{
-		m = Hlp_GetNpc(FUN_M12_T2);
-	}
-	else if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M12_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M12_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M12_T5);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M12_T0);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T12 = 0;
-			return;
-		};
-	};
-	FUNL_T12 = FUNL_T12 + 1;
-	if (FUNL_T12 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T12 = 0;
-	if (t == 0)
-	{
-		Wld_InsertNpc(FUN_M12_T0, "FP_ROAM_NW_TROLLAREA_RUINS_14");
-	}
-	else if (t == 1)
-	{
-		Wld_InsertNpc(FUN_M12_T1, "FP_ROAM_NW_TROLLAREA_RUINS_14");
-	}
-	else if (t == 2)
-	{
-		Wld_InsertNpc(FUN_M12_T2, "FP_ROAM_NW_TROLLAREA_RUINS_14");
-	}
-	else if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M12_T3, "FP_ROAM_NW_TROLLAREA_RUINS_14");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M12_T4, "FP_ROAM_NW_TROLLAREA_RUINS_14");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M12_T5, "FP_ROAM_NW_TROLLAREA_RUINS_14");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M12_T0, "FP_ROAM_NW_TROLLAREA_RUINS_14");
-	};
-};
-func void Fun_Platz13()   // FP_ROAM_NW_TROLLAREA_RUINS_22 (Original: Bloodfly)
-{
-	var C_NPC m;
-	var int t;
-	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5)
-	{
-		t = 5;
-	};
-	if (t == 0)
-	{
-		m = Hlp_GetNpc(FUN_M13_T0);
-	}
-	else if (t == 1)
-	{
-		m = Hlp_GetNpc(FUN_M13_T1);
-	}
-	else if (t == 2)
-	{
-		m = Hlp_GetNpc(FUN_M13_T2);
-	}
-	else if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M13_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M13_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M13_T5);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M13_T0);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T13 = 0;
-			return;
-		};
-	};
-	FUNL_T13 = FUNL_T13 + 1;
-	if (FUNL_T13 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T13 = 0;
-	if (t == 0)
-	{
-		Wld_InsertNpc(FUN_M13_T0, "FP_ROAM_NW_TROLLAREA_RUINS_22");
-	}
-	else if (t == 1)
-	{
-		Wld_InsertNpc(FUN_M13_T1, "FP_ROAM_NW_TROLLAREA_RUINS_22");
-	}
-	else if (t == 2)
-	{
-		Wld_InsertNpc(FUN_M13_T2, "FP_ROAM_NW_TROLLAREA_RUINS_22");
-	}
-	else if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M13_T3, "FP_ROAM_NW_TROLLAREA_RUINS_22");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M13_T4, "FP_ROAM_NW_TROLLAREA_RUINS_22");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M13_T5, "FP_ROAM_NW_TROLLAREA_RUINS_22");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M13_T0, "FP_ROAM_NW_TROLLAREA_RUINS_22");
-	};
-};
-func void Fun_Platz14()   // FP_ROAM_NW_TROLLAREA_RUINS_29 (Original: Waran)
-{
-	var C_NPC m;
-	var int t;
-	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7)
-	{
-		t = 7;
-	};
-	if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M14_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M14_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M14_T5);
-	}
-	else if (t == 6)
-	{
-		m = Hlp_GetNpc(FUN_M14_T6);
-	}
-	else if (t == 7)
-	{
-		m = Hlp_GetNpc(FUN_M14_T7);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M14_T3);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T14 = 0;
-			return;
-		};
-	};
-	FUNL_T14 = FUNL_T14 + 1;
-	if (FUNL_T14 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T14 = 0;
-	if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M14_T3, "FP_ROAM_NW_TROLLAREA_RUINS_29");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M14_T4, "FP_ROAM_NW_TROLLAREA_RUINS_29");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M14_T5, "FP_ROAM_NW_TROLLAREA_RUINS_29");
-	}
-	else if (t == 6)
-	{
-		Wld_InsertNpc(FUN_M14_T6, "FP_ROAM_NW_TROLLAREA_RUINS_29");
-	}
-	else if (t == 7)
-	{
-		Wld_InsertNpc(FUN_M14_T7, "FP_ROAM_NW_TROLLAREA_RUINS_29");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M14_T3, "FP_ROAM_NW_TROLLAREA_RUINS_29");
-	};
-};
-func void Fun_Platz15()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02 (Original: Gobbo_Black)
+func void Fun_Platz051()   // FP_ROAM_NW_BIGFARMFORESTCAVE_03 (Original: Gobbo_Black)
 {
 	var C_NPC m;
 	var int t;
@@ -6185,76 +17827,76 @@ func void Fun_Platz15()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02 (Original: Gobbo
 	};
 	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M15_T2);
+		m = Hlp_GetNpc(FUN_M051_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M15_T3);
+		m = Hlp_GetNpc(FUN_M051_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M15_T4);
+		m = Hlp_GetNpc(FUN_M051_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M15_T5);
+		m = Hlp_GetNpc(FUN_M051_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M15_T6);
+		m = Hlp_GetNpc(FUN_M051_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M15_T7);
+		m = Hlp_GetNpc(FUN_M051_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M15_T2);
+		m = Hlp_GetNpc(FUN_M051_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T15 = 0;
+			FUNL_T051 = 0;
 			return;
 		};
 	};
-	FUNL_T15 = FUNL_T15 + 1;
-	if (FUNL_T15 < FUN_RESPAWN_TAKTE)
+	FUNL_T051 = FUNL_T051 + 1;
+	if (FUNL_T051 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T15 = 0;
+	FUNL_T051 = 0;
 	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M15_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
+		Wld_InsertNpc(FUN_M051_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_03");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M15_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
+		Wld_InsertNpc(FUN_M051_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_03");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M15_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
+		Wld_InsertNpc(FUN_M051_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_03");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M15_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
+		Wld_InsertNpc(FUN_M051_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_03");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M15_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
+		Wld_InsertNpc(FUN_M051_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_03");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M15_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
+		Wld_InsertNpc(FUN_M051_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_03");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M15_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
+		Wld_InsertNpc(FUN_M051_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_03");
 	};
 };
-func void Fun_Platz16()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06 (Original: Gobbo_Black)
+func void Fun_Platz052()   // FP_ROAM_NW_BIGFARMFORESTCAVE_04 (Original: Gobbo_Black)
 {
 	var C_NPC m;
 	var int t;
@@ -6265,148 +17907,76 @@ func void Fun_Platz16()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06 (Original: Gobbo
 	};
 	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M16_T2);
+		m = Hlp_GetNpc(FUN_M052_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M16_T3);
+		m = Hlp_GetNpc(FUN_M052_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M16_T4);
+		m = Hlp_GetNpc(FUN_M052_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M16_T5);
+		m = Hlp_GetNpc(FUN_M052_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M16_T6);
+		m = Hlp_GetNpc(FUN_M052_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M16_T7);
+		m = Hlp_GetNpc(FUN_M052_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M16_T2);
+		m = Hlp_GetNpc(FUN_M052_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T16 = 0;
+			FUNL_T052 = 0;
 			return;
 		};
 	};
-	FUNL_T16 = FUNL_T16 + 1;
-	if (FUNL_T16 < FUN_RESPAWN_TAKTE)
+	FUNL_T052 = FUNL_T052 + 1;
+	if (FUNL_T052 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T16 = 0;
+	FUNL_T052 = 0;
 	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M16_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+		Wld_InsertNpc(FUN_M052_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M16_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+		Wld_InsertNpc(FUN_M052_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M16_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+		Wld_InsertNpc(FUN_M052_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M16_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+		Wld_InsertNpc(FUN_M052_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M16_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+		Wld_InsertNpc(FUN_M052_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M16_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+		Wld_InsertNpc(FUN_M052_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M16_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+		Wld_InsertNpc(FUN_M052_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
 	};
 };
-func void Fun_Platz17()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10 (Original: Gobbo_Warrior)
-{
-	var C_NPC m;
-	var int t;
-	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7)
-	{
-		t = 7;
-	};
-	if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M17_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M17_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M17_T5);
-	}
-	else if (t == 6)
-	{
-		m = Hlp_GetNpc(FUN_M17_T6);
-	}
-	else if (t == 7)
-	{
-		m = Hlp_GetNpc(FUN_M17_T7);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M17_T3);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T17 = 0;
-			return;
-		};
-	};
-	FUNL_T17 = FUNL_T17 + 1;
-	if (FUNL_T17 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T17 = 0;
-	if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M17_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M17_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M17_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
-	}
-	else if (t == 6)
-	{
-		Wld_InsertNpc(FUN_M17_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
-	}
-	else if (t == 7)
-	{
-		Wld_InsertNpc(FUN_M17_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M17_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
-	};
-};
-func void Fun_Platz18()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14 (Original: Gobbo_Black)
+func void Fun_Platz053()   // FP_ROAM_NW_BIGFARMFORESTCAVE_04 (Original: Gobbo_Black)
 {
 	var C_NPC m;
 	var int t;
@@ -6417,460 +17987,716 @@ func void Fun_Platz18()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14 (Original: Gobbo
 	};
 	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M18_T2);
+		m = Hlp_GetNpc(FUN_M053_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M18_T3);
+		m = Hlp_GetNpc(FUN_M053_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M18_T4);
+		m = Hlp_GetNpc(FUN_M053_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M18_T5);
+		m = Hlp_GetNpc(FUN_M053_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M18_T6);
+		m = Hlp_GetNpc(FUN_M053_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M18_T7);
+		m = Hlp_GetNpc(FUN_M053_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M18_T2);
+		m = Hlp_GetNpc(FUN_M053_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T18 = 0;
+			FUNL_T053 = 0;
 			return;
 		};
 	};
-	FUNL_T18 = FUNL_T18 + 1;
-	if (FUNL_T18 < FUN_RESPAWN_TAKTE)
+	FUNL_T053 = FUNL_T053 + 1;
+	if (FUNL_T053 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T18 = 0;
+	FUNL_T053 = 0;
 	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M18_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+		Wld_InsertNpc(FUN_M053_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M18_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+		Wld_InsertNpc(FUN_M053_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M18_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+		Wld_InsertNpc(FUN_M053_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M18_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+		Wld_InsertNpc(FUN_M053_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M18_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+		Wld_InsertNpc(FUN_M053_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M18_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+		Wld_InsertNpc(FUN_M053_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M18_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+		Wld_InsertNpc(FUN_M053_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
 	};
 };
-func void Fun_Platz19()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21 (Original: Minecrawler)
+func void Fun_Platz054()   // FP_ROAM_NW_BIGFARMFORESTCAVE_05 (Original: Gobbo_Green)
 {
 	var C_NPC m;
 	var int t;
-	t = 3 + Fun_KapitelNr() - 1;
+	t = 2 + Fun_KapitelNr() - 1;
 	if (t > 7)
 	{
 		t = 7;
 	};
-	if (t == 3)
+	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M19_T3);
+		m = Hlp_GetNpc(FUN_M054_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M054_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M19_T4);
+		m = Hlp_GetNpc(FUN_M054_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M19_T5);
+		m = Hlp_GetNpc(FUN_M054_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M19_T6);
+		m = Hlp_GetNpc(FUN_M054_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M19_T7);
+		m = Hlp_GetNpc(FUN_M054_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M19_T3);
+		m = Hlp_GetNpc(FUN_M054_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T19 = 0;
+			FUNL_T054 = 0;
 			return;
 		};
 	};
-	FUNL_T19 = FUNL_T19 + 1;
-	if (FUNL_T19 < FUN_RESPAWN_TAKTE)
+	FUNL_T054 = FUNL_T054 + 1;
+	if (FUNL_T054 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T19 = 0;
-	if (t == 3)
+	FUNL_T054 = 0;
+	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M19_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+		Wld_InsertNpc(FUN_M054_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_05");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M054_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_05");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M19_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+		Wld_InsertNpc(FUN_M054_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_05");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M19_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+		Wld_InsertNpc(FUN_M054_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_05");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M19_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+		Wld_InsertNpc(FUN_M054_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_05");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M19_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+		Wld_InsertNpc(FUN_M054_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_05");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M19_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+		Wld_InsertNpc(FUN_M054_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_05");
 	};
 };
-func void Fun_Platz20()   // FP_ROAM_RITUALFOREST_CAVE_05 (Original: Giant_Rat)
+func void Fun_Platz055()   // FP_ROAM_NW_BIGFARMFORESTCAVE_05 (Original: Gobbo_Green)
 {
 	var C_NPC m;
 	var int t;
-	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5)
-	{
-		t = 5;
-	};
-	if (t == 0)
-	{
-		m = Hlp_GetNpc(FUN_M20_T0);
-	}
-	else if (t == 1)
-	{
-		m = Hlp_GetNpc(FUN_M20_T1);
-	}
-	else if (t == 2)
-	{
-		m = Hlp_GetNpc(FUN_M20_T2);
-	}
-	else if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M20_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M20_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M20_T5);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M20_T0);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T20 = 0;
-			return;
-		};
-	};
-	FUNL_T20 = FUNL_T20 + 1;
-	if (FUNL_T20 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T20 = 0;
-	if (t == 0)
-	{
-		Wld_InsertNpc(FUN_M20_T0, "FP_ROAM_RITUALFOREST_CAVE_05");
-	}
-	else if (t == 1)
-	{
-		Wld_InsertNpc(FUN_M20_T1, "FP_ROAM_RITUALFOREST_CAVE_05");
-	}
-	else if (t == 2)
-	{
-		Wld_InsertNpc(FUN_M20_T2, "FP_ROAM_RITUALFOREST_CAVE_05");
-	}
-	else if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M20_T3, "FP_ROAM_RITUALFOREST_CAVE_05");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M20_T4, "FP_ROAM_RITUALFOREST_CAVE_05");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M20_T5, "FP_ROAM_RITUALFOREST_CAVE_05");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M20_T0, "FP_ROAM_RITUALFOREST_CAVE_05");
-	};
-};
-func void Fun_Platz21()   // FP_ROAM_RITUALFOREST_CAVE_09 (Original: Skeleton)
-{
-	var C_NPC m;
-	var int t;
-	t = 3 + Fun_KapitelNr() - 1;
+	t = 2 + Fun_KapitelNr() - 1;
 	if (t > 7)
 	{
 		t = 7;
 	};
-	if (t == 3)
+	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M21_T3);
+		m = Hlp_GetNpc(FUN_M055_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M055_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M21_T4);
+		m = Hlp_GetNpc(FUN_M055_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M21_T5);
+		m = Hlp_GetNpc(FUN_M055_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M21_T6);
+		m = Hlp_GetNpc(FUN_M055_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M21_T7);
+		m = Hlp_GetNpc(FUN_M055_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M21_T3);
+		m = Hlp_GetNpc(FUN_M055_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T21 = 0;
+			FUNL_T055 = 0;
 			return;
 		};
 	};
-	FUNL_T21 = FUNL_T21 + 1;
-	if (FUNL_T21 < FUN_RESPAWN_TAKTE)
+	FUNL_T055 = FUNL_T055 + 1;
+	if (FUNL_T055 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T21 = 0;
-	if (t == 3)
+	FUNL_T055 = 0;
+	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M21_T3, "FP_ROAM_RITUALFOREST_CAVE_09");
+		Wld_InsertNpc(FUN_M055_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_05");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M055_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_05");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M21_T4, "FP_ROAM_RITUALFOREST_CAVE_09");
+		Wld_InsertNpc(FUN_M055_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_05");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M21_T5, "FP_ROAM_RITUALFOREST_CAVE_09");
+		Wld_InsertNpc(FUN_M055_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_05");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M21_T6, "FP_ROAM_RITUALFOREST_CAVE_09");
+		Wld_InsertNpc(FUN_M055_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_05");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M21_T7, "FP_ROAM_RITUALFOREST_CAVE_09");
+		Wld_InsertNpc(FUN_M055_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_05");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M21_T3, "FP_ROAM_RITUALFOREST_CAVE_09");
+		Wld_InsertNpc(FUN_M055_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_05");
 	};
 };
-func void Fun_Platz22()   // FP_ROAM_TROLLAREA_SEA_01 (Original: Bloodfly)
+func void Fun_Platz056()   // FP_ROAM_NW_BIGFARMFORESTCAVE_07 (Original: Gobbo_Green)
 {
 	var C_NPC m;
 	var int t;
-	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5)
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
 	{
-		t = 5;
+		t = 7;
 	};
-	if (t == 0)
+	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M22_T0);
-	}
-	else if (t == 1)
-	{
-		m = Hlp_GetNpc(FUN_M22_T1);
-	}
-	else if (t == 2)
-	{
-		m = Hlp_GetNpc(FUN_M22_T2);
+		m = Hlp_GetNpc(FUN_M056_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M22_T3);
+		m = Hlp_GetNpc(FUN_M056_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M22_T4);
+		m = Hlp_GetNpc(FUN_M056_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M22_T5);
+		m = Hlp_GetNpc(FUN_M056_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M056_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M056_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M22_T0);
+		m = Hlp_GetNpc(FUN_M056_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T22 = 0;
+			FUNL_T056 = 0;
 			return;
 		};
 	};
-	FUNL_T22 = FUNL_T22 + 1;
-	if (FUNL_T22 < FUN_RESPAWN_TAKTE)
+	FUNL_T056 = FUNL_T056 + 1;
+	if (FUNL_T056 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T22 = 0;
-	if (t == 0)
+	FUNL_T056 = 0;
+	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M22_T0, "FP_ROAM_TROLLAREA_SEA_01");
-	}
-	else if (t == 1)
-	{
-		Wld_InsertNpc(FUN_M22_T1, "FP_ROAM_TROLLAREA_SEA_01");
-	}
-	else if (t == 2)
-	{
-		Wld_InsertNpc(FUN_M22_T2, "FP_ROAM_TROLLAREA_SEA_01");
+		Wld_InsertNpc(FUN_M056_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_07");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M22_T3, "FP_ROAM_TROLLAREA_SEA_01");
+		Wld_InsertNpc(FUN_M056_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_07");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M22_T4, "FP_ROAM_TROLLAREA_SEA_01");
+		Wld_InsertNpc(FUN_M056_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_07");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M22_T5, "FP_ROAM_TROLLAREA_SEA_01");
+		Wld_InsertNpc(FUN_M056_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_07");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M056_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_07");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M056_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_07");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M22_T0, "FP_ROAM_TROLLAREA_SEA_01");
+		Wld_InsertNpc(FUN_M056_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_07");
 	};
 };
-func void Fun_Platz23()   // FP_ROAM_TROLLAREA_SEA_04 (Original: Bloodfly)
+func void Fun_Platz057()   // FP_ROAM_NW_BIGFARMFORESTCAVE_07 (Original: Gobbo_Green)
 {
 	var C_NPC m;
 	var int t;
-	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5)
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
 	{
-		t = 5;
+		t = 7;
 	};
-	if (t == 0)
+	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M23_T0);
-	}
-	else if (t == 1)
-	{
-		m = Hlp_GetNpc(FUN_M23_T1);
-	}
-	else if (t == 2)
-	{
-		m = Hlp_GetNpc(FUN_M23_T2);
+		m = Hlp_GetNpc(FUN_M057_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M23_T3);
+		m = Hlp_GetNpc(FUN_M057_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M23_T4);
+		m = Hlp_GetNpc(FUN_M057_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M23_T5);
+		m = Hlp_GetNpc(FUN_M057_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M057_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M057_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M23_T0);
+		m = Hlp_GetNpc(FUN_M057_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T23 = 0;
+			FUNL_T057 = 0;
 			return;
 		};
 	};
-	FUNL_T23 = FUNL_T23 + 1;
-	if (FUNL_T23 < FUN_RESPAWN_TAKTE)
+	FUNL_T057 = FUNL_T057 + 1;
+	if (FUNL_T057 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T23 = 0;
-	if (t == 0)
+	FUNL_T057 = 0;
+	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M23_T0, "FP_ROAM_TROLLAREA_SEA_04");
-	}
-	else if (t == 1)
-	{
-		Wld_InsertNpc(FUN_M23_T1, "FP_ROAM_TROLLAREA_SEA_04");
-	}
-	else if (t == 2)
-	{
-		Wld_InsertNpc(FUN_M23_T2, "FP_ROAM_TROLLAREA_SEA_04");
+		Wld_InsertNpc(FUN_M057_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_07");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M23_T3, "FP_ROAM_TROLLAREA_SEA_04");
+		Wld_InsertNpc(FUN_M057_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_07");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M23_T4, "FP_ROAM_TROLLAREA_SEA_04");
+		Wld_InsertNpc(FUN_M057_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_07");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M23_T5, "FP_ROAM_TROLLAREA_SEA_04");
+		Wld_InsertNpc(FUN_M057_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_07");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M057_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_07");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M057_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_07");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M23_T0, "FP_ROAM_TROLLAREA_SEA_04");
+		Wld_InsertNpc(FUN_M057_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_07");
 	};
 };
-func void Fun_Platz24()   // NW_BIGFARM_FOREST_02 (Original: Giant_Bug)
+func void Fun_Platz058()   // FP_ROAM_NW_BIGFARMFORESTCAVE_08 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M058_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M058_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M058_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M058_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M058_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M058_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M058_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T058 = 0;
+			return;
+		};
+	};
+	FUNL_T058 = FUNL_T058 + 1;
+	if (FUNL_T058 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T058 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M058_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M058_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M058_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M058_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M058_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M058_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M058_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	};
+};
+func void Fun_Platz059()   // FP_ROAM_NW_BIGFARMFORESTCAVE_08 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M059_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M059_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M059_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M059_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M059_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M059_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M059_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T059 = 0;
+			return;
+		};
+	};
+	FUNL_T059 = FUNL_T059 + 1;
+	if (FUNL_T059 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T059 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M059_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M059_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M059_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M059_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M059_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M059_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M059_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	};
+};
+func void Fun_Platz060()   // FP_ROAM_NW_BIGFARMFORESTCAVE_10 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M060_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M060_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M060_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M060_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M060_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M060_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M060_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T060 = 0;
+			return;
+		};
+	};
+	FUNL_T060 = FUNL_T060 + 1;
+	if (FUNL_T060 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T060 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M060_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_10");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M060_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_10");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M060_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_10");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M060_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_10");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M060_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_10");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M060_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_10");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M060_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_10");
+	};
+};
+func void Fun_Platz061()   // FP_ROAM_NW_BIGFARMFORESTCAVE_10 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M061_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M061_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M061_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M061_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M061_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M061_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M061_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T061 = 0;
+			return;
+		};
+	};
+	FUNL_T061 = FUNL_T061 + 1;
+	if (FUNL_T061 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T061 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M061_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_10");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M061_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_10");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M061_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_10");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M061_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_10");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M061_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_10");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M061_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_10");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M061_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_10");
+	};
+};
+func void Fun_Platz062()   // FP_ROAM_NW_TROLLAREA_RUINS_01 (Original: Giant_Bug)
 {
 	var C_NPC m;
 	var int t;
@@ -6881,76 +18707,76 @@ func void Fun_Platz24()   // NW_BIGFARM_FOREST_02 (Original: Giant_Bug)
 	};
 	if (t == 1)
 	{
-		m = Hlp_GetNpc(FUN_M24_T1);
+		m = Hlp_GetNpc(FUN_M062_T1);
 	}
 	else if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M24_T2);
+		m = Hlp_GetNpc(FUN_M062_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M24_T3);
+		m = Hlp_GetNpc(FUN_M062_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M24_T4);
+		m = Hlp_GetNpc(FUN_M062_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M24_T5);
+		m = Hlp_GetNpc(FUN_M062_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M24_T6);
+		m = Hlp_GetNpc(FUN_M062_T6);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M24_T1);
+		m = Hlp_GetNpc(FUN_M062_T1);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T24 = 0;
+			FUNL_T062 = 0;
 			return;
 		};
 	};
-	FUNL_T24 = FUNL_T24 + 1;
-	if (FUNL_T24 < FUN_RESPAWN_TAKTE)
+	FUNL_T062 = FUNL_T062 + 1;
+	if (FUNL_T062 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T24 = 0;
+	FUNL_T062 = 0;
 	if (t == 1)
 	{
-		Wld_InsertNpc(FUN_M24_T1, "NW_BIGFARM_FOREST_02");
+		Wld_InsertNpc(FUN_M062_T1, "FP_ROAM_NW_TROLLAREA_RUINS_01");
 	}
 	else if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M24_T2, "NW_BIGFARM_FOREST_02");
+		Wld_InsertNpc(FUN_M062_T2, "FP_ROAM_NW_TROLLAREA_RUINS_01");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M24_T3, "NW_BIGFARM_FOREST_02");
+		Wld_InsertNpc(FUN_M062_T3, "FP_ROAM_NW_TROLLAREA_RUINS_01");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M24_T4, "NW_BIGFARM_FOREST_02");
+		Wld_InsertNpc(FUN_M062_T4, "FP_ROAM_NW_TROLLAREA_RUINS_01");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M24_T5, "NW_BIGFARM_FOREST_02");
+		Wld_InsertNpc(FUN_M062_T5, "FP_ROAM_NW_TROLLAREA_RUINS_01");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M24_T6, "NW_BIGFARM_FOREST_02");
+		Wld_InsertNpc(FUN_M062_T6, "FP_ROAM_NW_TROLLAREA_RUINS_01");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M24_T1, "NW_BIGFARM_FOREST_02");
+		Wld_InsertNpc(FUN_M062_T1, "FP_ROAM_NW_TROLLAREA_RUINS_01");
 	};
 };
-func void Fun_Platz25()   // NW_BIGFARM_LAKE_03_MOVEMENT (Original: Keiler)
+func void Fun_Platz063()   // FP_ROAM_NW_TROLLAREA_RUINS_01 (Original: Giant_Bug)
 {
 	var C_NPC m;
 	var int t;
@@ -6961,76 +18787,508 @@ func void Fun_Platz25()   // NW_BIGFARM_LAKE_03_MOVEMENT (Original: Keiler)
 	};
 	if (t == 1)
 	{
-		m = Hlp_GetNpc(FUN_M25_T1);
+		m = Hlp_GetNpc(FUN_M063_T1);
 	}
 	else if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M25_T2);
+		m = Hlp_GetNpc(FUN_M063_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M25_T3);
+		m = Hlp_GetNpc(FUN_M063_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M25_T4);
+		m = Hlp_GetNpc(FUN_M063_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M25_T5);
+		m = Hlp_GetNpc(FUN_M063_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M25_T6);
+		m = Hlp_GetNpc(FUN_M063_T6);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M25_T1);
+		m = Hlp_GetNpc(FUN_M063_T1);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T25 = 0;
+			FUNL_T063 = 0;
 			return;
 		};
 	};
-	FUNL_T25 = FUNL_T25 + 1;
-	if (FUNL_T25 < FUN_RESPAWN_TAKTE)
+	FUNL_T063 = FUNL_T063 + 1;
+	if (FUNL_T063 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T25 = 0;
+	FUNL_T063 = 0;
 	if (t == 1)
 	{
-		Wld_InsertNpc(FUN_M25_T1, "NW_BIGFARM_LAKE_03_MOVEMENT");
+		Wld_InsertNpc(FUN_M063_T1, "FP_ROAM_NW_TROLLAREA_RUINS_01");
 	}
 	else if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M25_T2, "NW_BIGFARM_LAKE_03_MOVEMENT");
+		Wld_InsertNpc(FUN_M063_T2, "FP_ROAM_NW_TROLLAREA_RUINS_01");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M25_T3, "NW_BIGFARM_LAKE_03_MOVEMENT");
+		Wld_InsertNpc(FUN_M063_T3, "FP_ROAM_NW_TROLLAREA_RUINS_01");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M25_T4, "NW_BIGFARM_LAKE_03_MOVEMENT");
+		Wld_InsertNpc(FUN_M063_T4, "FP_ROAM_NW_TROLLAREA_RUINS_01");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M25_T5, "NW_BIGFARM_LAKE_03_MOVEMENT");
+		Wld_InsertNpc(FUN_M063_T5, "FP_ROAM_NW_TROLLAREA_RUINS_01");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M25_T6, "NW_BIGFARM_LAKE_03_MOVEMENT");
+		Wld_InsertNpc(FUN_M063_T6, "FP_ROAM_NW_TROLLAREA_RUINS_01");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M25_T1, "NW_BIGFARM_LAKE_03_MOVEMENT");
+		Wld_InsertNpc(FUN_M063_T1, "FP_ROAM_NW_TROLLAREA_RUINS_01");
 	};
 };
-func void Fun_Platz26()   // NW_BIGFARM_LAKE_MONSTER_BLOODFLY (Original: Bloodfly)
+func void Fun_Platz064()   // FP_ROAM_NW_TROLLAREA_RUINS_05 (Original: Snapper)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M064_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M064_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M064_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M064_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M064_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M064_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T064 = 0;
+			return;
+		};
+	};
+	FUNL_T064 = FUNL_T064 + 1;
+	if (FUNL_T064 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T064 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M064_T3, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M064_T4, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M064_T5, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M064_T6, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M064_T7, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M064_T3, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	};
+};
+func void Fun_Platz065()   // FP_ROAM_NW_TROLLAREA_RUINS_05 (Original: Snapper)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M065_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M065_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M065_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M065_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M065_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M065_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T065 = 0;
+			return;
+		};
+	};
+	FUNL_T065 = FUNL_T065 + 1;
+	if (FUNL_T065 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T065 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M065_T3, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M065_T4, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M065_T5, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M065_T6, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M065_T7, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M065_T3, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	};
+};
+func void Fun_Platz066()   // FP_ROAM_NW_TROLLAREA_RUINS_09 (Original: Snapper)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M066_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M066_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M066_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M066_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M066_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M066_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T066 = 0;
+			return;
+		};
+	};
+	FUNL_T066 = FUNL_T066 + 1;
+	if (FUNL_T066 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T066 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M066_T3, "FP_ROAM_NW_TROLLAREA_RUINS_09");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M066_T4, "FP_ROAM_NW_TROLLAREA_RUINS_09");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M066_T5, "FP_ROAM_NW_TROLLAREA_RUINS_09");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M066_T6, "FP_ROAM_NW_TROLLAREA_RUINS_09");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M066_T7, "FP_ROAM_NW_TROLLAREA_RUINS_09");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M066_T3, "FP_ROAM_NW_TROLLAREA_RUINS_09");
+	};
+};
+func void Fun_Platz067()   // FP_ROAM_NW_TROLLAREA_RUINS_09 (Original: Snapper)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M067_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M067_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M067_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M067_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M067_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M067_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T067 = 0;
+			return;
+		};
+	};
+	FUNL_T067 = FUNL_T067 + 1;
+	if (FUNL_T067 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T067 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M067_T3, "FP_ROAM_NW_TROLLAREA_RUINS_09");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M067_T4, "FP_ROAM_NW_TROLLAREA_RUINS_09");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M067_T5, "FP_ROAM_NW_TROLLAREA_RUINS_09");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M067_T6, "FP_ROAM_NW_TROLLAREA_RUINS_09");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M067_T7, "FP_ROAM_NW_TROLLAREA_RUINS_09");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M067_T3, "FP_ROAM_NW_TROLLAREA_RUINS_09");
+	};
+};
+func void Fun_Platz068()   // FP_ROAM_NW_TROLLAREA_RUINS_10 (Original: Shadowbeast)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M068_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M068_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M068_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M068_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M068_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M068_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T068 = 0;
+			return;
+		};
+	};
+	FUNL_T068 = FUNL_T068 + 1;
+	if (FUNL_T068 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T068 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M068_T3, "FP_ROAM_NW_TROLLAREA_RUINS_10");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M068_T4, "FP_ROAM_NW_TROLLAREA_RUINS_10");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M068_T5, "FP_ROAM_NW_TROLLAREA_RUINS_10");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M068_T6, "FP_ROAM_NW_TROLLAREA_RUINS_10");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M068_T7, "FP_ROAM_NW_TROLLAREA_RUINS_10");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M068_T3, "FP_ROAM_NW_TROLLAREA_RUINS_10");
+	};
+};
+func void Fun_Platz069()   // FP_ROAM_NW_TROLLAREA_RUINS_10 (Original: Shadowbeast)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M069_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M069_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M069_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M069_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M069_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M069_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T069 = 0;
+			return;
+		};
+	};
+	FUNL_T069 = FUNL_T069 + 1;
+	if (FUNL_T069 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T069 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M069_T3, "FP_ROAM_NW_TROLLAREA_RUINS_10");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M069_T4, "FP_ROAM_NW_TROLLAREA_RUINS_10");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M069_T5, "FP_ROAM_NW_TROLLAREA_RUINS_10");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M069_T6, "FP_ROAM_NW_TROLLAREA_RUINS_10");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M069_T7, "FP_ROAM_NW_TROLLAREA_RUINS_10");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M069_T3, "FP_ROAM_NW_TROLLAREA_RUINS_10");
+	};
+};
+func void Fun_Platz070()   // FP_ROAM_NW_TROLLAREA_RUINS_14 (Original: Giant_Rat)
 {
 	var C_NPC m;
 	var int t;
@@ -7041,76 +19299,76 @@ func void Fun_Platz26()   // NW_BIGFARM_LAKE_MONSTER_BLOODFLY (Original: Bloodfl
 	};
 	if (t == 0)
 	{
-		m = Hlp_GetNpc(FUN_M26_T0);
+		m = Hlp_GetNpc(FUN_M070_T0);
 	}
 	else if (t == 1)
 	{
-		m = Hlp_GetNpc(FUN_M26_T1);
+		m = Hlp_GetNpc(FUN_M070_T1);
 	}
 	else if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M26_T2);
+		m = Hlp_GetNpc(FUN_M070_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M26_T3);
+		m = Hlp_GetNpc(FUN_M070_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M26_T4);
+		m = Hlp_GetNpc(FUN_M070_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M26_T5);
+		m = Hlp_GetNpc(FUN_M070_T5);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M26_T0);
+		m = Hlp_GetNpc(FUN_M070_T0);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T26 = 0;
+			FUNL_T070 = 0;
 			return;
 		};
 	};
-	FUNL_T26 = FUNL_T26 + 1;
-	if (FUNL_T26 < FUN_RESPAWN_TAKTE)
+	FUNL_T070 = FUNL_T070 + 1;
+	if (FUNL_T070 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T26 = 0;
+	FUNL_T070 = 0;
 	if (t == 0)
 	{
-		Wld_InsertNpc(FUN_M26_T0, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
+		Wld_InsertNpc(FUN_M070_T0, "FP_ROAM_NW_TROLLAREA_RUINS_14");
 	}
 	else if (t == 1)
 	{
-		Wld_InsertNpc(FUN_M26_T1, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
+		Wld_InsertNpc(FUN_M070_T1, "FP_ROAM_NW_TROLLAREA_RUINS_14");
 	}
 	else if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M26_T2, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
+		Wld_InsertNpc(FUN_M070_T2, "FP_ROAM_NW_TROLLAREA_RUINS_14");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M26_T3, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
+		Wld_InsertNpc(FUN_M070_T3, "FP_ROAM_NW_TROLLAREA_RUINS_14");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M26_T4, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
+		Wld_InsertNpc(FUN_M070_T4, "FP_ROAM_NW_TROLLAREA_RUINS_14");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M26_T5, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
+		Wld_InsertNpc(FUN_M070_T5, "FP_ROAM_NW_TROLLAREA_RUINS_14");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M26_T0, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
+		Wld_InsertNpc(FUN_M070_T0, "FP_ROAM_NW_TROLLAREA_RUINS_14");
 	};
 };
-func void Fun_Platz27()   // NW_BIGMILL_05 (Original: Scavenger)
+func void Fun_Platz071()   // FP_ROAM_NW_TROLLAREA_RUINS_14 (Original: Giant_Rat)
 {
 	var C_NPC m;
 	var int t;
@@ -7121,76 +19379,76 @@ func void Fun_Platz27()   // NW_BIGMILL_05 (Original: Scavenger)
 	};
 	if (t == 0)
 	{
-		m = Hlp_GetNpc(FUN_M27_T0);
+		m = Hlp_GetNpc(FUN_M071_T0);
 	}
 	else if (t == 1)
 	{
-		m = Hlp_GetNpc(FUN_M27_T1);
+		m = Hlp_GetNpc(FUN_M071_T1);
 	}
 	else if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M27_T2);
+		m = Hlp_GetNpc(FUN_M071_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M27_T3);
+		m = Hlp_GetNpc(FUN_M071_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M27_T4);
+		m = Hlp_GetNpc(FUN_M071_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M27_T5);
+		m = Hlp_GetNpc(FUN_M071_T5);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M27_T0);
+		m = Hlp_GetNpc(FUN_M071_T0);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T27 = 0;
+			FUNL_T071 = 0;
 			return;
 		};
 	};
-	FUNL_T27 = FUNL_T27 + 1;
-	if (FUNL_T27 < FUN_RESPAWN_TAKTE)
+	FUNL_T071 = FUNL_T071 + 1;
+	if (FUNL_T071 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T27 = 0;
+	FUNL_T071 = 0;
 	if (t == 0)
 	{
-		Wld_InsertNpc(FUN_M27_T0, "NW_BIGMILL_05");
+		Wld_InsertNpc(FUN_M071_T0, "FP_ROAM_NW_TROLLAREA_RUINS_14");
 	}
 	else if (t == 1)
 	{
-		Wld_InsertNpc(FUN_M27_T1, "NW_BIGMILL_05");
+		Wld_InsertNpc(FUN_M071_T1, "FP_ROAM_NW_TROLLAREA_RUINS_14");
 	}
 	else if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M27_T2, "NW_BIGMILL_05");
+		Wld_InsertNpc(FUN_M071_T2, "FP_ROAM_NW_TROLLAREA_RUINS_14");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M27_T3, "NW_BIGMILL_05");
+		Wld_InsertNpc(FUN_M071_T3, "FP_ROAM_NW_TROLLAREA_RUINS_14");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M27_T4, "NW_BIGMILL_05");
+		Wld_InsertNpc(FUN_M071_T4, "FP_ROAM_NW_TROLLAREA_RUINS_14");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M27_T5, "NW_BIGMILL_05");
+		Wld_InsertNpc(FUN_M071_T5, "FP_ROAM_NW_TROLLAREA_RUINS_14");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M27_T0, "NW_BIGMILL_05");
+		Wld_InsertNpc(FUN_M071_T0, "FP_ROAM_NW_TROLLAREA_RUINS_14");
 	};
 };
-func void Fun_Platz28()   // NW_BIGMILL_FARM3_03 (Original: Scavenger)
+func void Fun_Platz072()   // FP_ROAM_NW_TROLLAREA_RUINS_15 (Original: Giant_Rat)
 {
 	var C_NPC m;
 	var int t;
@@ -7201,652 +19459,76 @@ func void Fun_Platz28()   // NW_BIGMILL_FARM3_03 (Original: Scavenger)
 	};
 	if (t == 0)
 	{
-		m = Hlp_GetNpc(FUN_M28_T0);
+		m = Hlp_GetNpc(FUN_M072_T0);
 	}
 	else if (t == 1)
 	{
-		m = Hlp_GetNpc(FUN_M28_T1);
+		m = Hlp_GetNpc(FUN_M072_T1);
 	}
 	else if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M28_T2);
+		m = Hlp_GetNpc(FUN_M072_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M28_T3);
+		m = Hlp_GetNpc(FUN_M072_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M28_T4);
+		m = Hlp_GetNpc(FUN_M072_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M28_T5);
+		m = Hlp_GetNpc(FUN_M072_T5);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M28_T0);
+		m = Hlp_GetNpc(FUN_M072_T0);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T28 = 0;
+			FUNL_T072 = 0;
 			return;
 		};
 	};
-	FUNL_T28 = FUNL_T28 + 1;
-	if (FUNL_T28 < FUN_RESPAWN_TAKTE)
+	FUNL_T072 = FUNL_T072 + 1;
+	if (FUNL_T072 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T28 = 0;
+	FUNL_T072 = 0;
 	if (t == 0)
 	{
-		Wld_InsertNpc(FUN_M28_T0, "NW_BIGMILL_FARM3_03");
+		Wld_InsertNpc(FUN_M072_T0, "FP_ROAM_NW_TROLLAREA_RUINS_15");
 	}
 	else if (t == 1)
 	{
-		Wld_InsertNpc(FUN_M28_T1, "NW_BIGMILL_FARM3_03");
+		Wld_InsertNpc(FUN_M072_T1, "FP_ROAM_NW_TROLLAREA_RUINS_15");
 	}
 	else if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M28_T2, "NW_BIGMILL_FARM3_03");
+		Wld_InsertNpc(FUN_M072_T2, "FP_ROAM_NW_TROLLAREA_RUINS_15");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M28_T3, "NW_BIGMILL_FARM3_03");
+		Wld_InsertNpc(FUN_M072_T3, "FP_ROAM_NW_TROLLAREA_RUINS_15");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M28_T4, "NW_BIGMILL_FARM3_03");
+		Wld_InsertNpc(FUN_M072_T4, "FP_ROAM_NW_TROLLAREA_RUINS_15");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M28_T5, "NW_BIGMILL_FARM3_03");
+		Wld_InsertNpc(FUN_M072_T5, "FP_ROAM_NW_TROLLAREA_RUINS_15");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M28_T0, "NW_BIGMILL_FARM3_03");
+		Wld_InsertNpc(FUN_M072_T0, "FP_ROAM_NW_TROLLAREA_RUINS_15");
 	};
 };
-func void Fun_Platz29()   // NW_CASTLEMINE_06 (Original: MinecrawlerWarrior)
-{
-	var C_NPC m;
-	var int t;
-	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7)
-	{
-		t = 7;
-	};
-	if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M29_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M29_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M29_T5);
-	}
-	else if (t == 6)
-	{
-		m = Hlp_GetNpc(FUN_M29_T6);
-	}
-	else if (t == 7)
-	{
-		m = Hlp_GetNpc(FUN_M29_T7);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M29_T3);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T29 = 0;
-			return;
-		};
-	};
-	FUNL_T29 = FUNL_T29 + 1;
-	if (FUNL_T29 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T29 = 0;
-	if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M29_T3, "NW_CASTLEMINE_06");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M29_T4, "NW_CASTLEMINE_06");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M29_T5, "NW_CASTLEMINE_06");
-	}
-	else if (t == 6)
-	{
-		Wld_InsertNpc(FUN_M29_T6, "NW_CASTLEMINE_06");
-	}
-	else if (t == 7)
-	{
-		Wld_InsertNpc(FUN_M29_T7, "NW_CASTLEMINE_06");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M29_T3, "NW_CASTLEMINE_06");
-	};
-};
-func void Fun_Platz30()   // NW_CASTLEMINE_10 (Original: MinecrawlerWarrior)
-{
-	var C_NPC m;
-	var int t;
-	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7)
-	{
-		t = 7;
-	};
-	if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M30_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M30_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M30_T5);
-	}
-	else if (t == 6)
-	{
-		m = Hlp_GetNpc(FUN_M30_T6);
-	}
-	else if (t == 7)
-	{
-		m = Hlp_GetNpc(FUN_M30_T7);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M30_T3);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T30 = 0;
-			return;
-		};
-	};
-	FUNL_T30 = FUNL_T30 + 1;
-	if (FUNL_T30 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T30 = 0;
-	if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M30_T3, "NW_CASTLEMINE_10");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M30_T4, "NW_CASTLEMINE_10");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M30_T5, "NW_CASTLEMINE_10");
-	}
-	else if (t == 6)
-	{
-		Wld_InsertNpc(FUN_M30_T6, "NW_CASTLEMINE_10");
-	}
-	else if (t == 7)
-	{
-		Wld_InsertNpc(FUN_M30_T7, "NW_CASTLEMINE_10");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M30_T3, "NW_CASTLEMINE_10");
-	};
-};
-func void Fun_Platz31()   // NW_CASTLEMINE_12 (Original: Minecrawler)
-{
-	var C_NPC m;
-	var int t;
-	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7)
-	{
-		t = 7;
-	};
-	if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M31_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M31_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M31_T5);
-	}
-	else if (t == 6)
-	{
-		m = Hlp_GetNpc(FUN_M31_T6);
-	}
-	else if (t == 7)
-	{
-		m = Hlp_GetNpc(FUN_M31_T7);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M31_T3);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T31 = 0;
-			return;
-		};
-	};
-	FUNL_T31 = FUNL_T31 + 1;
-	if (FUNL_T31 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T31 = 0;
-	if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M31_T3, "NW_CASTLEMINE_12");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M31_T4, "NW_CASTLEMINE_12");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M31_T5, "NW_CASTLEMINE_12");
-	}
-	else if (t == 6)
-	{
-		Wld_InsertNpc(FUN_M31_T6, "NW_CASTLEMINE_12");
-	}
-	else if (t == 7)
-	{
-		Wld_InsertNpc(FUN_M31_T7, "NW_CASTLEMINE_12");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M31_T3, "NW_CASTLEMINE_12");
-	};
-};
-func void Fun_Platz32()   // NW_CASTLEMINE_13 (Original: Minecrawler)
-{
-	var C_NPC m;
-	var int t;
-	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7)
-	{
-		t = 7;
-	};
-	if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M32_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M32_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M32_T5);
-	}
-	else if (t == 6)
-	{
-		m = Hlp_GetNpc(FUN_M32_T6);
-	}
-	else if (t == 7)
-	{
-		m = Hlp_GetNpc(FUN_M32_T7);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M32_T3);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T32 = 0;
-			return;
-		};
-	};
-	FUNL_T32 = FUNL_T32 + 1;
-	if (FUNL_T32 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T32 = 0;
-	if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M32_T3, "NW_CASTLEMINE_13");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M32_T4, "NW_CASTLEMINE_13");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M32_T5, "NW_CASTLEMINE_13");
-	}
-	else if (t == 6)
-	{
-		Wld_InsertNpc(FUN_M32_T6, "NW_CASTLEMINE_13");
-	}
-	else if (t == 7)
-	{
-		Wld_InsertNpc(FUN_M32_T7, "NW_CASTLEMINE_13");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M32_T3, "NW_CASTLEMINE_13");
-	};
-};
-func void Fun_Platz33()   // NW_CRYPT_MONSTER02 (Original: Gobbo_skeleton)
-{
-	var C_NPC m;
-	var int t;
-	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7)
-	{
-		t = 7;
-	};
-	if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M33_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M33_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M33_T5);
-	}
-	else if (t == 6)
-	{
-		m = Hlp_GetNpc(FUN_M33_T6);
-	}
-	else if (t == 7)
-	{
-		m = Hlp_GetNpc(FUN_M33_T7);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M33_T3);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T33 = 0;
-			return;
-		};
-	};
-	FUNL_T33 = FUNL_T33 + 1;
-	if (FUNL_T33 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T33 = 0;
-	if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M33_T3, "NW_CRYPT_MONSTER02");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M33_T4, "NW_CRYPT_MONSTER02");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M33_T5, "NW_CRYPT_MONSTER02");
-	}
-	else if (t == 6)
-	{
-		Wld_InsertNpc(FUN_M33_T6, "NW_CRYPT_MONSTER02");
-	}
-	else if (t == 7)
-	{
-		Wld_InsertNpc(FUN_M33_T7, "NW_CRYPT_MONSTER02");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M33_T3, "NW_CRYPT_MONSTER02");
-	};
-};
-func void Fun_Platz34()   // NW_CRYPT_MONSTER04 (Original: Lesser_skeleton)
-{
-	var C_NPC m;
-	var int t;
-	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7)
-	{
-		t = 7;
-	};
-	if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M34_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M34_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M34_T5);
-	}
-	else if (t == 6)
-	{
-		m = Hlp_GetNpc(FUN_M34_T6);
-	}
-	else if (t == 7)
-	{
-		m = Hlp_GetNpc(FUN_M34_T7);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M34_T3);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T34 = 0;
-			return;
-		};
-	};
-	FUNL_T34 = FUNL_T34 + 1;
-	if (FUNL_T34 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T34 = 0;
-	if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M34_T3, "NW_CRYPT_MONSTER04");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M34_T4, "NW_CRYPT_MONSTER04");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M34_T5, "NW_CRYPT_MONSTER04");
-	}
-	else if (t == 6)
-	{
-		Wld_InsertNpc(FUN_M34_T6, "NW_CRYPT_MONSTER04");
-	}
-	else if (t == 7)
-	{
-		Wld_InsertNpc(FUN_M34_T7, "NW_CRYPT_MONSTER04");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M34_T3, "NW_CRYPT_MONSTER04");
-	};
-};
-func void Fun_Platz35()   // NW_CRYPT_MONSTER06 (Original: Lesser_skeleton)
-{
-	var C_NPC m;
-	var int t;
-	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7)
-	{
-		t = 7;
-	};
-	if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M35_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M35_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M35_T5);
-	}
-	else if (t == 6)
-	{
-		m = Hlp_GetNpc(FUN_M35_T6);
-	}
-	else if (t == 7)
-	{
-		m = Hlp_GetNpc(FUN_M35_T7);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M35_T3);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T35 = 0;
-			return;
-		};
-	};
-	FUNL_T35 = FUNL_T35 + 1;
-	if (FUNL_T35 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T35 = 0;
-	if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M35_T3, "NW_CRYPT_MONSTER06");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M35_T4, "NW_CRYPT_MONSTER06");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M35_T5, "NW_CRYPT_MONSTER06");
-	}
-	else if (t == 6)
-	{
-		Wld_InsertNpc(FUN_M35_T6, "NW_CRYPT_MONSTER06");
-	}
-	else if (t == 7)
-	{
-		Wld_InsertNpc(FUN_M35_T7, "NW_CRYPT_MONSTER06");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M35_T3, "NW_CRYPT_MONSTER06");
-	};
-};
-func void Fun_Platz36()   // NW_CRYPT_MONSTER08 (Original: Gobbo_skeleton)
-{
-	var C_NPC m;
-	var int t;
-	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7)
-	{
-		t = 7;
-	};
-	if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M36_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M36_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M36_T5);
-	}
-	else if (t == 6)
-	{
-		m = Hlp_GetNpc(FUN_M36_T6);
-	}
-	else if (t == 7)
-	{
-		m = Hlp_GetNpc(FUN_M36_T7);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M36_T3);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T36 = 0;
-			return;
-		};
-	};
-	FUNL_T36 = FUNL_T36 + 1;
-	if (FUNL_T36 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T36 = 0;
-	if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M36_T3, "NW_CRYPT_MONSTER08");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M36_T4, "NW_CRYPT_MONSTER08");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M36_T5, "NW_CRYPT_MONSTER08");
-	}
-	else if (t == 6)
-	{
-		Wld_InsertNpc(FUN_M36_T6, "NW_CRYPT_MONSTER08");
-	}
-	else if (t == 7)
-	{
-		Wld_InsertNpc(FUN_M36_T7, "NW_CRYPT_MONSTER08");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M36_T3, "NW_CRYPT_MONSTER08");
-	};
-};
-func void Fun_Platz37()   // NW_FARM3_BIGWOOD_02 (Original: Scavenger)
+func void Fun_Platz073()   // FP_ROAM_NW_TROLLAREA_RUINS_15 (Original: Giant_Rat)
 {
 	var C_NPC m;
 	var int t;
@@ -7857,76 +19539,972 @@ func void Fun_Platz37()   // NW_FARM3_BIGWOOD_02 (Original: Scavenger)
 	};
 	if (t == 0)
 	{
-		m = Hlp_GetNpc(FUN_M37_T0);
+		m = Hlp_GetNpc(FUN_M073_T0);
 	}
 	else if (t == 1)
 	{
-		m = Hlp_GetNpc(FUN_M37_T1);
+		m = Hlp_GetNpc(FUN_M073_T1);
 	}
 	else if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M37_T2);
+		m = Hlp_GetNpc(FUN_M073_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M37_T3);
+		m = Hlp_GetNpc(FUN_M073_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M37_T4);
+		m = Hlp_GetNpc(FUN_M073_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M37_T5);
+		m = Hlp_GetNpc(FUN_M073_T5);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M37_T0);
+		m = Hlp_GetNpc(FUN_M073_T0);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T37 = 0;
+			FUNL_T073 = 0;
 			return;
 		};
 	};
-	FUNL_T37 = FUNL_T37 + 1;
-	if (FUNL_T37 < FUN_RESPAWN_TAKTE)
+	FUNL_T073 = FUNL_T073 + 1;
+	if (FUNL_T073 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T37 = 0;
+	FUNL_T073 = 0;
 	if (t == 0)
 	{
-		Wld_InsertNpc(FUN_M37_T0, "NW_FARM3_BIGWOOD_02");
+		Wld_InsertNpc(FUN_M073_T0, "FP_ROAM_NW_TROLLAREA_RUINS_15");
 	}
 	else if (t == 1)
 	{
-		Wld_InsertNpc(FUN_M37_T1, "NW_FARM3_BIGWOOD_02");
+		Wld_InsertNpc(FUN_M073_T1, "FP_ROAM_NW_TROLLAREA_RUINS_15");
 	}
 	else if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M37_T2, "NW_FARM3_BIGWOOD_02");
+		Wld_InsertNpc(FUN_M073_T2, "FP_ROAM_NW_TROLLAREA_RUINS_15");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M37_T3, "NW_FARM3_BIGWOOD_02");
+		Wld_InsertNpc(FUN_M073_T3, "FP_ROAM_NW_TROLLAREA_RUINS_15");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M37_T4, "NW_FARM3_BIGWOOD_02");
+		Wld_InsertNpc(FUN_M073_T4, "FP_ROAM_NW_TROLLAREA_RUINS_15");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M37_T5, "NW_FARM3_BIGWOOD_02");
+		Wld_InsertNpc(FUN_M073_T5, "FP_ROAM_NW_TROLLAREA_RUINS_15");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M37_T0, "NW_FARM3_BIGWOOD_02");
+		Wld_InsertNpc(FUN_M073_T0, "FP_ROAM_NW_TROLLAREA_RUINS_15");
 	};
 };
-func void Fun_Platz38()   // NW_FARM3_MOUNTAINLAKE_03 (Original: Lurker)
+func void Fun_Platz074()   // FP_ROAM_NW_TROLLAREA_RUINS_21 (Original: FireWaran)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M074_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M074_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M074_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M074_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M074_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M074_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T074 = 0;
+			return;
+		};
+	};
+	FUNL_T074 = FUNL_T074 + 1;
+	if (FUNL_T074 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T074 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M074_T3, "FP_ROAM_NW_TROLLAREA_RUINS_21");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M074_T4, "FP_ROAM_NW_TROLLAREA_RUINS_21");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M074_T5, "FP_ROAM_NW_TROLLAREA_RUINS_21");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M074_T6, "FP_ROAM_NW_TROLLAREA_RUINS_21");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M074_T7, "FP_ROAM_NW_TROLLAREA_RUINS_21");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M074_T3, "FP_ROAM_NW_TROLLAREA_RUINS_21");
+	};
+};
+func void Fun_Platz075()   // FP_ROAM_NW_TROLLAREA_RUINS_21 (Original: FireWaran)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M075_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M075_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M075_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M075_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M075_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M075_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T075 = 0;
+			return;
+		};
+	};
+	FUNL_T075 = FUNL_T075 + 1;
+	if (FUNL_T075 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T075 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M075_T3, "FP_ROAM_NW_TROLLAREA_RUINS_21");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M075_T4, "FP_ROAM_NW_TROLLAREA_RUINS_21");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M075_T5, "FP_ROAM_NW_TROLLAREA_RUINS_21");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M075_T6, "FP_ROAM_NW_TROLLAREA_RUINS_21");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M075_T7, "FP_ROAM_NW_TROLLAREA_RUINS_21");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M075_T3, "FP_ROAM_NW_TROLLAREA_RUINS_21");
+	};
+};
+func void Fun_Platz076()   // FP_ROAM_NW_TROLLAREA_RUINS_22 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M076_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M076_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M076_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M076_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M076_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M076_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M076_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T076 = 0;
+			return;
+		};
+	};
+	FUNL_T076 = FUNL_T076 + 1;
+	if (FUNL_T076 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T076 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M076_T0, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M076_T1, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M076_T2, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M076_T3, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M076_T4, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M076_T5, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M076_T0, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	};
+};
+func void Fun_Platz077()   // FP_ROAM_NW_TROLLAREA_RUINS_22 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M077_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M077_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M077_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M077_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M077_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M077_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M077_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T077 = 0;
+			return;
+		};
+	};
+	FUNL_T077 = FUNL_T077 + 1;
+	if (FUNL_T077 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T077 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M077_T0, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M077_T1, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M077_T2, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M077_T3, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M077_T4, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M077_T5, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M077_T0, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	};
+};
+func void Fun_Platz078()   // FP_ROAM_NW_TROLLAREA_RUINS_24 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M078_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M078_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M078_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M078_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M078_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M078_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M078_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T078 = 0;
+			return;
+		};
+	};
+	FUNL_T078 = FUNL_T078 + 1;
+	if (FUNL_T078 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T078 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M078_T0, "FP_ROAM_NW_TROLLAREA_RUINS_24");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M078_T1, "FP_ROAM_NW_TROLLAREA_RUINS_24");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M078_T2, "FP_ROAM_NW_TROLLAREA_RUINS_24");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M078_T3, "FP_ROAM_NW_TROLLAREA_RUINS_24");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M078_T4, "FP_ROAM_NW_TROLLAREA_RUINS_24");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M078_T5, "FP_ROAM_NW_TROLLAREA_RUINS_24");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M078_T0, "FP_ROAM_NW_TROLLAREA_RUINS_24");
+	};
+};
+func void Fun_Platz079()   // FP_ROAM_NW_TROLLAREA_RUINS_24 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M079_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M079_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M079_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M079_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M079_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M079_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M079_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T079 = 0;
+			return;
+		};
+	};
+	FUNL_T079 = FUNL_T079 + 1;
+	if (FUNL_T079 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T079 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M079_T0, "FP_ROAM_NW_TROLLAREA_RUINS_24");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M079_T1, "FP_ROAM_NW_TROLLAREA_RUINS_24");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M079_T2, "FP_ROAM_NW_TROLLAREA_RUINS_24");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M079_T3, "FP_ROAM_NW_TROLLAREA_RUINS_24");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M079_T4, "FP_ROAM_NW_TROLLAREA_RUINS_24");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M079_T5, "FP_ROAM_NW_TROLLAREA_RUINS_24");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M079_T0, "FP_ROAM_NW_TROLLAREA_RUINS_24");
+	};
+};
+func void Fun_Platz080()   // FP_ROAM_NW_TROLLAREA_RUINS_28 (Original: Waran)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M080_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M080_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M080_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M080_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M080_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M080_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T080 = 0;
+			return;
+		};
+	};
+	FUNL_T080 = FUNL_T080 + 1;
+	if (FUNL_T080 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T080 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M080_T3, "FP_ROAM_NW_TROLLAREA_RUINS_28");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M080_T4, "FP_ROAM_NW_TROLLAREA_RUINS_28");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M080_T5, "FP_ROAM_NW_TROLLAREA_RUINS_28");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M080_T6, "FP_ROAM_NW_TROLLAREA_RUINS_28");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M080_T7, "FP_ROAM_NW_TROLLAREA_RUINS_28");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M080_T3, "FP_ROAM_NW_TROLLAREA_RUINS_28");
+	};
+};
+func void Fun_Platz081()   // FP_ROAM_NW_TROLLAREA_RUINS_28 (Original: Waran)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M081_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M081_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M081_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M081_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M081_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M081_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T081 = 0;
+			return;
+		};
+	};
+	FUNL_T081 = FUNL_T081 + 1;
+	if (FUNL_T081 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T081 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M081_T3, "FP_ROAM_NW_TROLLAREA_RUINS_28");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M081_T4, "FP_ROAM_NW_TROLLAREA_RUINS_28");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M081_T5, "FP_ROAM_NW_TROLLAREA_RUINS_28");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M081_T6, "FP_ROAM_NW_TROLLAREA_RUINS_28");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M081_T7, "FP_ROAM_NW_TROLLAREA_RUINS_28");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M081_T3, "FP_ROAM_NW_TROLLAREA_RUINS_28");
+	};
+};
+func void Fun_Platz082()   // FP_ROAM_NW_TROLLAREA_RUINS_29 (Original: Waran)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M082_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M082_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M082_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M082_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M082_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M082_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T082 = 0;
+			return;
+		};
+	};
+	FUNL_T082 = FUNL_T082 + 1;
+	if (FUNL_T082 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T082 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M082_T3, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M082_T4, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M082_T5, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M082_T6, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M082_T7, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M082_T3, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	};
+};
+func void Fun_Platz083()   // FP_ROAM_NW_TROLLAREA_RUINS_29 (Original: Waran)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M083_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M083_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M083_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M083_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M083_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M083_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T083 = 0;
+			return;
+		};
+	};
+	FUNL_T083 = FUNL_T083 + 1;
+	if (FUNL_T083 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T083 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M083_T3, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M083_T4, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M083_T5, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M083_T6, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M083_T7, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M083_T3, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	};
+};
+func void Fun_Platz084()   // FP_ROAM_NW_TROLLAREA_RUINS_30 (Original: Waran)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M084_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M084_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M084_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M084_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M084_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M084_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T084 = 0;
+			return;
+		};
+	};
+	FUNL_T084 = FUNL_T084 + 1;
+	if (FUNL_T084 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T084 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M084_T3, "FP_ROAM_NW_TROLLAREA_RUINS_30");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M084_T4, "FP_ROAM_NW_TROLLAREA_RUINS_30");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M084_T5, "FP_ROAM_NW_TROLLAREA_RUINS_30");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M084_T6, "FP_ROAM_NW_TROLLAREA_RUINS_30");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M084_T7, "FP_ROAM_NW_TROLLAREA_RUINS_30");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M084_T3, "FP_ROAM_NW_TROLLAREA_RUINS_30");
+	};
+};
+func void Fun_Platz085()   // FP_ROAM_NW_TROLLAREA_RUINS_30 (Original: Waran)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M085_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M085_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M085_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M085_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M085_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M085_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T085 = 0;
+			return;
+		};
+	};
+	FUNL_T085 = FUNL_T085 + 1;
+	if (FUNL_T085 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T085 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M085_T3, "FP_ROAM_NW_TROLLAREA_RUINS_30");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M085_T4, "FP_ROAM_NW_TROLLAREA_RUINS_30");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M085_T5, "FP_ROAM_NW_TROLLAREA_RUINS_30");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M085_T6, "FP_ROAM_NW_TROLLAREA_RUINS_30");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M085_T7, "FP_ROAM_NW_TROLLAREA_RUINS_30");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M085_T3, "FP_ROAM_NW_TROLLAREA_RUINS_30");
+	};
+};
+func void Fun_Platz086()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_01 (Original: Gobbo_Black)
 {
 	var C_NPC m;
 	var int t;
@@ -7937,76 +20515,76 @@ func void Fun_Platz38()   // NW_FARM3_MOUNTAINLAKE_03 (Original: Lurker)
 	};
 	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M38_T2);
+		m = Hlp_GetNpc(FUN_M086_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M38_T3);
+		m = Hlp_GetNpc(FUN_M086_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M38_T4);
+		m = Hlp_GetNpc(FUN_M086_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M38_T5);
+		m = Hlp_GetNpc(FUN_M086_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M38_T6);
+		m = Hlp_GetNpc(FUN_M086_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M38_T7);
+		m = Hlp_GetNpc(FUN_M086_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M38_T2);
+		m = Hlp_GetNpc(FUN_M086_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T38 = 0;
+			FUNL_T086 = 0;
 			return;
 		};
 	};
-	FUNL_T38 = FUNL_T38 + 1;
-	if (FUNL_T38 < FUN_RESPAWN_TAKTE)
+	FUNL_T086 = FUNL_T086 + 1;
+	if (FUNL_T086 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T38 = 0;
+	FUNL_T086 = 0;
 	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M38_T2, "NW_FARM3_MOUNTAINLAKE_03");
+		Wld_InsertNpc(FUN_M086_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_01");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M38_T3, "NW_FARM3_MOUNTAINLAKE_03");
+		Wld_InsertNpc(FUN_M086_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_01");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M38_T4, "NW_FARM3_MOUNTAINLAKE_03");
+		Wld_InsertNpc(FUN_M086_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_01");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M38_T5, "NW_FARM3_MOUNTAINLAKE_03");
+		Wld_InsertNpc(FUN_M086_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_01");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M38_T6, "NW_FARM3_MOUNTAINLAKE_03");
+		Wld_InsertNpc(FUN_M086_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_01");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M38_T7, "NW_FARM3_MOUNTAINLAKE_03");
+		Wld_InsertNpc(FUN_M086_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_01");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M38_T2, "NW_FARM3_MOUNTAINLAKE_03");
+		Wld_InsertNpc(FUN_M086_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_01");
 	};
 };
-func void Fun_Platz39()   // NW_FARM3_PATH_11_SMALLRIVERMID_02 (Original: Lurker)
+func void Fun_Platz087()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_01 (Original: Gobbo_Black)
 {
 	var C_NPC m;
 	var int t;
@@ -8017,76 +20595,76 @@ func void Fun_Platz39()   // NW_FARM3_PATH_11_SMALLRIVERMID_02 (Original: Lurker
 	};
 	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M39_T2);
+		m = Hlp_GetNpc(FUN_M087_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M39_T3);
+		m = Hlp_GetNpc(FUN_M087_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M39_T4);
+		m = Hlp_GetNpc(FUN_M087_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M39_T5);
+		m = Hlp_GetNpc(FUN_M087_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M39_T6);
+		m = Hlp_GetNpc(FUN_M087_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M39_T7);
+		m = Hlp_GetNpc(FUN_M087_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M39_T2);
+		m = Hlp_GetNpc(FUN_M087_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T39 = 0;
+			FUNL_T087 = 0;
 			return;
 		};
 	};
-	FUNL_T39 = FUNL_T39 + 1;
-	if (FUNL_T39 < FUN_RESPAWN_TAKTE)
+	FUNL_T087 = FUNL_T087 + 1;
+	if (FUNL_T087 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T39 = 0;
+	FUNL_T087 = 0;
 	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M39_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+		Wld_InsertNpc(FUN_M087_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_01");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M39_T3, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+		Wld_InsertNpc(FUN_M087_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_01");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M39_T4, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+		Wld_InsertNpc(FUN_M087_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_01");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M39_T5, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+		Wld_InsertNpc(FUN_M087_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_01");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M39_T6, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+		Wld_InsertNpc(FUN_M087_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_01");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M39_T7, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+		Wld_InsertNpc(FUN_M087_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_01");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M39_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+		Wld_InsertNpc(FUN_M087_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_01");
 	};
 };
-func void Fun_Platz40()   // NW_FARM3_PATH_11_SMALLRIVER_04 (Original: Lurker)
+func void Fun_Platz088()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02 (Original: Gobbo_Black)
 {
 	var C_NPC m;
 	var int t;
@@ -8097,76 +20675,76 @@ func void Fun_Platz40()   // NW_FARM3_PATH_11_SMALLRIVER_04 (Original: Lurker)
 	};
 	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M40_T2);
+		m = Hlp_GetNpc(FUN_M088_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M40_T3);
+		m = Hlp_GetNpc(FUN_M088_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M40_T4);
+		m = Hlp_GetNpc(FUN_M088_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M40_T5);
+		m = Hlp_GetNpc(FUN_M088_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M40_T6);
+		m = Hlp_GetNpc(FUN_M088_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M40_T7);
+		m = Hlp_GetNpc(FUN_M088_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M40_T2);
+		m = Hlp_GetNpc(FUN_M088_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T40 = 0;
+			FUNL_T088 = 0;
 			return;
 		};
 	};
-	FUNL_T40 = FUNL_T40 + 1;
-	if (FUNL_T40 < FUN_RESPAWN_TAKTE)
+	FUNL_T088 = FUNL_T088 + 1;
+	if (FUNL_T088 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T40 = 0;
+	FUNL_T088 = 0;
 	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M40_T2, "NW_FARM3_PATH_11_SMALLRIVER_04");
+		Wld_InsertNpc(FUN_M088_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M40_T3, "NW_FARM3_PATH_11_SMALLRIVER_04");
+		Wld_InsertNpc(FUN_M088_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M40_T4, "NW_FARM3_PATH_11_SMALLRIVER_04");
+		Wld_InsertNpc(FUN_M088_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M40_T5, "NW_FARM3_PATH_11_SMALLRIVER_04");
+		Wld_InsertNpc(FUN_M088_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M40_T6, "NW_FARM3_PATH_11_SMALLRIVER_04");
+		Wld_InsertNpc(FUN_M088_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M40_T7, "NW_FARM3_PATH_11_SMALLRIVER_04");
+		Wld_InsertNpc(FUN_M088_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M40_T2, "NW_FARM3_PATH_11_SMALLRIVER_04");
+		Wld_InsertNpc(FUN_M088_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
 	};
 };
-func void Fun_Platz41()   // NW_FARM3_PATH_11_SMALLRIVER_17 (Original: Lurker)
+func void Fun_Platz089()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02 (Original: Gobbo_Black)
 {
 	var C_NPC m;
 	var int t;
@@ -8177,76 +20755,3596 @@ func void Fun_Platz41()   // NW_FARM3_PATH_11_SMALLRIVER_17 (Original: Lurker)
 	};
 	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M41_T2);
+		m = Hlp_GetNpc(FUN_M089_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M41_T3);
+		m = Hlp_GetNpc(FUN_M089_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M41_T4);
+		m = Hlp_GetNpc(FUN_M089_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M41_T5);
+		m = Hlp_GetNpc(FUN_M089_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M41_T6);
+		m = Hlp_GetNpc(FUN_M089_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M41_T7);
+		m = Hlp_GetNpc(FUN_M089_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M41_T2);
+		m = Hlp_GetNpc(FUN_M089_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T41 = 0;
+			FUNL_T089 = 0;
 			return;
 		};
 	};
-	FUNL_T41 = FUNL_T41 + 1;
-	if (FUNL_T41 < FUN_RESPAWN_TAKTE)
+	FUNL_T089 = FUNL_T089 + 1;
+	if (FUNL_T089 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T41 = 0;
+	FUNL_T089 = 0;
 	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M41_T2, "NW_FARM3_PATH_11_SMALLRIVER_17");
+		Wld_InsertNpc(FUN_M089_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M41_T3, "NW_FARM3_PATH_11_SMALLRIVER_17");
+		Wld_InsertNpc(FUN_M089_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M41_T4, "NW_FARM3_PATH_11_SMALLRIVER_17");
+		Wld_InsertNpc(FUN_M089_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M41_T5, "NW_FARM3_PATH_11_SMALLRIVER_17");
+		Wld_InsertNpc(FUN_M089_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M41_T6, "NW_FARM3_PATH_11_SMALLRIVER_17");
+		Wld_InsertNpc(FUN_M089_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M41_T7, "NW_FARM3_PATH_11_SMALLRIVER_17");
+		Wld_InsertNpc(FUN_M089_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M41_T2, "NW_FARM3_PATH_11_SMALLRIVER_17");
+		Wld_InsertNpc(FUN_M089_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
 	};
 };
-func void Fun_Platz42()   // NW_FARM3_PATH_12_MONSTER_01 (Original: Keiler)
+func void Fun_Platz090()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_03 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M090_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M090_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M090_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M090_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M090_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M090_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M090_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T090 = 0;
+			return;
+		};
+	};
+	FUNL_T090 = FUNL_T090 + 1;
+	if (FUNL_T090 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T090 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M090_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_03");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M090_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M090_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M090_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_03");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M090_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_03");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M090_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M090_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_03");
+	};
+};
+func void Fun_Platz091()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_03 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M091_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M091_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M091_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M091_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M091_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M091_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M091_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T091 = 0;
+			return;
+		};
+	};
+	FUNL_T091 = FUNL_T091 + 1;
+	if (FUNL_T091 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T091 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M091_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_03");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M091_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M091_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M091_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_03");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M091_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_03");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M091_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M091_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_03");
+	};
+};
+func void Fun_Platz092()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M092_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M092_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M092_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M092_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M092_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M092_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M092_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T092 = 0;
+			return;
+		};
+	};
+	FUNL_T092 = FUNL_T092 + 1;
+	if (FUNL_T092 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T092 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M092_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M092_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M092_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M092_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M092_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M092_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M092_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05");
+	};
+};
+func void Fun_Platz093()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M093_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M093_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M093_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M093_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M093_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M093_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M093_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T093 = 0;
+			return;
+		};
+	};
+	FUNL_T093 = FUNL_T093 + 1;
+	if (FUNL_T093 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T093 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M093_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M093_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M093_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M093_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M093_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M093_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M093_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05");
+	};
+};
+func void Fun_Platz094()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M094_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M094_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M094_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M094_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M094_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M094_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M094_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T094 = 0;
+			return;
+		};
+	};
+	FUNL_T094 = FUNL_T094 + 1;
+	if (FUNL_T094 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T094 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M094_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M094_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M094_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M094_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M094_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M094_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M094_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	};
+};
+func void Fun_Platz095()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M095_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M095_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M095_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M095_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M095_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M095_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M095_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T095 = 0;
+			return;
+		};
+	};
+	FUNL_T095 = FUNL_T095 + 1;
+	if (FUNL_T095 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T095 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M095_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M095_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M095_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M095_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M095_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M095_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M095_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	};
+};
+func void Fun_Platz096()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M096_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M096_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M096_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M096_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M096_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M096_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M096_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T096 = 0;
+			return;
+		};
+	};
+	FUNL_T096 = FUNL_T096 + 1;
+	if (FUNL_T096 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T096 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M096_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M096_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M096_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M096_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M096_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M096_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M096_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07");
+	};
+};
+func void Fun_Platz097()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M097_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M097_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M097_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M097_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M097_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M097_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M097_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T097 = 0;
+			return;
+		};
+	};
+	FUNL_T097 = FUNL_T097 + 1;
+	if (FUNL_T097 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T097 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M097_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M097_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M097_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M097_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M097_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M097_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M097_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07");
+	};
+};
+func void Fun_Platz098()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_09 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M098_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M098_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M098_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M098_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M098_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M098_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M098_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T098 = 0;
+			return;
+		};
+	};
+	FUNL_T098 = FUNL_T098 + 1;
+	if (FUNL_T098 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T098 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M098_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_09");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M098_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_09");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M098_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_09");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M098_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_09");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M098_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_09");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M098_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_09");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M098_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_09");
+	};
+};
+func void Fun_Platz099()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_09 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M099_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M099_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M099_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M099_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M099_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M099_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M099_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T099 = 0;
+			return;
+		};
+	};
+	FUNL_T099 = FUNL_T099 + 1;
+	if (FUNL_T099 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T099 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M099_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_09");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M099_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_09");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M099_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_09");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M099_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_09");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M099_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_09");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M099_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_09");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M099_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_09");
+	};
+};
+func void Fun_Platz100()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10 (Original: Gobbo_Warrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M100_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M100_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M100_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M100_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M100_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M100_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T100 = 0;
+			return;
+		};
+	};
+	FUNL_T100 = FUNL_T100 + 1;
+	if (FUNL_T100 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T100 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M100_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M100_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M100_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M100_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M100_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M100_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	};
+};
+func void Fun_Platz101()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10 (Original: Gobbo_Warrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M101_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M101_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M101_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M101_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M101_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M101_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T101 = 0;
+			return;
+		};
+	};
+	FUNL_T101 = FUNL_T101 + 1;
+	if (FUNL_T101 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T101 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M101_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M101_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M101_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M101_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M101_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M101_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	};
+};
+func void Fun_Platz102()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_11 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M102_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M102_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M102_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M102_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M102_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M102_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M102_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T102 = 0;
+			return;
+		};
+	};
+	FUNL_T102 = FUNL_T102 + 1;
+	if (FUNL_T102 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T102 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M102_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_11");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M102_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_11");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M102_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_11");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M102_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_11");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M102_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_11");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M102_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_11");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M102_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_11");
+	};
+};
+func void Fun_Platz103()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_11 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M103_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M103_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M103_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M103_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M103_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M103_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M103_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T103 = 0;
+			return;
+		};
+	};
+	FUNL_T103 = FUNL_T103 + 1;
+	if (FUNL_T103 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T103 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M103_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_11");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M103_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_11");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M103_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_11");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M103_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_11");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M103_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_11");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M103_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_11");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M103_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_11");
+	};
+};
+func void Fun_Platz104()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_12 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M104_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M104_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M104_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M104_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M104_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M104_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M104_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T104 = 0;
+			return;
+		};
+	};
+	FUNL_T104 = FUNL_T104 + 1;
+	if (FUNL_T104 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T104 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M104_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_12");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M104_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_12");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M104_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_12");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M104_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_12");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M104_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_12");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M104_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_12");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M104_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_12");
+	};
+};
+func void Fun_Platz105()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_12 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M105_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M105_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M105_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M105_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M105_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M105_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M105_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T105 = 0;
+			return;
+		};
+	};
+	FUNL_T105 = FUNL_T105 + 1;
+	if (FUNL_T105 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T105 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M105_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_12");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M105_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_12");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M105_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_12");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M105_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_12");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M105_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_12");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M105_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_12");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M105_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_12");
+	};
+};
+func void Fun_Platz106()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M106_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M106_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M106_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M106_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M106_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M106_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M106_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T106 = 0;
+			return;
+		};
+	};
+	FUNL_T106 = FUNL_T106 + 1;
+	if (FUNL_T106 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T106 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M106_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M106_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M106_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M106_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M106_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M106_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M106_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	};
+};
+func void Fun_Platz107()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M107_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M107_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M107_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M107_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M107_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M107_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M107_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T107 = 0;
+			return;
+		};
+	};
+	FUNL_T107 = FUNL_T107 + 1;
+	if (FUNL_T107 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T107 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M107_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M107_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M107_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M107_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M107_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M107_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M107_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	};
+};
+func void Fun_Platz108()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_16 (Original: Minecrawler)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M108_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M108_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M108_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M108_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M108_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M108_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T108 = 0;
+			return;
+		};
+	};
+	FUNL_T108 = FUNL_T108 + 1;
+	if (FUNL_T108 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T108 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M108_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_16");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M108_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_16");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M108_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_16");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M108_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_16");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M108_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_16");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M108_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_16");
+	};
+};
+func void Fun_Platz109()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_16 (Original: Minecrawler)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M109_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M109_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M109_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M109_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M109_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M109_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T109 = 0;
+			return;
+		};
+	};
+	FUNL_T109 = FUNL_T109 + 1;
+	if (FUNL_T109 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T109 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M109_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_16");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M109_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_16");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M109_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_16");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M109_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_16");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M109_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_16");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M109_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_16");
+	};
+};
+func void Fun_Platz110()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_20 (Original: MinecrawlerWarrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M110_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M110_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M110_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M110_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M110_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M110_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T110 = 0;
+			return;
+		};
+	};
+	FUNL_T110 = FUNL_T110 + 1;
+	if (FUNL_T110 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T110 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M110_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_20");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M110_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_20");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M110_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_20");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M110_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_20");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M110_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_20");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M110_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_20");
+	};
+};
+func void Fun_Platz111()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_20 (Original: MinecrawlerWarrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M111_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M111_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M111_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M111_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M111_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M111_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T111 = 0;
+			return;
+		};
+	};
+	FUNL_T111 = FUNL_T111 + 1;
+	if (FUNL_T111 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T111 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M111_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_20");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M111_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_20");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M111_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_20");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M111_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_20");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M111_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_20");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M111_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_20");
+	};
+};
+func void Fun_Platz112()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21 (Original: Minecrawler)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M112_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M112_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M112_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M112_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M112_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M112_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T112 = 0;
+			return;
+		};
+	};
+	FUNL_T112 = FUNL_T112 + 1;
+	if (FUNL_T112 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T112 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M112_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M112_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M112_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M112_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M112_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M112_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	};
+};
+func void Fun_Platz113()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21 (Original: Minecrawler)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M113_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M113_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M113_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M113_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M113_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M113_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T113 = 0;
+			return;
+		};
+	};
+	FUNL_T113 = FUNL_T113 + 1;
+	if (FUNL_T113 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T113 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M113_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M113_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M113_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M113_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M113_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M113_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	};
+};
+func void Fun_Platz114()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_23 (Original: Minecrawler)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M114_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M114_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M114_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M114_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M114_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M114_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T114 = 0;
+			return;
+		};
+	};
+	FUNL_T114 = FUNL_T114 + 1;
+	if (FUNL_T114 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T114 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M114_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_23");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M114_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_23");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M114_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_23");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M114_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_23");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M114_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_23");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M114_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_23");
+	};
+};
+func void Fun_Platz115()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_23 (Original: Minecrawler)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M115_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M115_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M115_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M115_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M115_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M115_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T115 = 0;
+			return;
+		};
+	};
+	FUNL_T115 = FUNL_T115 + 1;
+	if (FUNL_T115 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T115 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M115_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_23");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M115_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_23");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M115_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_23");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M115_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_23");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M115_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_23");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M115_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_23");
+	};
+};
+func void Fun_Platz116()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_26 (Original: MinecrawlerWarrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M116_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M116_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M116_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M116_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M116_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M116_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T116 = 0;
+			return;
+		};
+	};
+	FUNL_T116 = FUNL_T116 + 1;
+	if (FUNL_T116 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T116 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M116_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_26");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M116_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_26");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M116_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_26");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M116_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_26");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M116_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_26");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M116_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_26");
+	};
+};
+func void Fun_Platz117()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_26 (Original: MinecrawlerWarrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M117_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M117_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M117_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M117_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M117_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M117_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T117 = 0;
+			return;
+		};
+	};
+	FUNL_T117 = FUNL_T117 + 1;
+	if (FUNL_T117 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T117 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M117_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_26");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M117_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_26");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M117_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_26");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M117_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_26");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M117_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_26");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M117_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_26");
+	};
+};
+func void Fun_Platz118()   // FP_ROAM_RITUALFOREST_CAVE_05 (Original: Giant_Rat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M118_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M118_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M118_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M118_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M118_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M118_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M118_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T118 = 0;
+			return;
+		};
+	};
+	FUNL_T118 = FUNL_T118 + 1;
+	if (FUNL_T118 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T118 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M118_T0, "FP_ROAM_RITUALFOREST_CAVE_05");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M118_T1, "FP_ROAM_RITUALFOREST_CAVE_05");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M118_T2, "FP_ROAM_RITUALFOREST_CAVE_05");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M118_T3, "FP_ROAM_RITUALFOREST_CAVE_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M118_T4, "FP_ROAM_RITUALFOREST_CAVE_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M118_T5, "FP_ROAM_RITUALFOREST_CAVE_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M118_T0, "FP_ROAM_RITUALFOREST_CAVE_05");
+	};
+};
+func void Fun_Platz119()   // FP_ROAM_RITUALFOREST_CAVE_05 (Original: Giant_Rat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M119_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M119_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M119_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M119_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M119_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M119_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M119_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T119 = 0;
+			return;
+		};
+	};
+	FUNL_T119 = FUNL_T119 + 1;
+	if (FUNL_T119 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T119 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M119_T0, "FP_ROAM_RITUALFOREST_CAVE_05");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M119_T1, "FP_ROAM_RITUALFOREST_CAVE_05");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M119_T2, "FP_ROAM_RITUALFOREST_CAVE_05");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M119_T3, "FP_ROAM_RITUALFOREST_CAVE_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M119_T4, "FP_ROAM_RITUALFOREST_CAVE_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M119_T5, "FP_ROAM_RITUALFOREST_CAVE_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M119_T0, "FP_ROAM_RITUALFOREST_CAVE_05");
+	};
+};
+func void Fun_Platz120()   // FP_ROAM_RITUALFOREST_CAVE_07 (Original: MinecrawlerWarrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M120_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M120_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M120_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M120_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M120_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M120_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T120 = 0;
+			return;
+		};
+	};
+	FUNL_T120 = FUNL_T120 + 1;
+	if (FUNL_T120 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T120 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M120_T3, "FP_ROAM_RITUALFOREST_CAVE_07");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M120_T4, "FP_ROAM_RITUALFOREST_CAVE_07");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M120_T5, "FP_ROAM_RITUALFOREST_CAVE_07");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M120_T6, "FP_ROAM_RITUALFOREST_CAVE_07");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M120_T7, "FP_ROAM_RITUALFOREST_CAVE_07");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M120_T3, "FP_ROAM_RITUALFOREST_CAVE_07");
+	};
+};
+func void Fun_Platz121()   // FP_ROAM_RITUALFOREST_CAVE_07 (Original: MinecrawlerWarrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M121_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M121_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M121_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M121_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M121_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M121_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T121 = 0;
+			return;
+		};
+	};
+	FUNL_T121 = FUNL_T121 + 1;
+	if (FUNL_T121 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T121 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M121_T3, "FP_ROAM_RITUALFOREST_CAVE_07");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M121_T4, "FP_ROAM_RITUALFOREST_CAVE_07");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M121_T5, "FP_ROAM_RITUALFOREST_CAVE_07");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M121_T6, "FP_ROAM_RITUALFOREST_CAVE_07");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M121_T7, "FP_ROAM_RITUALFOREST_CAVE_07");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M121_T3, "FP_ROAM_RITUALFOREST_CAVE_07");
+	};
+};
+func void Fun_Platz122()   // FP_ROAM_RITUALFOREST_CAVE_08 (Original: Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M122_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M122_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M122_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M122_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M122_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M122_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T122 = 0;
+			return;
+		};
+	};
+	FUNL_T122 = FUNL_T122 + 1;
+	if (FUNL_T122 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T122 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M122_T3, "FP_ROAM_RITUALFOREST_CAVE_08");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M122_T4, "FP_ROAM_RITUALFOREST_CAVE_08");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M122_T5, "FP_ROAM_RITUALFOREST_CAVE_08");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M122_T6, "FP_ROAM_RITUALFOREST_CAVE_08");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M122_T7, "FP_ROAM_RITUALFOREST_CAVE_08");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M122_T3, "FP_ROAM_RITUALFOREST_CAVE_08");
+	};
+};
+func void Fun_Platz123()   // FP_ROAM_RITUALFOREST_CAVE_08 (Original: Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M123_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M123_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M123_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M123_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M123_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M123_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T123 = 0;
+			return;
+		};
+	};
+	FUNL_T123 = FUNL_T123 + 1;
+	if (FUNL_T123 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T123 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M123_T3, "FP_ROAM_RITUALFOREST_CAVE_08");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M123_T4, "FP_ROAM_RITUALFOREST_CAVE_08");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M123_T5, "FP_ROAM_RITUALFOREST_CAVE_08");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M123_T6, "FP_ROAM_RITUALFOREST_CAVE_08");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M123_T7, "FP_ROAM_RITUALFOREST_CAVE_08");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M123_T3, "FP_ROAM_RITUALFOREST_CAVE_08");
+	};
+};
+func void Fun_Platz124()   // FP_ROAM_RITUALFOREST_CAVE_09 (Original: Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M124_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M124_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M124_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M124_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M124_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M124_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T124 = 0;
+			return;
+		};
+	};
+	FUNL_T124 = FUNL_T124 + 1;
+	if (FUNL_T124 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T124 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M124_T3, "FP_ROAM_RITUALFOREST_CAVE_09");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M124_T4, "FP_ROAM_RITUALFOREST_CAVE_09");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M124_T5, "FP_ROAM_RITUALFOREST_CAVE_09");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M124_T6, "FP_ROAM_RITUALFOREST_CAVE_09");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M124_T7, "FP_ROAM_RITUALFOREST_CAVE_09");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M124_T3, "FP_ROAM_RITUALFOREST_CAVE_09");
+	};
+};
+func void Fun_Platz125()   // FP_ROAM_RITUALFOREST_CAVE_09 (Original: Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M125_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M125_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M125_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M125_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M125_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M125_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T125 = 0;
+			return;
+		};
+	};
+	FUNL_T125 = FUNL_T125 + 1;
+	if (FUNL_T125 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T125 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M125_T3, "FP_ROAM_RITUALFOREST_CAVE_09");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M125_T4, "FP_ROAM_RITUALFOREST_CAVE_09");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M125_T5, "FP_ROAM_RITUALFOREST_CAVE_09");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M125_T6, "FP_ROAM_RITUALFOREST_CAVE_09");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M125_T7, "FP_ROAM_RITUALFOREST_CAVE_09");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M125_T3, "FP_ROAM_RITUALFOREST_CAVE_09");
+	};
+};
+func void Fun_Platz126()   // FP_ROAM_RITUALFOREST_CAVE_11 (Original: MinecrawlerWarrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M126_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M126_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M126_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M126_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M126_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M126_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T126 = 0;
+			return;
+		};
+	};
+	FUNL_T126 = FUNL_T126 + 1;
+	if (FUNL_T126 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T126 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M126_T3, "FP_ROAM_RITUALFOREST_CAVE_11");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M126_T4, "FP_ROAM_RITUALFOREST_CAVE_11");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M126_T5, "FP_ROAM_RITUALFOREST_CAVE_11");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M126_T6, "FP_ROAM_RITUALFOREST_CAVE_11");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M126_T7, "FP_ROAM_RITUALFOREST_CAVE_11");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M126_T3, "FP_ROAM_RITUALFOREST_CAVE_11");
+	};
+};
+func void Fun_Platz127()   // FP_ROAM_RITUALFOREST_CAVE_11 (Original: MinecrawlerWarrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M127_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M127_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M127_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M127_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M127_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M127_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T127 = 0;
+			return;
+		};
+	};
+	FUNL_T127 = FUNL_T127 + 1;
+	if (FUNL_T127 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T127 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M127_T3, "FP_ROAM_RITUALFOREST_CAVE_11");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M127_T4, "FP_ROAM_RITUALFOREST_CAVE_11");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M127_T5, "FP_ROAM_RITUALFOREST_CAVE_11");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M127_T6, "FP_ROAM_RITUALFOREST_CAVE_11");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M127_T7, "FP_ROAM_RITUALFOREST_CAVE_11");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M127_T3, "FP_ROAM_RITUALFOREST_CAVE_11");
+	};
+};
+func void Fun_Platz128()   // FP_ROAM_TROLLAREA_SEA_01 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M128_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M128_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M128_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M128_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M128_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M128_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M128_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T128 = 0;
+			return;
+		};
+	};
+	FUNL_T128 = FUNL_T128 + 1;
+	if (FUNL_T128 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T128 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M128_T0, "FP_ROAM_TROLLAREA_SEA_01");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M128_T1, "FP_ROAM_TROLLAREA_SEA_01");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M128_T2, "FP_ROAM_TROLLAREA_SEA_01");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M128_T3, "FP_ROAM_TROLLAREA_SEA_01");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M128_T4, "FP_ROAM_TROLLAREA_SEA_01");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M128_T5, "FP_ROAM_TROLLAREA_SEA_01");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M128_T0, "FP_ROAM_TROLLAREA_SEA_01");
+	};
+};
+func void Fun_Platz129()   // FP_ROAM_TROLLAREA_SEA_01 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M129_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M129_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M129_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M129_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M129_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M129_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M129_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T129 = 0;
+			return;
+		};
+	};
+	FUNL_T129 = FUNL_T129 + 1;
+	if (FUNL_T129 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T129 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M129_T0, "FP_ROAM_TROLLAREA_SEA_01");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M129_T1, "FP_ROAM_TROLLAREA_SEA_01");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M129_T2, "FP_ROAM_TROLLAREA_SEA_01");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M129_T3, "FP_ROAM_TROLLAREA_SEA_01");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M129_T4, "FP_ROAM_TROLLAREA_SEA_01");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M129_T5, "FP_ROAM_TROLLAREA_SEA_01");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M129_T0, "FP_ROAM_TROLLAREA_SEA_01");
+	};
+};
+func void Fun_Platz130()   // FP_ROAM_TROLLAREA_SEA_02 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M130_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M130_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M130_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M130_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M130_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M130_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M130_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T130 = 0;
+			return;
+		};
+	};
+	FUNL_T130 = FUNL_T130 + 1;
+	if (FUNL_T130 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T130 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M130_T0, "FP_ROAM_TROLLAREA_SEA_02");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M130_T1, "FP_ROAM_TROLLAREA_SEA_02");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M130_T2, "FP_ROAM_TROLLAREA_SEA_02");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M130_T3, "FP_ROAM_TROLLAREA_SEA_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M130_T4, "FP_ROAM_TROLLAREA_SEA_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M130_T5, "FP_ROAM_TROLLAREA_SEA_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M130_T0, "FP_ROAM_TROLLAREA_SEA_02");
+	};
+};
+func void Fun_Platz131()   // FP_ROAM_TROLLAREA_SEA_02 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M131_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M131_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M131_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M131_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M131_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M131_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M131_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T131 = 0;
+			return;
+		};
+	};
+	FUNL_T131 = FUNL_T131 + 1;
+	if (FUNL_T131 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T131 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M131_T0, "FP_ROAM_TROLLAREA_SEA_02");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M131_T1, "FP_ROAM_TROLLAREA_SEA_02");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M131_T2, "FP_ROAM_TROLLAREA_SEA_02");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M131_T3, "FP_ROAM_TROLLAREA_SEA_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M131_T4, "FP_ROAM_TROLLAREA_SEA_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M131_T5, "FP_ROAM_TROLLAREA_SEA_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M131_T0, "FP_ROAM_TROLLAREA_SEA_02");
+	};
+};
+func void Fun_Platz132()   // FP_ROAM_TROLLAREA_SEA_03 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M132_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M132_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M132_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M132_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M132_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M132_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M132_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T132 = 0;
+			return;
+		};
+	};
+	FUNL_T132 = FUNL_T132 + 1;
+	if (FUNL_T132 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T132 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M132_T0, "FP_ROAM_TROLLAREA_SEA_03");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M132_T1, "FP_ROAM_TROLLAREA_SEA_03");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M132_T2, "FP_ROAM_TROLLAREA_SEA_03");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M132_T3, "FP_ROAM_TROLLAREA_SEA_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M132_T4, "FP_ROAM_TROLLAREA_SEA_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M132_T5, "FP_ROAM_TROLLAREA_SEA_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M132_T0, "FP_ROAM_TROLLAREA_SEA_03");
+	};
+};
+func void Fun_Platz133()   // FP_ROAM_TROLLAREA_SEA_03 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M133_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M133_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M133_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M133_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M133_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M133_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M133_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T133 = 0;
+			return;
+		};
+	};
+	FUNL_T133 = FUNL_T133 + 1;
+	if (FUNL_T133 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T133 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M133_T0, "FP_ROAM_TROLLAREA_SEA_03");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M133_T1, "FP_ROAM_TROLLAREA_SEA_03");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M133_T2, "FP_ROAM_TROLLAREA_SEA_03");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M133_T3, "FP_ROAM_TROLLAREA_SEA_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M133_T4, "FP_ROAM_TROLLAREA_SEA_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M133_T5, "FP_ROAM_TROLLAREA_SEA_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M133_T0, "FP_ROAM_TROLLAREA_SEA_03");
+	};
+};
+func void Fun_Platz134()   // FP_ROAM_TROLLAREA_SEA_04 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M134_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M134_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M134_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M134_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M134_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M134_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M134_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T134 = 0;
+			return;
+		};
+	};
+	FUNL_T134 = FUNL_T134 + 1;
+	if (FUNL_T134 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T134 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M134_T0, "FP_ROAM_TROLLAREA_SEA_04");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M134_T1, "FP_ROAM_TROLLAREA_SEA_04");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M134_T2, "FP_ROAM_TROLLAREA_SEA_04");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M134_T3, "FP_ROAM_TROLLAREA_SEA_04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M134_T4, "FP_ROAM_TROLLAREA_SEA_04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M134_T5, "FP_ROAM_TROLLAREA_SEA_04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M134_T0, "FP_ROAM_TROLLAREA_SEA_04");
+	};
+};
+func void Fun_Platz135()   // FP_ROAM_TROLLAREA_SEA_04 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M135_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M135_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M135_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M135_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M135_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M135_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M135_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T135 = 0;
+			return;
+		};
+	};
+	FUNL_T135 = FUNL_T135 + 1;
+	if (FUNL_T135 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T135 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M135_T0, "FP_ROAM_TROLLAREA_SEA_04");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M135_T1, "FP_ROAM_TROLLAREA_SEA_04");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M135_T2, "FP_ROAM_TROLLAREA_SEA_04");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M135_T3, "FP_ROAM_TROLLAREA_SEA_04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M135_T4, "FP_ROAM_TROLLAREA_SEA_04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M135_T5, "FP_ROAM_TROLLAREA_SEA_04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M135_T0, "FP_ROAM_TROLLAREA_SEA_04");
+	};
+};
+func void Fun_Platz136()   // NW_BIGFARM_FOREST_02 (Original: Giant_Bug)
 {
 	var C_NPC m;
 	var int t;
@@ -8257,76 +24355,76 @@ func void Fun_Platz42()   // NW_FARM3_PATH_12_MONSTER_01 (Original: Keiler)
 	};
 	if (t == 1)
 	{
-		m = Hlp_GetNpc(FUN_M42_T1);
+		m = Hlp_GetNpc(FUN_M136_T1);
 	}
 	else if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M42_T2);
+		m = Hlp_GetNpc(FUN_M136_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M42_T3);
+		m = Hlp_GetNpc(FUN_M136_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M42_T4);
+		m = Hlp_GetNpc(FUN_M136_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M42_T5);
+		m = Hlp_GetNpc(FUN_M136_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M42_T6);
+		m = Hlp_GetNpc(FUN_M136_T6);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M42_T1);
+		m = Hlp_GetNpc(FUN_M136_T1);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T42 = 0;
+			FUNL_T136 = 0;
 			return;
 		};
 	};
-	FUNL_T42 = FUNL_T42 + 1;
-	if (FUNL_T42 < FUN_RESPAWN_TAKTE)
+	FUNL_T136 = FUNL_T136 + 1;
+	if (FUNL_T136 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T42 = 0;
+	FUNL_T136 = 0;
 	if (t == 1)
 	{
-		Wld_InsertNpc(FUN_M42_T1, "NW_FARM3_PATH_12_MONSTER_01");
+		Wld_InsertNpc(FUN_M136_T1, "NW_BIGFARM_FOREST_02");
 	}
 	else if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M42_T2, "NW_FARM3_PATH_12_MONSTER_01");
+		Wld_InsertNpc(FUN_M136_T2, "NW_BIGFARM_FOREST_02");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M42_T3, "NW_FARM3_PATH_12_MONSTER_01");
+		Wld_InsertNpc(FUN_M136_T3, "NW_BIGFARM_FOREST_02");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M42_T4, "NW_FARM3_PATH_12_MONSTER_01");
+		Wld_InsertNpc(FUN_M136_T4, "NW_BIGFARM_FOREST_02");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M42_T5, "NW_FARM3_PATH_12_MONSTER_01");
+		Wld_InsertNpc(FUN_M136_T5, "NW_BIGFARM_FOREST_02");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M42_T6, "NW_FARM3_PATH_12_MONSTER_01");
+		Wld_InsertNpc(FUN_M136_T6, "NW_BIGFARM_FOREST_02");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M42_T1, "NW_FARM3_PATH_12_MONSTER_01");
+		Wld_InsertNpc(FUN_M136_T1, "NW_BIGFARM_FOREST_02");
 	};
 };
-func void Fun_Platz43()   // NW_FARM4_WOOD_MONSTER_MORE_01 (Original: Giant_Bug)
+func void Fun_Platz137()   // NW_BIGFARM_FOREST_02 (Original: Giant_Bug)
 {
 	var C_NPC m;
 	var int t;
@@ -8337,76 +24435,76 @@ func void Fun_Platz43()   // NW_FARM4_WOOD_MONSTER_MORE_01 (Original: Giant_Bug)
 	};
 	if (t == 1)
 	{
-		m = Hlp_GetNpc(FUN_M43_T1);
+		m = Hlp_GetNpc(FUN_M137_T1);
 	}
 	else if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M43_T2);
+		m = Hlp_GetNpc(FUN_M137_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M43_T3);
+		m = Hlp_GetNpc(FUN_M137_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M43_T4);
+		m = Hlp_GetNpc(FUN_M137_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M43_T5);
+		m = Hlp_GetNpc(FUN_M137_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M43_T6);
+		m = Hlp_GetNpc(FUN_M137_T6);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M43_T1);
+		m = Hlp_GetNpc(FUN_M137_T1);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T43 = 0;
+			FUNL_T137 = 0;
 			return;
 		};
 	};
-	FUNL_T43 = FUNL_T43 + 1;
-	if (FUNL_T43 < FUN_RESPAWN_TAKTE)
+	FUNL_T137 = FUNL_T137 + 1;
+	if (FUNL_T137 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T43 = 0;
+	FUNL_T137 = 0;
 	if (t == 1)
 	{
-		Wld_InsertNpc(FUN_M43_T1, "NW_FARM4_WOOD_MONSTER_MORE_01");
+		Wld_InsertNpc(FUN_M137_T1, "NW_BIGFARM_FOREST_02");
 	}
 	else if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M43_T2, "NW_FARM4_WOOD_MONSTER_MORE_01");
+		Wld_InsertNpc(FUN_M137_T2, "NW_BIGFARM_FOREST_02");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M43_T3, "NW_FARM4_WOOD_MONSTER_MORE_01");
+		Wld_InsertNpc(FUN_M137_T3, "NW_BIGFARM_FOREST_02");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M43_T4, "NW_FARM4_WOOD_MONSTER_MORE_01");
+		Wld_InsertNpc(FUN_M137_T4, "NW_BIGFARM_FOREST_02");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M43_T5, "NW_FARM4_WOOD_MONSTER_MORE_01");
+		Wld_InsertNpc(FUN_M137_T5, "NW_BIGFARM_FOREST_02");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M43_T6, "NW_FARM4_WOOD_MONSTER_MORE_01");
+		Wld_InsertNpc(FUN_M137_T6, "NW_BIGFARM_FOREST_02");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M43_T1, "NW_FARM4_WOOD_MONSTER_MORE_01");
+		Wld_InsertNpc(FUN_M137_T1, "NW_BIGFARM_FOREST_02");
 	};
 };
-func void Fun_Platz44()   // NW_FARM4_WOOD_MONSTER_N_3 (Original: Giant_Bug)
+func void Fun_Platz138()   // NW_BIGFARM_FOREST_03_NAVIGATION (Original: Keiler)
 {
 	var C_NPC m;
 	var int t;
@@ -8417,76 +24515,76 @@ func void Fun_Platz44()   // NW_FARM4_WOOD_MONSTER_N_3 (Original: Giant_Bug)
 	};
 	if (t == 1)
 	{
-		m = Hlp_GetNpc(FUN_M44_T1);
+		m = Hlp_GetNpc(FUN_M138_T1);
 	}
 	else if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M44_T2);
+		m = Hlp_GetNpc(FUN_M138_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M44_T3);
+		m = Hlp_GetNpc(FUN_M138_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M44_T4);
+		m = Hlp_GetNpc(FUN_M138_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M44_T5);
+		m = Hlp_GetNpc(FUN_M138_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M44_T6);
+		m = Hlp_GetNpc(FUN_M138_T6);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M44_T1);
+		m = Hlp_GetNpc(FUN_M138_T1);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T44 = 0;
+			FUNL_T138 = 0;
 			return;
 		};
 	};
-	FUNL_T44 = FUNL_T44 + 1;
-	if (FUNL_T44 < FUN_RESPAWN_TAKTE)
+	FUNL_T138 = FUNL_T138 + 1;
+	if (FUNL_T138 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T44 = 0;
+	FUNL_T138 = 0;
 	if (t == 1)
 	{
-		Wld_InsertNpc(FUN_M44_T1, "NW_FARM4_WOOD_MONSTER_N_3");
+		Wld_InsertNpc(FUN_M138_T1, "NW_BIGFARM_FOREST_03_NAVIGATION");
 	}
 	else if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M44_T2, "NW_FARM4_WOOD_MONSTER_N_3");
+		Wld_InsertNpc(FUN_M138_T2, "NW_BIGFARM_FOREST_03_NAVIGATION");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M44_T3, "NW_FARM4_WOOD_MONSTER_N_3");
+		Wld_InsertNpc(FUN_M138_T3, "NW_BIGFARM_FOREST_03_NAVIGATION");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M44_T4, "NW_FARM4_WOOD_MONSTER_N_3");
+		Wld_InsertNpc(FUN_M138_T4, "NW_BIGFARM_FOREST_03_NAVIGATION");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M44_T5, "NW_FARM4_WOOD_MONSTER_N_3");
+		Wld_InsertNpc(FUN_M138_T5, "NW_BIGFARM_FOREST_03_NAVIGATION");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M44_T6, "NW_FARM4_WOOD_MONSTER_N_3");
+		Wld_InsertNpc(FUN_M138_T6, "NW_BIGFARM_FOREST_03_NAVIGATION");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M44_T1, "NW_FARM4_WOOD_MONSTER_N_3");
+		Wld_InsertNpc(FUN_M138_T1, "NW_BIGFARM_FOREST_03_NAVIGATION");
 	};
 };
-func void Fun_Platz45()   // NW_FARM4_WOOD_NEARPEASANT2_12 (Original: Giant_Bug)
+func void Fun_Platz139()   // NW_BIGFARM_FOREST_03_NAVIGATION (Original: Keiler)
 {
 	var C_NPC m;
 	var int t;
@@ -8497,76 +24595,76 @@ func void Fun_Platz45()   // NW_FARM4_WOOD_NEARPEASANT2_12 (Original: Giant_Bug)
 	};
 	if (t == 1)
 	{
-		m = Hlp_GetNpc(FUN_M45_T1);
+		m = Hlp_GetNpc(FUN_M139_T1);
 	}
 	else if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M45_T2);
+		m = Hlp_GetNpc(FUN_M139_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M45_T3);
+		m = Hlp_GetNpc(FUN_M139_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M45_T4);
+		m = Hlp_GetNpc(FUN_M139_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M45_T5);
+		m = Hlp_GetNpc(FUN_M139_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M45_T6);
+		m = Hlp_GetNpc(FUN_M139_T6);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M45_T1);
+		m = Hlp_GetNpc(FUN_M139_T1);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T45 = 0;
+			FUNL_T139 = 0;
 			return;
 		};
 	};
-	FUNL_T45 = FUNL_T45 + 1;
-	if (FUNL_T45 < FUN_RESPAWN_TAKTE)
+	FUNL_T139 = FUNL_T139 + 1;
+	if (FUNL_T139 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T45 = 0;
+	FUNL_T139 = 0;
 	if (t == 1)
 	{
-		Wld_InsertNpc(FUN_M45_T1, "NW_FARM4_WOOD_NEARPEASANT2_12");
+		Wld_InsertNpc(FUN_M139_T1, "NW_BIGFARM_FOREST_03_NAVIGATION");
 	}
 	else if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M45_T2, "NW_FARM4_WOOD_NEARPEASANT2_12");
+		Wld_InsertNpc(FUN_M139_T2, "NW_BIGFARM_FOREST_03_NAVIGATION");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M45_T3, "NW_FARM4_WOOD_NEARPEASANT2_12");
+		Wld_InsertNpc(FUN_M139_T3, "NW_BIGFARM_FOREST_03_NAVIGATION");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M45_T4, "NW_FARM4_WOOD_NEARPEASANT2_12");
+		Wld_InsertNpc(FUN_M139_T4, "NW_BIGFARM_FOREST_03_NAVIGATION");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M45_T5, "NW_FARM4_WOOD_NEARPEASANT2_12");
+		Wld_InsertNpc(FUN_M139_T5, "NW_BIGFARM_FOREST_03_NAVIGATION");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M45_T6, "NW_FARM4_WOOD_NEARPEASANT2_12");
+		Wld_InsertNpc(FUN_M139_T6, "NW_BIGFARM_FOREST_03_NAVIGATION");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M45_T1, "NW_FARM4_WOOD_NEARPEASANT2_12");
+		Wld_InsertNpc(FUN_M139_T1, "NW_BIGFARM_FOREST_03_NAVIGATION");
 	};
 };
-func void Fun_Platz46()   // NW_FARM4_WOOD_NEARPEASANT2_8 (Original: Wolf)
+func void Fun_Platz140()   // NW_BIGFARM_LAKE_03_MOVEMENT (Original: Keiler)
 {
 	var C_NPC m;
 	var int t;
@@ -8577,156 +24675,316 @@ func void Fun_Platz46()   // NW_FARM4_WOOD_NEARPEASANT2_8 (Original: Wolf)
 	};
 	if (t == 1)
 	{
-		m = Hlp_GetNpc(FUN_M46_T1);
+		m = Hlp_GetNpc(FUN_M140_T1);
 	}
 	else if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M46_T2);
+		m = Hlp_GetNpc(FUN_M140_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M46_T3);
+		m = Hlp_GetNpc(FUN_M140_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M46_T4);
+		m = Hlp_GetNpc(FUN_M140_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M46_T5);
+		m = Hlp_GetNpc(FUN_M140_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M46_T6);
+		m = Hlp_GetNpc(FUN_M140_T6);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M46_T1);
+		m = Hlp_GetNpc(FUN_M140_T1);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T46 = 0;
+			FUNL_T140 = 0;
 			return;
 		};
 	};
-	FUNL_T46 = FUNL_T46 + 1;
-	if (FUNL_T46 < FUN_RESPAWN_TAKTE)
+	FUNL_T140 = FUNL_T140 + 1;
+	if (FUNL_T140 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T46 = 0;
+	FUNL_T140 = 0;
 	if (t == 1)
 	{
-		Wld_InsertNpc(FUN_M46_T1, "NW_FARM4_WOOD_NEARPEASANT2_8");
+		Wld_InsertNpc(FUN_M140_T1, "NW_BIGFARM_LAKE_03_MOVEMENT");
 	}
 	else if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M46_T2, "NW_FARM4_WOOD_NEARPEASANT2_8");
+		Wld_InsertNpc(FUN_M140_T2, "NW_BIGFARM_LAKE_03_MOVEMENT");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M46_T3, "NW_FARM4_WOOD_NEARPEASANT2_8");
+		Wld_InsertNpc(FUN_M140_T3, "NW_BIGFARM_LAKE_03_MOVEMENT");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M46_T4, "NW_FARM4_WOOD_NEARPEASANT2_8");
+		Wld_InsertNpc(FUN_M140_T4, "NW_BIGFARM_LAKE_03_MOVEMENT");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M46_T5, "NW_FARM4_WOOD_NEARPEASANT2_8");
+		Wld_InsertNpc(FUN_M140_T5, "NW_BIGFARM_LAKE_03_MOVEMENT");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M46_T6, "NW_FARM4_WOOD_NEARPEASANT2_8");
+		Wld_InsertNpc(FUN_M140_T6, "NW_BIGFARM_LAKE_03_MOVEMENT");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M46_T1, "NW_FARM4_WOOD_NEARPEASANT2_8");
+		Wld_InsertNpc(FUN_M140_T1, "NW_BIGFARM_LAKE_03_MOVEMENT");
 	};
 };
-func void Fun_Platz47()   // NW_MAGECAVE_20 (Original: Meatbug)
+func void Fun_Platz141()   // NW_BIGFARM_LAKE_03_MOVEMENT (Original: Keiler)
 {
 	var C_NPC m;
 	var int t;
-	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5)
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
 	{
-		t = 5;
+		t = 6;
 	};
-	if (t == 0)
+	if (t == 1)
 	{
-		m = Hlp_GetNpc(FUN_M47_T0);
-	}
-	else if (t == 1)
-	{
-		m = Hlp_GetNpc(FUN_M47_T1);
+		m = Hlp_GetNpc(FUN_M141_T1);
 	}
 	else if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M47_T2);
+		m = Hlp_GetNpc(FUN_M141_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M47_T3);
+		m = Hlp_GetNpc(FUN_M141_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M47_T4);
+		m = Hlp_GetNpc(FUN_M141_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M47_T5);
+		m = Hlp_GetNpc(FUN_M141_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M141_T6);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M47_T0);
+		m = Hlp_GetNpc(FUN_M141_T1);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T47 = 0;
+			FUNL_T141 = 0;
 			return;
 		};
 	};
-	FUNL_T47 = FUNL_T47 + 1;
-	if (FUNL_T47 < FUN_RESPAWN_TAKTE)
+	FUNL_T141 = FUNL_T141 + 1;
+	if (FUNL_T141 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T47 = 0;
-	if (t == 0)
+	FUNL_T141 = 0;
+	if (t == 1)
 	{
-		Wld_InsertNpc(FUN_M47_T0, "NW_MAGECAVE_20");
-	}
-	else if (t == 1)
-	{
-		Wld_InsertNpc(FUN_M47_T1, "NW_MAGECAVE_20");
+		Wld_InsertNpc(FUN_M141_T1, "NW_BIGFARM_LAKE_03_MOVEMENT");
 	}
 	else if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M47_T2, "NW_MAGECAVE_20");
+		Wld_InsertNpc(FUN_M141_T2, "NW_BIGFARM_LAKE_03_MOVEMENT");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M47_T3, "NW_MAGECAVE_20");
+		Wld_InsertNpc(FUN_M141_T3, "NW_BIGFARM_LAKE_03_MOVEMENT");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M47_T4, "NW_MAGECAVE_20");
+		Wld_InsertNpc(FUN_M141_T4, "NW_BIGFARM_LAKE_03_MOVEMENT");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M47_T5, "NW_MAGECAVE_20");
+		Wld_InsertNpc(FUN_M141_T5, "NW_BIGFARM_LAKE_03_MOVEMENT");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M141_T6, "NW_BIGFARM_LAKE_03_MOVEMENT");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M47_T0, "NW_MAGECAVE_20");
+		Wld_InsertNpc(FUN_M141_T1, "NW_BIGFARM_LAKE_03_MOVEMENT");
 	};
 };
-func void Fun_Platz48()   // NW_MAGECAVE_23 (Original: Minecrawler)
+func void Fun_Platz142()   // NW_BIGFARM_LAKE_03_MOVEMENT3 (Original: Giant_Bug)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M142_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M142_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M142_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M142_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M142_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M142_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M142_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T142 = 0;
+			return;
+		};
+	};
+	FUNL_T142 = FUNL_T142 + 1;
+	if (FUNL_T142 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T142 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M142_T1, "NW_BIGFARM_LAKE_03_MOVEMENT3");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M142_T2, "NW_BIGFARM_LAKE_03_MOVEMENT3");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M142_T3, "NW_BIGFARM_LAKE_03_MOVEMENT3");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M142_T4, "NW_BIGFARM_LAKE_03_MOVEMENT3");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M142_T5, "NW_BIGFARM_LAKE_03_MOVEMENT3");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M142_T6, "NW_BIGFARM_LAKE_03_MOVEMENT3");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M142_T1, "NW_BIGFARM_LAKE_03_MOVEMENT3");
+	};
+};
+func void Fun_Platz143()   // NW_BIGFARM_LAKE_03_MOVEMENT3 (Original: Giant_Bug)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M143_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M143_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M143_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M143_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M143_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M143_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M143_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T143 = 0;
+			return;
+		};
+	};
+	FUNL_T143 = FUNL_T143 + 1;
+	if (FUNL_T143 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T143 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M143_T1, "NW_BIGFARM_LAKE_03_MOVEMENT3");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M143_T2, "NW_BIGFARM_LAKE_03_MOVEMENT3");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M143_T3, "NW_BIGFARM_LAKE_03_MOVEMENT3");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M143_T4, "NW_BIGFARM_LAKE_03_MOVEMENT3");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M143_T5, "NW_BIGFARM_LAKE_03_MOVEMENT3");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M143_T6, "NW_BIGFARM_LAKE_03_MOVEMENT3");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M143_T1, "NW_BIGFARM_LAKE_03_MOVEMENT3");
+	};
+};
+func void Fun_Platz144()   // NW_BIGFARM_LAKE_03_MOVEMENT5 (Original: Gobbo_skeleton)
 {
 	var C_NPC m;
 	var int t;
@@ -8737,68 +24995,68 @@ func void Fun_Platz48()   // NW_MAGECAVE_23 (Original: Minecrawler)
 	};
 	if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M48_T3);
+		m = Hlp_GetNpc(FUN_M144_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M48_T4);
+		m = Hlp_GetNpc(FUN_M144_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M48_T5);
+		m = Hlp_GetNpc(FUN_M144_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M48_T6);
+		m = Hlp_GetNpc(FUN_M144_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M48_T7);
+		m = Hlp_GetNpc(FUN_M144_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M48_T3);
+		m = Hlp_GetNpc(FUN_M144_T3);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T48 = 0;
+			FUNL_T144 = 0;
 			return;
 		};
 	};
-	FUNL_T48 = FUNL_T48 + 1;
-	if (FUNL_T48 < FUN_RESPAWN_TAKTE)
+	FUNL_T144 = FUNL_T144 + 1;
+	if (FUNL_T144 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T48 = 0;
+	FUNL_T144 = 0;
 	if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M48_T3, "NW_MAGECAVE_23");
+		Wld_InsertNpc(FUN_M144_T3, "NW_BIGFARM_LAKE_03_MOVEMENT5");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M48_T4, "NW_MAGECAVE_23");
+		Wld_InsertNpc(FUN_M144_T4, "NW_BIGFARM_LAKE_03_MOVEMENT5");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M48_T5, "NW_MAGECAVE_23");
+		Wld_InsertNpc(FUN_M144_T5, "NW_BIGFARM_LAKE_03_MOVEMENT5");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M48_T6, "NW_MAGECAVE_23");
+		Wld_InsertNpc(FUN_M144_T6, "NW_BIGFARM_LAKE_03_MOVEMENT5");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M48_T7, "NW_MAGECAVE_23");
+		Wld_InsertNpc(FUN_M144_T7, "NW_BIGFARM_LAKE_03_MOVEMENT5");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M48_T3, "NW_MAGECAVE_23");
+		Wld_InsertNpc(FUN_M144_T3, "NW_BIGFARM_LAKE_03_MOVEMENT5");
 	};
 };
-func void Fun_Platz49()   // NW_MAGECAVE_27 (Original: MinecrawlerWarrior)
+func void Fun_Platz145()   // NW_BIGFARM_LAKE_03_MOVEMENT5 (Original: Gobbo_skeleton)
 {
 	var C_NPC m;
 	var int t;
@@ -8809,228 +25067,68 @@ func void Fun_Platz49()   // NW_MAGECAVE_27 (Original: MinecrawlerWarrior)
 	};
 	if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M49_T3);
+		m = Hlp_GetNpc(FUN_M145_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M49_T4);
+		m = Hlp_GetNpc(FUN_M145_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M49_T5);
+		m = Hlp_GetNpc(FUN_M145_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M49_T6);
+		m = Hlp_GetNpc(FUN_M145_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M49_T7);
+		m = Hlp_GetNpc(FUN_M145_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M49_T3);
+		m = Hlp_GetNpc(FUN_M145_T3);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T49 = 0;
+			FUNL_T145 = 0;
 			return;
 		};
 	};
-	FUNL_T49 = FUNL_T49 + 1;
-	if (FUNL_T49 < FUN_RESPAWN_TAKTE)
+	FUNL_T145 = FUNL_T145 + 1;
+	if (FUNL_T145 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T49 = 0;
+	FUNL_T145 = 0;
 	if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M49_T3, "NW_MAGECAVE_27");
+		Wld_InsertNpc(FUN_M145_T3, "NW_BIGFARM_LAKE_03_MOVEMENT5");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M49_T4, "NW_MAGECAVE_27");
+		Wld_InsertNpc(FUN_M145_T4, "NW_BIGFARM_LAKE_03_MOVEMENT5");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M49_T5, "NW_MAGECAVE_27");
+		Wld_InsertNpc(FUN_M145_T5, "NW_BIGFARM_LAKE_03_MOVEMENT5");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M49_T6, "NW_MAGECAVE_27");
+		Wld_InsertNpc(FUN_M145_T6, "NW_BIGFARM_LAKE_03_MOVEMENT5");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M49_T7, "NW_MAGECAVE_27");
+		Wld_InsertNpc(FUN_M145_T7, "NW_BIGFARM_LAKE_03_MOVEMENT5");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M49_T3, "NW_MAGECAVE_27");
+		Wld_InsertNpc(FUN_M145_T3, "NW_BIGFARM_LAKE_03_MOVEMENT5");
 	};
 };
-func void Fun_Platz50()   // NW_SAGITTA_MOREMONSTER_01 (Original: Wolf)
-{
-	var C_NPC m;
-	var int t;
-	t = 1 + Fun_KapitelNr() - 1;
-	if (t > 6)
-	{
-		t = 6;
-	};
-	if (t == 1)
-	{
-		m = Hlp_GetNpc(FUN_M50_T1);
-	}
-	else if (t == 2)
-	{
-		m = Hlp_GetNpc(FUN_M50_T2);
-	}
-	else if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M50_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M50_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M50_T5);
-	}
-	else if (t == 6)
-	{
-		m = Hlp_GetNpc(FUN_M50_T6);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M50_T1);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T50 = 0;
-			return;
-		};
-	};
-	FUNL_T50 = FUNL_T50 + 1;
-	if (FUNL_T50 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T50 = 0;
-	if (t == 1)
-	{
-		Wld_InsertNpc(FUN_M50_T1, "NW_SAGITTA_MOREMONSTER_01");
-	}
-	else if (t == 2)
-	{
-		Wld_InsertNpc(FUN_M50_T2, "NW_SAGITTA_MOREMONSTER_01");
-	}
-	else if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M50_T3, "NW_SAGITTA_MOREMONSTER_01");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M50_T4, "NW_SAGITTA_MOREMONSTER_01");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M50_T5, "NW_SAGITTA_MOREMONSTER_01");
-	}
-	else if (t == 6)
-	{
-		Wld_InsertNpc(FUN_M50_T6, "NW_SAGITTA_MOREMONSTER_01");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M50_T1, "NW_SAGITTA_MOREMONSTER_01");
-	};
-};
-func void Fun_Platz51()   // NW_TAVERNE_TROLLAREA_MONSTER_03_01M1 (Original: Giant_Bug)
-{
-	var C_NPC m;
-	var int t;
-	t = 1 + Fun_KapitelNr() - 1;
-	if (t > 6)
-	{
-		t = 6;
-	};
-	if (t == 1)
-	{
-		m = Hlp_GetNpc(FUN_M51_T1);
-	}
-	else if (t == 2)
-	{
-		m = Hlp_GetNpc(FUN_M51_T2);
-	}
-	else if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M51_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M51_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M51_T5);
-	}
-	else if (t == 6)
-	{
-		m = Hlp_GetNpc(FUN_M51_T6);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M51_T1);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T51 = 0;
-			return;
-		};
-	};
-	FUNL_T51 = FUNL_T51 + 1;
-	if (FUNL_T51 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T51 = 0;
-	if (t == 1)
-	{
-		Wld_InsertNpc(FUN_M51_T1, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
-	}
-	else if (t == 2)
-	{
-		Wld_InsertNpc(FUN_M51_T2, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
-	}
-	else if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M51_T3, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M51_T4, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M51_T5, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
-	}
-	else if (t == 6)
-	{
-		Wld_InsertNpc(FUN_M51_T6, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M51_T1, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
-	};
-};
-func void Fun_Platz52()   // NW_TROLLAREA_BRIGDE_05 (Original: Giant_Rat)
+func void Fun_Platz146()   // NW_BIGFARM_LAKE_MONSTER_BLOODFLY (Original: Bloodfly)
 {
 	var C_NPC m;
 	var int t;
@@ -9041,76 +25139,76 @@ func void Fun_Platz52()   // NW_TROLLAREA_BRIGDE_05 (Original: Giant_Rat)
 	};
 	if (t == 0)
 	{
-		m = Hlp_GetNpc(FUN_M52_T0);
+		m = Hlp_GetNpc(FUN_M146_T0);
 	}
 	else if (t == 1)
 	{
-		m = Hlp_GetNpc(FUN_M52_T1);
+		m = Hlp_GetNpc(FUN_M146_T1);
 	}
 	else if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M52_T2);
+		m = Hlp_GetNpc(FUN_M146_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M52_T3);
+		m = Hlp_GetNpc(FUN_M146_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M52_T4);
+		m = Hlp_GetNpc(FUN_M146_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M52_T5);
+		m = Hlp_GetNpc(FUN_M146_T5);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M52_T0);
+		m = Hlp_GetNpc(FUN_M146_T0);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T52 = 0;
+			FUNL_T146 = 0;
 			return;
 		};
 	};
-	FUNL_T52 = FUNL_T52 + 1;
-	if (FUNL_T52 < FUN_RESPAWN_TAKTE)
+	FUNL_T146 = FUNL_T146 + 1;
+	if (FUNL_T146 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T52 = 0;
+	FUNL_T146 = 0;
 	if (t == 0)
 	{
-		Wld_InsertNpc(FUN_M52_T0, "NW_TROLLAREA_BRIGDE_05");
+		Wld_InsertNpc(FUN_M146_T0, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
 	}
 	else if (t == 1)
 	{
-		Wld_InsertNpc(FUN_M52_T1, "NW_TROLLAREA_BRIGDE_05");
+		Wld_InsertNpc(FUN_M146_T1, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
 	}
 	else if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M52_T2, "NW_TROLLAREA_BRIGDE_05");
+		Wld_InsertNpc(FUN_M146_T2, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M52_T3, "NW_TROLLAREA_BRIGDE_05");
+		Wld_InsertNpc(FUN_M146_T3, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M52_T4, "NW_TROLLAREA_BRIGDE_05");
+		Wld_InsertNpc(FUN_M146_T4, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M52_T5, "NW_TROLLAREA_BRIGDE_05");
+		Wld_InsertNpc(FUN_M146_T5, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M52_T0, "NW_TROLLAREA_BRIGDE_05");
+		Wld_InsertNpc(FUN_M146_T0, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
 	};
 };
-func void Fun_Platz53()   // NW_TROLLAREA_NOVCHASE_01 (Original: Molerat)
+func void Fun_Platz147()   // NW_BIGFARM_LAKE_MONSTER_BLOODFLY (Original: Bloodfly)
 {
 	var C_NPC m;
 	var int t;
@@ -9121,76 +25219,1868 @@ func void Fun_Platz53()   // NW_TROLLAREA_NOVCHASE_01 (Original: Molerat)
 	};
 	if (t == 0)
 	{
-		m = Hlp_GetNpc(FUN_M53_T0);
+		m = Hlp_GetNpc(FUN_M147_T0);
 	}
 	else if (t == 1)
 	{
-		m = Hlp_GetNpc(FUN_M53_T1);
+		m = Hlp_GetNpc(FUN_M147_T1);
 	}
 	else if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M53_T2);
+		m = Hlp_GetNpc(FUN_M147_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M53_T3);
+		m = Hlp_GetNpc(FUN_M147_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M53_T4);
+		m = Hlp_GetNpc(FUN_M147_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M53_T5);
+		m = Hlp_GetNpc(FUN_M147_T5);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M53_T0);
+		m = Hlp_GetNpc(FUN_M147_T0);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T53 = 0;
+			FUNL_T147 = 0;
 			return;
 		};
 	};
-	FUNL_T53 = FUNL_T53 + 1;
-	if (FUNL_T53 < FUN_RESPAWN_TAKTE)
+	FUNL_T147 = FUNL_T147 + 1;
+	if (FUNL_T147 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T53 = 0;
+	FUNL_T147 = 0;
 	if (t == 0)
 	{
-		Wld_InsertNpc(FUN_M53_T0, "NW_TROLLAREA_NOVCHASE_01");
+		Wld_InsertNpc(FUN_M147_T0, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
 	}
 	else if (t == 1)
 	{
-		Wld_InsertNpc(FUN_M53_T1, "NW_TROLLAREA_NOVCHASE_01");
+		Wld_InsertNpc(FUN_M147_T1, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
 	}
 	else if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M53_T2, "NW_TROLLAREA_NOVCHASE_01");
+		Wld_InsertNpc(FUN_M147_T2, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M53_T3, "NW_TROLLAREA_NOVCHASE_01");
+		Wld_InsertNpc(FUN_M147_T3, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M53_T4, "NW_TROLLAREA_NOVCHASE_01");
+		Wld_InsertNpc(FUN_M147_T4, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M53_T5, "NW_TROLLAREA_NOVCHASE_01");
+		Wld_InsertNpc(FUN_M147_T5, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M53_T0, "NW_TROLLAREA_NOVCHASE_01");
+		Wld_InsertNpc(FUN_M147_T0, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
 	};
 };
-func void Fun_Platz54()   // NW_TROLLAREA_PATH_08 (Original: Lurker)
+func void Fun_Platz148()   // NW_BIGMILL_05 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M148_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M148_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M148_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M148_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M148_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M148_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M148_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T148 = 0;
+			return;
+		};
+	};
+	FUNL_T148 = FUNL_T148 + 1;
+	if (FUNL_T148 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T148 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M148_T0, "NW_BIGMILL_05");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M148_T1, "NW_BIGMILL_05");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M148_T2, "NW_BIGMILL_05");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M148_T3, "NW_BIGMILL_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M148_T4, "NW_BIGMILL_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M148_T5, "NW_BIGMILL_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M148_T0, "NW_BIGMILL_05");
+	};
+};
+func void Fun_Platz149()   // NW_BIGMILL_05 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M149_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M149_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M149_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M149_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M149_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M149_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M149_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T149 = 0;
+			return;
+		};
+	};
+	FUNL_T149 = FUNL_T149 + 1;
+	if (FUNL_T149 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T149 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M149_T0, "NW_BIGMILL_05");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M149_T1, "NW_BIGMILL_05");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M149_T2, "NW_BIGMILL_05");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M149_T3, "NW_BIGMILL_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M149_T4, "NW_BIGMILL_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M149_T5, "NW_BIGMILL_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M149_T0, "NW_BIGMILL_05");
+	};
+};
+func void Fun_Platz150()   // NW_BIGMILL_FARM3_03 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M150_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M150_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M150_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M150_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M150_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M150_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M150_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T150 = 0;
+			return;
+		};
+	};
+	FUNL_T150 = FUNL_T150 + 1;
+	if (FUNL_T150 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T150 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M150_T0, "NW_BIGMILL_FARM3_03");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M150_T1, "NW_BIGMILL_FARM3_03");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M150_T2, "NW_BIGMILL_FARM3_03");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M150_T3, "NW_BIGMILL_FARM3_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M150_T4, "NW_BIGMILL_FARM3_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M150_T5, "NW_BIGMILL_FARM3_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M150_T0, "NW_BIGMILL_FARM3_03");
+	};
+};
+func void Fun_Platz151()   // NW_BIGMILL_FARM3_03 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M151_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M151_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M151_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M151_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M151_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M151_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M151_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T151 = 0;
+			return;
+		};
+	};
+	FUNL_T151 = FUNL_T151 + 1;
+	if (FUNL_T151 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T151 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M151_T0, "NW_BIGMILL_FARM3_03");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M151_T1, "NW_BIGMILL_FARM3_03");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M151_T2, "NW_BIGMILL_FARM3_03");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M151_T3, "NW_BIGMILL_FARM3_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M151_T4, "NW_BIGMILL_FARM3_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M151_T5, "NW_BIGMILL_FARM3_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M151_T0, "NW_BIGMILL_FARM3_03");
+	};
+};
+func void Fun_Platz152()   // NW_CASTLEMINE_06 (Original: MinecrawlerWarrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M152_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M152_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M152_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M152_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M152_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M152_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T152 = 0;
+			return;
+		};
+	};
+	FUNL_T152 = FUNL_T152 + 1;
+	if (FUNL_T152 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T152 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M152_T3, "NW_CASTLEMINE_06");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M152_T4, "NW_CASTLEMINE_06");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M152_T5, "NW_CASTLEMINE_06");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M152_T6, "NW_CASTLEMINE_06");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M152_T7, "NW_CASTLEMINE_06");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M152_T3, "NW_CASTLEMINE_06");
+	};
+};
+func void Fun_Platz153()   // NW_CASTLEMINE_06 (Original: MinecrawlerWarrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M153_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M153_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M153_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M153_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M153_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M153_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T153 = 0;
+			return;
+		};
+	};
+	FUNL_T153 = FUNL_T153 + 1;
+	if (FUNL_T153 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T153 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M153_T3, "NW_CASTLEMINE_06");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M153_T4, "NW_CASTLEMINE_06");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M153_T5, "NW_CASTLEMINE_06");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M153_T6, "NW_CASTLEMINE_06");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M153_T7, "NW_CASTLEMINE_06");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M153_T3, "NW_CASTLEMINE_06");
+	};
+};
+func void Fun_Platz154()   // NW_CASTLEMINE_10 (Original: MinecrawlerWarrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M154_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M154_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M154_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M154_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M154_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M154_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T154 = 0;
+			return;
+		};
+	};
+	FUNL_T154 = FUNL_T154 + 1;
+	if (FUNL_T154 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T154 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M154_T3, "NW_CASTLEMINE_10");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M154_T4, "NW_CASTLEMINE_10");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M154_T5, "NW_CASTLEMINE_10");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M154_T6, "NW_CASTLEMINE_10");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M154_T7, "NW_CASTLEMINE_10");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M154_T3, "NW_CASTLEMINE_10");
+	};
+};
+func void Fun_Platz155()   // NW_CASTLEMINE_10 (Original: MinecrawlerWarrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M155_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M155_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M155_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M155_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M155_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M155_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T155 = 0;
+			return;
+		};
+	};
+	FUNL_T155 = FUNL_T155 + 1;
+	if (FUNL_T155 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T155 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M155_T3, "NW_CASTLEMINE_10");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M155_T4, "NW_CASTLEMINE_10");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M155_T5, "NW_CASTLEMINE_10");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M155_T6, "NW_CASTLEMINE_10");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M155_T7, "NW_CASTLEMINE_10");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M155_T3, "NW_CASTLEMINE_10");
+	};
+};
+func void Fun_Platz156()   // NW_CASTLEMINE_12 (Original: Minecrawler)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M156_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M156_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M156_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M156_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M156_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M156_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T156 = 0;
+			return;
+		};
+	};
+	FUNL_T156 = FUNL_T156 + 1;
+	if (FUNL_T156 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T156 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M156_T3, "NW_CASTLEMINE_12");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M156_T4, "NW_CASTLEMINE_12");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M156_T5, "NW_CASTLEMINE_12");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M156_T6, "NW_CASTLEMINE_12");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M156_T7, "NW_CASTLEMINE_12");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M156_T3, "NW_CASTLEMINE_12");
+	};
+};
+func void Fun_Platz157()   // NW_CASTLEMINE_12 (Original: Minecrawler)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M157_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M157_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M157_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M157_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M157_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M157_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T157 = 0;
+			return;
+		};
+	};
+	FUNL_T157 = FUNL_T157 + 1;
+	if (FUNL_T157 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T157 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M157_T3, "NW_CASTLEMINE_12");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M157_T4, "NW_CASTLEMINE_12");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M157_T5, "NW_CASTLEMINE_12");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M157_T6, "NW_CASTLEMINE_12");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M157_T7, "NW_CASTLEMINE_12");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M157_T3, "NW_CASTLEMINE_12");
+	};
+};
+func void Fun_Platz158()   // NW_CASTLEMINE_13 (Original: Minecrawler)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M158_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M158_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M158_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M158_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M158_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M158_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T158 = 0;
+			return;
+		};
+	};
+	FUNL_T158 = FUNL_T158 + 1;
+	if (FUNL_T158 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T158 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M158_T3, "NW_CASTLEMINE_13");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M158_T4, "NW_CASTLEMINE_13");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M158_T5, "NW_CASTLEMINE_13");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M158_T6, "NW_CASTLEMINE_13");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M158_T7, "NW_CASTLEMINE_13");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M158_T3, "NW_CASTLEMINE_13");
+	};
+};
+func void Fun_Platz159()   // NW_CASTLEMINE_13 (Original: Minecrawler)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M159_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M159_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M159_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M159_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M159_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M159_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T159 = 0;
+			return;
+		};
+	};
+	FUNL_T159 = FUNL_T159 + 1;
+	if (FUNL_T159 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T159 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M159_T3, "NW_CASTLEMINE_13");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M159_T4, "NW_CASTLEMINE_13");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M159_T5, "NW_CASTLEMINE_13");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M159_T6, "NW_CASTLEMINE_13");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M159_T7, "NW_CASTLEMINE_13");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M159_T3, "NW_CASTLEMINE_13");
+	};
+};
+func void Fun_Platz160()   // NW_CRYPT_MONSTER02 (Original: Gobbo_skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M160_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M160_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M160_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M160_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M160_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M160_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T160 = 0;
+			return;
+		};
+	};
+	FUNL_T160 = FUNL_T160 + 1;
+	if (FUNL_T160 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T160 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M160_T3, "NW_CRYPT_MONSTER02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M160_T4, "NW_CRYPT_MONSTER02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M160_T5, "NW_CRYPT_MONSTER02");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M160_T6, "NW_CRYPT_MONSTER02");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M160_T7, "NW_CRYPT_MONSTER02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M160_T3, "NW_CRYPT_MONSTER02");
+	};
+};
+func void Fun_Platz161()   // NW_CRYPT_MONSTER02 (Original: Gobbo_skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M161_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M161_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M161_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M161_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M161_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M161_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T161 = 0;
+			return;
+		};
+	};
+	FUNL_T161 = FUNL_T161 + 1;
+	if (FUNL_T161 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T161 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M161_T3, "NW_CRYPT_MONSTER02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M161_T4, "NW_CRYPT_MONSTER02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M161_T5, "NW_CRYPT_MONSTER02");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M161_T6, "NW_CRYPT_MONSTER02");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M161_T7, "NW_CRYPT_MONSTER02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M161_T3, "NW_CRYPT_MONSTER02");
+	};
+};
+func void Fun_Platz162()   // NW_CRYPT_MONSTER04 (Original: Lesser_skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M162_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M162_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M162_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M162_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M162_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M162_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T162 = 0;
+			return;
+		};
+	};
+	FUNL_T162 = FUNL_T162 + 1;
+	if (FUNL_T162 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T162 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M162_T3, "NW_CRYPT_MONSTER04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M162_T4, "NW_CRYPT_MONSTER04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M162_T5, "NW_CRYPT_MONSTER04");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M162_T6, "NW_CRYPT_MONSTER04");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M162_T7, "NW_CRYPT_MONSTER04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M162_T3, "NW_CRYPT_MONSTER04");
+	};
+};
+func void Fun_Platz163()   // NW_CRYPT_MONSTER04 (Original: Lesser_skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M163_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M163_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M163_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M163_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M163_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M163_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T163 = 0;
+			return;
+		};
+	};
+	FUNL_T163 = FUNL_T163 + 1;
+	if (FUNL_T163 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T163 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M163_T3, "NW_CRYPT_MONSTER04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M163_T4, "NW_CRYPT_MONSTER04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M163_T5, "NW_CRYPT_MONSTER04");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M163_T6, "NW_CRYPT_MONSTER04");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M163_T7, "NW_CRYPT_MONSTER04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M163_T3, "NW_CRYPT_MONSTER04");
+	};
+};
+func void Fun_Platz164()   // NW_CRYPT_MONSTER06 (Original: Lesser_skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M164_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M164_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M164_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M164_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M164_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M164_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T164 = 0;
+			return;
+		};
+	};
+	FUNL_T164 = FUNL_T164 + 1;
+	if (FUNL_T164 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T164 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M164_T3, "NW_CRYPT_MONSTER06");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M164_T4, "NW_CRYPT_MONSTER06");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M164_T5, "NW_CRYPT_MONSTER06");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M164_T6, "NW_CRYPT_MONSTER06");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M164_T7, "NW_CRYPT_MONSTER06");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M164_T3, "NW_CRYPT_MONSTER06");
+	};
+};
+func void Fun_Platz165()   // NW_CRYPT_MONSTER06 (Original: Lesser_skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M165_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M165_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M165_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M165_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M165_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M165_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T165 = 0;
+			return;
+		};
+	};
+	FUNL_T165 = FUNL_T165 + 1;
+	if (FUNL_T165 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T165 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M165_T3, "NW_CRYPT_MONSTER06");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M165_T4, "NW_CRYPT_MONSTER06");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M165_T5, "NW_CRYPT_MONSTER06");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M165_T6, "NW_CRYPT_MONSTER06");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M165_T7, "NW_CRYPT_MONSTER06");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M165_T3, "NW_CRYPT_MONSTER06");
+	};
+};
+func void Fun_Platz166()   // NW_CRYPT_MONSTER08 (Original: Gobbo_skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M166_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M166_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M166_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M166_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M166_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M166_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T166 = 0;
+			return;
+		};
+	};
+	FUNL_T166 = FUNL_T166 + 1;
+	if (FUNL_T166 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T166 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M166_T3, "NW_CRYPT_MONSTER08");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M166_T4, "NW_CRYPT_MONSTER08");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M166_T5, "NW_CRYPT_MONSTER08");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M166_T6, "NW_CRYPT_MONSTER08");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M166_T7, "NW_CRYPT_MONSTER08");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M166_T3, "NW_CRYPT_MONSTER08");
+	};
+};
+func void Fun_Platz167()   // NW_CRYPT_MONSTER08 (Original: Gobbo_skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M167_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M167_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M167_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M167_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M167_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M167_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T167 = 0;
+			return;
+		};
+	};
+	FUNL_T167 = FUNL_T167 + 1;
+	if (FUNL_T167 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T167 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M167_T3, "NW_CRYPT_MONSTER08");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M167_T4, "NW_CRYPT_MONSTER08");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M167_T5, "NW_CRYPT_MONSTER08");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M167_T6, "NW_CRYPT_MONSTER08");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M167_T7, "NW_CRYPT_MONSTER08");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M167_T3, "NW_CRYPT_MONSTER08");
+	};
+};
+func void Fun_Platz168()   // NW_FARM3_BIGWOOD_02 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M168_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M168_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M168_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M168_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M168_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M168_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M168_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T168 = 0;
+			return;
+		};
+	};
+	FUNL_T168 = FUNL_T168 + 1;
+	if (FUNL_T168 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T168 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M168_T0, "NW_FARM3_BIGWOOD_02");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M168_T1, "NW_FARM3_BIGWOOD_02");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M168_T2, "NW_FARM3_BIGWOOD_02");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M168_T3, "NW_FARM3_BIGWOOD_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M168_T4, "NW_FARM3_BIGWOOD_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M168_T5, "NW_FARM3_BIGWOOD_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M168_T0, "NW_FARM3_BIGWOOD_02");
+	};
+};
+func void Fun_Platz169()   // NW_FARM3_BIGWOOD_02 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M169_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M169_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M169_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M169_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M169_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M169_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M169_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T169 = 0;
+			return;
+		};
+	};
+	FUNL_T169 = FUNL_T169 + 1;
+	if (FUNL_T169 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T169 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M169_T0, "NW_FARM3_BIGWOOD_02");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M169_T1, "NW_FARM3_BIGWOOD_02");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M169_T2, "NW_FARM3_BIGWOOD_02");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M169_T3, "NW_FARM3_BIGWOOD_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M169_T4, "NW_FARM3_BIGWOOD_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M169_T5, "NW_FARM3_BIGWOOD_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M169_T0, "NW_FARM3_BIGWOOD_02");
+	};
+};
+func void Fun_Platz170()   // NW_FARM3_BIGWOOD_03 (Original: Keiler)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M170_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M170_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M170_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M170_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M170_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M170_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M170_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T170 = 0;
+			return;
+		};
+	};
+	FUNL_T170 = FUNL_T170 + 1;
+	if (FUNL_T170 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T170 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M170_T1, "NW_FARM3_BIGWOOD_03");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M170_T2, "NW_FARM3_BIGWOOD_03");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M170_T3, "NW_FARM3_BIGWOOD_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M170_T4, "NW_FARM3_BIGWOOD_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M170_T5, "NW_FARM3_BIGWOOD_03");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M170_T6, "NW_FARM3_BIGWOOD_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M170_T1, "NW_FARM3_BIGWOOD_03");
+	};
+};
+func void Fun_Platz171()   // NW_FARM3_BIGWOOD_03 (Original: Keiler)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M171_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M171_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M171_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M171_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M171_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M171_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M171_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T171 = 0;
+			return;
+		};
+	};
+	FUNL_T171 = FUNL_T171 + 1;
+	if (FUNL_T171 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T171 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M171_T1, "NW_FARM3_BIGWOOD_03");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M171_T2, "NW_FARM3_BIGWOOD_03");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M171_T3, "NW_FARM3_BIGWOOD_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M171_T4, "NW_FARM3_BIGWOOD_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M171_T5, "NW_FARM3_BIGWOOD_03");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M171_T6, "NW_FARM3_BIGWOOD_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M171_T1, "NW_FARM3_BIGWOOD_03");
+	};
+};
+func void Fun_Platz172()   // NW_FARM3_MOUNTAINLAKE_03 (Original: Lurker)
 {
 	var C_NPC m;
 	var int t;
@@ -9201,156 +27091,76 @@ func void Fun_Platz54()   // NW_TROLLAREA_PATH_08 (Original: Lurker)
 	};
 	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M54_T2);
+		m = Hlp_GetNpc(FUN_M172_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M54_T3);
+		m = Hlp_GetNpc(FUN_M172_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M54_T4);
+		m = Hlp_GetNpc(FUN_M172_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M54_T5);
+		m = Hlp_GetNpc(FUN_M172_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M54_T6);
+		m = Hlp_GetNpc(FUN_M172_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M54_T7);
+		m = Hlp_GetNpc(FUN_M172_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M54_T2);
+		m = Hlp_GetNpc(FUN_M172_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T54 = 0;
+			FUNL_T172 = 0;
 			return;
 		};
 	};
-	FUNL_T54 = FUNL_T54 + 1;
-	if (FUNL_T54 < FUN_RESPAWN_TAKTE)
+	FUNL_T172 = FUNL_T172 + 1;
+	if (FUNL_T172 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T54 = 0;
+	FUNL_T172 = 0;
 	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M54_T2, "NW_TROLLAREA_PATH_08");
+		Wld_InsertNpc(FUN_M172_T2, "NW_FARM3_MOUNTAINLAKE_03");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M54_T3, "NW_TROLLAREA_PATH_08");
+		Wld_InsertNpc(FUN_M172_T3, "NW_FARM3_MOUNTAINLAKE_03");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M54_T4, "NW_TROLLAREA_PATH_08");
+		Wld_InsertNpc(FUN_M172_T4, "NW_FARM3_MOUNTAINLAKE_03");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M54_T5, "NW_TROLLAREA_PATH_08");
+		Wld_InsertNpc(FUN_M172_T5, "NW_FARM3_MOUNTAINLAKE_03");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M54_T6, "NW_TROLLAREA_PATH_08");
+		Wld_InsertNpc(FUN_M172_T6, "NW_FARM3_MOUNTAINLAKE_03");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M54_T7, "NW_TROLLAREA_PATH_08");
+		Wld_InsertNpc(FUN_M172_T7, "NW_FARM3_MOUNTAINLAKE_03");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M54_T2, "NW_TROLLAREA_PATH_08");
+		Wld_InsertNpc(FUN_M172_T2, "NW_FARM3_MOUNTAINLAKE_03");
 	};
 };
-func void Fun_Platz55()   // NW_TROLLAREA_PATH_38_MONSTER (Original: Bloodfly)
-{
-	var C_NPC m;
-	var int t;
-	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5)
-	{
-		t = 5;
-	};
-	if (t == 0)
-	{
-		m = Hlp_GetNpc(FUN_M55_T0);
-	}
-	else if (t == 1)
-	{
-		m = Hlp_GetNpc(FUN_M55_T1);
-	}
-	else if (t == 2)
-	{
-		m = Hlp_GetNpc(FUN_M55_T2);
-	}
-	else if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M55_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M55_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M55_T5);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M55_T0);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T55 = 0;
-			return;
-		};
-	};
-	FUNL_T55 = FUNL_T55 + 1;
-	if (FUNL_T55 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T55 = 0;
-	if (t == 0)
-	{
-		Wld_InsertNpc(FUN_M55_T0, "NW_TROLLAREA_PATH_38_MONSTER");
-	}
-	else if (t == 1)
-	{
-		Wld_InsertNpc(FUN_M55_T1, "NW_TROLLAREA_PATH_38_MONSTER");
-	}
-	else if (t == 2)
-	{
-		Wld_InsertNpc(FUN_M55_T2, "NW_TROLLAREA_PATH_38_MONSTER");
-	}
-	else if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M55_T3, "NW_TROLLAREA_PATH_38_MONSTER");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M55_T4, "NW_TROLLAREA_PATH_38_MONSTER");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M55_T5, "NW_TROLLAREA_PATH_38_MONSTER");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M55_T0, "NW_TROLLAREA_PATH_38_MONSTER");
-	};
-};
-func void Fun_Platz56()   // NW_TROLLAREA_PATH_71_MONSTER (Original: Lurker)
+func void Fun_Platz173()   // NW_FARM3_MOUNTAINLAKE_03 (Original: Lurker)
 {
 	var C_NPC m;
 	var int t;
@@ -9361,692 +27171,76 @@ func void Fun_Platz56()   // NW_TROLLAREA_PATH_71_MONSTER (Original: Lurker)
 	};
 	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M56_T2);
+		m = Hlp_GetNpc(FUN_M173_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M56_T3);
+		m = Hlp_GetNpc(FUN_M173_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M56_T4);
+		m = Hlp_GetNpc(FUN_M173_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M56_T5);
+		m = Hlp_GetNpc(FUN_M173_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M56_T6);
+		m = Hlp_GetNpc(FUN_M173_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M56_T7);
+		m = Hlp_GetNpc(FUN_M173_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M56_T2);
+		m = Hlp_GetNpc(FUN_M173_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T56 = 0;
+			FUNL_T173 = 0;
 			return;
 		};
 	};
-	FUNL_T56 = FUNL_T56 + 1;
-	if (FUNL_T56 < FUN_RESPAWN_TAKTE)
+	FUNL_T173 = FUNL_T173 + 1;
+	if (FUNL_T173 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T56 = 0;
+	FUNL_T173 = 0;
 	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M56_T2, "NW_TROLLAREA_PATH_71_MONSTER");
+		Wld_InsertNpc(FUN_M173_T2, "NW_FARM3_MOUNTAINLAKE_03");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M56_T3, "NW_TROLLAREA_PATH_71_MONSTER");
+		Wld_InsertNpc(FUN_M173_T3, "NW_FARM3_MOUNTAINLAKE_03");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M56_T4, "NW_TROLLAREA_PATH_71_MONSTER");
+		Wld_InsertNpc(FUN_M173_T4, "NW_FARM3_MOUNTAINLAKE_03");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M56_T5, "NW_TROLLAREA_PATH_71_MONSTER");
+		Wld_InsertNpc(FUN_M173_T5, "NW_FARM3_MOUNTAINLAKE_03");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M56_T6, "NW_TROLLAREA_PATH_71_MONSTER");
+		Wld_InsertNpc(FUN_M173_T6, "NW_FARM3_MOUNTAINLAKE_03");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M56_T7, "NW_TROLLAREA_PATH_71_MONSTER");
+		Wld_InsertNpc(FUN_M173_T7, "NW_FARM3_MOUNTAINLAKE_03");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M56_T2, "NW_TROLLAREA_PATH_71_MONSTER");
+		Wld_InsertNpc(FUN_M173_T2, "NW_FARM3_MOUNTAINLAKE_03");
 	};
 };
-func void Fun_Platz57()   // NW_TROLLAREA_PLANE_04 (Original: Scavenger)
-{
-	var C_NPC m;
-	var int t;
-	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5)
-	{
-		t = 5;
-	};
-	if (t == 0)
-	{
-		m = Hlp_GetNpc(FUN_M57_T0);
-	}
-	else if (t == 1)
-	{
-		m = Hlp_GetNpc(FUN_M57_T1);
-	}
-	else if (t == 2)
-	{
-		m = Hlp_GetNpc(FUN_M57_T2);
-	}
-	else if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M57_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M57_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M57_T5);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M57_T0);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T57 = 0;
-			return;
-		};
-	};
-	FUNL_T57 = FUNL_T57 + 1;
-	if (FUNL_T57 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T57 = 0;
-	if (t == 0)
-	{
-		Wld_InsertNpc(FUN_M57_T0, "NW_TROLLAREA_PLANE_04");
-	}
-	else if (t == 1)
-	{
-		Wld_InsertNpc(FUN_M57_T1, "NW_TROLLAREA_PLANE_04");
-	}
-	else if (t == 2)
-	{
-		Wld_InsertNpc(FUN_M57_T2, "NW_TROLLAREA_PLANE_04");
-	}
-	else if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M57_T3, "NW_TROLLAREA_PLANE_04");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M57_T4, "NW_TROLLAREA_PLANE_04");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M57_T5, "NW_TROLLAREA_PLANE_04");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M57_T0, "NW_TROLLAREA_PLANE_04");
-	};
-};
-func void Fun_Platz58()   // NW_TROLLAREA_PORTALTEMPEL_06 (Original: Giant_Rat)
-{
-	var C_NPC m;
-	var int t;
-	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5)
-	{
-		t = 5;
-	};
-	if (t == 0)
-	{
-		m = Hlp_GetNpc(FUN_M58_T0);
-	}
-	else if (t == 1)
-	{
-		m = Hlp_GetNpc(FUN_M58_T1);
-	}
-	else if (t == 2)
-	{
-		m = Hlp_GetNpc(FUN_M58_T2);
-	}
-	else if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M58_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M58_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M58_T5);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M58_T0);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T58 = 0;
-			return;
-		};
-	};
-	FUNL_T58 = FUNL_T58 + 1;
-	if (FUNL_T58 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T58 = 0;
-	if (t == 0)
-	{
-		Wld_InsertNpc(FUN_M58_T0, "NW_TROLLAREA_PORTALTEMPEL_06");
-	}
-	else if (t == 1)
-	{
-		Wld_InsertNpc(FUN_M58_T1, "NW_TROLLAREA_PORTALTEMPEL_06");
-	}
-	else if (t == 2)
-	{
-		Wld_InsertNpc(FUN_M58_T2, "NW_TROLLAREA_PORTALTEMPEL_06");
-	}
-	else if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M58_T3, "NW_TROLLAREA_PORTALTEMPEL_06");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M58_T4, "NW_TROLLAREA_PORTALTEMPEL_06");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M58_T5, "NW_TROLLAREA_PORTALTEMPEL_06");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M58_T0, "NW_TROLLAREA_PORTALTEMPEL_06");
-	};
-};
-func void Fun_Platz59()   // NW_TROLLAREA_PORTALTEMPEL_12 (Original: Giant_Rat)
-{
-	var C_NPC m;
-	var int t;
-	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5)
-	{
-		t = 5;
-	};
-	if (t == 0)
-	{
-		m = Hlp_GetNpc(FUN_M59_T0);
-	}
-	else if (t == 1)
-	{
-		m = Hlp_GetNpc(FUN_M59_T1);
-	}
-	else if (t == 2)
-	{
-		m = Hlp_GetNpc(FUN_M59_T2);
-	}
-	else if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M59_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M59_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M59_T5);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M59_T0);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T59 = 0;
-			return;
-		};
-	};
-	FUNL_T59 = FUNL_T59 + 1;
-	if (FUNL_T59 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T59 = 0;
-	if (t == 0)
-	{
-		Wld_InsertNpc(FUN_M59_T0, "NW_TROLLAREA_PORTALTEMPEL_12");
-	}
-	else if (t == 1)
-	{
-		Wld_InsertNpc(FUN_M59_T1, "NW_TROLLAREA_PORTALTEMPEL_12");
-	}
-	else if (t == 2)
-	{
-		Wld_InsertNpc(FUN_M59_T2, "NW_TROLLAREA_PORTALTEMPEL_12");
-	}
-	else if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M59_T3, "NW_TROLLAREA_PORTALTEMPEL_12");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M59_T4, "NW_TROLLAREA_PORTALTEMPEL_12");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M59_T5, "NW_TROLLAREA_PORTALTEMPEL_12");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M59_T0, "NW_TROLLAREA_PORTALTEMPEL_12");
-	};
-};
-func void Fun_Platz60()   // NW_TROLLAREA_PORTALTEMPEL_17_A (Original: Gobbo_Skeleton)
-{
-	var C_NPC m;
-	var int t;
-	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7)
-	{
-		t = 7;
-	};
-	if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M60_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M60_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M60_T5);
-	}
-	else if (t == 6)
-	{
-		m = Hlp_GetNpc(FUN_M60_T6);
-	}
-	else if (t == 7)
-	{
-		m = Hlp_GetNpc(FUN_M60_T7);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M60_T3);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T60 = 0;
-			return;
-		};
-	};
-	FUNL_T60 = FUNL_T60 + 1;
-	if (FUNL_T60 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T60 = 0;
-	if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M60_T3, "NW_TROLLAREA_PORTALTEMPEL_17_A");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M60_T4, "NW_TROLLAREA_PORTALTEMPEL_17_A");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M60_T5, "NW_TROLLAREA_PORTALTEMPEL_17_A");
-	}
-	else if (t == 6)
-	{
-		Wld_InsertNpc(FUN_M60_T6, "NW_TROLLAREA_PORTALTEMPEL_17_A");
-	}
-	else if (t == 7)
-	{
-		Wld_InsertNpc(FUN_M60_T7, "NW_TROLLAREA_PORTALTEMPEL_17_A");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M60_T3, "NW_TROLLAREA_PORTALTEMPEL_17_A");
-	};
-};
-func void Fun_Platz61()   // NW_TROLLAREA_RITUALFOREST_04_MONSTER (Original: Molerat)
-{
-	var C_NPC m;
-	var int t;
-	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5)
-	{
-		t = 5;
-	};
-	if (t == 0)
-	{
-		m = Hlp_GetNpc(FUN_M61_T0);
-	}
-	else if (t == 1)
-	{
-		m = Hlp_GetNpc(FUN_M61_T1);
-	}
-	else if (t == 2)
-	{
-		m = Hlp_GetNpc(FUN_M61_T2);
-	}
-	else if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M61_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M61_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M61_T5);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M61_T0);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T61 = 0;
-			return;
-		};
-	};
-	FUNL_T61 = FUNL_T61 + 1;
-	if (FUNL_T61 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T61 = 0;
-	if (t == 0)
-	{
-		Wld_InsertNpc(FUN_M61_T0, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
-	}
-	else if (t == 1)
-	{
-		Wld_InsertNpc(FUN_M61_T1, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
-	}
-	else if (t == 2)
-	{
-		Wld_InsertNpc(FUN_M61_T2, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
-	}
-	else if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M61_T3, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M61_T4, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M61_T5, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M61_T0, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
-	};
-};
-func void Fun_Platz62()   // NW_TROLLAREA_RITUALPATH_032 (Original: Bloodfly)
-{
-	var C_NPC m;
-	var int t;
-	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5)
-	{
-		t = 5;
-	};
-	if (t == 0)
-	{
-		m = Hlp_GetNpc(FUN_M62_T0);
-	}
-	else if (t == 1)
-	{
-		m = Hlp_GetNpc(FUN_M62_T1);
-	}
-	else if (t == 2)
-	{
-		m = Hlp_GetNpc(FUN_M62_T2);
-	}
-	else if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M62_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M62_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M62_T5);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M62_T0);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T62 = 0;
-			return;
-		};
-	};
-	FUNL_T62 = FUNL_T62 + 1;
-	if (FUNL_T62 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T62 = 0;
-	if (t == 0)
-	{
-		Wld_InsertNpc(FUN_M62_T0, "NW_TROLLAREA_RITUALPATH_032");
-	}
-	else if (t == 1)
-	{
-		Wld_InsertNpc(FUN_M62_T1, "NW_TROLLAREA_RITUALPATH_032");
-	}
-	else if (t == 2)
-	{
-		Wld_InsertNpc(FUN_M62_T2, "NW_TROLLAREA_RITUALPATH_032");
-	}
-	else if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M62_T3, "NW_TROLLAREA_RITUALPATH_032");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M62_T4, "NW_TROLLAREA_RITUALPATH_032");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M62_T5, "NW_TROLLAREA_RITUALPATH_032");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M62_T0, "NW_TROLLAREA_RITUALPATH_032");
-	};
-};
-func void Fun_Platz63()   // NW_TROLLAREA_RITUAL_13 (Original: Gobbo_Skeleton)
-{
-	var C_NPC m;
-	var int t;
-	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7)
-	{
-		t = 7;
-	};
-	if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M63_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M63_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M63_T5);
-	}
-	else if (t == 6)
-	{
-		m = Hlp_GetNpc(FUN_M63_T6);
-	}
-	else if (t == 7)
-	{
-		m = Hlp_GetNpc(FUN_M63_T7);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M63_T3);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T63 = 0;
-			return;
-		};
-	};
-	FUNL_T63 = FUNL_T63 + 1;
-	if (FUNL_T63 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T63 = 0;
-	if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M63_T3, "NW_TROLLAREA_RITUAL_13");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M63_T4, "NW_TROLLAREA_RITUAL_13");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M63_T5, "NW_TROLLAREA_RITUAL_13");
-	}
-	else if (t == 6)
-	{
-		Wld_InsertNpc(FUN_M63_T6, "NW_TROLLAREA_RITUAL_13");
-	}
-	else if (t == 7)
-	{
-		Wld_InsertNpc(FUN_M63_T7, "NW_TROLLAREA_RITUAL_13");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M63_T3, "NW_TROLLAREA_RITUAL_13");
-	};
-};
-func void Fun_Platz64()   // NW_TROLLAREA_RIVERSIDECAVE_02 (Original: Shadowbeast)
-{
-	var C_NPC m;
-	var int t;
-	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7)
-	{
-		t = 7;
-	};
-	if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M64_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M64_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M64_T5);
-	}
-	else if (t == 6)
-	{
-		m = Hlp_GetNpc(FUN_M64_T6);
-	}
-	else if (t == 7)
-	{
-		m = Hlp_GetNpc(FUN_M64_T7);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M64_T3);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T64 = 0;
-			return;
-		};
-	};
-	FUNL_T64 = FUNL_T64 + 1;
-	if (FUNL_T64 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T64 = 0;
-	if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M64_T3, "NW_TROLLAREA_RIVERSIDECAVE_02");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M64_T4, "NW_TROLLAREA_RIVERSIDECAVE_02");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M64_T5, "NW_TROLLAREA_RIVERSIDECAVE_02");
-	}
-	else if (t == 6)
-	{
-		Wld_InsertNpc(FUN_M64_T6, "NW_TROLLAREA_RIVERSIDECAVE_02");
-	}
-	else if (t == 7)
-	{
-		Wld_InsertNpc(FUN_M64_T7, "NW_TROLLAREA_RIVERSIDECAVE_02");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M64_T3, "NW_TROLLAREA_RIVERSIDECAVE_02");
-	};
-};
-func void Fun_Platz65()   // NW_TROLLAREA_RUINS_14 (Original: Gobbo_Black)
+func void Fun_Platz174()   // NW_FARM3_MOUNTAINLAKE_MONSTER_01 (Original: Lurker)
 {
 	var C_NPC m;
 	var int t;
@@ -10057,228 +27251,76 @@ func void Fun_Platz65()   // NW_TROLLAREA_RUINS_14 (Original: Gobbo_Black)
 	};
 	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M65_T2);
+		m = Hlp_GetNpc(FUN_M174_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M65_T3);
+		m = Hlp_GetNpc(FUN_M174_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M65_T4);
+		m = Hlp_GetNpc(FUN_M174_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M65_T5);
+		m = Hlp_GetNpc(FUN_M174_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M65_T6);
+		m = Hlp_GetNpc(FUN_M174_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M65_T7);
+		m = Hlp_GetNpc(FUN_M174_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M65_T2);
+		m = Hlp_GetNpc(FUN_M174_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T65 = 0;
+			FUNL_T174 = 0;
 			return;
 		};
 	};
-	FUNL_T65 = FUNL_T65 + 1;
-	if (FUNL_T65 < FUN_RESPAWN_TAKTE)
+	FUNL_T174 = FUNL_T174 + 1;
+	if (FUNL_T174 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T65 = 0;
+	FUNL_T174 = 0;
 	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M65_T2, "NW_TROLLAREA_RUINS_14");
+		Wld_InsertNpc(FUN_M174_T2, "NW_FARM3_MOUNTAINLAKE_MONSTER_01");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M65_T3, "NW_TROLLAREA_RUINS_14");
+		Wld_InsertNpc(FUN_M174_T3, "NW_FARM3_MOUNTAINLAKE_MONSTER_01");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M65_T4, "NW_TROLLAREA_RUINS_14");
+		Wld_InsertNpc(FUN_M174_T4, "NW_FARM3_MOUNTAINLAKE_MONSTER_01");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M65_T5, "NW_TROLLAREA_RUINS_14");
+		Wld_InsertNpc(FUN_M174_T5, "NW_FARM3_MOUNTAINLAKE_MONSTER_01");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M65_T6, "NW_TROLLAREA_RUINS_14");
+		Wld_InsertNpc(FUN_M174_T6, "NW_FARM3_MOUNTAINLAKE_MONSTER_01");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M65_T7, "NW_TROLLAREA_RUINS_14");
+		Wld_InsertNpc(FUN_M174_T7, "NW_FARM3_MOUNTAINLAKE_MONSTER_01");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M65_T2, "NW_TROLLAREA_RUINS_14");
+		Wld_InsertNpc(FUN_M174_T2, "NW_FARM3_MOUNTAINLAKE_MONSTER_01");
 	};
 };
-func void Fun_Platz66()   // NW_TROLLAREA_RUINS_32 (Original: Waran)
-{
-	var C_NPC m;
-	var int t;
-	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7)
-	{
-		t = 7;
-	};
-	if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M66_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M66_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M66_T5);
-	}
-	else if (t == 6)
-	{
-		m = Hlp_GetNpc(FUN_M66_T6);
-	}
-	else if (t == 7)
-	{
-		m = Hlp_GetNpc(FUN_M66_T7);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M66_T3);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T66 = 0;
-			return;
-		};
-	};
-	FUNL_T66 = FUNL_T66 + 1;
-	if (FUNL_T66 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T66 = 0;
-	if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M66_T3, "NW_TROLLAREA_RUINS_32");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M66_T4, "NW_TROLLAREA_RUINS_32");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M66_T5, "NW_TROLLAREA_RUINS_32");
-	}
-	else if (t == 6)
-	{
-		Wld_InsertNpc(FUN_M66_T6, "NW_TROLLAREA_RUINS_32");
-	}
-	else if (t == 7)
-	{
-		Wld_InsertNpc(FUN_M66_T7, "NW_TROLLAREA_RUINS_32");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M66_T3, "NW_TROLLAREA_RUINS_32");
-	};
-};
-func void Fun_Platz67()   // NW_TROLLAREA_TROLLLAKECAVE_02 (Original: Giant_Rat)
-{
-	var C_NPC m;
-	var int t;
-	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5)
-	{
-		t = 5;
-	};
-	if (t == 0)
-	{
-		m = Hlp_GetNpc(FUN_M67_T0);
-	}
-	else if (t == 1)
-	{
-		m = Hlp_GetNpc(FUN_M67_T1);
-	}
-	else if (t == 2)
-	{
-		m = Hlp_GetNpc(FUN_M67_T2);
-	}
-	else if (t == 3)
-	{
-		m = Hlp_GetNpc(FUN_M67_T3);
-	}
-	else if (t == 4)
-	{
-		m = Hlp_GetNpc(FUN_M67_T4);
-	}
-	else if (t == 5)
-	{
-		m = Hlp_GetNpc(FUN_M67_T5);
-	}
-	else
-	{
-		m = Hlp_GetNpc(FUN_M67_T0);
-	};
-	if (Hlp_IsValidNpc(m))
-	{
-		if (!Npc_IsDead(m))
-		{
-			FUNL_T67 = 0;
-			return;
-		};
-	};
-	FUNL_T67 = FUNL_T67 + 1;
-	if (FUNL_T67 < FUN_RESPAWN_TAKTE)
-	{
-		return;
-	};
-	FUNL_T67 = 0;
-	if (t == 0)
-	{
-		Wld_InsertNpc(FUN_M67_T0, "NW_TROLLAREA_TROLLLAKECAVE_02");
-	}
-	else if (t == 1)
-	{
-		Wld_InsertNpc(FUN_M67_T1, "NW_TROLLAREA_TROLLLAKECAVE_02");
-	}
-	else if (t == 2)
-	{
-		Wld_InsertNpc(FUN_M67_T2, "NW_TROLLAREA_TROLLLAKECAVE_02");
-	}
-	else if (t == 3)
-	{
-		Wld_InsertNpc(FUN_M67_T3, "NW_TROLLAREA_TROLLLAKECAVE_02");
-	}
-	else if (t == 4)
-	{
-		Wld_InsertNpc(FUN_M67_T4, "NW_TROLLAREA_TROLLLAKECAVE_02");
-	}
-	else if (t == 5)
-	{
-		Wld_InsertNpc(FUN_M67_T5, "NW_TROLLAREA_TROLLLAKECAVE_02");
-	}
-	else
-	{
-		Wld_InsertNpc(FUN_M67_T0, "NW_TROLLAREA_TROLLLAKECAVE_02");
-	};
-};
-func void Fun_Platz68()   // NW_TROLLAREA_TROLLLAKECAVE_09 (Original: Gobbo_Green)
+func void Fun_Platz175()   // NW_FARM3_MOUNTAINLAKE_MONSTER_01 (Original: Lurker)
 {
 	var C_NPC m;
 	var int t;
@@ -10289,76 +27331,1996 @@ func void Fun_Platz68()   // NW_TROLLAREA_TROLLLAKECAVE_09 (Original: Gobbo_Gree
 	};
 	if (t == 2)
 	{
-		m = Hlp_GetNpc(FUN_M68_T2);
+		m = Hlp_GetNpc(FUN_M175_T2);
 	}
 	else if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M68_T3);
+		m = Hlp_GetNpc(FUN_M175_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M68_T4);
+		m = Hlp_GetNpc(FUN_M175_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M68_T5);
+		m = Hlp_GetNpc(FUN_M175_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M68_T6);
+		m = Hlp_GetNpc(FUN_M175_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M68_T7);
+		m = Hlp_GetNpc(FUN_M175_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M68_T2);
+		m = Hlp_GetNpc(FUN_M175_T2);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T68 = 0;
+			FUNL_T175 = 0;
 			return;
 		};
 	};
-	FUNL_T68 = FUNL_T68 + 1;
-	if (FUNL_T68 < FUN_RESPAWN_TAKTE)
+	FUNL_T175 = FUNL_T175 + 1;
+	if (FUNL_T175 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T68 = 0;
+	FUNL_T175 = 0;
 	if (t == 2)
 	{
-		Wld_InsertNpc(FUN_M68_T2, "NW_TROLLAREA_TROLLLAKECAVE_09");
+		Wld_InsertNpc(FUN_M175_T2, "NW_FARM3_MOUNTAINLAKE_MONSTER_01");
 	}
 	else if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M68_T3, "NW_TROLLAREA_TROLLLAKECAVE_09");
+		Wld_InsertNpc(FUN_M175_T3, "NW_FARM3_MOUNTAINLAKE_MONSTER_01");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M68_T4, "NW_TROLLAREA_TROLLLAKECAVE_09");
+		Wld_InsertNpc(FUN_M175_T4, "NW_FARM3_MOUNTAINLAKE_MONSTER_01");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M68_T5, "NW_TROLLAREA_TROLLLAKECAVE_09");
+		Wld_InsertNpc(FUN_M175_T5, "NW_FARM3_MOUNTAINLAKE_MONSTER_01");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M68_T6, "NW_TROLLAREA_TROLLLAKECAVE_09");
+		Wld_InsertNpc(FUN_M175_T6, "NW_FARM3_MOUNTAINLAKE_MONSTER_01");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M68_T7, "NW_TROLLAREA_TROLLLAKECAVE_09");
+		Wld_InsertNpc(FUN_M175_T7, "NW_FARM3_MOUNTAINLAKE_MONSTER_01");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M68_T2, "NW_TROLLAREA_TROLLLAKECAVE_09");
+		Wld_InsertNpc(FUN_M175_T2, "NW_FARM3_MOUNTAINLAKE_MONSTER_01");
 	};
 };
-func void Fun_Platz69()   // NW_TROLLAREA_TROLLROCKCAVE_03 (Original: Skeleton)
+func void Fun_Platz176()   // NW_FARM3_PATH_11_SMALLRIVERMID_02 (Original: Lurker)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M176_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M176_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M176_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M176_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M176_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M176_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M176_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T176 = 0;
+			return;
+		};
+	};
+	FUNL_T176 = FUNL_T176 + 1;
+	if (FUNL_T176 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T176 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M176_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M176_T3, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M176_T4, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M176_T5, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M176_T6, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M176_T7, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M176_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	};
+};
+func void Fun_Platz177()   // NW_FARM3_PATH_11_SMALLRIVERMID_02 (Original: Lurker)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M177_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M177_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M177_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M177_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M177_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M177_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M177_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T177 = 0;
+			return;
+		};
+	};
+	FUNL_T177 = FUNL_T177 + 1;
+	if (FUNL_T177 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T177 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M177_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M177_T3, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M177_T4, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M177_T5, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M177_T6, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M177_T7, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M177_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	};
+};
+func void Fun_Platz178()   // NW_FARM3_PATH_11_SMALLRIVERMID_03 (Original: Lurker)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M178_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M178_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M178_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M178_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M178_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M178_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M178_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T178 = 0;
+			return;
+		};
+	};
+	FUNL_T178 = FUNL_T178 + 1;
+	if (FUNL_T178 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T178 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M178_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_03");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M178_T3, "NW_FARM3_PATH_11_SMALLRIVERMID_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M178_T4, "NW_FARM3_PATH_11_SMALLRIVERMID_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M178_T5, "NW_FARM3_PATH_11_SMALLRIVERMID_03");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M178_T6, "NW_FARM3_PATH_11_SMALLRIVERMID_03");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M178_T7, "NW_FARM3_PATH_11_SMALLRIVERMID_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M178_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_03");
+	};
+};
+func void Fun_Platz179()   // NW_FARM3_PATH_11_SMALLRIVERMID_03 (Original: Lurker)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M179_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M179_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M179_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M179_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M179_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M179_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M179_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T179 = 0;
+			return;
+		};
+	};
+	FUNL_T179 = FUNL_T179 + 1;
+	if (FUNL_T179 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T179 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M179_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_03");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M179_T3, "NW_FARM3_PATH_11_SMALLRIVERMID_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M179_T4, "NW_FARM3_PATH_11_SMALLRIVERMID_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M179_T5, "NW_FARM3_PATH_11_SMALLRIVERMID_03");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M179_T6, "NW_FARM3_PATH_11_SMALLRIVERMID_03");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M179_T7, "NW_FARM3_PATH_11_SMALLRIVERMID_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M179_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_03");
+	};
+};
+func void Fun_Platz180()   // NW_FARM3_PATH_11_SMALLRIVER_02 (Original: Lurker)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M180_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M180_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M180_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M180_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M180_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M180_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M180_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T180 = 0;
+			return;
+		};
+	};
+	FUNL_T180 = FUNL_T180 + 1;
+	if (FUNL_T180 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T180 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M180_T2, "NW_FARM3_PATH_11_SMALLRIVER_02");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M180_T3, "NW_FARM3_PATH_11_SMALLRIVER_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M180_T4, "NW_FARM3_PATH_11_SMALLRIVER_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M180_T5, "NW_FARM3_PATH_11_SMALLRIVER_02");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M180_T6, "NW_FARM3_PATH_11_SMALLRIVER_02");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M180_T7, "NW_FARM3_PATH_11_SMALLRIVER_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M180_T2, "NW_FARM3_PATH_11_SMALLRIVER_02");
+	};
+};
+func void Fun_Platz181()   // NW_FARM3_PATH_11_SMALLRIVER_02 (Original: Lurker)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M181_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M181_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M181_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M181_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M181_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M181_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M181_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T181 = 0;
+			return;
+		};
+	};
+	FUNL_T181 = FUNL_T181 + 1;
+	if (FUNL_T181 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T181 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M181_T2, "NW_FARM3_PATH_11_SMALLRIVER_02");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M181_T3, "NW_FARM3_PATH_11_SMALLRIVER_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M181_T4, "NW_FARM3_PATH_11_SMALLRIVER_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M181_T5, "NW_FARM3_PATH_11_SMALLRIVER_02");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M181_T6, "NW_FARM3_PATH_11_SMALLRIVER_02");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M181_T7, "NW_FARM3_PATH_11_SMALLRIVER_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M181_T2, "NW_FARM3_PATH_11_SMALLRIVER_02");
+	};
+};
+func void Fun_Platz182()   // NW_FARM3_PATH_11_SMALLRIVER_04 (Original: Lurker)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M182_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M182_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M182_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M182_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M182_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M182_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M182_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T182 = 0;
+			return;
+		};
+	};
+	FUNL_T182 = FUNL_T182 + 1;
+	if (FUNL_T182 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T182 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M182_T2, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M182_T3, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M182_T4, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M182_T5, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M182_T6, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M182_T7, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M182_T2, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	};
+};
+func void Fun_Platz183()   // NW_FARM3_PATH_11_SMALLRIVER_04 (Original: Lurker)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M183_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M183_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M183_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M183_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M183_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M183_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M183_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T183 = 0;
+			return;
+		};
+	};
+	FUNL_T183 = FUNL_T183 + 1;
+	if (FUNL_T183 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T183 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M183_T2, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M183_T3, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M183_T4, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M183_T5, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M183_T6, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M183_T7, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M183_T2, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	};
+};
+func void Fun_Platz184()   // NW_FARM3_PATH_11_SMALLRIVER_08 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M184_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M184_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M184_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M184_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M184_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M184_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M184_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T184 = 0;
+			return;
+		};
+	};
+	FUNL_T184 = FUNL_T184 + 1;
+	if (FUNL_T184 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T184 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M184_T0, "NW_FARM3_PATH_11_SMALLRIVER_08");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M184_T1, "NW_FARM3_PATH_11_SMALLRIVER_08");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M184_T2, "NW_FARM3_PATH_11_SMALLRIVER_08");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M184_T3, "NW_FARM3_PATH_11_SMALLRIVER_08");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M184_T4, "NW_FARM3_PATH_11_SMALLRIVER_08");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M184_T5, "NW_FARM3_PATH_11_SMALLRIVER_08");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M184_T0, "NW_FARM3_PATH_11_SMALLRIVER_08");
+	};
+};
+func void Fun_Platz185()   // NW_FARM3_PATH_11_SMALLRIVER_08 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M185_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M185_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M185_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M185_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M185_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M185_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M185_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T185 = 0;
+			return;
+		};
+	};
+	FUNL_T185 = FUNL_T185 + 1;
+	if (FUNL_T185 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T185 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M185_T0, "NW_FARM3_PATH_11_SMALLRIVER_08");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M185_T1, "NW_FARM3_PATH_11_SMALLRIVER_08");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M185_T2, "NW_FARM3_PATH_11_SMALLRIVER_08");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M185_T3, "NW_FARM3_PATH_11_SMALLRIVER_08");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M185_T4, "NW_FARM3_PATH_11_SMALLRIVER_08");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M185_T5, "NW_FARM3_PATH_11_SMALLRIVER_08");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M185_T0, "NW_FARM3_PATH_11_SMALLRIVER_08");
+	};
+};
+func void Fun_Platz186()   // NW_FARM3_PATH_11_SMALLRIVER_10 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M186_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M186_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M186_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M186_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M186_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M186_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M186_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T186 = 0;
+			return;
+		};
+	};
+	FUNL_T186 = FUNL_T186 + 1;
+	if (FUNL_T186 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T186 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M186_T0, "NW_FARM3_PATH_11_SMALLRIVER_10");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M186_T1, "NW_FARM3_PATH_11_SMALLRIVER_10");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M186_T2, "NW_FARM3_PATH_11_SMALLRIVER_10");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M186_T3, "NW_FARM3_PATH_11_SMALLRIVER_10");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M186_T4, "NW_FARM3_PATH_11_SMALLRIVER_10");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M186_T5, "NW_FARM3_PATH_11_SMALLRIVER_10");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M186_T0, "NW_FARM3_PATH_11_SMALLRIVER_10");
+	};
+};
+func void Fun_Platz187()   // NW_FARM3_PATH_11_SMALLRIVER_10 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M187_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M187_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M187_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M187_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M187_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M187_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M187_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T187 = 0;
+			return;
+		};
+	};
+	FUNL_T187 = FUNL_T187 + 1;
+	if (FUNL_T187 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T187 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M187_T0, "NW_FARM3_PATH_11_SMALLRIVER_10");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M187_T1, "NW_FARM3_PATH_11_SMALLRIVER_10");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M187_T2, "NW_FARM3_PATH_11_SMALLRIVER_10");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M187_T3, "NW_FARM3_PATH_11_SMALLRIVER_10");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M187_T4, "NW_FARM3_PATH_11_SMALLRIVER_10");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M187_T5, "NW_FARM3_PATH_11_SMALLRIVER_10");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M187_T0, "NW_FARM3_PATH_11_SMALLRIVER_10");
+	};
+};
+func void Fun_Platz188()   // NW_FARM3_PATH_11_SMALLRIVER_17 (Original: Lurker)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M188_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M188_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M188_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M188_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M188_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M188_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M188_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T188 = 0;
+			return;
+		};
+	};
+	FUNL_T188 = FUNL_T188 + 1;
+	if (FUNL_T188 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T188 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M188_T2, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M188_T3, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M188_T4, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M188_T5, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M188_T6, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M188_T7, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M188_T2, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	};
+};
+func void Fun_Platz189()   // NW_FARM3_PATH_11_SMALLRIVER_17 (Original: Lurker)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M189_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M189_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M189_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M189_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M189_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M189_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M189_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T189 = 0;
+			return;
+		};
+	};
+	FUNL_T189 = FUNL_T189 + 1;
+	if (FUNL_T189 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T189 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M189_T2, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M189_T3, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M189_T4, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M189_T5, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M189_T6, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M189_T7, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M189_T2, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	};
+};
+func void Fun_Platz190()   // NW_FARM3_PATH_11_SMALLRIVER_20 (Original: Lurker)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M190_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M190_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M190_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M190_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M190_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M190_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M190_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T190 = 0;
+			return;
+		};
+	};
+	FUNL_T190 = FUNL_T190 + 1;
+	if (FUNL_T190 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T190 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M190_T2, "NW_FARM3_PATH_11_SMALLRIVER_20");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M190_T3, "NW_FARM3_PATH_11_SMALLRIVER_20");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M190_T4, "NW_FARM3_PATH_11_SMALLRIVER_20");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M190_T5, "NW_FARM3_PATH_11_SMALLRIVER_20");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M190_T6, "NW_FARM3_PATH_11_SMALLRIVER_20");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M190_T7, "NW_FARM3_PATH_11_SMALLRIVER_20");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M190_T2, "NW_FARM3_PATH_11_SMALLRIVER_20");
+	};
+};
+func void Fun_Platz191()   // NW_FARM3_PATH_11_SMALLRIVER_20 (Original: Lurker)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M191_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M191_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M191_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M191_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M191_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M191_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M191_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T191 = 0;
+			return;
+		};
+	};
+	FUNL_T191 = FUNL_T191 + 1;
+	if (FUNL_T191 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T191 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M191_T2, "NW_FARM3_PATH_11_SMALLRIVER_20");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M191_T3, "NW_FARM3_PATH_11_SMALLRIVER_20");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M191_T4, "NW_FARM3_PATH_11_SMALLRIVER_20");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M191_T5, "NW_FARM3_PATH_11_SMALLRIVER_20");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M191_T6, "NW_FARM3_PATH_11_SMALLRIVER_20");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M191_T7, "NW_FARM3_PATH_11_SMALLRIVER_20");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M191_T2, "NW_FARM3_PATH_11_SMALLRIVER_20");
+	};
+};
+func void Fun_Platz192()   // NW_FARM3_PATH_11_SMALLRIVER_24 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M192_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M192_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M192_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M192_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M192_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M192_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M192_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T192 = 0;
+			return;
+		};
+	};
+	FUNL_T192 = FUNL_T192 + 1;
+	if (FUNL_T192 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T192 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M192_T0, "NW_FARM3_PATH_11_SMALLRIVER_24");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M192_T1, "NW_FARM3_PATH_11_SMALLRIVER_24");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M192_T2, "NW_FARM3_PATH_11_SMALLRIVER_24");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M192_T3, "NW_FARM3_PATH_11_SMALLRIVER_24");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M192_T4, "NW_FARM3_PATH_11_SMALLRIVER_24");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M192_T5, "NW_FARM3_PATH_11_SMALLRIVER_24");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M192_T0, "NW_FARM3_PATH_11_SMALLRIVER_24");
+	};
+};
+func void Fun_Platz193()   // NW_FARM3_PATH_11_SMALLRIVER_24 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M193_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M193_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M193_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M193_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M193_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M193_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M193_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T193 = 0;
+			return;
+		};
+	};
+	FUNL_T193 = FUNL_T193 + 1;
+	if (FUNL_T193 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T193 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M193_T0, "NW_FARM3_PATH_11_SMALLRIVER_24");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M193_T1, "NW_FARM3_PATH_11_SMALLRIVER_24");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M193_T2, "NW_FARM3_PATH_11_SMALLRIVER_24");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M193_T3, "NW_FARM3_PATH_11_SMALLRIVER_24");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M193_T4, "NW_FARM3_PATH_11_SMALLRIVER_24");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M193_T5, "NW_FARM3_PATH_11_SMALLRIVER_24");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M193_T0, "NW_FARM3_PATH_11_SMALLRIVER_24");
+	};
+};
+func void Fun_Platz194()   // NW_FARM3_PATH_12_MONSTER_01 (Original: Keiler)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M194_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M194_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M194_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M194_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M194_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M194_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M194_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T194 = 0;
+			return;
+		};
+	};
+	FUNL_T194 = FUNL_T194 + 1;
+	if (FUNL_T194 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T194 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M194_T1, "NW_FARM3_PATH_12_MONSTER_01");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M194_T2, "NW_FARM3_PATH_12_MONSTER_01");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M194_T3, "NW_FARM3_PATH_12_MONSTER_01");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M194_T4, "NW_FARM3_PATH_12_MONSTER_01");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M194_T5, "NW_FARM3_PATH_12_MONSTER_01");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M194_T6, "NW_FARM3_PATH_12_MONSTER_01");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M194_T1, "NW_FARM3_PATH_12_MONSTER_01");
+	};
+};
+func void Fun_Platz195()   // NW_FARM3_PATH_12_MONSTER_01 (Original: Keiler)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M195_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M195_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M195_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M195_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M195_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M195_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M195_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T195 = 0;
+			return;
+		};
+	};
+	FUNL_T195 = FUNL_T195 + 1;
+	if (FUNL_T195 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T195 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M195_T1, "NW_FARM3_PATH_12_MONSTER_01");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M195_T2, "NW_FARM3_PATH_12_MONSTER_01");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M195_T3, "NW_FARM3_PATH_12_MONSTER_01");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M195_T4, "NW_FARM3_PATH_12_MONSTER_01");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M195_T5, "NW_FARM3_PATH_12_MONSTER_01");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M195_T6, "NW_FARM3_PATH_12_MONSTER_01");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M195_T1, "NW_FARM3_PATH_12_MONSTER_01");
+	};
+};
+func void Fun_Platz196()   // NW_FARM3_PATH_12_MONSTER_03 (Original: Keiler)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M196_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M196_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M196_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M196_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M196_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M196_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M196_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T196 = 0;
+			return;
+		};
+	};
+	FUNL_T196 = FUNL_T196 + 1;
+	if (FUNL_T196 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T196 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M196_T1, "NW_FARM3_PATH_12_MONSTER_03");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M196_T2, "NW_FARM3_PATH_12_MONSTER_03");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M196_T3, "NW_FARM3_PATH_12_MONSTER_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M196_T4, "NW_FARM3_PATH_12_MONSTER_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M196_T5, "NW_FARM3_PATH_12_MONSTER_03");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M196_T6, "NW_FARM3_PATH_12_MONSTER_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M196_T1, "NW_FARM3_PATH_12_MONSTER_03");
+	};
+};
+func void Fun_Platz197()   // NW_FARM3_PATH_12_MONSTER_03 (Original: Keiler)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M197_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M197_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M197_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M197_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M197_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M197_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M197_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T197 = 0;
+			return;
+		};
+	};
+	FUNL_T197 = FUNL_T197 + 1;
+	if (FUNL_T197 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T197 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M197_T1, "NW_FARM3_PATH_12_MONSTER_03");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M197_T2, "NW_FARM3_PATH_12_MONSTER_03");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M197_T3, "NW_FARM3_PATH_12_MONSTER_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M197_T4, "NW_FARM3_PATH_12_MONSTER_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M197_T5, "NW_FARM3_PATH_12_MONSTER_03");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M197_T6, "NW_FARM3_PATH_12_MONSTER_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M197_T1, "NW_FARM3_PATH_12_MONSTER_03");
+	};
+};
+func void Fun_Platz198()   // NW_FARM4_WOOD_MONSTER_MORE_01 (Original: Giant_Bug)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M198_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M198_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M198_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M198_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M198_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M198_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M198_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T198 = 0;
+			return;
+		};
+	};
+	FUNL_T198 = FUNL_T198 + 1;
+	if (FUNL_T198 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T198 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M198_T1, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M198_T2, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M198_T3, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M198_T4, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M198_T5, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M198_T6, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M198_T1, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	};
+};
+func void Fun_Platz199()   // NW_FARM4_WOOD_MONSTER_MORE_01 (Original: Giant_Bug)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M199_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M199_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M199_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M199_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M199_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M199_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M199_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T199 = 0;
+			return;
+		};
+	};
+	FUNL_T199 = FUNL_T199 + 1;
+	if (FUNL_T199 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T199 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M199_T1, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M199_T2, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M199_T3, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M199_T4, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M199_T5, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M199_T6, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M199_T1, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	};
+};
+func void Fun_Platz200()   // NW_FARM4_WOOD_MONSTER_MORE_02 (Original: Gobbo_skeleton)
 {
 	var C_NPC m;
 	var int t;
@@ -10369,65 +29331,8233 @@ func void Fun_Platz69()   // NW_TROLLAREA_TROLLROCKCAVE_03 (Original: Skeleton)
 	};
 	if (t == 3)
 	{
-		m = Hlp_GetNpc(FUN_M69_T3);
+		m = Hlp_GetNpc(FUN_M200_T3);
 	}
 	else if (t == 4)
 	{
-		m = Hlp_GetNpc(FUN_M69_T4);
+		m = Hlp_GetNpc(FUN_M200_T4);
 	}
 	else if (t == 5)
 	{
-		m = Hlp_GetNpc(FUN_M69_T5);
+		m = Hlp_GetNpc(FUN_M200_T5);
 	}
 	else if (t == 6)
 	{
-		m = Hlp_GetNpc(FUN_M69_T6);
+		m = Hlp_GetNpc(FUN_M200_T6);
 	}
 	else if (t == 7)
 	{
-		m = Hlp_GetNpc(FUN_M69_T7);
+		m = Hlp_GetNpc(FUN_M200_T7);
 	}
 	else
 	{
-		m = Hlp_GetNpc(FUN_M69_T3);
+		m = Hlp_GetNpc(FUN_M200_T3);
 	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
 		{
-			FUNL_T69 = 0;
+			FUNL_T200 = 0;
 			return;
 		};
 	};
-	FUNL_T69 = FUNL_T69 + 1;
-	if (FUNL_T69 < FUN_RESPAWN_TAKTE)
+	FUNL_T200 = FUNL_T200 + 1;
+	if (FUNL_T200 < FUN_RESPAWN_TAKTE)
 	{
 		return;
 	};
-	FUNL_T69 = 0;
+	FUNL_T200 = 0;
 	if (t == 3)
 	{
-		Wld_InsertNpc(FUN_M69_T3, "NW_TROLLAREA_TROLLROCKCAVE_03");
+		Wld_InsertNpc(FUN_M200_T3, "NW_FARM4_WOOD_MONSTER_MORE_02");
 	}
 	else if (t == 4)
 	{
-		Wld_InsertNpc(FUN_M69_T4, "NW_TROLLAREA_TROLLROCKCAVE_03");
+		Wld_InsertNpc(FUN_M200_T4, "NW_FARM4_WOOD_MONSTER_MORE_02");
 	}
 	else if (t == 5)
 	{
-		Wld_InsertNpc(FUN_M69_T5, "NW_TROLLAREA_TROLLROCKCAVE_03");
+		Wld_InsertNpc(FUN_M200_T5, "NW_FARM4_WOOD_MONSTER_MORE_02");
 	}
 	else if (t == 6)
 	{
-		Wld_InsertNpc(FUN_M69_T6, "NW_TROLLAREA_TROLLROCKCAVE_03");
+		Wld_InsertNpc(FUN_M200_T6, "NW_FARM4_WOOD_MONSTER_MORE_02");
 	}
 	else if (t == 7)
 	{
-		Wld_InsertNpc(FUN_M69_T7, "NW_TROLLAREA_TROLLROCKCAVE_03");
+		Wld_InsertNpc(FUN_M200_T7, "NW_FARM4_WOOD_MONSTER_MORE_02");
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_M69_T3, "NW_TROLLAREA_TROLLROCKCAVE_03");
+		Wld_InsertNpc(FUN_M200_T3, "NW_FARM4_WOOD_MONSTER_MORE_02");
+	};
+};
+func void Fun_Platz201()   // NW_FARM4_WOOD_MONSTER_MORE_02 (Original: Gobbo_skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M201_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M201_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M201_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M201_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M201_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M201_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T201 = 0;
+			return;
+		};
+	};
+	FUNL_T201 = FUNL_T201 + 1;
+	if (FUNL_T201 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T201 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M201_T3, "NW_FARM4_WOOD_MONSTER_MORE_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M201_T4, "NW_FARM4_WOOD_MONSTER_MORE_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M201_T5, "NW_FARM4_WOOD_MONSTER_MORE_02");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M201_T6, "NW_FARM4_WOOD_MONSTER_MORE_02");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M201_T7, "NW_FARM4_WOOD_MONSTER_MORE_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M201_T3, "NW_FARM4_WOOD_MONSTER_MORE_02");
+	};
+};
+func void Fun_Platz202()   // NW_FARM4_WOOD_MONSTER_N_2 (Original: Giant_Bug)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M202_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M202_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M202_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M202_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M202_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M202_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M202_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T202 = 0;
+			return;
+		};
+	};
+	FUNL_T202 = FUNL_T202 + 1;
+	if (FUNL_T202 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T202 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M202_T1, "NW_FARM4_WOOD_MONSTER_N_2");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M202_T2, "NW_FARM4_WOOD_MONSTER_N_2");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M202_T3, "NW_FARM4_WOOD_MONSTER_N_2");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M202_T4, "NW_FARM4_WOOD_MONSTER_N_2");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M202_T5, "NW_FARM4_WOOD_MONSTER_N_2");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M202_T6, "NW_FARM4_WOOD_MONSTER_N_2");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M202_T1, "NW_FARM4_WOOD_MONSTER_N_2");
+	};
+};
+func void Fun_Platz203()   // NW_FARM4_WOOD_MONSTER_N_2 (Original: Giant_Bug)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M203_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M203_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M203_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M203_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M203_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M203_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M203_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T203 = 0;
+			return;
+		};
+	};
+	FUNL_T203 = FUNL_T203 + 1;
+	if (FUNL_T203 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T203 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M203_T1, "NW_FARM4_WOOD_MONSTER_N_2");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M203_T2, "NW_FARM4_WOOD_MONSTER_N_2");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M203_T3, "NW_FARM4_WOOD_MONSTER_N_2");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M203_T4, "NW_FARM4_WOOD_MONSTER_N_2");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M203_T5, "NW_FARM4_WOOD_MONSTER_N_2");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M203_T6, "NW_FARM4_WOOD_MONSTER_N_2");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M203_T1, "NW_FARM4_WOOD_MONSTER_N_2");
+	};
+};
+func void Fun_Platz204()   // NW_FARM4_WOOD_MONSTER_N_3 (Original: Giant_Bug)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M204_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M204_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M204_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M204_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M204_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M204_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M204_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T204 = 0;
+			return;
+		};
+	};
+	FUNL_T204 = FUNL_T204 + 1;
+	if (FUNL_T204 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T204 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M204_T1, "NW_FARM4_WOOD_MONSTER_N_3");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M204_T2, "NW_FARM4_WOOD_MONSTER_N_3");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M204_T3, "NW_FARM4_WOOD_MONSTER_N_3");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M204_T4, "NW_FARM4_WOOD_MONSTER_N_3");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M204_T5, "NW_FARM4_WOOD_MONSTER_N_3");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M204_T6, "NW_FARM4_WOOD_MONSTER_N_3");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M204_T1, "NW_FARM4_WOOD_MONSTER_N_3");
+	};
+};
+func void Fun_Platz205()   // NW_FARM4_WOOD_MONSTER_N_3 (Original: Giant_Bug)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M205_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M205_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M205_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M205_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M205_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M205_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M205_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T205 = 0;
+			return;
+		};
+	};
+	FUNL_T205 = FUNL_T205 + 1;
+	if (FUNL_T205 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T205 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M205_T1, "NW_FARM4_WOOD_MONSTER_N_3");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M205_T2, "NW_FARM4_WOOD_MONSTER_N_3");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M205_T3, "NW_FARM4_WOOD_MONSTER_N_3");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M205_T4, "NW_FARM4_WOOD_MONSTER_N_3");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M205_T5, "NW_FARM4_WOOD_MONSTER_N_3");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M205_T6, "NW_FARM4_WOOD_MONSTER_N_3");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M205_T1, "NW_FARM4_WOOD_MONSTER_N_3");
+	};
+};
+func void Fun_Platz206()   // NW_FARM4_WOOD_NAVIGATION_09 (Original: Keiler)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M206_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M206_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M206_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M206_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M206_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M206_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M206_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T206 = 0;
+			return;
+		};
+	};
+	FUNL_T206 = FUNL_T206 + 1;
+	if (FUNL_T206 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T206 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M206_T1, "NW_FARM4_WOOD_NAVIGATION_09");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M206_T2, "NW_FARM4_WOOD_NAVIGATION_09");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M206_T3, "NW_FARM4_WOOD_NAVIGATION_09");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M206_T4, "NW_FARM4_WOOD_NAVIGATION_09");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M206_T5, "NW_FARM4_WOOD_NAVIGATION_09");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M206_T6, "NW_FARM4_WOOD_NAVIGATION_09");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M206_T1, "NW_FARM4_WOOD_NAVIGATION_09");
+	};
+};
+func void Fun_Platz207()   // NW_FARM4_WOOD_NAVIGATION_09 (Original: Keiler)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M207_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M207_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M207_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M207_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M207_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M207_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M207_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T207 = 0;
+			return;
+		};
+	};
+	FUNL_T207 = FUNL_T207 + 1;
+	if (FUNL_T207 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T207 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M207_T1, "NW_FARM4_WOOD_NAVIGATION_09");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M207_T2, "NW_FARM4_WOOD_NAVIGATION_09");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M207_T3, "NW_FARM4_WOOD_NAVIGATION_09");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M207_T4, "NW_FARM4_WOOD_NAVIGATION_09");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M207_T5, "NW_FARM4_WOOD_NAVIGATION_09");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M207_T6, "NW_FARM4_WOOD_NAVIGATION_09");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M207_T1, "NW_FARM4_WOOD_NAVIGATION_09");
+	};
+};
+func void Fun_Platz208()   // NW_FARM4_WOOD_NEARPEASANT2_10 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M208_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M208_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M208_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M208_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M208_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M208_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M208_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T208 = 0;
+			return;
+		};
+	};
+	FUNL_T208 = FUNL_T208 + 1;
+	if (FUNL_T208 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T208 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M208_T0, "NW_FARM4_WOOD_NEARPEASANT2_10");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M208_T1, "NW_FARM4_WOOD_NEARPEASANT2_10");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M208_T2, "NW_FARM4_WOOD_NEARPEASANT2_10");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M208_T3, "NW_FARM4_WOOD_NEARPEASANT2_10");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M208_T4, "NW_FARM4_WOOD_NEARPEASANT2_10");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M208_T5, "NW_FARM4_WOOD_NEARPEASANT2_10");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M208_T0, "NW_FARM4_WOOD_NEARPEASANT2_10");
+	};
+};
+func void Fun_Platz209()   // NW_FARM4_WOOD_NEARPEASANT2_10 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M209_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M209_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M209_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M209_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M209_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M209_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M209_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T209 = 0;
+			return;
+		};
+	};
+	FUNL_T209 = FUNL_T209 + 1;
+	if (FUNL_T209 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T209 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M209_T0, "NW_FARM4_WOOD_NEARPEASANT2_10");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M209_T1, "NW_FARM4_WOOD_NEARPEASANT2_10");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M209_T2, "NW_FARM4_WOOD_NEARPEASANT2_10");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M209_T3, "NW_FARM4_WOOD_NEARPEASANT2_10");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M209_T4, "NW_FARM4_WOOD_NEARPEASANT2_10");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M209_T5, "NW_FARM4_WOOD_NEARPEASANT2_10");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M209_T0, "NW_FARM4_WOOD_NEARPEASANT2_10");
+	};
+};
+func void Fun_Platz210()   // NW_FARM4_WOOD_NEARPEASANT2_12 (Original: Giant_Bug)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M210_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M210_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M210_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M210_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M210_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M210_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M210_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T210 = 0;
+			return;
+		};
+	};
+	FUNL_T210 = FUNL_T210 + 1;
+	if (FUNL_T210 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T210 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M210_T1, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M210_T2, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M210_T3, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M210_T4, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M210_T5, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M210_T6, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M210_T1, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	};
+};
+func void Fun_Platz211()   // NW_FARM4_WOOD_NEARPEASANT2_12 (Original: Giant_Bug)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M211_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M211_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M211_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M211_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M211_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M211_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M211_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T211 = 0;
+			return;
+		};
+	};
+	FUNL_T211 = FUNL_T211 + 1;
+	if (FUNL_T211 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T211 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M211_T1, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M211_T2, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M211_T3, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M211_T4, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M211_T5, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M211_T6, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M211_T1, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	};
+};
+func void Fun_Platz212()   // NW_FARM4_WOOD_NEARPEASANT2_14 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M212_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M212_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M212_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M212_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M212_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M212_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M212_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T212 = 0;
+			return;
+		};
+	};
+	FUNL_T212 = FUNL_T212 + 1;
+	if (FUNL_T212 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T212 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M212_T0, "NW_FARM4_WOOD_NEARPEASANT2_14");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M212_T1, "NW_FARM4_WOOD_NEARPEASANT2_14");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M212_T2, "NW_FARM4_WOOD_NEARPEASANT2_14");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M212_T3, "NW_FARM4_WOOD_NEARPEASANT2_14");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M212_T4, "NW_FARM4_WOOD_NEARPEASANT2_14");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M212_T5, "NW_FARM4_WOOD_NEARPEASANT2_14");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M212_T0, "NW_FARM4_WOOD_NEARPEASANT2_14");
+	};
+};
+func void Fun_Platz213()   // NW_FARM4_WOOD_NEARPEASANT2_14 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M213_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M213_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M213_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M213_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M213_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M213_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M213_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T213 = 0;
+			return;
+		};
+	};
+	FUNL_T213 = FUNL_T213 + 1;
+	if (FUNL_T213 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T213 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M213_T0, "NW_FARM4_WOOD_NEARPEASANT2_14");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M213_T1, "NW_FARM4_WOOD_NEARPEASANT2_14");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M213_T2, "NW_FARM4_WOOD_NEARPEASANT2_14");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M213_T3, "NW_FARM4_WOOD_NEARPEASANT2_14");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M213_T4, "NW_FARM4_WOOD_NEARPEASANT2_14");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M213_T5, "NW_FARM4_WOOD_NEARPEASANT2_14");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M213_T0, "NW_FARM4_WOOD_NEARPEASANT2_14");
+	};
+};
+func void Fun_Platz214()   // NW_FARM4_WOOD_NEARPEASANT2_7 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M214_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M214_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M214_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M214_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M214_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M214_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M214_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T214 = 0;
+			return;
+		};
+	};
+	FUNL_T214 = FUNL_T214 + 1;
+	if (FUNL_T214 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T214 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M214_T0, "NW_FARM4_WOOD_NEARPEASANT2_7");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M214_T1, "NW_FARM4_WOOD_NEARPEASANT2_7");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M214_T2, "NW_FARM4_WOOD_NEARPEASANT2_7");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M214_T3, "NW_FARM4_WOOD_NEARPEASANT2_7");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M214_T4, "NW_FARM4_WOOD_NEARPEASANT2_7");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M214_T5, "NW_FARM4_WOOD_NEARPEASANT2_7");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M214_T0, "NW_FARM4_WOOD_NEARPEASANT2_7");
+	};
+};
+func void Fun_Platz215()   // NW_FARM4_WOOD_NEARPEASANT2_7 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M215_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M215_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M215_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M215_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M215_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M215_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M215_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T215 = 0;
+			return;
+		};
+	};
+	FUNL_T215 = FUNL_T215 + 1;
+	if (FUNL_T215 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T215 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M215_T0, "NW_FARM4_WOOD_NEARPEASANT2_7");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M215_T1, "NW_FARM4_WOOD_NEARPEASANT2_7");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M215_T2, "NW_FARM4_WOOD_NEARPEASANT2_7");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M215_T3, "NW_FARM4_WOOD_NEARPEASANT2_7");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M215_T4, "NW_FARM4_WOOD_NEARPEASANT2_7");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M215_T5, "NW_FARM4_WOOD_NEARPEASANT2_7");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M215_T0, "NW_FARM4_WOOD_NEARPEASANT2_7");
+	};
+};
+func void Fun_Platz216()   // NW_FARM4_WOOD_NEARPEASANT2_8 (Original: Wolf)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M216_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M216_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M216_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M216_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M216_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M216_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M216_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T216 = 0;
+			return;
+		};
+	};
+	FUNL_T216 = FUNL_T216 + 1;
+	if (FUNL_T216 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T216 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M216_T1, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M216_T2, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M216_T3, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M216_T4, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M216_T5, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M216_T6, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M216_T1, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	};
+};
+func void Fun_Platz217()   // NW_FARM4_WOOD_NEARPEASANT2_8 (Original: Wolf)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M217_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M217_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M217_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M217_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M217_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M217_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M217_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T217 = 0;
+			return;
+		};
+	};
+	FUNL_T217 = FUNL_T217 + 1;
+	if (FUNL_T217 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T217 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M217_T1, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M217_T2, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M217_T3, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M217_T4, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M217_T5, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M217_T6, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M217_T1, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	};
+};
+func void Fun_Platz218()   // NW_FARM4_WOOD_NEARPEASANT7 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M218_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M218_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M218_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M218_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M218_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M218_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M218_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T218 = 0;
+			return;
+		};
+	};
+	FUNL_T218 = FUNL_T218 + 1;
+	if (FUNL_T218 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T218 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M218_T0, "NW_FARM4_WOOD_NEARPEASANT7");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M218_T1, "NW_FARM4_WOOD_NEARPEASANT7");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M218_T2, "NW_FARM4_WOOD_NEARPEASANT7");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M218_T3, "NW_FARM4_WOOD_NEARPEASANT7");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M218_T4, "NW_FARM4_WOOD_NEARPEASANT7");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M218_T5, "NW_FARM4_WOOD_NEARPEASANT7");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M218_T0, "NW_FARM4_WOOD_NEARPEASANT7");
+	};
+};
+func void Fun_Platz219()   // NW_FARM4_WOOD_NEARPEASANT7 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M219_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M219_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M219_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M219_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M219_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M219_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M219_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T219 = 0;
+			return;
+		};
+	};
+	FUNL_T219 = FUNL_T219 + 1;
+	if (FUNL_T219 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T219 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M219_T0, "NW_FARM4_WOOD_NEARPEASANT7");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M219_T1, "NW_FARM4_WOOD_NEARPEASANT7");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M219_T2, "NW_FARM4_WOOD_NEARPEASANT7");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M219_T3, "NW_FARM4_WOOD_NEARPEASANT7");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M219_T4, "NW_FARM4_WOOD_NEARPEASANT7");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M219_T5, "NW_FARM4_WOOD_NEARPEASANT7");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M219_T0, "NW_FARM4_WOOD_NEARPEASANT7");
+	};
+};
+func void Fun_Platz220()   // NW_MAGECAVE_20 (Original: Meatbug)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M220_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M220_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M220_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M220_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M220_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M220_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M220_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T220 = 0;
+			return;
+		};
+	};
+	FUNL_T220 = FUNL_T220 + 1;
+	if (FUNL_T220 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T220 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M220_T0, "NW_MAGECAVE_20");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M220_T1, "NW_MAGECAVE_20");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M220_T2, "NW_MAGECAVE_20");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M220_T3, "NW_MAGECAVE_20");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M220_T4, "NW_MAGECAVE_20");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M220_T5, "NW_MAGECAVE_20");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M220_T0, "NW_MAGECAVE_20");
+	};
+};
+func void Fun_Platz221()   // NW_MAGECAVE_20 (Original: Meatbug)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M221_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M221_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M221_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M221_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M221_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M221_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M221_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T221 = 0;
+			return;
+		};
+	};
+	FUNL_T221 = FUNL_T221 + 1;
+	if (FUNL_T221 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T221 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M221_T0, "NW_MAGECAVE_20");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M221_T1, "NW_MAGECAVE_20");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M221_T2, "NW_MAGECAVE_20");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M221_T3, "NW_MAGECAVE_20");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M221_T4, "NW_MAGECAVE_20");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M221_T5, "NW_MAGECAVE_20");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M221_T0, "NW_MAGECAVE_20");
+	};
+};
+func void Fun_Platz222()   // NW_MAGECAVE_23 (Original: Minecrawler)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M222_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M222_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M222_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M222_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M222_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M222_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T222 = 0;
+			return;
+		};
+	};
+	FUNL_T222 = FUNL_T222 + 1;
+	if (FUNL_T222 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T222 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M222_T3, "NW_MAGECAVE_23");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M222_T4, "NW_MAGECAVE_23");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M222_T5, "NW_MAGECAVE_23");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M222_T6, "NW_MAGECAVE_23");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M222_T7, "NW_MAGECAVE_23");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M222_T3, "NW_MAGECAVE_23");
+	};
+};
+func void Fun_Platz223()   // NW_MAGECAVE_23 (Original: Minecrawler)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M223_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M223_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M223_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M223_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M223_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M223_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T223 = 0;
+			return;
+		};
+	};
+	FUNL_T223 = FUNL_T223 + 1;
+	if (FUNL_T223 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T223 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M223_T3, "NW_MAGECAVE_23");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M223_T4, "NW_MAGECAVE_23");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M223_T5, "NW_MAGECAVE_23");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M223_T6, "NW_MAGECAVE_23");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M223_T7, "NW_MAGECAVE_23");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M223_T3, "NW_MAGECAVE_23");
+	};
+};
+func void Fun_Platz224()   // NW_MAGECAVE_27 (Original: MinecrawlerWarrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M224_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M224_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M224_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M224_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M224_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M224_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T224 = 0;
+			return;
+		};
+	};
+	FUNL_T224 = FUNL_T224 + 1;
+	if (FUNL_T224 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T224 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M224_T3, "NW_MAGECAVE_27");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M224_T4, "NW_MAGECAVE_27");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M224_T5, "NW_MAGECAVE_27");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M224_T6, "NW_MAGECAVE_27");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M224_T7, "NW_MAGECAVE_27");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M224_T3, "NW_MAGECAVE_27");
+	};
+};
+func void Fun_Platz225()   // NW_MAGECAVE_27 (Original: MinecrawlerWarrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M225_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M225_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M225_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M225_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M225_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M225_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T225 = 0;
+			return;
+		};
+	};
+	FUNL_T225 = FUNL_T225 + 1;
+	if (FUNL_T225 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T225 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M225_T3, "NW_MAGECAVE_27");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M225_T4, "NW_MAGECAVE_27");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M225_T5, "NW_MAGECAVE_27");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M225_T6, "NW_MAGECAVE_27");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M225_T7, "NW_MAGECAVE_27");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M225_T3, "NW_MAGECAVE_27");
+	};
+};
+func void Fun_Platz226()   // NW_SAGITTA_MOREMONSTER_01 (Original: Wolf)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M226_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M226_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M226_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M226_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M226_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M226_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M226_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T226 = 0;
+			return;
+		};
+	};
+	FUNL_T226 = FUNL_T226 + 1;
+	if (FUNL_T226 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T226 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M226_T1, "NW_SAGITTA_MOREMONSTER_01");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M226_T2, "NW_SAGITTA_MOREMONSTER_01");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M226_T3, "NW_SAGITTA_MOREMONSTER_01");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M226_T4, "NW_SAGITTA_MOREMONSTER_01");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M226_T5, "NW_SAGITTA_MOREMONSTER_01");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M226_T6, "NW_SAGITTA_MOREMONSTER_01");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M226_T1, "NW_SAGITTA_MOREMONSTER_01");
+	};
+};
+func void Fun_Platz227()   // NW_SAGITTA_MOREMONSTER_01 (Original: Wolf)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M227_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M227_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M227_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M227_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M227_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M227_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M227_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T227 = 0;
+			return;
+		};
+	};
+	FUNL_T227 = FUNL_T227 + 1;
+	if (FUNL_T227 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T227 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M227_T1, "NW_SAGITTA_MOREMONSTER_01");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M227_T2, "NW_SAGITTA_MOREMONSTER_01");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M227_T3, "NW_SAGITTA_MOREMONSTER_01");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M227_T4, "NW_SAGITTA_MOREMONSTER_01");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M227_T5, "NW_SAGITTA_MOREMONSTER_01");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M227_T6, "NW_SAGITTA_MOREMONSTER_01");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M227_T1, "NW_SAGITTA_MOREMONSTER_01");
+	};
+};
+func void Fun_Platz228()   // NW_SAGITTA_MOREMONSTER_03 (Original: Giant_Bug)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M228_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M228_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M228_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M228_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M228_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M228_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M228_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T228 = 0;
+			return;
+		};
+	};
+	FUNL_T228 = FUNL_T228 + 1;
+	if (FUNL_T228 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T228 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M228_T1, "NW_SAGITTA_MOREMONSTER_03");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M228_T2, "NW_SAGITTA_MOREMONSTER_03");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M228_T3, "NW_SAGITTA_MOREMONSTER_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M228_T4, "NW_SAGITTA_MOREMONSTER_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M228_T5, "NW_SAGITTA_MOREMONSTER_03");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M228_T6, "NW_SAGITTA_MOREMONSTER_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M228_T1, "NW_SAGITTA_MOREMONSTER_03");
+	};
+};
+func void Fun_Platz229()   // NW_SAGITTA_MOREMONSTER_03 (Original: Giant_Bug)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M229_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M229_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M229_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M229_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M229_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M229_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M229_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T229 = 0;
+			return;
+		};
+	};
+	FUNL_T229 = FUNL_T229 + 1;
+	if (FUNL_T229 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T229 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M229_T1, "NW_SAGITTA_MOREMONSTER_03");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M229_T2, "NW_SAGITTA_MOREMONSTER_03");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M229_T3, "NW_SAGITTA_MOREMONSTER_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M229_T4, "NW_SAGITTA_MOREMONSTER_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M229_T5, "NW_SAGITTA_MOREMONSTER_03");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M229_T6, "NW_SAGITTA_MOREMONSTER_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M229_T1, "NW_SAGITTA_MOREMONSTER_03");
+	};
+};
+func void Fun_Platz230()   // NW_TAVERNE_TROLLAREA_MONSTER_03_01M1 (Original: Giant_Bug)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M230_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M230_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M230_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M230_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M230_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M230_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M230_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T230 = 0;
+			return;
+		};
+	};
+	FUNL_T230 = FUNL_T230 + 1;
+	if (FUNL_T230 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T230 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M230_T1, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M230_T2, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M230_T3, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M230_T4, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M230_T5, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M230_T6, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M230_T1, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	};
+};
+func void Fun_Platz231()   // NW_TAVERNE_TROLLAREA_MONSTER_03_01M1 (Original: Giant_Bug)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M231_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M231_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M231_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M231_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M231_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M231_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M231_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T231 = 0;
+			return;
+		};
+	};
+	FUNL_T231 = FUNL_T231 + 1;
+	if (FUNL_T231 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T231 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M231_T1, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M231_T2, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M231_T3, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M231_T4, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M231_T5, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M231_T6, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M231_T1, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	};
+};
+func void Fun_Platz232()   // NW_TROLLAREA_BRIGDE_05 (Original: Giant_Rat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M232_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M232_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M232_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M232_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M232_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M232_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M232_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T232 = 0;
+			return;
+		};
+	};
+	FUNL_T232 = FUNL_T232 + 1;
+	if (FUNL_T232 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T232 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M232_T0, "NW_TROLLAREA_BRIGDE_05");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M232_T1, "NW_TROLLAREA_BRIGDE_05");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M232_T2, "NW_TROLLAREA_BRIGDE_05");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M232_T3, "NW_TROLLAREA_BRIGDE_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M232_T4, "NW_TROLLAREA_BRIGDE_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M232_T5, "NW_TROLLAREA_BRIGDE_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M232_T0, "NW_TROLLAREA_BRIGDE_05");
+	};
+};
+func void Fun_Platz233()   // NW_TROLLAREA_BRIGDE_05 (Original: Giant_Rat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M233_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M233_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M233_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M233_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M233_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M233_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M233_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T233 = 0;
+			return;
+		};
+	};
+	FUNL_T233 = FUNL_T233 + 1;
+	if (FUNL_T233 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T233 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M233_T0, "NW_TROLLAREA_BRIGDE_05");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M233_T1, "NW_TROLLAREA_BRIGDE_05");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M233_T2, "NW_TROLLAREA_BRIGDE_05");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M233_T3, "NW_TROLLAREA_BRIGDE_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M233_T4, "NW_TROLLAREA_BRIGDE_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M233_T5, "NW_TROLLAREA_BRIGDE_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M233_T0, "NW_TROLLAREA_BRIGDE_05");
+	};
+};
+func void Fun_Platz234()   // NW_TROLLAREA_NOVCHASE_01 (Original: Molerat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M234_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M234_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M234_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M234_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M234_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M234_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M234_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T234 = 0;
+			return;
+		};
+	};
+	FUNL_T234 = FUNL_T234 + 1;
+	if (FUNL_T234 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T234 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M234_T0, "NW_TROLLAREA_NOVCHASE_01");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M234_T1, "NW_TROLLAREA_NOVCHASE_01");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M234_T2, "NW_TROLLAREA_NOVCHASE_01");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M234_T3, "NW_TROLLAREA_NOVCHASE_01");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M234_T4, "NW_TROLLAREA_NOVCHASE_01");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M234_T5, "NW_TROLLAREA_NOVCHASE_01");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M234_T0, "NW_TROLLAREA_NOVCHASE_01");
+	};
+};
+func void Fun_Platz235()   // NW_TROLLAREA_NOVCHASE_01 (Original: Molerat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M235_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M235_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M235_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M235_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M235_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M235_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M235_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T235 = 0;
+			return;
+		};
+	};
+	FUNL_T235 = FUNL_T235 + 1;
+	if (FUNL_T235 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T235 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M235_T0, "NW_TROLLAREA_NOVCHASE_01");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M235_T1, "NW_TROLLAREA_NOVCHASE_01");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M235_T2, "NW_TROLLAREA_NOVCHASE_01");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M235_T3, "NW_TROLLAREA_NOVCHASE_01");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M235_T4, "NW_TROLLAREA_NOVCHASE_01");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M235_T5, "NW_TROLLAREA_NOVCHASE_01");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M235_T0, "NW_TROLLAREA_NOVCHASE_01");
+	};
+};
+func void Fun_Platz236()   // NW_TROLLAREA_PATH_08 (Original: Lurker)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M236_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M236_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M236_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M236_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M236_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M236_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M236_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T236 = 0;
+			return;
+		};
+	};
+	FUNL_T236 = FUNL_T236 + 1;
+	if (FUNL_T236 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T236 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M236_T2, "NW_TROLLAREA_PATH_08");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M236_T3, "NW_TROLLAREA_PATH_08");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M236_T4, "NW_TROLLAREA_PATH_08");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M236_T5, "NW_TROLLAREA_PATH_08");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M236_T6, "NW_TROLLAREA_PATH_08");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M236_T7, "NW_TROLLAREA_PATH_08");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M236_T2, "NW_TROLLAREA_PATH_08");
+	};
+};
+func void Fun_Platz237()   // NW_TROLLAREA_PATH_08 (Original: Lurker)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M237_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M237_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M237_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M237_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M237_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M237_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M237_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T237 = 0;
+			return;
+		};
+	};
+	FUNL_T237 = FUNL_T237 + 1;
+	if (FUNL_T237 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T237 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M237_T2, "NW_TROLLAREA_PATH_08");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M237_T3, "NW_TROLLAREA_PATH_08");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M237_T4, "NW_TROLLAREA_PATH_08");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M237_T5, "NW_TROLLAREA_PATH_08");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M237_T6, "NW_TROLLAREA_PATH_08");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M237_T7, "NW_TROLLAREA_PATH_08");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M237_T2, "NW_TROLLAREA_PATH_08");
+	};
+};
+func void Fun_Platz238()   // NW_TROLLAREA_PATH_15_MONSTER (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M238_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M238_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M238_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M238_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M238_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M238_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M238_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T238 = 0;
+			return;
+		};
+	};
+	FUNL_T238 = FUNL_T238 + 1;
+	if (FUNL_T238 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T238 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M238_T0, "NW_TROLLAREA_PATH_15_MONSTER");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M238_T1, "NW_TROLLAREA_PATH_15_MONSTER");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M238_T2, "NW_TROLLAREA_PATH_15_MONSTER");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M238_T3, "NW_TROLLAREA_PATH_15_MONSTER");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M238_T4, "NW_TROLLAREA_PATH_15_MONSTER");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M238_T5, "NW_TROLLAREA_PATH_15_MONSTER");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M238_T0, "NW_TROLLAREA_PATH_15_MONSTER");
+	};
+};
+func void Fun_Platz239()   // NW_TROLLAREA_PATH_15_MONSTER (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M239_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M239_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M239_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M239_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M239_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M239_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M239_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T239 = 0;
+			return;
+		};
+	};
+	FUNL_T239 = FUNL_T239 + 1;
+	if (FUNL_T239 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T239 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M239_T0, "NW_TROLLAREA_PATH_15_MONSTER");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M239_T1, "NW_TROLLAREA_PATH_15_MONSTER");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M239_T2, "NW_TROLLAREA_PATH_15_MONSTER");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M239_T3, "NW_TROLLAREA_PATH_15_MONSTER");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M239_T4, "NW_TROLLAREA_PATH_15_MONSTER");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M239_T5, "NW_TROLLAREA_PATH_15_MONSTER");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M239_T0, "NW_TROLLAREA_PATH_15_MONSTER");
+	};
+};
+func void Fun_Platz240()   // NW_TROLLAREA_PATH_22_MONSTER (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M240_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M240_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M240_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M240_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M240_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M240_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M240_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T240 = 0;
+			return;
+		};
+	};
+	FUNL_T240 = FUNL_T240 + 1;
+	if (FUNL_T240 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T240 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M240_T0, "NW_TROLLAREA_PATH_22_MONSTER");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M240_T1, "NW_TROLLAREA_PATH_22_MONSTER");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M240_T2, "NW_TROLLAREA_PATH_22_MONSTER");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M240_T3, "NW_TROLLAREA_PATH_22_MONSTER");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M240_T4, "NW_TROLLAREA_PATH_22_MONSTER");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M240_T5, "NW_TROLLAREA_PATH_22_MONSTER");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M240_T0, "NW_TROLLAREA_PATH_22_MONSTER");
+	};
+};
+func void Fun_Platz241()   // NW_TROLLAREA_PATH_22_MONSTER (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M241_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M241_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M241_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M241_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M241_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M241_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M241_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T241 = 0;
+			return;
+		};
+	};
+	FUNL_T241 = FUNL_T241 + 1;
+	if (FUNL_T241 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T241 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M241_T0, "NW_TROLLAREA_PATH_22_MONSTER");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M241_T1, "NW_TROLLAREA_PATH_22_MONSTER");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M241_T2, "NW_TROLLAREA_PATH_22_MONSTER");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M241_T3, "NW_TROLLAREA_PATH_22_MONSTER");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M241_T4, "NW_TROLLAREA_PATH_22_MONSTER");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M241_T5, "NW_TROLLAREA_PATH_22_MONSTER");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M241_T0, "NW_TROLLAREA_PATH_22_MONSTER");
+	};
+};
+func void Fun_Platz242()   // NW_TROLLAREA_PATH_38_MONSTER (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M242_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M242_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M242_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M242_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M242_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M242_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M242_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T242 = 0;
+			return;
+		};
+	};
+	FUNL_T242 = FUNL_T242 + 1;
+	if (FUNL_T242 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T242 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M242_T0, "NW_TROLLAREA_PATH_38_MONSTER");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M242_T1, "NW_TROLLAREA_PATH_38_MONSTER");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M242_T2, "NW_TROLLAREA_PATH_38_MONSTER");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M242_T3, "NW_TROLLAREA_PATH_38_MONSTER");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M242_T4, "NW_TROLLAREA_PATH_38_MONSTER");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M242_T5, "NW_TROLLAREA_PATH_38_MONSTER");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M242_T0, "NW_TROLLAREA_PATH_38_MONSTER");
+	};
+};
+func void Fun_Platz243()   // NW_TROLLAREA_PATH_38_MONSTER (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M243_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M243_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M243_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M243_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M243_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M243_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M243_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T243 = 0;
+			return;
+		};
+	};
+	FUNL_T243 = FUNL_T243 + 1;
+	if (FUNL_T243 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T243 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M243_T0, "NW_TROLLAREA_PATH_38_MONSTER");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M243_T1, "NW_TROLLAREA_PATH_38_MONSTER");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M243_T2, "NW_TROLLAREA_PATH_38_MONSTER");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M243_T3, "NW_TROLLAREA_PATH_38_MONSTER");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M243_T4, "NW_TROLLAREA_PATH_38_MONSTER");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M243_T5, "NW_TROLLAREA_PATH_38_MONSTER");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M243_T0, "NW_TROLLAREA_PATH_38_MONSTER");
+	};
+};
+func void Fun_Platz244()   // NW_TROLLAREA_PATH_56 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M244_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M244_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M244_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M244_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M244_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M244_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M244_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T244 = 0;
+			return;
+		};
+	};
+	FUNL_T244 = FUNL_T244 + 1;
+	if (FUNL_T244 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T244 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M244_T2, "NW_TROLLAREA_PATH_56");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M244_T3, "NW_TROLLAREA_PATH_56");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M244_T4, "NW_TROLLAREA_PATH_56");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M244_T5, "NW_TROLLAREA_PATH_56");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M244_T6, "NW_TROLLAREA_PATH_56");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M244_T7, "NW_TROLLAREA_PATH_56");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M244_T2, "NW_TROLLAREA_PATH_56");
+	};
+};
+func void Fun_Platz245()   // NW_TROLLAREA_PATH_56 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M245_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M245_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M245_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M245_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M245_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M245_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M245_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T245 = 0;
+			return;
+		};
+	};
+	FUNL_T245 = FUNL_T245 + 1;
+	if (FUNL_T245 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T245 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M245_T2, "NW_TROLLAREA_PATH_56");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M245_T3, "NW_TROLLAREA_PATH_56");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M245_T4, "NW_TROLLAREA_PATH_56");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M245_T5, "NW_TROLLAREA_PATH_56");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M245_T6, "NW_TROLLAREA_PATH_56");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M245_T7, "NW_TROLLAREA_PATH_56");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M245_T2, "NW_TROLLAREA_PATH_56");
+	};
+};
+func void Fun_Platz246()   // NW_TROLLAREA_PATH_66_MONSTER (Original: Wolf)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M246_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M246_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M246_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M246_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M246_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M246_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M246_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T246 = 0;
+			return;
+		};
+	};
+	FUNL_T246 = FUNL_T246 + 1;
+	if (FUNL_T246 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T246 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M246_T1, "NW_TROLLAREA_PATH_66_MONSTER");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M246_T2, "NW_TROLLAREA_PATH_66_MONSTER");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M246_T3, "NW_TROLLAREA_PATH_66_MONSTER");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M246_T4, "NW_TROLLAREA_PATH_66_MONSTER");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M246_T5, "NW_TROLLAREA_PATH_66_MONSTER");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M246_T6, "NW_TROLLAREA_PATH_66_MONSTER");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M246_T1, "NW_TROLLAREA_PATH_66_MONSTER");
+	};
+};
+func void Fun_Platz247()   // NW_TROLLAREA_PATH_66_MONSTER (Original: Wolf)
+{
+	var C_NPC m;
+	var int t;
+	t = 1 + Fun_KapitelNr() - 1;
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M247_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M247_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M247_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M247_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M247_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M247_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M247_T1);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T247 = 0;
+			return;
+		};
+	};
+	FUNL_T247 = FUNL_T247 + 1;
+	if (FUNL_T247 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T247 = 0;
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M247_T1, "NW_TROLLAREA_PATH_66_MONSTER");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M247_T2, "NW_TROLLAREA_PATH_66_MONSTER");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M247_T3, "NW_TROLLAREA_PATH_66_MONSTER");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M247_T4, "NW_TROLLAREA_PATH_66_MONSTER");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M247_T5, "NW_TROLLAREA_PATH_66_MONSTER");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M247_T6, "NW_TROLLAREA_PATH_66_MONSTER");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M247_T1, "NW_TROLLAREA_PATH_66_MONSTER");
+	};
+};
+func void Fun_Platz248()   // NW_TROLLAREA_PATH_71_MONSTER (Original: Lurker)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M248_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M248_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M248_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M248_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M248_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M248_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M248_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T248 = 0;
+			return;
+		};
+	};
+	FUNL_T248 = FUNL_T248 + 1;
+	if (FUNL_T248 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T248 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M248_T2, "NW_TROLLAREA_PATH_71_MONSTER");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M248_T3, "NW_TROLLAREA_PATH_71_MONSTER");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M248_T4, "NW_TROLLAREA_PATH_71_MONSTER");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M248_T5, "NW_TROLLAREA_PATH_71_MONSTER");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M248_T6, "NW_TROLLAREA_PATH_71_MONSTER");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M248_T7, "NW_TROLLAREA_PATH_71_MONSTER");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M248_T2, "NW_TROLLAREA_PATH_71_MONSTER");
+	};
+};
+func void Fun_Platz249()   // NW_TROLLAREA_PATH_71_MONSTER (Original: Lurker)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M249_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M249_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M249_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M249_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M249_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M249_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M249_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T249 = 0;
+			return;
+		};
+	};
+	FUNL_T249 = FUNL_T249 + 1;
+	if (FUNL_T249 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T249 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M249_T2, "NW_TROLLAREA_PATH_71_MONSTER");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M249_T3, "NW_TROLLAREA_PATH_71_MONSTER");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M249_T4, "NW_TROLLAREA_PATH_71_MONSTER");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M249_T5, "NW_TROLLAREA_PATH_71_MONSTER");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M249_T6, "NW_TROLLAREA_PATH_71_MONSTER");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M249_T7, "NW_TROLLAREA_PATH_71_MONSTER");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M249_T2, "NW_TROLLAREA_PATH_71_MONSTER");
+	};
+};
+func void Fun_Platz250()   // NW_TROLLAREA_PATH_71_MONSTER2 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M250_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M250_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M250_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M250_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M250_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M250_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M250_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T250 = 0;
+			return;
+		};
+	};
+	FUNL_T250 = FUNL_T250 + 1;
+	if (FUNL_T250 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T250 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M250_T0, "NW_TROLLAREA_PATH_71_MONSTER2");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M250_T1, "NW_TROLLAREA_PATH_71_MONSTER2");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M250_T2, "NW_TROLLAREA_PATH_71_MONSTER2");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M250_T3, "NW_TROLLAREA_PATH_71_MONSTER2");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M250_T4, "NW_TROLLAREA_PATH_71_MONSTER2");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M250_T5, "NW_TROLLAREA_PATH_71_MONSTER2");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M250_T0, "NW_TROLLAREA_PATH_71_MONSTER2");
+	};
+};
+func void Fun_Platz251()   // NW_TROLLAREA_PATH_71_MONSTER2 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M251_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M251_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M251_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M251_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M251_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M251_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M251_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T251 = 0;
+			return;
+		};
+	};
+	FUNL_T251 = FUNL_T251 + 1;
+	if (FUNL_T251 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T251 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M251_T0, "NW_TROLLAREA_PATH_71_MONSTER2");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M251_T1, "NW_TROLLAREA_PATH_71_MONSTER2");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M251_T2, "NW_TROLLAREA_PATH_71_MONSTER2");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M251_T3, "NW_TROLLAREA_PATH_71_MONSTER2");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M251_T4, "NW_TROLLAREA_PATH_71_MONSTER2");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M251_T5, "NW_TROLLAREA_PATH_71_MONSTER2");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M251_T0, "NW_TROLLAREA_PATH_71_MONSTER2");
+	};
+};
+func void Fun_Platz252()   // NW_TROLLAREA_PATH_84 (Original: Troll_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M252_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M252_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M252_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M252_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M252_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M252_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T252 = 0;
+			return;
+		};
+	};
+	FUNL_T252 = FUNL_T252 + 1;
+	if (FUNL_T252 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T252 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M252_T3, "NW_TROLLAREA_PATH_84");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M252_T4, "NW_TROLLAREA_PATH_84");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M252_T5, "NW_TROLLAREA_PATH_84");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M252_T6, "NW_TROLLAREA_PATH_84");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M252_T7, "NW_TROLLAREA_PATH_84");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M252_T3, "NW_TROLLAREA_PATH_84");
+	};
+};
+func void Fun_Platz253()   // NW_TROLLAREA_PATH_84 (Original: Troll_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M253_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M253_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M253_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M253_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M253_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M253_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T253 = 0;
+			return;
+		};
+	};
+	FUNL_T253 = FUNL_T253 + 1;
+	if (FUNL_T253 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T253 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M253_T3, "NW_TROLLAREA_PATH_84");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M253_T4, "NW_TROLLAREA_PATH_84");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M253_T5, "NW_TROLLAREA_PATH_84");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M253_T6, "NW_TROLLAREA_PATH_84");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M253_T7, "NW_TROLLAREA_PATH_84");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M253_T3, "NW_TROLLAREA_PATH_84");
+	};
+};
+func void Fun_Platz254()   // NW_TROLLAREA_PLANE_04 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M254_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M254_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M254_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M254_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M254_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M254_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M254_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T254 = 0;
+			return;
+		};
+	};
+	FUNL_T254 = FUNL_T254 + 1;
+	if (FUNL_T254 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T254 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M254_T0, "NW_TROLLAREA_PLANE_04");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M254_T1, "NW_TROLLAREA_PLANE_04");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M254_T2, "NW_TROLLAREA_PLANE_04");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M254_T3, "NW_TROLLAREA_PLANE_04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M254_T4, "NW_TROLLAREA_PLANE_04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M254_T5, "NW_TROLLAREA_PLANE_04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M254_T0, "NW_TROLLAREA_PLANE_04");
+	};
+};
+func void Fun_Platz255()   // NW_TROLLAREA_PLANE_04 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M255_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M255_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M255_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M255_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M255_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M255_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M255_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T255 = 0;
+			return;
+		};
+	};
+	FUNL_T255 = FUNL_T255 + 1;
+	if (FUNL_T255 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T255 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M255_T0, "NW_TROLLAREA_PLANE_04");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M255_T1, "NW_TROLLAREA_PLANE_04");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M255_T2, "NW_TROLLAREA_PLANE_04");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M255_T3, "NW_TROLLAREA_PLANE_04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M255_T4, "NW_TROLLAREA_PLANE_04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M255_T5, "NW_TROLLAREA_PLANE_04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M255_T0, "NW_TROLLAREA_PLANE_04");
+	};
+};
+func void Fun_Platz256()   // NW_TROLLAREA_PLANE_07 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M256_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M256_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M256_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M256_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M256_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M256_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M256_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T256 = 0;
+			return;
+		};
+	};
+	FUNL_T256 = FUNL_T256 + 1;
+	if (FUNL_T256 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T256 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M256_T0, "NW_TROLLAREA_PLANE_07");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M256_T1, "NW_TROLLAREA_PLANE_07");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M256_T2, "NW_TROLLAREA_PLANE_07");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M256_T3, "NW_TROLLAREA_PLANE_07");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M256_T4, "NW_TROLLAREA_PLANE_07");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M256_T5, "NW_TROLLAREA_PLANE_07");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M256_T0, "NW_TROLLAREA_PLANE_07");
+	};
+};
+func void Fun_Platz257()   // NW_TROLLAREA_PLANE_07 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M257_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M257_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M257_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M257_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M257_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M257_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M257_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T257 = 0;
+			return;
+		};
+	};
+	FUNL_T257 = FUNL_T257 + 1;
+	if (FUNL_T257 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T257 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M257_T0, "NW_TROLLAREA_PLANE_07");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M257_T1, "NW_TROLLAREA_PLANE_07");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M257_T2, "NW_TROLLAREA_PLANE_07");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M257_T3, "NW_TROLLAREA_PLANE_07");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M257_T4, "NW_TROLLAREA_PLANE_07");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M257_T5, "NW_TROLLAREA_PLANE_07");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M257_T0, "NW_TROLLAREA_PLANE_07");
+	};
+};
+func void Fun_Platz258()   // NW_TROLLAREA_PORTALTEMPEL_06 (Original: Giant_Rat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M258_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M258_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M258_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M258_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M258_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M258_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M258_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T258 = 0;
+			return;
+		};
+	};
+	FUNL_T258 = FUNL_T258 + 1;
+	if (FUNL_T258 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T258 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M258_T0, "NW_TROLLAREA_PORTALTEMPEL_06");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M258_T1, "NW_TROLLAREA_PORTALTEMPEL_06");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M258_T2, "NW_TROLLAREA_PORTALTEMPEL_06");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M258_T3, "NW_TROLLAREA_PORTALTEMPEL_06");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M258_T4, "NW_TROLLAREA_PORTALTEMPEL_06");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M258_T5, "NW_TROLLAREA_PORTALTEMPEL_06");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M258_T0, "NW_TROLLAREA_PORTALTEMPEL_06");
+	};
+};
+func void Fun_Platz259()   // NW_TROLLAREA_PORTALTEMPEL_06 (Original: Giant_Rat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M259_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M259_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M259_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M259_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M259_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M259_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M259_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T259 = 0;
+			return;
+		};
+	};
+	FUNL_T259 = FUNL_T259 + 1;
+	if (FUNL_T259 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T259 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M259_T0, "NW_TROLLAREA_PORTALTEMPEL_06");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M259_T1, "NW_TROLLAREA_PORTALTEMPEL_06");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M259_T2, "NW_TROLLAREA_PORTALTEMPEL_06");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M259_T3, "NW_TROLLAREA_PORTALTEMPEL_06");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M259_T4, "NW_TROLLAREA_PORTALTEMPEL_06");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M259_T5, "NW_TROLLAREA_PORTALTEMPEL_06");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M259_T0, "NW_TROLLAREA_PORTALTEMPEL_06");
+	};
+};
+func void Fun_Platz260()   // NW_TROLLAREA_PORTALTEMPEL_08 (Original: Giant_Rat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M260_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M260_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M260_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M260_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M260_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M260_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M260_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T260 = 0;
+			return;
+		};
+	};
+	FUNL_T260 = FUNL_T260 + 1;
+	if (FUNL_T260 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T260 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M260_T0, "NW_TROLLAREA_PORTALTEMPEL_08");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M260_T1, "NW_TROLLAREA_PORTALTEMPEL_08");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M260_T2, "NW_TROLLAREA_PORTALTEMPEL_08");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M260_T3, "NW_TROLLAREA_PORTALTEMPEL_08");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M260_T4, "NW_TROLLAREA_PORTALTEMPEL_08");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M260_T5, "NW_TROLLAREA_PORTALTEMPEL_08");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M260_T0, "NW_TROLLAREA_PORTALTEMPEL_08");
+	};
+};
+func void Fun_Platz261()   // NW_TROLLAREA_PORTALTEMPEL_08 (Original: Giant_Rat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M261_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M261_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M261_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M261_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M261_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M261_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M261_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T261 = 0;
+			return;
+		};
+	};
+	FUNL_T261 = FUNL_T261 + 1;
+	if (FUNL_T261 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T261 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M261_T0, "NW_TROLLAREA_PORTALTEMPEL_08");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M261_T1, "NW_TROLLAREA_PORTALTEMPEL_08");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M261_T2, "NW_TROLLAREA_PORTALTEMPEL_08");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M261_T3, "NW_TROLLAREA_PORTALTEMPEL_08");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M261_T4, "NW_TROLLAREA_PORTALTEMPEL_08");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M261_T5, "NW_TROLLAREA_PORTALTEMPEL_08");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M261_T0, "NW_TROLLAREA_PORTALTEMPEL_08");
+	};
+};
+func void Fun_Platz262()   // NW_TROLLAREA_PORTALTEMPEL_09 (Original: Giant_Rat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M262_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M262_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M262_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M262_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M262_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M262_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M262_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T262 = 0;
+			return;
+		};
+	};
+	FUNL_T262 = FUNL_T262 + 1;
+	if (FUNL_T262 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T262 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M262_T0, "NW_TROLLAREA_PORTALTEMPEL_09");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M262_T1, "NW_TROLLAREA_PORTALTEMPEL_09");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M262_T2, "NW_TROLLAREA_PORTALTEMPEL_09");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M262_T3, "NW_TROLLAREA_PORTALTEMPEL_09");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M262_T4, "NW_TROLLAREA_PORTALTEMPEL_09");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M262_T5, "NW_TROLLAREA_PORTALTEMPEL_09");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M262_T0, "NW_TROLLAREA_PORTALTEMPEL_09");
+	};
+};
+func void Fun_Platz263()   // NW_TROLLAREA_PORTALTEMPEL_09 (Original: Giant_Rat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M263_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M263_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M263_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M263_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M263_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M263_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M263_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T263 = 0;
+			return;
+		};
+	};
+	FUNL_T263 = FUNL_T263 + 1;
+	if (FUNL_T263 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T263 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M263_T0, "NW_TROLLAREA_PORTALTEMPEL_09");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M263_T1, "NW_TROLLAREA_PORTALTEMPEL_09");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M263_T2, "NW_TROLLAREA_PORTALTEMPEL_09");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M263_T3, "NW_TROLLAREA_PORTALTEMPEL_09");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M263_T4, "NW_TROLLAREA_PORTALTEMPEL_09");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M263_T5, "NW_TROLLAREA_PORTALTEMPEL_09");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M263_T0, "NW_TROLLAREA_PORTALTEMPEL_09");
+	};
+};
+func void Fun_Platz264()   // NW_TROLLAREA_PORTALTEMPEL_12 (Original: Giant_Rat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M264_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M264_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M264_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M264_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M264_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M264_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M264_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T264 = 0;
+			return;
+		};
+	};
+	FUNL_T264 = FUNL_T264 + 1;
+	if (FUNL_T264 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T264 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M264_T0, "NW_TROLLAREA_PORTALTEMPEL_12");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M264_T1, "NW_TROLLAREA_PORTALTEMPEL_12");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M264_T2, "NW_TROLLAREA_PORTALTEMPEL_12");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M264_T3, "NW_TROLLAREA_PORTALTEMPEL_12");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M264_T4, "NW_TROLLAREA_PORTALTEMPEL_12");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M264_T5, "NW_TROLLAREA_PORTALTEMPEL_12");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M264_T0, "NW_TROLLAREA_PORTALTEMPEL_12");
+	};
+};
+func void Fun_Platz265()   // NW_TROLLAREA_PORTALTEMPEL_12 (Original: Giant_Rat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M265_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M265_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M265_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M265_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M265_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M265_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M265_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T265 = 0;
+			return;
+		};
+	};
+	FUNL_T265 = FUNL_T265 + 1;
+	if (FUNL_T265 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T265 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M265_T0, "NW_TROLLAREA_PORTALTEMPEL_12");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M265_T1, "NW_TROLLAREA_PORTALTEMPEL_12");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M265_T2, "NW_TROLLAREA_PORTALTEMPEL_12");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M265_T3, "NW_TROLLAREA_PORTALTEMPEL_12");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M265_T4, "NW_TROLLAREA_PORTALTEMPEL_12");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M265_T5, "NW_TROLLAREA_PORTALTEMPEL_12");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M265_T0, "NW_TROLLAREA_PORTALTEMPEL_12");
+	};
+};
+func void Fun_Platz266()   // NW_TROLLAREA_PORTALTEMPEL_15_A (Original: Gobbo_Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M266_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M266_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M266_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M266_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M266_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M266_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T266 = 0;
+			return;
+		};
+	};
+	FUNL_T266 = FUNL_T266 + 1;
+	if (FUNL_T266 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T266 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M266_T3, "NW_TROLLAREA_PORTALTEMPEL_15_A");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M266_T4, "NW_TROLLAREA_PORTALTEMPEL_15_A");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M266_T5, "NW_TROLLAREA_PORTALTEMPEL_15_A");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M266_T6, "NW_TROLLAREA_PORTALTEMPEL_15_A");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M266_T7, "NW_TROLLAREA_PORTALTEMPEL_15_A");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M266_T3, "NW_TROLLAREA_PORTALTEMPEL_15_A");
+	};
+};
+func void Fun_Platz267()   // NW_TROLLAREA_PORTALTEMPEL_15_A (Original: Gobbo_Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M267_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M267_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M267_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M267_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M267_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M267_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T267 = 0;
+			return;
+		};
+	};
+	FUNL_T267 = FUNL_T267 + 1;
+	if (FUNL_T267 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T267 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M267_T3, "NW_TROLLAREA_PORTALTEMPEL_15_A");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M267_T4, "NW_TROLLAREA_PORTALTEMPEL_15_A");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M267_T5, "NW_TROLLAREA_PORTALTEMPEL_15_A");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M267_T6, "NW_TROLLAREA_PORTALTEMPEL_15_A");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M267_T7, "NW_TROLLAREA_PORTALTEMPEL_15_A");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M267_T3, "NW_TROLLAREA_PORTALTEMPEL_15_A");
+	};
+};
+func void Fun_Platz268()   // NW_TROLLAREA_PORTALTEMPEL_15_B (Original: Gobbo_Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M268_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M268_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M268_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M268_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M268_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M268_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T268 = 0;
+			return;
+		};
+	};
+	FUNL_T268 = FUNL_T268 + 1;
+	if (FUNL_T268 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T268 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M268_T3, "NW_TROLLAREA_PORTALTEMPEL_15_B");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M268_T4, "NW_TROLLAREA_PORTALTEMPEL_15_B");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M268_T5, "NW_TROLLAREA_PORTALTEMPEL_15_B");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M268_T6, "NW_TROLLAREA_PORTALTEMPEL_15_B");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M268_T7, "NW_TROLLAREA_PORTALTEMPEL_15_B");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M268_T3, "NW_TROLLAREA_PORTALTEMPEL_15_B");
+	};
+};
+func void Fun_Platz269()   // NW_TROLLAREA_PORTALTEMPEL_15_B (Original: Gobbo_Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M269_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M269_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M269_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M269_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M269_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M269_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T269 = 0;
+			return;
+		};
+	};
+	FUNL_T269 = FUNL_T269 + 1;
+	if (FUNL_T269 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T269 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M269_T3, "NW_TROLLAREA_PORTALTEMPEL_15_B");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M269_T4, "NW_TROLLAREA_PORTALTEMPEL_15_B");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M269_T5, "NW_TROLLAREA_PORTALTEMPEL_15_B");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M269_T6, "NW_TROLLAREA_PORTALTEMPEL_15_B");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M269_T7, "NW_TROLLAREA_PORTALTEMPEL_15_B");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M269_T3, "NW_TROLLAREA_PORTALTEMPEL_15_B");
+	};
+};
+func void Fun_Platz270()   // NW_TROLLAREA_PORTALTEMPEL_17_A (Original: Gobbo_Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M270_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M270_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M270_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M270_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M270_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M270_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T270 = 0;
+			return;
+		};
+	};
+	FUNL_T270 = FUNL_T270 + 1;
+	if (FUNL_T270 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T270 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M270_T3, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M270_T4, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M270_T5, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M270_T6, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M270_T7, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M270_T3, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	};
+};
+func void Fun_Platz271()   // NW_TROLLAREA_PORTALTEMPEL_17_A (Original: Gobbo_Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M271_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M271_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M271_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M271_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M271_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M271_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T271 = 0;
+			return;
+		};
+	};
+	FUNL_T271 = FUNL_T271 + 1;
+	if (FUNL_T271 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T271 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M271_T3, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M271_T4, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M271_T5, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M271_T6, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M271_T7, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M271_T3, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	};
+};
+func void Fun_Platz272()   // NW_TROLLAREA_RITUALFOREST_04_MONSTER (Original: Molerat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M272_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M272_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M272_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M272_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M272_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M272_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M272_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T272 = 0;
+			return;
+		};
+	};
+	FUNL_T272 = FUNL_T272 + 1;
+	if (FUNL_T272 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T272 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M272_T0, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M272_T1, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M272_T2, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M272_T3, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M272_T4, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M272_T5, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M272_T0, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	};
+};
+func void Fun_Platz273()   // NW_TROLLAREA_RITUALFOREST_04_MONSTER (Original: Molerat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M273_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M273_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M273_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M273_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M273_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M273_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M273_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T273 = 0;
+			return;
+		};
+	};
+	FUNL_T273 = FUNL_T273 + 1;
+	if (FUNL_T273 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T273 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M273_T0, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M273_T1, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M273_T2, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M273_T3, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M273_T4, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M273_T5, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M273_T0, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	};
+};
+func void Fun_Platz274()   // NW_TROLLAREA_RITUALFOREST_06_MONSTER (Original: Molerat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M274_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M274_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M274_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M274_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M274_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M274_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M274_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T274 = 0;
+			return;
+		};
+	};
+	FUNL_T274 = FUNL_T274 + 1;
+	if (FUNL_T274 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T274 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M274_T0, "NW_TROLLAREA_RITUALFOREST_06_MONSTER");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M274_T1, "NW_TROLLAREA_RITUALFOREST_06_MONSTER");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M274_T2, "NW_TROLLAREA_RITUALFOREST_06_MONSTER");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M274_T3, "NW_TROLLAREA_RITUALFOREST_06_MONSTER");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M274_T4, "NW_TROLLAREA_RITUALFOREST_06_MONSTER");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M274_T5, "NW_TROLLAREA_RITUALFOREST_06_MONSTER");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M274_T0, "NW_TROLLAREA_RITUALFOREST_06_MONSTER");
+	};
+};
+func void Fun_Platz275()   // NW_TROLLAREA_RITUALFOREST_06_MONSTER (Original: Molerat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M275_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M275_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M275_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M275_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M275_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M275_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M275_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T275 = 0;
+			return;
+		};
+	};
+	FUNL_T275 = FUNL_T275 + 1;
+	if (FUNL_T275 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T275 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M275_T0, "NW_TROLLAREA_RITUALFOREST_06_MONSTER");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M275_T1, "NW_TROLLAREA_RITUALFOREST_06_MONSTER");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M275_T2, "NW_TROLLAREA_RITUALFOREST_06_MONSTER");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M275_T3, "NW_TROLLAREA_RITUALFOREST_06_MONSTER");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M275_T4, "NW_TROLLAREA_RITUALFOREST_06_MONSTER");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M275_T5, "NW_TROLLAREA_RITUALFOREST_06_MONSTER");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M275_T0, "NW_TROLLAREA_RITUALFOREST_06_MONSTER");
+	};
+};
+func void Fun_Platz276()   // NW_TROLLAREA_RITUALPATH_032 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M276_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M276_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M276_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M276_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M276_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M276_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M276_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T276 = 0;
+			return;
+		};
+	};
+	FUNL_T276 = FUNL_T276 + 1;
+	if (FUNL_T276 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T276 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M276_T0, "NW_TROLLAREA_RITUALPATH_032");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M276_T1, "NW_TROLLAREA_RITUALPATH_032");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M276_T2, "NW_TROLLAREA_RITUALPATH_032");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M276_T3, "NW_TROLLAREA_RITUALPATH_032");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M276_T4, "NW_TROLLAREA_RITUALPATH_032");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M276_T5, "NW_TROLLAREA_RITUALPATH_032");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M276_T0, "NW_TROLLAREA_RITUALPATH_032");
+	};
+};
+func void Fun_Platz277()   // NW_TROLLAREA_RITUALPATH_032 (Original: Bloodfly)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M277_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M277_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M277_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M277_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M277_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M277_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M277_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T277 = 0;
+			return;
+		};
+	};
+	FUNL_T277 = FUNL_T277 + 1;
+	if (FUNL_T277 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T277 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M277_T0, "NW_TROLLAREA_RITUALPATH_032");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M277_T1, "NW_TROLLAREA_RITUALPATH_032");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M277_T2, "NW_TROLLAREA_RITUALPATH_032");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M277_T3, "NW_TROLLAREA_RITUALPATH_032");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M277_T4, "NW_TROLLAREA_RITUALPATH_032");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M277_T5, "NW_TROLLAREA_RITUALPATH_032");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M277_T0, "NW_TROLLAREA_RITUALPATH_032");
+	};
+};
+func void Fun_Platz278()   // NW_TROLLAREA_RITUALPATH_04 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M278_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M278_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M278_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M278_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M278_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M278_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M278_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T278 = 0;
+			return;
+		};
+	};
+	FUNL_T278 = FUNL_T278 + 1;
+	if (FUNL_T278 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T278 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M278_T0, "NW_TROLLAREA_RITUALPATH_04");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M278_T1, "NW_TROLLAREA_RITUALPATH_04");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M278_T2, "NW_TROLLAREA_RITUALPATH_04");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M278_T3, "NW_TROLLAREA_RITUALPATH_04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M278_T4, "NW_TROLLAREA_RITUALPATH_04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M278_T5, "NW_TROLLAREA_RITUALPATH_04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M278_T0, "NW_TROLLAREA_RITUALPATH_04");
+	};
+};
+func void Fun_Platz279()   // NW_TROLLAREA_RITUALPATH_04 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M279_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M279_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M279_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M279_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M279_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M279_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M279_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T279 = 0;
+			return;
+		};
+	};
+	FUNL_T279 = FUNL_T279 + 1;
+	if (FUNL_T279 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T279 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M279_T0, "NW_TROLLAREA_RITUALPATH_04");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M279_T1, "NW_TROLLAREA_RITUALPATH_04");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M279_T2, "NW_TROLLAREA_RITUALPATH_04");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M279_T3, "NW_TROLLAREA_RITUALPATH_04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M279_T4, "NW_TROLLAREA_RITUALPATH_04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M279_T5, "NW_TROLLAREA_RITUALPATH_04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M279_T0, "NW_TROLLAREA_RITUALPATH_04");
+	};
+};
+func void Fun_Platz280()   // NW_TROLLAREA_RITUAL_13 (Original: Gobbo_Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M280_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M280_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M280_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M280_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M280_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M280_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T280 = 0;
+			return;
+		};
+	};
+	FUNL_T280 = FUNL_T280 + 1;
+	if (FUNL_T280 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T280 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M280_T3, "NW_TROLLAREA_RITUAL_13");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M280_T4, "NW_TROLLAREA_RITUAL_13");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M280_T5, "NW_TROLLAREA_RITUAL_13");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M280_T6, "NW_TROLLAREA_RITUAL_13");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M280_T7, "NW_TROLLAREA_RITUAL_13");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M280_T3, "NW_TROLLAREA_RITUAL_13");
+	};
+};
+func void Fun_Platz281()   // NW_TROLLAREA_RITUAL_13 (Original: Gobbo_Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M281_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M281_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M281_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M281_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M281_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M281_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T281 = 0;
+			return;
+		};
+	};
+	FUNL_T281 = FUNL_T281 + 1;
+	if (FUNL_T281 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T281 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M281_T3, "NW_TROLLAREA_RITUAL_13");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M281_T4, "NW_TROLLAREA_RITUAL_13");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M281_T5, "NW_TROLLAREA_RITUAL_13");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M281_T6, "NW_TROLLAREA_RITUAL_13");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M281_T7, "NW_TROLLAREA_RITUAL_13");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M281_T3, "NW_TROLLAREA_RITUAL_13");
+	};
+};
+func void Fun_Platz282()   // NW_TROLLAREA_RIVERSIDECAVE_02 (Original: Shadowbeast)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M282_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M282_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M282_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M282_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M282_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M282_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T282 = 0;
+			return;
+		};
+	};
+	FUNL_T282 = FUNL_T282 + 1;
+	if (FUNL_T282 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T282 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M282_T3, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M282_T4, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M282_T5, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M282_T6, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M282_T7, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M282_T3, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	};
+};
+func void Fun_Platz283()   // NW_TROLLAREA_RIVERSIDECAVE_02 (Original: Shadowbeast)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M283_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M283_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M283_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M283_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M283_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M283_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T283 = 0;
+			return;
+		};
+	};
+	FUNL_T283 = FUNL_T283 + 1;
+	if (FUNL_T283 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T283 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M283_T3, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M283_T4, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M283_T5, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M283_T6, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M283_T7, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M283_T3, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	};
+};
+func void Fun_Platz284()   // NW_TROLLAREA_RIVERSIDECAVE_07 (Original: Shadowbeast)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M284_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M284_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M284_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M284_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M284_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M284_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T284 = 0;
+			return;
+		};
+	};
+	FUNL_T284 = FUNL_T284 + 1;
+	if (FUNL_T284 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T284 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M284_T3, "NW_TROLLAREA_RIVERSIDECAVE_07");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M284_T4, "NW_TROLLAREA_RIVERSIDECAVE_07");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M284_T5, "NW_TROLLAREA_RIVERSIDECAVE_07");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M284_T6, "NW_TROLLAREA_RIVERSIDECAVE_07");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M284_T7, "NW_TROLLAREA_RIVERSIDECAVE_07");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M284_T3, "NW_TROLLAREA_RIVERSIDECAVE_07");
+	};
+};
+func void Fun_Platz285()   // NW_TROLLAREA_RIVERSIDECAVE_07 (Original: Shadowbeast)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M285_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M285_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M285_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M285_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M285_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M285_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T285 = 0;
+			return;
+		};
+	};
+	FUNL_T285 = FUNL_T285 + 1;
+	if (FUNL_T285 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T285 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M285_T3, "NW_TROLLAREA_RIVERSIDECAVE_07");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M285_T4, "NW_TROLLAREA_RIVERSIDECAVE_07");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M285_T5, "NW_TROLLAREA_RIVERSIDECAVE_07");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M285_T6, "NW_TROLLAREA_RIVERSIDECAVE_07");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M285_T7, "NW_TROLLAREA_RIVERSIDECAVE_07");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M285_T3, "NW_TROLLAREA_RIVERSIDECAVE_07");
+	};
+};
+func void Fun_Platz286()   // NW_TROLLAREA_RUINS_14 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M286_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M286_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M286_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M286_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M286_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M286_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M286_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T286 = 0;
+			return;
+		};
+	};
+	FUNL_T286 = FUNL_T286 + 1;
+	if (FUNL_T286 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T286 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M286_T2, "NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M286_T3, "NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M286_T4, "NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M286_T5, "NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M286_T6, "NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M286_T7, "NW_TROLLAREA_RUINS_14");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M286_T2, "NW_TROLLAREA_RUINS_14");
+	};
+};
+func void Fun_Platz287()   // NW_TROLLAREA_RUINS_14 (Original: Gobbo_Black)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M287_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M287_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M287_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M287_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M287_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M287_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M287_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T287 = 0;
+			return;
+		};
+	};
+	FUNL_T287 = FUNL_T287 + 1;
+	if (FUNL_T287 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T287 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M287_T2, "NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M287_T3, "NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M287_T4, "NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M287_T5, "NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M287_T6, "NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M287_T7, "NW_TROLLAREA_RUINS_14");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M287_T2, "NW_TROLLAREA_RUINS_14");
+	};
+};
+func void Fun_Platz288()   // NW_TROLLAREA_RUINS_17 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M288_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M288_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M288_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M288_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M288_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M288_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M288_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T288 = 0;
+			return;
+		};
+	};
+	FUNL_T288 = FUNL_T288 + 1;
+	if (FUNL_T288 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T288 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M288_T0, "NW_TROLLAREA_RUINS_17");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M288_T1, "NW_TROLLAREA_RUINS_17");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M288_T2, "NW_TROLLAREA_RUINS_17");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M288_T3, "NW_TROLLAREA_RUINS_17");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M288_T4, "NW_TROLLAREA_RUINS_17");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M288_T5, "NW_TROLLAREA_RUINS_17");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M288_T0, "NW_TROLLAREA_RUINS_17");
+	};
+};
+func void Fun_Platz289()   // NW_TROLLAREA_RUINS_17 (Original: Scavenger)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M289_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M289_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M289_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M289_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M289_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M289_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M289_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T289 = 0;
+			return;
+		};
+	};
+	FUNL_T289 = FUNL_T289 + 1;
+	if (FUNL_T289 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T289 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M289_T0, "NW_TROLLAREA_RUINS_17");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M289_T1, "NW_TROLLAREA_RUINS_17");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M289_T2, "NW_TROLLAREA_RUINS_17");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M289_T3, "NW_TROLLAREA_RUINS_17");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M289_T4, "NW_TROLLAREA_RUINS_17");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M289_T5, "NW_TROLLAREA_RUINS_17");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M289_T0, "NW_TROLLAREA_RUINS_17");
+	};
+};
+func void Fun_Platz290()   // NW_TROLLAREA_RUINS_21 (Original: FireWaran)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M290_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M290_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M290_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M290_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M290_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M290_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T290 = 0;
+			return;
+		};
+	};
+	FUNL_T290 = FUNL_T290 + 1;
+	if (FUNL_T290 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T290 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M290_T3, "NW_TROLLAREA_RUINS_21");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M290_T4, "NW_TROLLAREA_RUINS_21");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M290_T5, "NW_TROLLAREA_RUINS_21");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M290_T6, "NW_TROLLAREA_RUINS_21");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M290_T7, "NW_TROLLAREA_RUINS_21");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M290_T3, "NW_TROLLAREA_RUINS_21");
+	};
+};
+func void Fun_Platz291()   // NW_TROLLAREA_RUINS_21 (Original: FireWaran)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M291_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M291_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M291_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M291_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M291_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M291_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T291 = 0;
+			return;
+		};
+	};
+	FUNL_T291 = FUNL_T291 + 1;
+	if (FUNL_T291 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T291 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M291_T3, "NW_TROLLAREA_RUINS_21");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M291_T4, "NW_TROLLAREA_RUINS_21");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M291_T5, "NW_TROLLAREA_RUINS_21");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M291_T6, "NW_TROLLAREA_RUINS_21");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M291_T7, "NW_TROLLAREA_RUINS_21");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M291_T3, "NW_TROLLAREA_RUINS_21");
+	};
+};
+func void Fun_Platz292()   // NW_TROLLAREA_RUINS_32 (Original: Waran)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M292_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M292_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M292_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M292_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M292_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M292_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T292 = 0;
+			return;
+		};
+	};
+	FUNL_T292 = FUNL_T292 + 1;
+	if (FUNL_T292 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T292 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M292_T3, "NW_TROLLAREA_RUINS_32");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M292_T4, "NW_TROLLAREA_RUINS_32");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M292_T5, "NW_TROLLAREA_RUINS_32");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M292_T6, "NW_TROLLAREA_RUINS_32");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M292_T7, "NW_TROLLAREA_RUINS_32");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M292_T3, "NW_TROLLAREA_RUINS_32");
+	};
+};
+func void Fun_Platz293()   // NW_TROLLAREA_RUINS_32 (Original: Waran)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M293_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M293_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M293_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M293_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M293_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M293_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T293 = 0;
+			return;
+		};
+	};
+	FUNL_T293 = FUNL_T293 + 1;
+	if (FUNL_T293 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T293 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M293_T3, "NW_TROLLAREA_RUINS_32");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M293_T4, "NW_TROLLAREA_RUINS_32");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M293_T5, "NW_TROLLAREA_RUINS_32");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M293_T6, "NW_TROLLAREA_RUINS_32");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M293_T7, "NW_TROLLAREA_RUINS_32");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M293_T3, "NW_TROLLAREA_RUINS_32");
+	};
+};
+func void Fun_Platz294()   // NW_TROLLAREA_TROLLLAKECAVE_02 (Original: Giant_Rat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M294_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M294_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M294_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M294_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M294_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M294_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M294_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T294 = 0;
+			return;
+		};
+	};
+	FUNL_T294 = FUNL_T294 + 1;
+	if (FUNL_T294 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T294 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M294_T0, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M294_T1, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M294_T2, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M294_T3, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M294_T4, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M294_T5, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M294_T0, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	};
+};
+func void Fun_Platz295()   // NW_TROLLAREA_TROLLLAKECAVE_02 (Original: Giant_Rat)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M295_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M295_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M295_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M295_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M295_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M295_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M295_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T295 = 0;
+			return;
+		};
+	};
+	FUNL_T295 = FUNL_T295 + 1;
+	if (FUNL_T295 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T295 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M295_T0, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M295_T1, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M295_T2, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M295_T3, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M295_T4, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M295_T5, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M295_T0, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	};
+};
+func void Fun_Platz296()   // NW_TROLLAREA_TROLLLAKECAVE_03A (Original: Meatbug)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M296_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M296_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M296_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M296_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M296_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M296_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M296_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T296 = 0;
+			return;
+		};
+	};
+	FUNL_T296 = FUNL_T296 + 1;
+	if (FUNL_T296 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T296 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M296_T0, "NW_TROLLAREA_TROLLLAKECAVE_03A");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M296_T1, "NW_TROLLAREA_TROLLLAKECAVE_03A");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M296_T2, "NW_TROLLAREA_TROLLLAKECAVE_03A");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M296_T3, "NW_TROLLAREA_TROLLLAKECAVE_03A");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M296_T4, "NW_TROLLAREA_TROLLLAKECAVE_03A");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M296_T5, "NW_TROLLAREA_TROLLLAKECAVE_03A");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M296_T0, "NW_TROLLAREA_TROLLLAKECAVE_03A");
+	};
+};
+func void Fun_Platz297()   // NW_TROLLAREA_TROLLLAKECAVE_03A (Original: Meatbug)
+{
+	var C_NPC m;
+	var int t;
+	t = 0 + Fun_KapitelNr() - 1;
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M297_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M297_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M297_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M297_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M297_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M297_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M297_T0);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T297 = 0;
+			return;
+		};
+	};
+	FUNL_T297 = FUNL_T297 + 1;
+	if (FUNL_T297 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T297 = 0;
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M297_T0, "NW_TROLLAREA_TROLLLAKECAVE_03A");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M297_T1, "NW_TROLLAREA_TROLLLAKECAVE_03A");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M297_T2, "NW_TROLLAREA_TROLLLAKECAVE_03A");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M297_T3, "NW_TROLLAREA_TROLLLAKECAVE_03A");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M297_T4, "NW_TROLLAREA_TROLLLAKECAVE_03A");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M297_T5, "NW_TROLLAREA_TROLLLAKECAVE_03A");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M297_T0, "NW_TROLLAREA_TROLLLAKECAVE_03A");
+	};
+};
+func void Fun_Platz298()   // NW_TROLLAREA_TROLLLAKECAVE_08 (Original: Gobbo_Warrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M298_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M298_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M298_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M298_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M298_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M298_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T298 = 0;
+			return;
+		};
+	};
+	FUNL_T298 = FUNL_T298 + 1;
+	if (FUNL_T298 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T298 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M298_T3, "NW_TROLLAREA_TROLLLAKECAVE_08");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M298_T4, "NW_TROLLAREA_TROLLLAKECAVE_08");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M298_T5, "NW_TROLLAREA_TROLLLAKECAVE_08");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M298_T6, "NW_TROLLAREA_TROLLLAKECAVE_08");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M298_T7, "NW_TROLLAREA_TROLLLAKECAVE_08");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M298_T3, "NW_TROLLAREA_TROLLLAKECAVE_08");
+	};
+};
+func void Fun_Platz299()   // NW_TROLLAREA_TROLLLAKECAVE_08 (Original: Gobbo_Warrior)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M299_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M299_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M299_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M299_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M299_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M299_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T299 = 0;
+			return;
+		};
+	};
+	FUNL_T299 = FUNL_T299 + 1;
+	if (FUNL_T299 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T299 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M299_T3, "NW_TROLLAREA_TROLLLAKECAVE_08");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M299_T4, "NW_TROLLAREA_TROLLLAKECAVE_08");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M299_T5, "NW_TROLLAREA_TROLLLAKECAVE_08");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M299_T6, "NW_TROLLAREA_TROLLLAKECAVE_08");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M299_T7, "NW_TROLLAREA_TROLLLAKECAVE_08");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M299_T3, "NW_TROLLAREA_TROLLLAKECAVE_08");
+	};
+};
+func void Fun_Platz300()   // NW_TROLLAREA_TROLLLAKECAVE_09 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M300_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M300_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M300_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M300_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M300_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M300_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M300_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T300 = 0;
+			return;
+		};
+	};
+	FUNL_T300 = FUNL_T300 + 1;
+	if (FUNL_T300 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T300 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M300_T2, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M300_T3, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M300_T4, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M300_T5, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M300_T6, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M300_T7, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M300_T2, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	};
+};
+func void Fun_Platz301()   // NW_TROLLAREA_TROLLLAKECAVE_09 (Original: Gobbo_Green)
+{
+	var C_NPC m;
+	var int t;
+	t = 2 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M301_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M301_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M301_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M301_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M301_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M301_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M301_T2);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T301 = 0;
+			return;
+		};
+	};
+	FUNL_T301 = FUNL_T301 + 1;
+	if (FUNL_T301 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T301 = 0;
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M301_T2, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M301_T3, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M301_T4, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M301_T5, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M301_T6, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M301_T7, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M301_T2, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	};
+};
+func void Fun_Platz302()   // NW_TROLLAREA_TROLLROCKCAVE_03 (Original: Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M302_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M302_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M302_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M302_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M302_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M302_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T302 = 0;
+			return;
+		};
+	};
+	FUNL_T302 = FUNL_T302 + 1;
+	if (FUNL_T302 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T302 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M302_T3, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M302_T4, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M302_T5, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M302_T6, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M302_T7, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M302_T3, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	};
+};
+func void Fun_Platz303()   // NW_TROLLAREA_TROLLROCKCAVE_03 (Original: Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M303_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M303_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M303_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M303_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M303_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M303_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T303 = 0;
+			return;
+		};
+	};
+	FUNL_T303 = FUNL_T303 + 1;
+	if (FUNL_T303 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T303 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M303_T3, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M303_T4, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M303_T5, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M303_T6, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M303_T7, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M303_T3, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	};
+};
+func void Fun_Platz304()   // NW_TROLLAREA_TROLLROCKCAVE_05 (Original: Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M304_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M304_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M304_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M304_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M304_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M304_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T304 = 0;
+			return;
+		};
+	};
+	FUNL_T304 = FUNL_T304 + 1;
+	if (FUNL_T304 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T304 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M304_T3, "NW_TROLLAREA_TROLLROCKCAVE_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M304_T4, "NW_TROLLAREA_TROLLROCKCAVE_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M304_T5, "NW_TROLLAREA_TROLLROCKCAVE_05");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M304_T6, "NW_TROLLAREA_TROLLROCKCAVE_05");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M304_T7, "NW_TROLLAREA_TROLLROCKCAVE_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M304_T3, "NW_TROLLAREA_TROLLROCKCAVE_05");
+	};
+};
+func void Fun_Platz305()   // NW_TROLLAREA_TROLLROCKCAVE_05 (Original: Skeleton)
+{
+	var C_NPC m;
+	var int t;
+	t = 3 + Fun_KapitelNr() - 1;
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M305_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M305_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M305_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M305_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M305_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M305_T3);
+	};
+	if (Hlp_IsValidNpc(m))
+	{
+		if (!Npc_IsDead(m))
+		{
+			FUNL_T305 = 0;
+			return;
+		};
+	};
+	FUNL_T305 = FUNL_T305 + 1;
+	if (FUNL_T305 < FUN_RESPAWN_TAKTE)
+	{
+		return;
+	};
+	FUNL_T305 = 0;
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M305_T3, "NW_TROLLAREA_TROLLROCKCAVE_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M305_T4, "NW_TROLLAREA_TROLLROCKCAVE_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M305_T5, "NW_TROLLAREA_TROLLROCKCAVE_05");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M305_T6, "NW_TROLLAREA_TROLLROCKCAVE_05");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M305_T7, "NW_TROLLAREA_TROLLROCKCAVE_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M305_T3, "NW_TROLLAREA_TROLLROCKCAVE_05");
 	};
 };
 
@@ -10874,76 +38004,312 @@ func void FUN_TAKT_HOST()
 	{
 		return;
 	};
-	Fun_Platz00();
-	Fun_Platz01();
-	Fun_Platz02();
-	Fun_Platz03();
-	Fun_Platz04();
-	Fun_Platz05();
-	Fun_Platz06();
-	Fun_Platz07();
-	Fun_Platz08();
-	Fun_Platz09();
-	Fun_Platz10();
-	Fun_Platz11();
-	Fun_Platz12();
-	Fun_Platz13();
-	Fun_Platz14();
-	Fun_Platz15();
-	Fun_Platz16();
-	Fun_Platz17();
-	Fun_Platz18();
-	Fun_Platz19();
-	Fun_Platz20();
-	Fun_Platz21();
-	Fun_Platz22();
-	Fun_Platz23();
-	Fun_Platz24();
-	Fun_Platz25();
-	Fun_Platz26();
-	Fun_Platz27();
-	Fun_Platz28();
-	Fun_Platz29();
-	Fun_Platz30();
-	Fun_Platz31();
-	Fun_Platz32();
-	Fun_Platz33();
-	Fun_Platz34();
-	Fun_Platz35();
-	Fun_Platz36();
-	Fun_Platz37();
-	Fun_Platz38();
-	Fun_Platz39();
-	Fun_Platz40();
-	Fun_Platz41();
-	Fun_Platz42();
-	Fun_Platz43();
-	Fun_Platz44();
-	Fun_Platz45();
-	Fun_Platz46();
-	Fun_Platz47();
-	Fun_Platz48();
-	Fun_Platz49();
-	Fun_Platz50();
-	Fun_Platz51();
-	Fun_Platz52();
-	Fun_Platz53();
-	Fun_Platz54();
-	Fun_Platz55();
-	Fun_Platz56();
-	Fun_Platz57();
-	Fun_Platz58();
-	Fun_Platz59();
-	Fun_Platz60();
-	Fun_Platz61();
-	Fun_Platz62();
-	Fun_Platz63();
-	Fun_Platz64();
-	Fun_Platz65();
-	Fun_Platz66();
-	Fun_Platz67();
-	Fun_Platz68();
-	Fun_Platz69();
+	Fun_Platz000();
+	Fun_Platz001();
+	Fun_Platz002();
+	Fun_Platz003();
+	Fun_Platz004();
+	Fun_Platz005();
+	Fun_Platz006();
+	Fun_Platz007();
+	Fun_Platz008();
+	Fun_Platz009();
+	Fun_Platz010();
+	Fun_Platz011();
+	Fun_Platz012();
+	Fun_Platz013();
+	Fun_Platz014();
+	Fun_Platz015();
+	Fun_Platz016();
+	Fun_Platz017();
+	Fun_Platz018();
+	Fun_Platz019();
+	Fun_Platz020();
+	Fun_Platz021();
+	Fun_Platz022();
+	Fun_Platz023();
+	Fun_Platz024();
+	Fun_Platz025();
+	Fun_Platz026();
+	Fun_Platz027();
+	Fun_Platz028();
+	Fun_Platz029();
+	Fun_Platz030();
+	Fun_Platz031();
+	Fun_Platz032();
+	Fun_Platz033();
+	Fun_Platz034();
+	Fun_Platz035();
+	Fun_Platz036();
+	Fun_Platz037();
+	Fun_Platz038();
+	Fun_Platz039();
+	Fun_Platz040();
+	Fun_Platz041();
+	Fun_Platz042();
+	Fun_Platz043();
+	Fun_Platz044();
+	Fun_Platz045();
+	Fun_Platz046();
+	Fun_Platz047();
+	Fun_Platz048();
+	Fun_Platz049();
+	Fun_Platz050();
+	Fun_Platz051();
+	Fun_Platz052();
+	Fun_Platz053();
+	Fun_Platz054();
+	Fun_Platz055();
+	Fun_Platz056();
+	Fun_Platz057();
+	Fun_Platz058();
+	Fun_Platz059();
+	Fun_Platz060();
+	Fun_Platz061();
+	Fun_Platz062();
+	Fun_Platz063();
+	Fun_Platz064();
+	Fun_Platz065();
+	Fun_Platz066();
+	Fun_Platz067();
+	Fun_Platz068();
+	Fun_Platz069();
+	Fun_Platz070();
+	Fun_Platz071();
+	Fun_Platz072();
+	Fun_Platz073();
+	Fun_Platz074();
+	Fun_Platz075();
+	Fun_Platz076();
+	Fun_Platz077();
+	Fun_Platz078();
+	Fun_Platz079();
+	Fun_Platz080();
+	Fun_Platz081();
+	Fun_Platz082();
+	Fun_Platz083();
+	Fun_Platz084();
+	Fun_Platz085();
+	Fun_Platz086();
+	Fun_Platz087();
+	Fun_Platz088();
+	Fun_Platz089();
+	Fun_Platz090();
+	Fun_Platz091();
+	Fun_Platz092();
+	Fun_Platz093();
+	Fun_Platz094();
+	Fun_Platz095();
+	Fun_Platz096();
+	Fun_Platz097();
+	Fun_Platz098();
+	Fun_Platz099();
+	Fun_Platz100();
+	Fun_Platz101();
+	Fun_Platz102();
+	Fun_Platz103();
+	Fun_Platz104();
+	Fun_Platz105();
+	Fun_Platz106();
+	Fun_Platz107();
+	Fun_Platz108();
+	Fun_Platz109();
+	Fun_Platz110();
+	Fun_Platz111();
+	Fun_Platz112();
+	Fun_Platz113();
+	Fun_Platz114();
+	Fun_Platz115();
+	Fun_Platz116();
+	Fun_Platz117();
+	Fun_Platz118();
+	Fun_Platz119();
+	Fun_Platz120();
+	Fun_Platz121();
+	Fun_Platz122();
+	Fun_Platz123();
+	Fun_Platz124();
+	Fun_Platz125();
+	Fun_Platz126();
+	Fun_Platz127();
+	Fun_Platz128();
+	Fun_Platz129();
+	Fun_Platz130();
+	Fun_Platz131();
+	Fun_Platz132();
+	Fun_Platz133();
+	Fun_Platz134();
+	Fun_Platz135();
+	Fun_Platz136();
+	Fun_Platz137();
+	Fun_Platz138();
+	Fun_Platz139();
+	Fun_Platz140();
+	Fun_Platz141();
+	Fun_Platz142();
+	Fun_Platz143();
+	Fun_Platz144();
+	Fun_Platz145();
+	Fun_Platz146();
+	Fun_Platz147();
+	Fun_Platz148();
+	Fun_Platz149();
+	Fun_Platz150();
+	Fun_Platz151();
+	Fun_Platz152();
+	Fun_Platz153();
+	Fun_Platz154();
+	Fun_Platz155();
+	Fun_Platz156();
+	Fun_Platz157();
+	Fun_Platz158();
+	Fun_Platz159();
+	Fun_Platz160();
+	Fun_Platz161();
+	Fun_Platz162();
+	Fun_Platz163();
+	Fun_Platz164();
+	Fun_Platz165();
+	Fun_Platz166();
+	Fun_Platz167();
+	Fun_Platz168();
+	Fun_Platz169();
+	Fun_Platz170();
+	Fun_Platz171();
+	Fun_Platz172();
+	Fun_Platz173();
+	Fun_Platz174();
+	Fun_Platz175();
+	Fun_Platz176();
+	Fun_Platz177();
+	Fun_Platz178();
+	Fun_Platz179();
+	Fun_Platz180();
+	Fun_Platz181();
+	Fun_Platz182();
+	Fun_Platz183();
+	Fun_Platz184();
+	Fun_Platz185();
+	Fun_Platz186();
+	Fun_Platz187();
+	Fun_Platz188();
+	Fun_Platz189();
+	Fun_Platz190();
+	Fun_Platz191();
+	Fun_Platz192();
+	Fun_Platz193();
+	Fun_Platz194();
+	Fun_Platz195();
+	Fun_Platz196();
+	Fun_Platz197();
+	Fun_Platz198();
+	Fun_Platz199();
+	Fun_Platz200();
+	Fun_Platz201();
+	Fun_Platz202();
+	Fun_Platz203();
+	Fun_Platz204();
+	Fun_Platz205();
+	Fun_Platz206();
+	Fun_Platz207();
+	Fun_Platz208();
+	Fun_Platz209();
+	Fun_Platz210();
+	Fun_Platz211();
+	Fun_Platz212();
+	Fun_Platz213();
+	Fun_Platz214();
+	Fun_Platz215();
+	Fun_Platz216();
+	Fun_Platz217();
+	Fun_Platz218();
+	Fun_Platz219();
+	Fun_Platz220();
+	Fun_Platz221();
+	Fun_Platz222();
+	Fun_Platz223();
+	Fun_Platz224();
+	Fun_Platz225();
+	Fun_Platz226();
+	Fun_Platz227();
+	Fun_Platz228();
+	Fun_Platz229();
+	Fun_Platz230();
+	Fun_Platz231();
+	Fun_Platz232();
+	Fun_Platz233();
+	Fun_Platz234();
+	Fun_Platz235();
+	Fun_Platz236();
+	Fun_Platz237();
+	Fun_Platz238();
+	Fun_Platz239();
+	Fun_Platz240();
+	Fun_Platz241();
+	Fun_Platz242();
+	Fun_Platz243();
+	Fun_Platz244();
+	Fun_Platz245();
+	Fun_Platz246();
+	Fun_Platz247();
+	Fun_Platz248();
+	Fun_Platz249();
+	Fun_Platz250();
+	Fun_Platz251();
+	Fun_Platz252();
+	Fun_Platz253();
+	Fun_Platz254();
+	Fun_Platz255();
+	Fun_Platz256();
+	Fun_Platz257();
+	Fun_Platz258();
+	Fun_Platz259();
+	Fun_Platz260();
+	Fun_Platz261();
+	Fun_Platz262();
+	Fun_Platz263();
+	Fun_Platz264();
+	Fun_Platz265();
+	Fun_Platz266();
+	Fun_Platz267();
+	Fun_Platz268();
+	Fun_Platz269();
+	Fun_Platz270();
+	Fun_Platz271();
+	Fun_Platz272();
+	Fun_Platz273();
+	Fun_Platz274();
+	Fun_Platz275();
+	Fun_Platz276();
+	Fun_Platz277();
+	Fun_Platz278();
+	Fun_Platz279();
+	Fun_Platz280();
+	Fun_Platz281();
+	Fun_Platz282();
+	Fun_Platz283();
+	Fun_Platz284();
+	Fun_Platz285();
+	Fun_Platz286();
+	Fun_Platz287();
+	Fun_Platz288();
+	Fun_Platz289();
+	Fun_Platz290();
+	Fun_Platz291();
+	Fun_Platz292();
+	Fun_Platz293();
+	Fun_Platz294();
+	Fun_Platz295();
+	Fun_Platz296();
+	Fun_Platz297();
+	Fun_Platz298();
+	Fun_Platz299();
+	Fun_Platz300();
+	Fun_Platz301();
+	Fun_Platz302();
+	Fun_Platz303();
+	Fun_Platz304();
+	Fun_Platz305();
 	Fun_Boss();
 	Fun_Lager();
 };

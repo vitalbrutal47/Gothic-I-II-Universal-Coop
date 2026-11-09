@@ -2486,11 +2486,17 @@ namespace GOTHIC_ENGINE {
     // u177: LoA-Lauf u174 (Client, 19:52): derselbe Absturz trotz Haken - DoShootArrow liest die Munition der Waffe IN DER HAND
     // (G2A 0x0074471C bzw. 0x007447BB: GetSlotItem(NPC_NODE_LEFTHAND) im Bogen-, GetSlotItem(NPC_NODE_RIGHTHAND) im Armbrust-Modus,
     // dann [Waffe+0x264]), nicht die angelegte. Beim Abbild war die Armbrust angelegt, die Hand aber leer. Jetzt beides pruefen
+    // u202 (09.11.2026): Der Held konnte mit Bogen und Armbrust nicht mehr schiessen (kein Pfeil, keine Munition verbraucht) - Log:
+    // "Schuss ohne Fernkampfwaffe abgefangen: PC_HERO (Kampfmodus 5, Held)" bei jedem Schuss, Host wie Client. Mit GEZOGENER Waffe
+    // liefert GetEquippedRangedWeapon NULL (die Waffe liegt dann in der Hand, nicht mehr im Ruecken-Slot) - der Haken fing deshalb
+    // jeden echten Schuss ab. Entscheidend fuer den Absturz (P180) ist nur die Hand, aus der DoShootArrow die Munition liest:
+    // im Bogen-/Armbrust-Modus nur die Hand pruefen, sonst wie bisher die angelegte Waffe.
     int __fastcall oCNpc_DoShootArrow_Coop(oCNpc* _this, void* vtable, int autoAim) {
-        if (_this) {
+        // Der eigene Held schiesst nur, wenn Gothic ihn laesst (Waffe gezogen, Munition da) - P180 betraf nur Abbilder beim Client.
+        if (_this && _this != player) {
             const char* node = _this->fmode == 5 ? "ZS_LEFTHAND" : _this->fmode == 6 ? "ZS_RIGHTHAND" : NULL;   // Bogen links, Armbrust rechts
-            const bool noWeapon = !_this->GetEquippedRangedWeapon();
-            const bool emptyHand = !noWeapon && node && !_this->GetSlotItem(zSTRING(node));
+            const bool emptyHand = node && !_this->GetSlotItem(zSTRING(node));
+            const bool noWeapon = !node && !_this->GetEquippedRangedWeapon();
             if (noWeapon || emptyHand) {
                 if (++CoopShootGuards <= 20)
                     WorldSyncLog("Schuss %s abgefangen: %s (Kampfmodus %d, %s) - kein Pfeil, sonst Zugriffsfehler (P180)",

@@ -844,6 +844,27 @@ assert set(SECT) <= set(ORDER), set(SECT) - set(ORDER)
 out = []
 for n in ORDER:
     out += SECT.get(n, [])
+
+# Gothics Parser (zParserExtender) meldet bei einzeiligen Bloecken wie "func int X() { return TRUE; };" oder
+# "if (...) { return; };" teils "Expected ';'" (Test 09.11.: Zeilen 3367, 4158). Darum jeden Block mehrzeilig wie in den
+# Original-Skripten: Kopf, "{", jede Anweisung eine Zeile, "}" bzw. "};".
+_BLK = re.compile(r'^(\t*)([^{}"]*?)\s*\{\s*([^{}]*?)\s*\}(;?)\s*$')   # Zeichenketten im Rumpf ohne ; { }
+def _expand(lines):
+    res = []
+    for ln in lines:
+        m = _BLK.match(ln)
+        if not m or not m.group(3) or "//" in ln or any(";" in q for q in re.findall(r'"[^"]*"', m.group(3))):
+            res.append(ln)
+            continue
+        ind, head, body, semi = m.groups()
+        if head:
+            res.append(ind + head)
+        res.append(ind + "{")
+        for st in [x.strip() for x in body.split(";") if x.strip()]:
+            res.append(ind + "\t" + st + ";")
+        res.append(ind + "}" + semi)
+    return res
+out = _expand(out)
 text = "\r\n".join(out) + "\r\n"
 open(OUT, "wb").write(text.encode("cp1252"))
 print(OUT, len(out), "Zeilen,", len(SLOTS), "Spawnpunkte,", sum(min(7, b + 5) - b + 1 for _, _, b in SLOTS), "Monster-Instanzen")

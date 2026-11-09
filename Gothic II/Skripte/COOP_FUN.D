@@ -28,24 +28,48 @@ const int FUN_HAENDLER_GOLD = 100000;
 
 func int Fun_KapitelNr()
 {
-	if (FUN_KAPITEL < 1) { return 1; };
-	if (FUN_KAPITEL > 6) { return 6; };
+	if (FUN_KAPITEL < 1)
+	{
+		return 1;
+	};
+	if (FUN_KAPITEL > 6)
+	{
+		return 6;
+	};
 	return FUN_KAPITEL;
 };
 
 func int Fun_GildeVonHaendler(var C_NPC slf)
 {
-	if (slf.id == 9601) { return GIL_MIL; };
-	if (slf.id == 9602) { return GIL_SLD; };
-	if (slf.id == 9603) { return GIL_NOV; };
-	if (slf.id == 9604) { return GIL_BDT; };
+	if (slf.id == 9601)
+	{
+		return GIL_MIL;
+	};
+	if (slf.id == 9602)
+	{
+		return GIL_SLD;
+	};
+	if (slf.id == 9603)
+	{
+		return GIL_NOV;
+	};
+	if (slf.id == 9604)
+	{
+		return GIL_BDT;
+	};
 	return GIL_NONE;
 };
 
 func int Fun_NpcLebt(var C_NPC n)
 {
-	if (!Hlp_IsValidNpc(n)) { return FALSE; };
-	if (Npc_IsDead(n)) { return FALSE; };
+	if (!Hlp_IsValidNpc(n))
+	{
+		return FALSE;
+	};
+	if (Npc_IsDead(n))
+	{
+		return FALSE;
+	};
 	return TRUE;
 };
 
@@ -3444,11 +3468,26 @@ func void Fun_KapitelPruefen()
 	{
 		Npc_SetTalentSkill(hero, NPC_TALENT_MAGE, FUN_KAPITEL);
 	};
-	if (FUN_KAPITEL == 2) { IntroduceChapter("Kapitel 2", "Die Händler haben neue Ware", "chapter2.tga", "chapter_01.wav", 6000); };
-	if (FUN_KAPITEL == 3) { IntroduceChapter("Kapitel 3", "Die Wälder werden gefährlicher", "chapter2.tga", "chapter_01.wav", 6000); };
-	if (FUN_KAPITEL == 4) { IntroduceChapter("Kapitel 4", "Die Lager rüsten auf", "chapter4.tga", "chapter_01.wav", 6000); };
-	if (FUN_KAPITEL == 5) { IntroduceChapter("Kapitel 5", "Trolle im Land", "chapter4.tga", "chapter_01.wav", 6000); };
-	if (FUN_KAPITEL == 6) { IntroduceChapter("Kapitel 6", "Das letzte Kapitel", "chapter6.tga", "chapter_01.wav", 6000); };
+	if (FUN_KAPITEL == 2)
+	{
+		IntroduceChapter("Kapitel 2", "Die Händler haben neue Ware", "chapter2.tga", "chapter_01.wav", 6000);
+	};
+	if (FUN_KAPITEL == 3)
+	{
+		IntroduceChapter("Kapitel 3", "Die Wälder werden gefährlicher", "chapter2.tga", "chapter_01.wav", 6000);
+	};
+	if (FUN_KAPITEL == 4)
+	{
+		IntroduceChapter("Kapitel 4", "Die Lager rüsten auf", "chapter4.tga", "chapter_01.wav", 6000);
+	};
+	if (FUN_KAPITEL == 5)
+	{
+		IntroduceChapter("Kapitel 5", "Trolle im Land", "chapter4.tga", "chapter_01.wav", 6000);
+	};
+	if (FUN_KAPITEL == 6)
+	{
+		IntroduceChapter("Kapitel 6", "Das letzte Kapitel", "chapter6.tga", "chapter_01.wav", 6000);
+	};
 };
 
 func void Use_Fun_Kapitelstein()
@@ -4155,8 +4194,14 @@ instance DIA_FUN_HAENDLER_BDT_KAMPF (C_INFO)
 };
 
 // --- Dialoge -------------------------------------------------------------------------------------------------------
-func int DIA_Fun_Exit_Condition() { return TRUE; };
-func void DIA_Fun_Exit_Info() { AI_StopProcessInfos(self); };
+func int DIA_Fun_Exit_Condition()
+{
+	return TRUE;
+};
+func void DIA_Fun_Exit_Info()
+{
+	AI_StopProcessInfos(self);
+};
 
 func int DIA_Fun_Komm_Condition()
 {
@@ -4662,10 +4707,22 @@ func void Fun_Gilden()
 
 func int Fun_GildeVonWahl(var int wahl)
 {
-	if (wahl == 0) { return GIL_MIL; };
-	if (wahl == 1) { return GIL_SLD; };
-	if (wahl == 2) { return GIL_NOV; };
-	if (wahl == 3) { return GIL_BDT; };
+	if (wahl == 0)
+	{
+		return GIL_MIL;
+	};
+	if (wahl == 1)
+	{
+		return GIL_SLD;
+	};
+	if (wahl == 2)
+	{
+		return GIL_NOV;
+	};
+	if (wahl == 3)
+	{
+		return GIL_BDT;
+	};
 	return GIL_MIL;
 };
 
@@ -4676,9 +4733,18 @@ func void Fun_HeldStart(var int wahl)
 	g = Fun_GildeVonWahl(wahl);
 	hero.guild = g;
 	Npc_SetTrueGuild(hero, g);
-	if (hero.attribute[ATR_STRENGTH] < 30) { hero.attribute[ATR_STRENGTH] = 30; };
-	if (hero.attribute[ATR_DEXTERITY] < 30) { hero.attribute[ATR_DEXTERITY] = 30; };
-	if (hero.attribute[ATR_HITPOINTS_MAX] < 100) { hero.attribute[ATR_HITPOINTS_MAX] = 100; };
+	if (hero.attribute[ATR_STRENGTH] < 30)
+	{
+		hero.attribute[ATR_STRENGTH] = 30;
+	};
+	if (hero.attribute[ATR_DEXTERITY] < 30)
+	{
+		hero.attribute[ATR_DEXTERITY] = 30;
+	};
+	if (hero.attribute[ATR_HITPOINTS_MAX] < 100)
+	{
+		hero.attribute[ATR_HITPOINTS_MAX] = 100;
+	};
 	hero.attribute[ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];
 	hero.lp = hero.lp + 10;
 	PLAYER_TALENT_TAKEANIMALTROPHY[TROPHY_Teeth] = TRUE;
@@ -4723,7 +4789,10 @@ func void Fun_HeldStart(var int wahl)
 		CreateInvItem(hero, ITAR_NOV_L);
 		AI_EquipArmor(hero, ITAR_NOV_L);
 		EquipItem(hero, ItMw_1h_Nov_Mace);
-		if (hero.attribute[ATR_MANA_MAX] < 30) { hero.attribute[ATR_MANA_MAX] = 30; };
+		if (hero.attribute[ATR_MANA_MAX] < 30)
+		{
+			hero.attribute[ATR_MANA_MAX] = 30;
+		};
 		hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
 		Npc_SetTalentSkill(hero, NPC_TALENT_MAGE, 1);
 		CreateInvItems(hero, ItRu_FireBolt, 1);
@@ -4958,14 +5027,38 @@ func void Fun_Platz00()   // FP_ROAM_BIGFARM_LAKE_CAVE_01 (Original: Gobbo_Green
 	var C_NPC m;
 	var int t;
 	t = 2 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 2) { m = Hlp_GetNpc(FUN_M00_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M00_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M00_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M00_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M00_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M00_T7); }
-	else { m = Hlp_GetNpc(FUN_M00_T2); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M00_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M00_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M00_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M00_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M00_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M00_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M00_T2);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -4980,27 +5073,72 @@ func void Fun_Platz00()   // FP_ROAM_BIGFARM_LAKE_CAVE_01 (Original: Gobbo_Green
 		return;
 	};
 	FUNL_T00 = 0;
-	if (t == 2) { Wld_InsertNpc(FUN_M00_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_01"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M00_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_01"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M00_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_01"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M00_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_01"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M00_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_01"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M00_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_01"); }
-	else { Wld_InsertNpc(FUN_M00_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_01"); };
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M00_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M00_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M00_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M00_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M00_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M00_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M00_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_01");
+	};
 };
 func void Fun_Platz01()   // FP_ROAM_BIGFARM_LAKE_CAVE_04 (Original: Gobbo_Green)
 {
 	var C_NPC m;
 	var int t;
 	t = 2 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 2) { m = Hlp_GetNpc(FUN_M01_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M01_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M01_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M01_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M01_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M01_T7); }
-	else { m = Hlp_GetNpc(FUN_M01_T2); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M01_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M01_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M01_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M01_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M01_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M01_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M01_T2);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5015,27 +5153,72 @@ func void Fun_Platz01()   // FP_ROAM_BIGFARM_LAKE_CAVE_04 (Original: Gobbo_Green
 		return;
 	};
 	FUNL_T01 = 0;
-	if (t == 2) { Wld_InsertNpc(FUN_M01_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_04"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M01_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_04"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M01_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_04"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M01_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_04"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M01_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_04"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M01_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_04"); }
-	else { Wld_InsertNpc(FUN_M01_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_04"); };
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M01_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M01_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M01_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M01_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M01_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M01_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M01_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_04");
+	};
 };
 func void Fun_Platz02()   // FP_ROAM_BIGFARM_LAKE_CAVE_07 (Original: Gobbo_Black)
 {
 	var C_NPC m;
 	var int t;
 	t = 2 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 2) { m = Hlp_GetNpc(FUN_M02_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M02_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M02_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M02_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M02_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M02_T7); }
-	else { m = Hlp_GetNpc(FUN_M02_T2); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M02_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M02_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M02_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M02_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M02_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M02_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M02_T2);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5050,27 +5233,72 @@ func void Fun_Platz02()   // FP_ROAM_BIGFARM_LAKE_CAVE_07 (Original: Gobbo_Black
 		return;
 	};
 	FUNL_T02 = 0;
-	if (t == 2) { Wld_InsertNpc(FUN_M02_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_07"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M02_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_07"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M02_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_07"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M02_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_07"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M02_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_07"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M02_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_07"); }
-	else { Wld_InsertNpc(FUN_M02_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_07"); };
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M02_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M02_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M02_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M02_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M02_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M02_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M02_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_07");
+	};
 };
 func void Fun_Platz03()   // FP_ROAM_BIGFARM_LAKE_CAVE_11 (Original: Gobbo_Black)
 {
 	var C_NPC m;
 	var int t;
 	t = 2 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 2) { m = Hlp_GetNpc(FUN_M03_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M03_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M03_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M03_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M03_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M03_T7); }
-	else { m = Hlp_GetNpc(FUN_M03_T2); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M03_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M03_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M03_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M03_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M03_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M03_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M03_T2);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5085,26 +5313,68 @@ func void Fun_Platz03()   // FP_ROAM_BIGFARM_LAKE_CAVE_11 (Original: Gobbo_Black
 		return;
 	};
 	FUNL_T03 = 0;
-	if (t == 2) { Wld_InsertNpc(FUN_M03_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_11"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M03_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_11"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M03_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_11"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M03_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_11"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M03_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_11"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M03_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_11"); }
-	else { Wld_InsertNpc(FUN_M03_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_11"); };
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M03_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M03_T3, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M03_T4, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M03_T5, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M03_T6, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M03_T7, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M03_T2, "FP_ROAM_BIGFARM_LAKE_CAVE_11");
+	};
 };
 func void Fun_Platz04()   // FP_ROAM_CASTLEMINE2_01 (Original: Skeleton)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M04_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M04_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M04_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M04_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M04_T7); }
-	else { m = Hlp_GetNpc(FUN_M04_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M04_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M04_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M04_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M04_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M04_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M04_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5119,25 +5389,64 @@ func void Fun_Platz04()   // FP_ROAM_CASTLEMINE2_01 (Original: Skeleton)
 		return;
 	};
 	FUNL_T04 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M04_T3, "FP_ROAM_CASTLEMINE2_01"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M04_T4, "FP_ROAM_CASTLEMINE2_01"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M04_T5, "FP_ROAM_CASTLEMINE2_01"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M04_T6, "FP_ROAM_CASTLEMINE2_01"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M04_T7, "FP_ROAM_CASTLEMINE2_01"); }
-	else { Wld_InsertNpc(FUN_M04_T3, "FP_ROAM_CASTLEMINE2_01"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M04_T3, "FP_ROAM_CASTLEMINE2_01");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M04_T4, "FP_ROAM_CASTLEMINE2_01");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M04_T5, "FP_ROAM_CASTLEMINE2_01");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M04_T6, "FP_ROAM_CASTLEMINE2_01");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M04_T7, "FP_ROAM_CASTLEMINE2_01");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M04_T3, "FP_ROAM_CASTLEMINE2_01");
+	};
 };
 func void Fun_Platz05()   // FP_ROAM_CASTLEMINE2_04 (Original: Skeleton)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M05_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M05_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M05_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M05_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M05_T7); }
-	else { m = Hlp_GetNpc(FUN_M05_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M05_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M05_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M05_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M05_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M05_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M05_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5152,25 +5461,64 @@ func void Fun_Platz05()   // FP_ROAM_CASTLEMINE2_04 (Original: Skeleton)
 		return;
 	};
 	FUNL_T05 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M05_T3, "FP_ROAM_CASTLEMINE2_04"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M05_T4, "FP_ROAM_CASTLEMINE2_04"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M05_T5, "FP_ROAM_CASTLEMINE2_04"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M05_T6, "FP_ROAM_CASTLEMINE2_04"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M05_T7, "FP_ROAM_CASTLEMINE2_04"); }
-	else { Wld_InsertNpc(FUN_M05_T3, "FP_ROAM_CASTLEMINE2_04"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M05_T3, "FP_ROAM_CASTLEMINE2_04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M05_T4, "FP_ROAM_CASTLEMINE2_04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M05_T5, "FP_ROAM_CASTLEMINE2_04");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M05_T6, "FP_ROAM_CASTLEMINE2_04");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M05_T7, "FP_ROAM_CASTLEMINE2_04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M05_T3, "FP_ROAM_CASTLEMINE2_04");
+	};
 };
 func void Fun_Platz06()   // FP_ROAM_CASTLEMINE2_07 (Original: Skeleton)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M06_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M06_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M06_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M06_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M06_T7); }
-	else { m = Hlp_GetNpc(FUN_M06_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M06_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M06_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M06_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M06_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M06_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M06_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5185,25 +5533,64 @@ func void Fun_Platz06()   // FP_ROAM_CASTLEMINE2_07 (Original: Skeleton)
 		return;
 	};
 	FUNL_T06 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M06_T3, "FP_ROAM_CASTLEMINE2_07"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M06_T4, "FP_ROAM_CASTLEMINE2_07"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M06_T5, "FP_ROAM_CASTLEMINE2_07"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M06_T6, "FP_ROAM_CASTLEMINE2_07"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M06_T7, "FP_ROAM_CASTLEMINE2_07"); }
-	else { Wld_InsertNpc(FUN_M06_T3, "FP_ROAM_CASTLEMINE2_07"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M06_T3, "FP_ROAM_CASTLEMINE2_07");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M06_T4, "FP_ROAM_CASTLEMINE2_07");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M06_T5, "FP_ROAM_CASTLEMINE2_07");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M06_T6, "FP_ROAM_CASTLEMINE2_07");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M06_T7, "FP_ROAM_CASTLEMINE2_07");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M06_T3, "FP_ROAM_CASTLEMINE2_07");
+	};
 };
 func void Fun_Platz07()   // FP_ROAM_CASTLEMINE2_11 (Original: Zombie03)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M07_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M07_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M07_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M07_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M07_T7); }
-	else { m = Hlp_GetNpc(FUN_M07_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M07_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M07_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M07_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M07_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M07_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M07_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5218,26 +5605,68 @@ func void Fun_Platz07()   // FP_ROAM_CASTLEMINE2_11 (Original: Zombie03)
 		return;
 	};
 	FUNL_T07 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M07_T3, "FP_ROAM_CASTLEMINE2_11"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M07_T4, "FP_ROAM_CASTLEMINE2_11"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M07_T5, "FP_ROAM_CASTLEMINE2_11"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M07_T6, "FP_ROAM_CASTLEMINE2_11"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M07_T7, "FP_ROAM_CASTLEMINE2_11"); }
-	else { Wld_InsertNpc(FUN_M07_T3, "FP_ROAM_CASTLEMINE2_11"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M07_T3, "FP_ROAM_CASTLEMINE2_11");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M07_T4, "FP_ROAM_CASTLEMINE2_11");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M07_T5, "FP_ROAM_CASTLEMINE2_11");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M07_T6, "FP_ROAM_CASTLEMINE2_11");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M07_T7, "FP_ROAM_CASTLEMINE2_11");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M07_T3, "FP_ROAM_CASTLEMINE2_11");
+	};
 };
 func void Fun_Platz08()   // FP_ROAM_NW_BIGFARMFORESTCAVE_01 (Original: Gobbo_Black)
 {
 	var C_NPC m;
 	var int t;
 	t = 2 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 2) { m = Hlp_GetNpc(FUN_M08_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M08_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M08_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M08_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M08_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M08_T7); }
-	else { m = Hlp_GetNpc(FUN_M08_T2); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M08_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M08_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M08_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M08_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M08_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M08_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M08_T2);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5252,27 +5681,72 @@ func void Fun_Platz08()   // FP_ROAM_NW_BIGFARMFORESTCAVE_01 (Original: Gobbo_Bl
 		return;
 	};
 	FUNL_T08 = 0;
-	if (t == 2) { Wld_InsertNpc(FUN_M08_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_01"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M08_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_01"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M08_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_01"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M08_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_01"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M08_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_01"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M08_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_01"); }
-	else { Wld_InsertNpc(FUN_M08_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_01"); };
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M08_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M08_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M08_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M08_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M08_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M08_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M08_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_01");
+	};
 };
 func void Fun_Platz09()   // FP_ROAM_NW_BIGFARMFORESTCAVE_04 (Original: Gobbo_Black)
 {
 	var C_NPC m;
 	var int t;
 	t = 2 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 2) { m = Hlp_GetNpc(FUN_M09_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M09_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M09_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M09_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M09_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M09_T7); }
-	else { m = Hlp_GetNpc(FUN_M09_T2); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M09_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M09_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M09_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M09_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M09_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M09_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M09_T2);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5287,27 +5761,72 @@ func void Fun_Platz09()   // FP_ROAM_NW_BIGFARMFORESTCAVE_04 (Original: Gobbo_Bl
 		return;
 	};
 	FUNL_T09 = 0;
-	if (t == 2) { Wld_InsertNpc(FUN_M09_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_04"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M09_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_04"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M09_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_04"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M09_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_04"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M09_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_04"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M09_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_04"); }
-	else { Wld_InsertNpc(FUN_M09_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_04"); };
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M09_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M09_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M09_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M09_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M09_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M09_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M09_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_04");
+	};
 };
 func void Fun_Platz10()   // FP_ROAM_NW_BIGFARMFORESTCAVE_08 (Original: Gobbo_Green)
 {
 	var C_NPC m;
 	var int t;
 	t = 2 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 2) { m = Hlp_GetNpc(FUN_M10_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M10_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M10_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M10_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M10_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M10_T7); }
-	else { m = Hlp_GetNpc(FUN_M10_T2); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M10_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M10_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M10_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M10_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M10_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M10_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M10_T2);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5322,26 +5841,68 @@ func void Fun_Platz10()   // FP_ROAM_NW_BIGFARMFORESTCAVE_08 (Original: Gobbo_Gr
 		return;
 	};
 	FUNL_T10 = 0;
-	if (t == 2) { Wld_InsertNpc(FUN_M10_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_08"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M10_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_08"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M10_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_08"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M10_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_08"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M10_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_08"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M10_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_08"); }
-	else { Wld_InsertNpc(FUN_M10_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_08"); };
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M10_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M10_T3, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M10_T4, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M10_T5, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M10_T6, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M10_T7, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M10_T2, "FP_ROAM_NW_BIGFARMFORESTCAVE_08");
+	};
 };
 func void Fun_Platz11()   // FP_ROAM_NW_TROLLAREA_RUINS_05 (Original: Snapper)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M11_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M11_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M11_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M11_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M11_T7); }
-	else { m = Hlp_GetNpc(FUN_M11_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M11_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M11_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M11_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M11_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M11_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M11_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5356,26 +5917,68 @@ func void Fun_Platz11()   // FP_ROAM_NW_TROLLAREA_RUINS_05 (Original: Snapper)
 		return;
 	};
 	FUNL_T11 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M11_T3, "FP_ROAM_NW_TROLLAREA_RUINS_05"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M11_T4, "FP_ROAM_NW_TROLLAREA_RUINS_05"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M11_T5, "FP_ROAM_NW_TROLLAREA_RUINS_05"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M11_T6, "FP_ROAM_NW_TROLLAREA_RUINS_05"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M11_T7, "FP_ROAM_NW_TROLLAREA_RUINS_05"); }
-	else { Wld_InsertNpc(FUN_M11_T3, "FP_ROAM_NW_TROLLAREA_RUINS_05"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M11_T3, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M11_T4, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M11_T5, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M11_T6, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M11_T7, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M11_T3, "FP_ROAM_NW_TROLLAREA_RUINS_05");
+	};
 };
 func void Fun_Platz12()   // FP_ROAM_NW_TROLLAREA_RUINS_14 (Original: Giant_Rat)
 {
 	var C_NPC m;
 	var int t;
 	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5) { t = 5; };
-	if (t == 0) { m = Hlp_GetNpc(FUN_M12_T0); }
-	else if (t == 1) { m = Hlp_GetNpc(FUN_M12_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M12_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M12_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M12_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M12_T5); }
-	else { m = Hlp_GetNpc(FUN_M12_T0); };
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M12_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M12_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M12_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M12_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M12_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M12_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M12_T0);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5390,27 +5993,72 @@ func void Fun_Platz12()   // FP_ROAM_NW_TROLLAREA_RUINS_14 (Original: Giant_Rat)
 		return;
 	};
 	FUNL_T12 = 0;
-	if (t == 0) { Wld_InsertNpc(FUN_M12_T0, "FP_ROAM_NW_TROLLAREA_RUINS_14"); }
-	else if (t == 1) { Wld_InsertNpc(FUN_M12_T1, "FP_ROAM_NW_TROLLAREA_RUINS_14"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M12_T2, "FP_ROAM_NW_TROLLAREA_RUINS_14"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M12_T3, "FP_ROAM_NW_TROLLAREA_RUINS_14"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M12_T4, "FP_ROAM_NW_TROLLAREA_RUINS_14"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M12_T5, "FP_ROAM_NW_TROLLAREA_RUINS_14"); }
-	else { Wld_InsertNpc(FUN_M12_T0, "FP_ROAM_NW_TROLLAREA_RUINS_14"); };
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M12_T0, "FP_ROAM_NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M12_T1, "FP_ROAM_NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M12_T2, "FP_ROAM_NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M12_T3, "FP_ROAM_NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M12_T4, "FP_ROAM_NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M12_T5, "FP_ROAM_NW_TROLLAREA_RUINS_14");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M12_T0, "FP_ROAM_NW_TROLLAREA_RUINS_14");
+	};
 };
 func void Fun_Platz13()   // FP_ROAM_NW_TROLLAREA_RUINS_22 (Original: Bloodfly)
 {
 	var C_NPC m;
 	var int t;
 	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5) { t = 5; };
-	if (t == 0) { m = Hlp_GetNpc(FUN_M13_T0); }
-	else if (t == 1) { m = Hlp_GetNpc(FUN_M13_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M13_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M13_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M13_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M13_T5); }
-	else { m = Hlp_GetNpc(FUN_M13_T0); };
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M13_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M13_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M13_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M13_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M13_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M13_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M13_T0);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5425,26 +6073,68 @@ func void Fun_Platz13()   // FP_ROAM_NW_TROLLAREA_RUINS_22 (Original: Bloodfly)
 		return;
 	};
 	FUNL_T13 = 0;
-	if (t == 0) { Wld_InsertNpc(FUN_M13_T0, "FP_ROAM_NW_TROLLAREA_RUINS_22"); }
-	else if (t == 1) { Wld_InsertNpc(FUN_M13_T1, "FP_ROAM_NW_TROLLAREA_RUINS_22"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M13_T2, "FP_ROAM_NW_TROLLAREA_RUINS_22"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M13_T3, "FP_ROAM_NW_TROLLAREA_RUINS_22"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M13_T4, "FP_ROAM_NW_TROLLAREA_RUINS_22"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M13_T5, "FP_ROAM_NW_TROLLAREA_RUINS_22"); }
-	else { Wld_InsertNpc(FUN_M13_T0, "FP_ROAM_NW_TROLLAREA_RUINS_22"); };
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M13_T0, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M13_T1, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M13_T2, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M13_T3, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M13_T4, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M13_T5, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M13_T0, "FP_ROAM_NW_TROLLAREA_RUINS_22");
+	};
 };
 func void Fun_Platz14()   // FP_ROAM_NW_TROLLAREA_RUINS_29 (Original: Waran)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M14_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M14_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M14_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M14_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M14_T7); }
-	else { m = Hlp_GetNpc(FUN_M14_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M14_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M14_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M14_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M14_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M14_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M14_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5459,26 +6149,68 @@ func void Fun_Platz14()   // FP_ROAM_NW_TROLLAREA_RUINS_29 (Original: Waran)
 		return;
 	};
 	FUNL_T14 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M14_T3, "FP_ROAM_NW_TROLLAREA_RUINS_29"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M14_T4, "FP_ROAM_NW_TROLLAREA_RUINS_29"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M14_T5, "FP_ROAM_NW_TROLLAREA_RUINS_29"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M14_T6, "FP_ROAM_NW_TROLLAREA_RUINS_29"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M14_T7, "FP_ROAM_NW_TROLLAREA_RUINS_29"); }
-	else { Wld_InsertNpc(FUN_M14_T3, "FP_ROAM_NW_TROLLAREA_RUINS_29"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M14_T3, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M14_T4, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M14_T5, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M14_T6, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M14_T7, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M14_T3, "FP_ROAM_NW_TROLLAREA_RUINS_29");
+	};
 };
 func void Fun_Platz15()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02 (Original: Gobbo_Black)
 {
 	var C_NPC m;
 	var int t;
 	t = 2 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 2) { m = Hlp_GetNpc(FUN_M15_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M15_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M15_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M15_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M15_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M15_T7); }
-	else { m = Hlp_GetNpc(FUN_M15_T2); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M15_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M15_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M15_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M15_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M15_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M15_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M15_T2);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5493,27 +6225,72 @@ func void Fun_Platz15()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02 (Original: Gobbo
 		return;
 	};
 	FUNL_T15 = 0;
-	if (t == 2) { Wld_InsertNpc(FUN_M15_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M15_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M15_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M15_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M15_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M15_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02"); }
-	else { Wld_InsertNpc(FUN_M15_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02"); };
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M15_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M15_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M15_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M15_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M15_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M15_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M15_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02");
+	};
 };
 func void Fun_Platz16()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06 (Original: Gobbo_Black)
 {
 	var C_NPC m;
 	var int t;
 	t = 2 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 2) { m = Hlp_GetNpc(FUN_M16_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M16_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M16_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M16_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M16_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M16_T7); }
-	else { m = Hlp_GetNpc(FUN_M16_T2); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M16_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M16_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M16_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M16_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M16_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M16_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M16_T2);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5528,26 +6305,68 @@ func void Fun_Platz16()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06 (Original: Gobbo
 		return;
 	};
 	FUNL_T16 = 0;
-	if (t == 2) { Wld_InsertNpc(FUN_M16_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M16_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M16_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M16_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M16_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M16_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06"); }
-	else { Wld_InsertNpc(FUN_M16_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06"); };
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M16_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M16_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M16_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M16_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M16_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M16_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M16_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06");
+	};
 };
 func void Fun_Platz17()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10 (Original: Gobbo_Warrior)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M17_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M17_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M17_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M17_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M17_T7); }
-	else { m = Hlp_GetNpc(FUN_M17_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M17_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M17_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M17_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M17_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M17_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M17_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5562,26 +6381,68 @@ func void Fun_Platz17()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10 (Original: Gobbo
 		return;
 	};
 	FUNL_T17 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M17_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M17_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M17_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M17_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M17_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10"); }
-	else { Wld_InsertNpc(FUN_M17_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M17_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M17_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M17_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M17_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M17_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M17_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10");
+	};
 };
 func void Fun_Platz18()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14 (Original: Gobbo_Black)
 {
 	var C_NPC m;
 	var int t;
 	t = 2 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 2) { m = Hlp_GetNpc(FUN_M18_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M18_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M18_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M18_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M18_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M18_T7); }
-	else { m = Hlp_GetNpc(FUN_M18_T2); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M18_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M18_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M18_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M18_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M18_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M18_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M18_T2);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5596,26 +6457,68 @@ func void Fun_Platz18()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14 (Original: Gobbo
 		return;
 	};
 	FUNL_T18 = 0;
-	if (t == 2) { Wld_InsertNpc(FUN_M18_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M18_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M18_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M18_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M18_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M18_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14"); }
-	else { Wld_InsertNpc(FUN_M18_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14"); };
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M18_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M18_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M18_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M18_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M18_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M18_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M18_T2, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14");
+	};
 };
 func void Fun_Platz19()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21 (Original: Minecrawler)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M19_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M19_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M19_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M19_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M19_T7); }
-	else { m = Hlp_GetNpc(FUN_M19_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M19_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M19_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M19_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M19_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M19_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M19_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5630,26 +6533,68 @@ func void Fun_Platz19()   // FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21 (Original: Minec
 		return;
 	};
 	FUNL_T19 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M19_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M19_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M19_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M19_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M19_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21"); }
-	else { Wld_InsertNpc(FUN_M19_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M19_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M19_T4, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M19_T5, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M19_T6, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M19_T7, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M19_T3, "FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21");
+	};
 };
 func void Fun_Platz20()   // FP_ROAM_RITUALFOREST_CAVE_05 (Original: Giant_Rat)
 {
 	var C_NPC m;
 	var int t;
 	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5) { t = 5; };
-	if (t == 0) { m = Hlp_GetNpc(FUN_M20_T0); }
-	else if (t == 1) { m = Hlp_GetNpc(FUN_M20_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M20_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M20_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M20_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M20_T5); }
-	else { m = Hlp_GetNpc(FUN_M20_T0); };
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M20_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M20_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M20_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M20_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M20_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M20_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M20_T0);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5664,26 +6609,68 @@ func void Fun_Platz20()   // FP_ROAM_RITUALFOREST_CAVE_05 (Original: Giant_Rat)
 		return;
 	};
 	FUNL_T20 = 0;
-	if (t == 0) { Wld_InsertNpc(FUN_M20_T0, "FP_ROAM_RITUALFOREST_CAVE_05"); }
-	else if (t == 1) { Wld_InsertNpc(FUN_M20_T1, "FP_ROAM_RITUALFOREST_CAVE_05"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M20_T2, "FP_ROAM_RITUALFOREST_CAVE_05"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M20_T3, "FP_ROAM_RITUALFOREST_CAVE_05"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M20_T4, "FP_ROAM_RITUALFOREST_CAVE_05"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M20_T5, "FP_ROAM_RITUALFOREST_CAVE_05"); }
-	else { Wld_InsertNpc(FUN_M20_T0, "FP_ROAM_RITUALFOREST_CAVE_05"); };
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M20_T0, "FP_ROAM_RITUALFOREST_CAVE_05");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M20_T1, "FP_ROAM_RITUALFOREST_CAVE_05");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M20_T2, "FP_ROAM_RITUALFOREST_CAVE_05");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M20_T3, "FP_ROAM_RITUALFOREST_CAVE_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M20_T4, "FP_ROAM_RITUALFOREST_CAVE_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M20_T5, "FP_ROAM_RITUALFOREST_CAVE_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M20_T0, "FP_ROAM_RITUALFOREST_CAVE_05");
+	};
 };
 func void Fun_Platz21()   // FP_ROAM_RITUALFOREST_CAVE_09 (Original: Skeleton)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M21_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M21_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M21_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M21_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M21_T7); }
-	else { m = Hlp_GetNpc(FUN_M21_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M21_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M21_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M21_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M21_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M21_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M21_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5698,26 +6685,68 @@ func void Fun_Platz21()   // FP_ROAM_RITUALFOREST_CAVE_09 (Original: Skeleton)
 		return;
 	};
 	FUNL_T21 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M21_T3, "FP_ROAM_RITUALFOREST_CAVE_09"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M21_T4, "FP_ROAM_RITUALFOREST_CAVE_09"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M21_T5, "FP_ROAM_RITUALFOREST_CAVE_09"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M21_T6, "FP_ROAM_RITUALFOREST_CAVE_09"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M21_T7, "FP_ROAM_RITUALFOREST_CAVE_09"); }
-	else { Wld_InsertNpc(FUN_M21_T3, "FP_ROAM_RITUALFOREST_CAVE_09"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M21_T3, "FP_ROAM_RITUALFOREST_CAVE_09");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M21_T4, "FP_ROAM_RITUALFOREST_CAVE_09");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M21_T5, "FP_ROAM_RITUALFOREST_CAVE_09");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M21_T6, "FP_ROAM_RITUALFOREST_CAVE_09");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M21_T7, "FP_ROAM_RITUALFOREST_CAVE_09");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M21_T3, "FP_ROAM_RITUALFOREST_CAVE_09");
+	};
 };
 func void Fun_Platz22()   // FP_ROAM_TROLLAREA_SEA_01 (Original: Bloodfly)
 {
 	var C_NPC m;
 	var int t;
 	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5) { t = 5; };
-	if (t == 0) { m = Hlp_GetNpc(FUN_M22_T0); }
-	else if (t == 1) { m = Hlp_GetNpc(FUN_M22_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M22_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M22_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M22_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M22_T5); }
-	else { m = Hlp_GetNpc(FUN_M22_T0); };
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M22_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M22_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M22_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M22_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M22_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M22_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M22_T0);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5732,27 +6761,72 @@ func void Fun_Platz22()   // FP_ROAM_TROLLAREA_SEA_01 (Original: Bloodfly)
 		return;
 	};
 	FUNL_T22 = 0;
-	if (t == 0) { Wld_InsertNpc(FUN_M22_T0, "FP_ROAM_TROLLAREA_SEA_01"); }
-	else if (t == 1) { Wld_InsertNpc(FUN_M22_T1, "FP_ROAM_TROLLAREA_SEA_01"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M22_T2, "FP_ROAM_TROLLAREA_SEA_01"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M22_T3, "FP_ROAM_TROLLAREA_SEA_01"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M22_T4, "FP_ROAM_TROLLAREA_SEA_01"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M22_T5, "FP_ROAM_TROLLAREA_SEA_01"); }
-	else { Wld_InsertNpc(FUN_M22_T0, "FP_ROAM_TROLLAREA_SEA_01"); };
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M22_T0, "FP_ROAM_TROLLAREA_SEA_01");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M22_T1, "FP_ROAM_TROLLAREA_SEA_01");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M22_T2, "FP_ROAM_TROLLAREA_SEA_01");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M22_T3, "FP_ROAM_TROLLAREA_SEA_01");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M22_T4, "FP_ROAM_TROLLAREA_SEA_01");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M22_T5, "FP_ROAM_TROLLAREA_SEA_01");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M22_T0, "FP_ROAM_TROLLAREA_SEA_01");
+	};
 };
 func void Fun_Platz23()   // FP_ROAM_TROLLAREA_SEA_04 (Original: Bloodfly)
 {
 	var C_NPC m;
 	var int t;
 	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5) { t = 5; };
-	if (t == 0) { m = Hlp_GetNpc(FUN_M23_T0); }
-	else if (t == 1) { m = Hlp_GetNpc(FUN_M23_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M23_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M23_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M23_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M23_T5); }
-	else { m = Hlp_GetNpc(FUN_M23_T0); };
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M23_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M23_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M23_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M23_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M23_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M23_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M23_T0);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5767,27 +6841,72 @@ func void Fun_Platz23()   // FP_ROAM_TROLLAREA_SEA_04 (Original: Bloodfly)
 		return;
 	};
 	FUNL_T23 = 0;
-	if (t == 0) { Wld_InsertNpc(FUN_M23_T0, "FP_ROAM_TROLLAREA_SEA_04"); }
-	else if (t == 1) { Wld_InsertNpc(FUN_M23_T1, "FP_ROAM_TROLLAREA_SEA_04"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M23_T2, "FP_ROAM_TROLLAREA_SEA_04"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M23_T3, "FP_ROAM_TROLLAREA_SEA_04"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M23_T4, "FP_ROAM_TROLLAREA_SEA_04"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M23_T5, "FP_ROAM_TROLLAREA_SEA_04"); }
-	else { Wld_InsertNpc(FUN_M23_T0, "FP_ROAM_TROLLAREA_SEA_04"); };
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M23_T0, "FP_ROAM_TROLLAREA_SEA_04");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M23_T1, "FP_ROAM_TROLLAREA_SEA_04");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M23_T2, "FP_ROAM_TROLLAREA_SEA_04");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M23_T3, "FP_ROAM_TROLLAREA_SEA_04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M23_T4, "FP_ROAM_TROLLAREA_SEA_04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M23_T5, "FP_ROAM_TROLLAREA_SEA_04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M23_T0, "FP_ROAM_TROLLAREA_SEA_04");
+	};
 };
 func void Fun_Platz24()   // NW_BIGFARM_FOREST_02 (Original: Giant_Bug)
 {
 	var C_NPC m;
 	var int t;
 	t = 1 + Fun_KapitelNr() - 1;
-	if (t > 6) { t = 6; };
-	if (t == 1) { m = Hlp_GetNpc(FUN_M24_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M24_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M24_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M24_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M24_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M24_T6); }
-	else { m = Hlp_GetNpc(FUN_M24_T1); };
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M24_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M24_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M24_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M24_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M24_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M24_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M24_T1);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5802,27 +6921,72 @@ func void Fun_Platz24()   // NW_BIGFARM_FOREST_02 (Original: Giant_Bug)
 		return;
 	};
 	FUNL_T24 = 0;
-	if (t == 1) { Wld_InsertNpc(FUN_M24_T1, "NW_BIGFARM_FOREST_02"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M24_T2, "NW_BIGFARM_FOREST_02"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M24_T3, "NW_BIGFARM_FOREST_02"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M24_T4, "NW_BIGFARM_FOREST_02"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M24_T5, "NW_BIGFARM_FOREST_02"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M24_T6, "NW_BIGFARM_FOREST_02"); }
-	else { Wld_InsertNpc(FUN_M24_T1, "NW_BIGFARM_FOREST_02"); };
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M24_T1, "NW_BIGFARM_FOREST_02");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M24_T2, "NW_BIGFARM_FOREST_02");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M24_T3, "NW_BIGFARM_FOREST_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M24_T4, "NW_BIGFARM_FOREST_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M24_T5, "NW_BIGFARM_FOREST_02");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M24_T6, "NW_BIGFARM_FOREST_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M24_T1, "NW_BIGFARM_FOREST_02");
+	};
 };
 func void Fun_Platz25()   // NW_BIGFARM_LAKE_03_MOVEMENT (Original: Keiler)
 {
 	var C_NPC m;
 	var int t;
 	t = 1 + Fun_KapitelNr() - 1;
-	if (t > 6) { t = 6; };
-	if (t == 1) { m = Hlp_GetNpc(FUN_M25_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M25_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M25_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M25_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M25_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M25_T6); }
-	else { m = Hlp_GetNpc(FUN_M25_T1); };
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M25_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M25_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M25_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M25_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M25_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M25_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M25_T1);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5837,27 +7001,72 @@ func void Fun_Platz25()   // NW_BIGFARM_LAKE_03_MOVEMENT (Original: Keiler)
 		return;
 	};
 	FUNL_T25 = 0;
-	if (t == 1) { Wld_InsertNpc(FUN_M25_T1, "NW_BIGFARM_LAKE_03_MOVEMENT"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M25_T2, "NW_BIGFARM_LAKE_03_MOVEMENT"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M25_T3, "NW_BIGFARM_LAKE_03_MOVEMENT"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M25_T4, "NW_BIGFARM_LAKE_03_MOVEMENT"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M25_T5, "NW_BIGFARM_LAKE_03_MOVEMENT"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M25_T6, "NW_BIGFARM_LAKE_03_MOVEMENT"); }
-	else { Wld_InsertNpc(FUN_M25_T1, "NW_BIGFARM_LAKE_03_MOVEMENT"); };
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M25_T1, "NW_BIGFARM_LAKE_03_MOVEMENT");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M25_T2, "NW_BIGFARM_LAKE_03_MOVEMENT");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M25_T3, "NW_BIGFARM_LAKE_03_MOVEMENT");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M25_T4, "NW_BIGFARM_LAKE_03_MOVEMENT");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M25_T5, "NW_BIGFARM_LAKE_03_MOVEMENT");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M25_T6, "NW_BIGFARM_LAKE_03_MOVEMENT");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M25_T1, "NW_BIGFARM_LAKE_03_MOVEMENT");
+	};
 };
 func void Fun_Platz26()   // NW_BIGFARM_LAKE_MONSTER_BLOODFLY (Original: Bloodfly)
 {
 	var C_NPC m;
 	var int t;
 	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5) { t = 5; };
-	if (t == 0) { m = Hlp_GetNpc(FUN_M26_T0); }
-	else if (t == 1) { m = Hlp_GetNpc(FUN_M26_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M26_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M26_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M26_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M26_T5); }
-	else { m = Hlp_GetNpc(FUN_M26_T0); };
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M26_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M26_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M26_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M26_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M26_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M26_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M26_T0);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5872,27 +7081,72 @@ func void Fun_Platz26()   // NW_BIGFARM_LAKE_MONSTER_BLOODFLY (Original: Bloodfl
 		return;
 	};
 	FUNL_T26 = 0;
-	if (t == 0) { Wld_InsertNpc(FUN_M26_T0, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY"); }
-	else if (t == 1) { Wld_InsertNpc(FUN_M26_T1, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M26_T2, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M26_T3, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M26_T4, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M26_T5, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY"); }
-	else { Wld_InsertNpc(FUN_M26_T0, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY"); };
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M26_T0, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M26_T1, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M26_T2, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M26_T3, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M26_T4, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M26_T5, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M26_T0, "NW_BIGFARM_LAKE_MONSTER_BLOODFLY");
+	};
 };
 func void Fun_Platz27()   // NW_BIGMILL_05 (Original: Scavenger)
 {
 	var C_NPC m;
 	var int t;
 	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5) { t = 5; };
-	if (t == 0) { m = Hlp_GetNpc(FUN_M27_T0); }
-	else if (t == 1) { m = Hlp_GetNpc(FUN_M27_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M27_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M27_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M27_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M27_T5); }
-	else { m = Hlp_GetNpc(FUN_M27_T0); };
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M27_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M27_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M27_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M27_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M27_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M27_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M27_T0);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5907,27 +7161,72 @@ func void Fun_Platz27()   // NW_BIGMILL_05 (Original: Scavenger)
 		return;
 	};
 	FUNL_T27 = 0;
-	if (t == 0) { Wld_InsertNpc(FUN_M27_T0, "NW_BIGMILL_05"); }
-	else if (t == 1) { Wld_InsertNpc(FUN_M27_T1, "NW_BIGMILL_05"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M27_T2, "NW_BIGMILL_05"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M27_T3, "NW_BIGMILL_05"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M27_T4, "NW_BIGMILL_05"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M27_T5, "NW_BIGMILL_05"); }
-	else { Wld_InsertNpc(FUN_M27_T0, "NW_BIGMILL_05"); };
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M27_T0, "NW_BIGMILL_05");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M27_T1, "NW_BIGMILL_05");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M27_T2, "NW_BIGMILL_05");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M27_T3, "NW_BIGMILL_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M27_T4, "NW_BIGMILL_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M27_T5, "NW_BIGMILL_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M27_T0, "NW_BIGMILL_05");
+	};
 };
 func void Fun_Platz28()   // NW_BIGMILL_FARM3_03 (Original: Scavenger)
 {
 	var C_NPC m;
 	var int t;
 	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5) { t = 5; };
-	if (t == 0) { m = Hlp_GetNpc(FUN_M28_T0); }
-	else if (t == 1) { m = Hlp_GetNpc(FUN_M28_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M28_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M28_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M28_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M28_T5); }
-	else { m = Hlp_GetNpc(FUN_M28_T0); };
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M28_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M28_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M28_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M28_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M28_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M28_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M28_T0);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5942,26 +7241,68 @@ func void Fun_Platz28()   // NW_BIGMILL_FARM3_03 (Original: Scavenger)
 		return;
 	};
 	FUNL_T28 = 0;
-	if (t == 0) { Wld_InsertNpc(FUN_M28_T0, "NW_BIGMILL_FARM3_03"); }
-	else if (t == 1) { Wld_InsertNpc(FUN_M28_T1, "NW_BIGMILL_FARM3_03"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M28_T2, "NW_BIGMILL_FARM3_03"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M28_T3, "NW_BIGMILL_FARM3_03"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M28_T4, "NW_BIGMILL_FARM3_03"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M28_T5, "NW_BIGMILL_FARM3_03"); }
-	else { Wld_InsertNpc(FUN_M28_T0, "NW_BIGMILL_FARM3_03"); };
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M28_T0, "NW_BIGMILL_FARM3_03");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M28_T1, "NW_BIGMILL_FARM3_03");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M28_T2, "NW_BIGMILL_FARM3_03");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M28_T3, "NW_BIGMILL_FARM3_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M28_T4, "NW_BIGMILL_FARM3_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M28_T5, "NW_BIGMILL_FARM3_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M28_T0, "NW_BIGMILL_FARM3_03");
+	};
 };
 func void Fun_Platz29()   // NW_CASTLEMINE_06 (Original: MinecrawlerWarrior)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M29_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M29_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M29_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M29_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M29_T7); }
-	else { m = Hlp_GetNpc(FUN_M29_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M29_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M29_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M29_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M29_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M29_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M29_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -5976,25 +7317,64 @@ func void Fun_Platz29()   // NW_CASTLEMINE_06 (Original: MinecrawlerWarrior)
 		return;
 	};
 	FUNL_T29 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M29_T3, "NW_CASTLEMINE_06"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M29_T4, "NW_CASTLEMINE_06"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M29_T5, "NW_CASTLEMINE_06"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M29_T6, "NW_CASTLEMINE_06"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M29_T7, "NW_CASTLEMINE_06"); }
-	else { Wld_InsertNpc(FUN_M29_T3, "NW_CASTLEMINE_06"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M29_T3, "NW_CASTLEMINE_06");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M29_T4, "NW_CASTLEMINE_06");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M29_T5, "NW_CASTLEMINE_06");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M29_T6, "NW_CASTLEMINE_06");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M29_T7, "NW_CASTLEMINE_06");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M29_T3, "NW_CASTLEMINE_06");
+	};
 };
 func void Fun_Platz30()   // NW_CASTLEMINE_10 (Original: MinecrawlerWarrior)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M30_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M30_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M30_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M30_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M30_T7); }
-	else { m = Hlp_GetNpc(FUN_M30_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M30_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M30_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M30_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M30_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M30_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M30_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6009,25 +7389,64 @@ func void Fun_Platz30()   // NW_CASTLEMINE_10 (Original: MinecrawlerWarrior)
 		return;
 	};
 	FUNL_T30 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M30_T3, "NW_CASTLEMINE_10"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M30_T4, "NW_CASTLEMINE_10"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M30_T5, "NW_CASTLEMINE_10"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M30_T6, "NW_CASTLEMINE_10"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M30_T7, "NW_CASTLEMINE_10"); }
-	else { Wld_InsertNpc(FUN_M30_T3, "NW_CASTLEMINE_10"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M30_T3, "NW_CASTLEMINE_10");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M30_T4, "NW_CASTLEMINE_10");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M30_T5, "NW_CASTLEMINE_10");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M30_T6, "NW_CASTLEMINE_10");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M30_T7, "NW_CASTLEMINE_10");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M30_T3, "NW_CASTLEMINE_10");
+	};
 };
 func void Fun_Platz31()   // NW_CASTLEMINE_12 (Original: Minecrawler)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M31_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M31_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M31_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M31_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M31_T7); }
-	else { m = Hlp_GetNpc(FUN_M31_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M31_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M31_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M31_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M31_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M31_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M31_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6042,25 +7461,64 @@ func void Fun_Platz31()   // NW_CASTLEMINE_12 (Original: Minecrawler)
 		return;
 	};
 	FUNL_T31 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M31_T3, "NW_CASTLEMINE_12"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M31_T4, "NW_CASTLEMINE_12"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M31_T5, "NW_CASTLEMINE_12"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M31_T6, "NW_CASTLEMINE_12"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M31_T7, "NW_CASTLEMINE_12"); }
-	else { Wld_InsertNpc(FUN_M31_T3, "NW_CASTLEMINE_12"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M31_T3, "NW_CASTLEMINE_12");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M31_T4, "NW_CASTLEMINE_12");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M31_T5, "NW_CASTLEMINE_12");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M31_T6, "NW_CASTLEMINE_12");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M31_T7, "NW_CASTLEMINE_12");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M31_T3, "NW_CASTLEMINE_12");
+	};
 };
 func void Fun_Platz32()   // NW_CASTLEMINE_13 (Original: Minecrawler)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M32_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M32_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M32_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M32_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M32_T7); }
-	else { m = Hlp_GetNpc(FUN_M32_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M32_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M32_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M32_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M32_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M32_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M32_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6075,25 +7533,64 @@ func void Fun_Platz32()   // NW_CASTLEMINE_13 (Original: Minecrawler)
 		return;
 	};
 	FUNL_T32 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M32_T3, "NW_CASTLEMINE_13"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M32_T4, "NW_CASTLEMINE_13"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M32_T5, "NW_CASTLEMINE_13"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M32_T6, "NW_CASTLEMINE_13"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M32_T7, "NW_CASTLEMINE_13"); }
-	else { Wld_InsertNpc(FUN_M32_T3, "NW_CASTLEMINE_13"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M32_T3, "NW_CASTLEMINE_13");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M32_T4, "NW_CASTLEMINE_13");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M32_T5, "NW_CASTLEMINE_13");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M32_T6, "NW_CASTLEMINE_13");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M32_T7, "NW_CASTLEMINE_13");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M32_T3, "NW_CASTLEMINE_13");
+	};
 };
 func void Fun_Platz33()   // NW_CRYPT_MONSTER02 (Original: Gobbo_skeleton)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M33_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M33_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M33_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M33_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M33_T7); }
-	else { m = Hlp_GetNpc(FUN_M33_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M33_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M33_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M33_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M33_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M33_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M33_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6108,25 +7605,64 @@ func void Fun_Platz33()   // NW_CRYPT_MONSTER02 (Original: Gobbo_skeleton)
 		return;
 	};
 	FUNL_T33 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M33_T3, "NW_CRYPT_MONSTER02"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M33_T4, "NW_CRYPT_MONSTER02"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M33_T5, "NW_CRYPT_MONSTER02"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M33_T6, "NW_CRYPT_MONSTER02"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M33_T7, "NW_CRYPT_MONSTER02"); }
-	else { Wld_InsertNpc(FUN_M33_T3, "NW_CRYPT_MONSTER02"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M33_T3, "NW_CRYPT_MONSTER02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M33_T4, "NW_CRYPT_MONSTER02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M33_T5, "NW_CRYPT_MONSTER02");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M33_T6, "NW_CRYPT_MONSTER02");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M33_T7, "NW_CRYPT_MONSTER02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M33_T3, "NW_CRYPT_MONSTER02");
+	};
 };
 func void Fun_Platz34()   // NW_CRYPT_MONSTER04 (Original: Lesser_skeleton)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M34_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M34_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M34_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M34_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M34_T7); }
-	else { m = Hlp_GetNpc(FUN_M34_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M34_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M34_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M34_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M34_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M34_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M34_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6141,25 +7677,64 @@ func void Fun_Platz34()   // NW_CRYPT_MONSTER04 (Original: Lesser_skeleton)
 		return;
 	};
 	FUNL_T34 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M34_T3, "NW_CRYPT_MONSTER04"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M34_T4, "NW_CRYPT_MONSTER04"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M34_T5, "NW_CRYPT_MONSTER04"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M34_T6, "NW_CRYPT_MONSTER04"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M34_T7, "NW_CRYPT_MONSTER04"); }
-	else { Wld_InsertNpc(FUN_M34_T3, "NW_CRYPT_MONSTER04"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M34_T3, "NW_CRYPT_MONSTER04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M34_T4, "NW_CRYPT_MONSTER04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M34_T5, "NW_CRYPT_MONSTER04");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M34_T6, "NW_CRYPT_MONSTER04");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M34_T7, "NW_CRYPT_MONSTER04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M34_T3, "NW_CRYPT_MONSTER04");
+	};
 };
 func void Fun_Platz35()   // NW_CRYPT_MONSTER06 (Original: Lesser_skeleton)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M35_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M35_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M35_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M35_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M35_T7); }
-	else { m = Hlp_GetNpc(FUN_M35_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M35_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M35_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M35_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M35_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M35_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M35_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6174,25 +7749,64 @@ func void Fun_Platz35()   // NW_CRYPT_MONSTER06 (Original: Lesser_skeleton)
 		return;
 	};
 	FUNL_T35 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M35_T3, "NW_CRYPT_MONSTER06"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M35_T4, "NW_CRYPT_MONSTER06"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M35_T5, "NW_CRYPT_MONSTER06"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M35_T6, "NW_CRYPT_MONSTER06"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M35_T7, "NW_CRYPT_MONSTER06"); }
-	else { Wld_InsertNpc(FUN_M35_T3, "NW_CRYPT_MONSTER06"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M35_T3, "NW_CRYPT_MONSTER06");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M35_T4, "NW_CRYPT_MONSTER06");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M35_T5, "NW_CRYPT_MONSTER06");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M35_T6, "NW_CRYPT_MONSTER06");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M35_T7, "NW_CRYPT_MONSTER06");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M35_T3, "NW_CRYPT_MONSTER06");
+	};
 };
 func void Fun_Platz36()   // NW_CRYPT_MONSTER08 (Original: Gobbo_skeleton)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M36_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M36_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M36_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M36_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M36_T7); }
-	else { m = Hlp_GetNpc(FUN_M36_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M36_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M36_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M36_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M36_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M36_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M36_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6207,26 +7821,68 @@ func void Fun_Platz36()   // NW_CRYPT_MONSTER08 (Original: Gobbo_skeleton)
 		return;
 	};
 	FUNL_T36 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M36_T3, "NW_CRYPT_MONSTER08"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M36_T4, "NW_CRYPT_MONSTER08"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M36_T5, "NW_CRYPT_MONSTER08"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M36_T6, "NW_CRYPT_MONSTER08"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M36_T7, "NW_CRYPT_MONSTER08"); }
-	else { Wld_InsertNpc(FUN_M36_T3, "NW_CRYPT_MONSTER08"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M36_T3, "NW_CRYPT_MONSTER08");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M36_T4, "NW_CRYPT_MONSTER08");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M36_T5, "NW_CRYPT_MONSTER08");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M36_T6, "NW_CRYPT_MONSTER08");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M36_T7, "NW_CRYPT_MONSTER08");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M36_T3, "NW_CRYPT_MONSTER08");
+	};
 };
 func void Fun_Platz37()   // NW_FARM3_BIGWOOD_02 (Original: Scavenger)
 {
 	var C_NPC m;
 	var int t;
 	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5) { t = 5; };
-	if (t == 0) { m = Hlp_GetNpc(FUN_M37_T0); }
-	else if (t == 1) { m = Hlp_GetNpc(FUN_M37_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M37_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M37_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M37_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M37_T5); }
-	else { m = Hlp_GetNpc(FUN_M37_T0); };
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M37_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M37_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M37_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M37_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M37_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M37_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M37_T0);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6241,27 +7897,72 @@ func void Fun_Platz37()   // NW_FARM3_BIGWOOD_02 (Original: Scavenger)
 		return;
 	};
 	FUNL_T37 = 0;
-	if (t == 0) { Wld_InsertNpc(FUN_M37_T0, "NW_FARM3_BIGWOOD_02"); }
-	else if (t == 1) { Wld_InsertNpc(FUN_M37_T1, "NW_FARM3_BIGWOOD_02"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M37_T2, "NW_FARM3_BIGWOOD_02"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M37_T3, "NW_FARM3_BIGWOOD_02"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M37_T4, "NW_FARM3_BIGWOOD_02"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M37_T5, "NW_FARM3_BIGWOOD_02"); }
-	else { Wld_InsertNpc(FUN_M37_T0, "NW_FARM3_BIGWOOD_02"); };
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M37_T0, "NW_FARM3_BIGWOOD_02");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M37_T1, "NW_FARM3_BIGWOOD_02");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M37_T2, "NW_FARM3_BIGWOOD_02");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M37_T3, "NW_FARM3_BIGWOOD_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M37_T4, "NW_FARM3_BIGWOOD_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M37_T5, "NW_FARM3_BIGWOOD_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M37_T0, "NW_FARM3_BIGWOOD_02");
+	};
 };
 func void Fun_Platz38()   // NW_FARM3_MOUNTAINLAKE_03 (Original: Lurker)
 {
 	var C_NPC m;
 	var int t;
 	t = 2 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 2) { m = Hlp_GetNpc(FUN_M38_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M38_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M38_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M38_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M38_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M38_T7); }
-	else { m = Hlp_GetNpc(FUN_M38_T2); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M38_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M38_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M38_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M38_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M38_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M38_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M38_T2);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6276,27 +7977,72 @@ func void Fun_Platz38()   // NW_FARM3_MOUNTAINLAKE_03 (Original: Lurker)
 		return;
 	};
 	FUNL_T38 = 0;
-	if (t == 2) { Wld_InsertNpc(FUN_M38_T2, "NW_FARM3_MOUNTAINLAKE_03"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M38_T3, "NW_FARM3_MOUNTAINLAKE_03"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M38_T4, "NW_FARM3_MOUNTAINLAKE_03"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M38_T5, "NW_FARM3_MOUNTAINLAKE_03"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M38_T6, "NW_FARM3_MOUNTAINLAKE_03"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M38_T7, "NW_FARM3_MOUNTAINLAKE_03"); }
-	else { Wld_InsertNpc(FUN_M38_T2, "NW_FARM3_MOUNTAINLAKE_03"); };
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M38_T2, "NW_FARM3_MOUNTAINLAKE_03");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M38_T3, "NW_FARM3_MOUNTAINLAKE_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M38_T4, "NW_FARM3_MOUNTAINLAKE_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M38_T5, "NW_FARM3_MOUNTAINLAKE_03");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M38_T6, "NW_FARM3_MOUNTAINLAKE_03");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M38_T7, "NW_FARM3_MOUNTAINLAKE_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M38_T2, "NW_FARM3_MOUNTAINLAKE_03");
+	};
 };
 func void Fun_Platz39()   // NW_FARM3_PATH_11_SMALLRIVERMID_02 (Original: Lurker)
 {
 	var C_NPC m;
 	var int t;
 	t = 2 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 2) { m = Hlp_GetNpc(FUN_M39_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M39_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M39_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M39_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M39_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M39_T7); }
-	else { m = Hlp_GetNpc(FUN_M39_T2); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M39_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M39_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M39_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M39_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M39_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M39_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M39_T2);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6311,27 +8057,72 @@ func void Fun_Platz39()   // NW_FARM3_PATH_11_SMALLRIVERMID_02 (Original: Lurker
 		return;
 	};
 	FUNL_T39 = 0;
-	if (t == 2) { Wld_InsertNpc(FUN_M39_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_02"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M39_T3, "NW_FARM3_PATH_11_SMALLRIVERMID_02"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M39_T4, "NW_FARM3_PATH_11_SMALLRIVERMID_02"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M39_T5, "NW_FARM3_PATH_11_SMALLRIVERMID_02"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M39_T6, "NW_FARM3_PATH_11_SMALLRIVERMID_02"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M39_T7, "NW_FARM3_PATH_11_SMALLRIVERMID_02"); }
-	else { Wld_InsertNpc(FUN_M39_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_02"); };
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M39_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M39_T3, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M39_T4, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M39_T5, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M39_T6, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M39_T7, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M39_T2, "NW_FARM3_PATH_11_SMALLRIVERMID_02");
+	};
 };
 func void Fun_Platz40()   // NW_FARM3_PATH_11_SMALLRIVER_04 (Original: Lurker)
 {
 	var C_NPC m;
 	var int t;
 	t = 2 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 2) { m = Hlp_GetNpc(FUN_M40_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M40_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M40_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M40_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M40_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M40_T7); }
-	else { m = Hlp_GetNpc(FUN_M40_T2); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M40_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M40_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M40_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M40_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M40_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M40_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M40_T2);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6346,27 +8137,72 @@ func void Fun_Platz40()   // NW_FARM3_PATH_11_SMALLRIVER_04 (Original: Lurker)
 		return;
 	};
 	FUNL_T40 = 0;
-	if (t == 2) { Wld_InsertNpc(FUN_M40_T2, "NW_FARM3_PATH_11_SMALLRIVER_04"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M40_T3, "NW_FARM3_PATH_11_SMALLRIVER_04"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M40_T4, "NW_FARM3_PATH_11_SMALLRIVER_04"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M40_T5, "NW_FARM3_PATH_11_SMALLRIVER_04"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M40_T6, "NW_FARM3_PATH_11_SMALLRIVER_04"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M40_T7, "NW_FARM3_PATH_11_SMALLRIVER_04"); }
-	else { Wld_InsertNpc(FUN_M40_T2, "NW_FARM3_PATH_11_SMALLRIVER_04"); };
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M40_T2, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M40_T3, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M40_T4, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M40_T5, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M40_T6, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M40_T7, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M40_T2, "NW_FARM3_PATH_11_SMALLRIVER_04");
+	};
 };
 func void Fun_Platz41()   // NW_FARM3_PATH_11_SMALLRIVER_17 (Original: Lurker)
 {
 	var C_NPC m;
 	var int t;
 	t = 2 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 2) { m = Hlp_GetNpc(FUN_M41_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M41_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M41_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M41_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M41_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M41_T7); }
-	else { m = Hlp_GetNpc(FUN_M41_T2); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M41_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M41_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M41_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M41_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M41_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M41_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M41_T2);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6381,27 +8217,72 @@ func void Fun_Platz41()   // NW_FARM3_PATH_11_SMALLRIVER_17 (Original: Lurker)
 		return;
 	};
 	FUNL_T41 = 0;
-	if (t == 2) { Wld_InsertNpc(FUN_M41_T2, "NW_FARM3_PATH_11_SMALLRIVER_17"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M41_T3, "NW_FARM3_PATH_11_SMALLRIVER_17"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M41_T4, "NW_FARM3_PATH_11_SMALLRIVER_17"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M41_T5, "NW_FARM3_PATH_11_SMALLRIVER_17"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M41_T6, "NW_FARM3_PATH_11_SMALLRIVER_17"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M41_T7, "NW_FARM3_PATH_11_SMALLRIVER_17"); }
-	else { Wld_InsertNpc(FUN_M41_T2, "NW_FARM3_PATH_11_SMALLRIVER_17"); };
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M41_T2, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M41_T3, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M41_T4, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M41_T5, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M41_T6, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M41_T7, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M41_T2, "NW_FARM3_PATH_11_SMALLRIVER_17");
+	};
 };
 func void Fun_Platz42()   // NW_FARM3_PATH_12_MONSTER_01 (Original: Keiler)
 {
 	var C_NPC m;
 	var int t;
 	t = 1 + Fun_KapitelNr() - 1;
-	if (t > 6) { t = 6; };
-	if (t == 1) { m = Hlp_GetNpc(FUN_M42_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M42_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M42_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M42_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M42_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M42_T6); }
-	else { m = Hlp_GetNpc(FUN_M42_T1); };
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M42_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M42_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M42_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M42_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M42_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M42_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M42_T1);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6416,27 +8297,72 @@ func void Fun_Platz42()   // NW_FARM3_PATH_12_MONSTER_01 (Original: Keiler)
 		return;
 	};
 	FUNL_T42 = 0;
-	if (t == 1) { Wld_InsertNpc(FUN_M42_T1, "NW_FARM3_PATH_12_MONSTER_01"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M42_T2, "NW_FARM3_PATH_12_MONSTER_01"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M42_T3, "NW_FARM3_PATH_12_MONSTER_01"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M42_T4, "NW_FARM3_PATH_12_MONSTER_01"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M42_T5, "NW_FARM3_PATH_12_MONSTER_01"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M42_T6, "NW_FARM3_PATH_12_MONSTER_01"); }
-	else { Wld_InsertNpc(FUN_M42_T1, "NW_FARM3_PATH_12_MONSTER_01"); };
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M42_T1, "NW_FARM3_PATH_12_MONSTER_01");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M42_T2, "NW_FARM3_PATH_12_MONSTER_01");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M42_T3, "NW_FARM3_PATH_12_MONSTER_01");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M42_T4, "NW_FARM3_PATH_12_MONSTER_01");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M42_T5, "NW_FARM3_PATH_12_MONSTER_01");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M42_T6, "NW_FARM3_PATH_12_MONSTER_01");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M42_T1, "NW_FARM3_PATH_12_MONSTER_01");
+	};
 };
 func void Fun_Platz43()   // NW_FARM4_WOOD_MONSTER_MORE_01 (Original: Giant_Bug)
 {
 	var C_NPC m;
 	var int t;
 	t = 1 + Fun_KapitelNr() - 1;
-	if (t > 6) { t = 6; };
-	if (t == 1) { m = Hlp_GetNpc(FUN_M43_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M43_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M43_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M43_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M43_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M43_T6); }
-	else { m = Hlp_GetNpc(FUN_M43_T1); };
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M43_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M43_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M43_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M43_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M43_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M43_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M43_T1);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6451,27 +8377,72 @@ func void Fun_Platz43()   // NW_FARM4_WOOD_MONSTER_MORE_01 (Original: Giant_Bug)
 		return;
 	};
 	FUNL_T43 = 0;
-	if (t == 1) { Wld_InsertNpc(FUN_M43_T1, "NW_FARM4_WOOD_MONSTER_MORE_01"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M43_T2, "NW_FARM4_WOOD_MONSTER_MORE_01"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M43_T3, "NW_FARM4_WOOD_MONSTER_MORE_01"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M43_T4, "NW_FARM4_WOOD_MONSTER_MORE_01"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M43_T5, "NW_FARM4_WOOD_MONSTER_MORE_01"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M43_T6, "NW_FARM4_WOOD_MONSTER_MORE_01"); }
-	else { Wld_InsertNpc(FUN_M43_T1, "NW_FARM4_WOOD_MONSTER_MORE_01"); };
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M43_T1, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M43_T2, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M43_T3, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M43_T4, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M43_T5, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M43_T6, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M43_T1, "NW_FARM4_WOOD_MONSTER_MORE_01");
+	};
 };
 func void Fun_Platz44()   // NW_FARM4_WOOD_MONSTER_N_3 (Original: Giant_Bug)
 {
 	var C_NPC m;
 	var int t;
 	t = 1 + Fun_KapitelNr() - 1;
-	if (t > 6) { t = 6; };
-	if (t == 1) { m = Hlp_GetNpc(FUN_M44_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M44_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M44_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M44_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M44_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M44_T6); }
-	else { m = Hlp_GetNpc(FUN_M44_T1); };
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M44_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M44_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M44_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M44_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M44_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M44_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M44_T1);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6486,27 +8457,72 @@ func void Fun_Platz44()   // NW_FARM4_WOOD_MONSTER_N_3 (Original: Giant_Bug)
 		return;
 	};
 	FUNL_T44 = 0;
-	if (t == 1) { Wld_InsertNpc(FUN_M44_T1, "NW_FARM4_WOOD_MONSTER_N_3"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M44_T2, "NW_FARM4_WOOD_MONSTER_N_3"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M44_T3, "NW_FARM4_WOOD_MONSTER_N_3"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M44_T4, "NW_FARM4_WOOD_MONSTER_N_3"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M44_T5, "NW_FARM4_WOOD_MONSTER_N_3"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M44_T6, "NW_FARM4_WOOD_MONSTER_N_3"); }
-	else { Wld_InsertNpc(FUN_M44_T1, "NW_FARM4_WOOD_MONSTER_N_3"); };
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M44_T1, "NW_FARM4_WOOD_MONSTER_N_3");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M44_T2, "NW_FARM4_WOOD_MONSTER_N_3");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M44_T3, "NW_FARM4_WOOD_MONSTER_N_3");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M44_T4, "NW_FARM4_WOOD_MONSTER_N_3");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M44_T5, "NW_FARM4_WOOD_MONSTER_N_3");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M44_T6, "NW_FARM4_WOOD_MONSTER_N_3");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M44_T1, "NW_FARM4_WOOD_MONSTER_N_3");
+	};
 };
 func void Fun_Platz45()   // NW_FARM4_WOOD_NEARPEASANT2_12 (Original: Giant_Bug)
 {
 	var C_NPC m;
 	var int t;
 	t = 1 + Fun_KapitelNr() - 1;
-	if (t > 6) { t = 6; };
-	if (t == 1) { m = Hlp_GetNpc(FUN_M45_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M45_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M45_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M45_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M45_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M45_T6); }
-	else { m = Hlp_GetNpc(FUN_M45_T1); };
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M45_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M45_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M45_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M45_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M45_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M45_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M45_T1);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6521,27 +8537,72 @@ func void Fun_Platz45()   // NW_FARM4_WOOD_NEARPEASANT2_12 (Original: Giant_Bug)
 		return;
 	};
 	FUNL_T45 = 0;
-	if (t == 1) { Wld_InsertNpc(FUN_M45_T1, "NW_FARM4_WOOD_NEARPEASANT2_12"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M45_T2, "NW_FARM4_WOOD_NEARPEASANT2_12"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M45_T3, "NW_FARM4_WOOD_NEARPEASANT2_12"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M45_T4, "NW_FARM4_WOOD_NEARPEASANT2_12"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M45_T5, "NW_FARM4_WOOD_NEARPEASANT2_12"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M45_T6, "NW_FARM4_WOOD_NEARPEASANT2_12"); }
-	else { Wld_InsertNpc(FUN_M45_T1, "NW_FARM4_WOOD_NEARPEASANT2_12"); };
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M45_T1, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M45_T2, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M45_T3, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M45_T4, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M45_T5, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M45_T6, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M45_T1, "NW_FARM4_WOOD_NEARPEASANT2_12");
+	};
 };
 func void Fun_Platz46()   // NW_FARM4_WOOD_NEARPEASANT2_8 (Original: Wolf)
 {
 	var C_NPC m;
 	var int t;
 	t = 1 + Fun_KapitelNr() - 1;
-	if (t > 6) { t = 6; };
-	if (t == 1) { m = Hlp_GetNpc(FUN_M46_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M46_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M46_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M46_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M46_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M46_T6); }
-	else { m = Hlp_GetNpc(FUN_M46_T1); };
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M46_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M46_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M46_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M46_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M46_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M46_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M46_T1);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6556,27 +8617,72 @@ func void Fun_Platz46()   // NW_FARM4_WOOD_NEARPEASANT2_8 (Original: Wolf)
 		return;
 	};
 	FUNL_T46 = 0;
-	if (t == 1) { Wld_InsertNpc(FUN_M46_T1, "NW_FARM4_WOOD_NEARPEASANT2_8"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M46_T2, "NW_FARM4_WOOD_NEARPEASANT2_8"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M46_T3, "NW_FARM4_WOOD_NEARPEASANT2_8"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M46_T4, "NW_FARM4_WOOD_NEARPEASANT2_8"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M46_T5, "NW_FARM4_WOOD_NEARPEASANT2_8"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M46_T6, "NW_FARM4_WOOD_NEARPEASANT2_8"); }
-	else { Wld_InsertNpc(FUN_M46_T1, "NW_FARM4_WOOD_NEARPEASANT2_8"); };
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M46_T1, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M46_T2, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M46_T3, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M46_T4, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M46_T5, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M46_T6, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M46_T1, "NW_FARM4_WOOD_NEARPEASANT2_8");
+	};
 };
 func void Fun_Platz47()   // NW_MAGECAVE_20 (Original: Meatbug)
 {
 	var C_NPC m;
 	var int t;
 	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5) { t = 5; };
-	if (t == 0) { m = Hlp_GetNpc(FUN_M47_T0); }
-	else if (t == 1) { m = Hlp_GetNpc(FUN_M47_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M47_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M47_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M47_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M47_T5); }
-	else { m = Hlp_GetNpc(FUN_M47_T0); };
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M47_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M47_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M47_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M47_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M47_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M47_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M47_T0);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6591,26 +8697,68 @@ func void Fun_Platz47()   // NW_MAGECAVE_20 (Original: Meatbug)
 		return;
 	};
 	FUNL_T47 = 0;
-	if (t == 0) { Wld_InsertNpc(FUN_M47_T0, "NW_MAGECAVE_20"); }
-	else if (t == 1) { Wld_InsertNpc(FUN_M47_T1, "NW_MAGECAVE_20"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M47_T2, "NW_MAGECAVE_20"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M47_T3, "NW_MAGECAVE_20"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M47_T4, "NW_MAGECAVE_20"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M47_T5, "NW_MAGECAVE_20"); }
-	else { Wld_InsertNpc(FUN_M47_T0, "NW_MAGECAVE_20"); };
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M47_T0, "NW_MAGECAVE_20");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M47_T1, "NW_MAGECAVE_20");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M47_T2, "NW_MAGECAVE_20");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M47_T3, "NW_MAGECAVE_20");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M47_T4, "NW_MAGECAVE_20");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M47_T5, "NW_MAGECAVE_20");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M47_T0, "NW_MAGECAVE_20");
+	};
 };
 func void Fun_Platz48()   // NW_MAGECAVE_23 (Original: Minecrawler)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M48_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M48_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M48_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M48_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M48_T7); }
-	else { m = Hlp_GetNpc(FUN_M48_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M48_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M48_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M48_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M48_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M48_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M48_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6625,25 +8773,64 @@ func void Fun_Platz48()   // NW_MAGECAVE_23 (Original: Minecrawler)
 		return;
 	};
 	FUNL_T48 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M48_T3, "NW_MAGECAVE_23"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M48_T4, "NW_MAGECAVE_23"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M48_T5, "NW_MAGECAVE_23"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M48_T6, "NW_MAGECAVE_23"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M48_T7, "NW_MAGECAVE_23"); }
-	else { Wld_InsertNpc(FUN_M48_T3, "NW_MAGECAVE_23"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M48_T3, "NW_MAGECAVE_23");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M48_T4, "NW_MAGECAVE_23");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M48_T5, "NW_MAGECAVE_23");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M48_T6, "NW_MAGECAVE_23");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M48_T7, "NW_MAGECAVE_23");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M48_T3, "NW_MAGECAVE_23");
+	};
 };
 func void Fun_Platz49()   // NW_MAGECAVE_27 (Original: MinecrawlerWarrior)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M49_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M49_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M49_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M49_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M49_T7); }
-	else { m = Hlp_GetNpc(FUN_M49_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M49_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M49_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M49_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M49_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M49_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M49_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6658,26 +8845,68 @@ func void Fun_Platz49()   // NW_MAGECAVE_27 (Original: MinecrawlerWarrior)
 		return;
 	};
 	FUNL_T49 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M49_T3, "NW_MAGECAVE_27"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M49_T4, "NW_MAGECAVE_27"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M49_T5, "NW_MAGECAVE_27"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M49_T6, "NW_MAGECAVE_27"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M49_T7, "NW_MAGECAVE_27"); }
-	else { Wld_InsertNpc(FUN_M49_T3, "NW_MAGECAVE_27"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M49_T3, "NW_MAGECAVE_27");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M49_T4, "NW_MAGECAVE_27");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M49_T5, "NW_MAGECAVE_27");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M49_T6, "NW_MAGECAVE_27");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M49_T7, "NW_MAGECAVE_27");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M49_T3, "NW_MAGECAVE_27");
+	};
 };
 func void Fun_Platz50()   // NW_SAGITTA_MOREMONSTER_01 (Original: Wolf)
 {
 	var C_NPC m;
 	var int t;
 	t = 1 + Fun_KapitelNr() - 1;
-	if (t > 6) { t = 6; };
-	if (t == 1) { m = Hlp_GetNpc(FUN_M50_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M50_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M50_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M50_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M50_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M50_T6); }
-	else { m = Hlp_GetNpc(FUN_M50_T1); };
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M50_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M50_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M50_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M50_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M50_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M50_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M50_T1);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6692,27 +8921,72 @@ func void Fun_Platz50()   // NW_SAGITTA_MOREMONSTER_01 (Original: Wolf)
 		return;
 	};
 	FUNL_T50 = 0;
-	if (t == 1) { Wld_InsertNpc(FUN_M50_T1, "NW_SAGITTA_MOREMONSTER_01"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M50_T2, "NW_SAGITTA_MOREMONSTER_01"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M50_T3, "NW_SAGITTA_MOREMONSTER_01"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M50_T4, "NW_SAGITTA_MOREMONSTER_01"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M50_T5, "NW_SAGITTA_MOREMONSTER_01"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M50_T6, "NW_SAGITTA_MOREMONSTER_01"); }
-	else { Wld_InsertNpc(FUN_M50_T1, "NW_SAGITTA_MOREMONSTER_01"); };
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M50_T1, "NW_SAGITTA_MOREMONSTER_01");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M50_T2, "NW_SAGITTA_MOREMONSTER_01");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M50_T3, "NW_SAGITTA_MOREMONSTER_01");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M50_T4, "NW_SAGITTA_MOREMONSTER_01");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M50_T5, "NW_SAGITTA_MOREMONSTER_01");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M50_T6, "NW_SAGITTA_MOREMONSTER_01");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M50_T1, "NW_SAGITTA_MOREMONSTER_01");
+	};
 };
 func void Fun_Platz51()   // NW_TAVERNE_TROLLAREA_MONSTER_03_01M1 (Original: Giant_Bug)
 {
 	var C_NPC m;
 	var int t;
 	t = 1 + Fun_KapitelNr() - 1;
-	if (t > 6) { t = 6; };
-	if (t == 1) { m = Hlp_GetNpc(FUN_M51_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M51_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M51_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M51_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M51_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M51_T6); }
-	else { m = Hlp_GetNpc(FUN_M51_T1); };
+	if (t > 6)
+	{
+		t = 6;
+	};
+	if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M51_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M51_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M51_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M51_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M51_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M51_T6);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M51_T1);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6727,27 +9001,72 @@ func void Fun_Platz51()   // NW_TAVERNE_TROLLAREA_MONSTER_03_01M1 (Original: Gia
 		return;
 	};
 	FUNL_T51 = 0;
-	if (t == 1) { Wld_InsertNpc(FUN_M51_T1, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M51_T2, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M51_T3, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M51_T4, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M51_T5, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M51_T6, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1"); }
-	else { Wld_InsertNpc(FUN_M51_T1, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1"); };
+	if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M51_T1, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M51_T2, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M51_T3, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M51_T4, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M51_T5, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M51_T6, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M51_T1, "NW_TAVERNE_TROLLAREA_MONSTER_03_01M1");
+	};
 };
 func void Fun_Platz52()   // NW_TROLLAREA_BRIGDE_05 (Original: Giant_Rat)
 {
 	var C_NPC m;
 	var int t;
 	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5) { t = 5; };
-	if (t == 0) { m = Hlp_GetNpc(FUN_M52_T0); }
-	else if (t == 1) { m = Hlp_GetNpc(FUN_M52_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M52_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M52_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M52_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M52_T5); }
-	else { m = Hlp_GetNpc(FUN_M52_T0); };
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M52_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M52_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M52_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M52_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M52_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M52_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M52_T0);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6762,27 +9081,72 @@ func void Fun_Platz52()   // NW_TROLLAREA_BRIGDE_05 (Original: Giant_Rat)
 		return;
 	};
 	FUNL_T52 = 0;
-	if (t == 0) { Wld_InsertNpc(FUN_M52_T0, "NW_TROLLAREA_BRIGDE_05"); }
-	else if (t == 1) { Wld_InsertNpc(FUN_M52_T1, "NW_TROLLAREA_BRIGDE_05"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M52_T2, "NW_TROLLAREA_BRIGDE_05"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M52_T3, "NW_TROLLAREA_BRIGDE_05"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M52_T4, "NW_TROLLAREA_BRIGDE_05"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M52_T5, "NW_TROLLAREA_BRIGDE_05"); }
-	else { Wld_InsertNpc(FUN_M52_T0, "NW_TROLLAREA_BRIGDE_05"); };
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M52_T0, "NW_TROLLAREA_BRIGDE_05");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M52_T1, "NW_TROLLAREA_BRIGDE_05");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M52_T2, "NW_TROLLAREA_BRIGDE_05");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M52_T3, "NW_TROLLAREA_BRIGDE_05");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M52_T4, "NW_TROLLAREA_BRIGDE_05");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M52_T5, "NW_TROLLAREA_BRIGDE_05");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M52_T0, "NW_TROLLAREA_BRIGDE_05");
+	};
 };
 func void Fun_Platz53()   // NW_TROLLAREA_NOVCHASE_01 (Original: Molerat)
 {
 	var C_NPC m;
 	var int t;
 	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5) { t = 5; };
-	if (t == 0) { m = Hlp_GetNpc(FUN_M53_T0); }
-	else if (t == 1) { m = Hlp_GetNpc(FUN_M53_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M53_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M53_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M53_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M53_T5); }
-	else { m = Hlp_GetNpc(FUN_M53_T0); };
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M53_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M53_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M53_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M53_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M53_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M53_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M53_T0);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6797,27 +9161,72 @@ func void Fun_Platz53()   // NW_TROLLAREA_NOVCHASE_01 (Original: Molerat)
 		return;
 	};
 	FUNL_T53 = 0;
-	if (t == 0) { Wld_InsertNpc(FUN_M53_T0, "NW_TROLLAREA_NOVCHASE_01"); }
-	else if (t == 1) { Wld_InsertNpc(FUN_M53_T1, "NW_TROLLAREA_NOVCHASE_01"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M53_T2, "NW_TROLLAREA_NOVCHASE_01"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M53_T3, "NW_TROLLAREA_NOVCHASE_01"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M53_T4, "NW_TROLLAREA_NOVCHASE_01"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M53_T5, "NW_TROLLAREA_NOVCHASE_01"); }
-	else { Wld_InsertNpc(FUN_M53_T0, "NW_TROLLAREA_NOVCHASE_01"); };
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M53_T0, "NW_TROLLAREA_NOVCHASE_01");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M53_T1, "NW_TROLLAREA_NOVCHASE_01");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M53_T2, "NW_TROLLAREA_NOVCHASE_01");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M53_T3, "NW_TROLLAREA_NOVCHASE_01");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M53_T4, "NW_TROLLAREA_NOVCHASE_01");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M53_T5, "NW_TROLLAREA_NOVCHASE_01");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M53_T0, "NW_TROLLAREA_NOVCHASE_01");
+	};
 };
 func void Fun_Platz54()   // NW_TROLLAREA_PATH_08 (Original: Lurker)
 {
 	var C_NPC m;
 	var int t;
 	t = 2 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 2) { m = Hlp_GetNpc(FUN_M54_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M54_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M54_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M54_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M54_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M54_T7); }
-	else { m = Hlp_GetNpc(FUN_M54_T2); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M54_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M54_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M54_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M54_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M54_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M54_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M54_T2);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6832,27 +9241,72 @@ func void Fun_Platz54()   // NW_TROLLAREA_PATH_08 (Original: Lurker)
 		return;
 	};
 	FUNL_T54 = 0;
-	if (t == 2) { Wld_InsertNpc(FUN_M54_T2, "NW_TROLLAREA_PATH_08"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M54_T3, "NW_TROLLAREA_PATH_08"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M54_T4, "NW_TROLLAREA_PATH_08"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M54_T5, "NW_TROLLAREA_PATH_08"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M54_T6, "NW_TROLLAREA_PATH_08"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M54_T7, "NW_TROLLAREA_PATH_08"); }
-	else { Wld_InsertNpc(FUN_M54_T2, "NW_TROLLAREA_PATH_08"); };
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M54_T2, "NW_TROLLAREA_PATH_08");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M54_T3, "NW_TROLLAREA_PATH_08");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M54_T4, "NW_TROLLAREA_PATH_08");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M54_T5, "NW_TROLLAREA_PATH_08");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M54_T6, "NW_TROLLAREA_PATH_08");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M54_T7, "NW_TROLLAREA_PATH_08");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M54_T2, "NW_TROLLAREA_PATH_08");
+	};
 };
 func void Fun_Platz55()   // NW_TROLLAREA_PATH_38_MONSTER (Original: Bloodfly)
 {
 	var C_NPC m;
 	var int t;
 	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5) { t = 5; };
-	if (t == 0) { m = Hlp_GetNpc(FUN_M55_T0); }
-	else if (t == 1) { m = Hlp_GetNpc(FUN_M55_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M55_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M55_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M55_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M55_T5); }
-	else { m = Hlp_GetNpc(FUN_M55_T0); };
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M55_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M55_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M55_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M55_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M55_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M55_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M55_T0);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6867,27 +9321,72 @@ func void Fun_Platz55()   // NW_TROLLAREA_PATH_38_MONSTER (Original: Bloodfly)
 		return;
 	};
 	FUNL_T55 = 0;
-	if (t == 0) { Wld_InsertNpc(FUN_M55_T0, "NW_TROLLAREA_PATH_38_MONSTER"); }
-	else if (t == 1) { Wld_InsertNpc(FUN_M55_T1, "NW_TROLLAREA_PATH_38_MONSTER"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M55_T2, "NW_TROLLAREA_PATH_38_MONSTER"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M55_T3, "NW_TROLLAREA_PATH_38_MONSTER"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M55_T4, "NW_TROLLAREA_PATH_38_MONSTER"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M55_T5, "NW_TROLLAREA_PATH_38_MONSTER"); }
-	else { Wld_InsertNpc(FUN_M55_T0, "NW_TROLLAREA_PATH_38_MONSTER"); };
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M55_T0, "NW_TROLLAREA_PATH_38_MONSTER");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M55_T1, "NW_TROLLAREA_PATH_38_MONSTER");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M55_T2, "NW_TROLLAREA_PATH_38_MONSTER");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M55_T3, "NW_TROLLAREA_PATH_38_MONSTER");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M55_T4, "NW_TROLLAREA_PATH_38_MONSTER");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M55_T5, "NW_TROLLAREA_PATH_38_MONSTER");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M55_T0, "NW_TROLLAREA_PATH_38_MONSTER");
+	};
 };
 func void Fun_Platz56()   // NW_TROLLAREA_PATH_71_MONSTER (Original: Lurker)
 {
 	var C_NPC m;
 	var int t;
 	t = 2 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 2) { m = Hlp_GetNpc(FUN_M56_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M56_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M56_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M56_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M56_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M56_T7); }
-	else { m = Hlp_GetNpc(FUN_M56_T2); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M56_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M56_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M56_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M56_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M56_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M56_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M56_T2);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6902,27 +9401,72 @@ func void Fun_Platz56()   // NW_TROLLAREA_PATH_71_MONSTER (Original: Lurker)
 		return;
 	};
 	FUNL_T56 = 0;
-	if (t == 2) { Wld_InsertNpc(FUN_M56_T2, "NW_TROLLAREA_PATH_71_MONSTER"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M56_T3, "NW_TROLLAREA_PATH_71_MONSTER"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M56_T4, "NW_TROLLAREA_PATH_71_MONSTER"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M56_T5, "NW_TROLLAREA_PATH_71_MONSTER"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M56_T6, "NW_TROLLAREA_PATH_71_MONSTER"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M56_T7, "NW_TROLLAREA_PATH_71_MONSTER"); }
-	else { Wld_InsertNpc(FUN_M56_T2, "NW_TROLLAREA_PATH_71_MONSTER"); };
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M56_T2, "NW_TROLLAREA_PATH_71_MONSTER");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M56_T3, "NW_TROLLAREA_PATH_71_MONSTER");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M56_T4, "NW_TROLLAREA_PATH_71_MONSTER");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M56_T5, "NW_TROLLAREA_PATH_71_MONSTER");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M56_T6, "NW_TROLLAREA_PATH_71_MONSTER");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M56_T7, "NW_TROLLAREA_PATH_71_MONSTER");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M56_T2, "NW_TROLLAREA_PATH_71_MONSTER");
+	};
 };
 func void Fun_Platz57()   // NW_TROLLAREA_PLANE_04 (Original: Scavenger)
 {
 	var C_NPC m;
 	var int t;
 	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5) { t = 5; };
-	if (t == 0) { m = Hlp_GetNpc(FUN_M57_T0); }
-	else if (t == 1) { m = Hlp_GetNpc(FUN_M57_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M57_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M57_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M57_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M57_T5); }
-	else { m = Hlp_GetNpc(FUN_M57_T0); };
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M57_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M57_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M57_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M57_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M57_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M57_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M57_T0);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6937,27 +9481,72 @@ func void Fun_Platz57()   // NW_TROLLAREA_PLANE_04 (Original: Scavenger)
 		return;
 	};
 	FUNL_T57 = 0;
-	if (t == 0) { Wld_InsertNpc(FUN_M57_T0, "NW_TROLLAREA_PLANE_04"); }
-	else if (t == 1) { Wld_InsertNpc(FUN_M57_T1, "NW_TROLLAREA_PLANE_04"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M57_T2, "NW_TROLLAREA_PLANE_04"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M57_T3, "NW_TROLLAREA_PLANE_04"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M57_T4, "NW_TROLLAREA_PLANE_04"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M57_T5, "NW_TROLLAREA_PLANE_04"); }
-	else { Wld_InsertNpc(FUN_M57_T0, "NW_TROLLAREA_PLANE_04"); };
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M57_T0, "NW_TROLLAREA_PLANE_04");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M57_T1, "NW_TROLLAREA_PLANE_04");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M57_T2, "NW_TROLLAREA_PLANE_04");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M57_T3, "NW_TROLLAREA_PLANE_04");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M57_T4, "NW_TROLLAREA_PLANE_04");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M57_T5, "NW_TROLLAREA_PLANE_04");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M57_T0, "NW_TROLLAREA_PLANE_04");
+	};
 };
 func void Fun_Platz58()   // NW_TROLLAREA_PORTALTEMPEL_06 (Original: Giant_Rat)
 {
 	var C_NPC m;
 	var int t;
 	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5) { t = 5; };
-	if (t == 0) { m = Hlp_GetNpc(FUN_M58_T0); }
-	else if (t == 1) { m = Hlp_GetNpc(FUN_M58_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M58_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M58_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M58_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M58_T5); }
-	else { m = Hlp_GetNpc(FUN_M58_T0); };
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M58_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M58_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M58_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M58_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M58_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M58_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M58_T0);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -6972,27 +9561,72 @@ func void Fun_Platz58()   // NW_TROLLAREA_PORTALTEMPEL_06 (Original: Giant_Rat)
 		return;
 	};
 	FUNL_T58 = 0;
-	if (t == 0) { Wld_InsertNpc(FUN_M58_T0, "NW_TROLLAREA_PORTALTEMPEL_06"); }
-	else if (t == 1) { Wld_InsertNpc(FUN_M58_T1, "NW_TROLLAREA_PORTALTEMPEL_06"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M58_T2, "NW_TROLLAREA_PORTALTEMPEL_06"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M58_T3, "NW_TROLLAREA_PORTALTEMPEL_06"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M58_T4, "NW_TROLLAREA_PORTALTEMPEL_06"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M58_T5, "NW_TROLLAREA_PORTALTEMPEL_06"); }
-	else { Wld_InsertNpc(FUN_M58_T0, "NW_TROLLAREA_PORTALTEMPEL_06"); };
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M58_T0, "NW_TROLLAREA_PORTALTEMPEL_06");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M58_T1, "NW_TROLLAREA_PORTALTEMPEL_06");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M58_T2, "NW_TROLLAREA_PORTALTEMPEL_06");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M58_T3, "NW_TROLLAREA_PORTALTEMPEL_06");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M58_T4, "NW_TROLLAREA_PORTALTEMPEL_06");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M58_T5, "NW_TROLLAREA_PORTALTEMPEL_06");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M58_T0, "NW_TROLLAREA_PORTALTEMPEL_06");
+	};
 };
 func void Fun_Platz59()   // NW_TROLLAREA_PORTALTEMPEL_12 (Original: Giant_Rat)
 {
 	var C_NPC m;
 	var int t;
 	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5) { t = 5; };
-	if (t == 0) { m = Hlp_GetNpc(FUN_M59_T0); }
-	else if (t == 1) { m = Hlp_GetNpc(FUN_M59_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M59_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M59_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M59_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M59_T5); }
-	else { m = Hlp_GetNpc(FUN_M59_T0); };
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M59_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M59_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M59_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M59_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M59_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M59_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M59_T0);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -7007,26 +9641,68 @@ func void Fun_Platz59()   // NW_TROLLAREA_PORTALTEMPEL_12 (Original: Giant_Rat)
 		return;
 	};
 	FUNL_T59 = 0;
-	if (t == 0) { Wld_InsertNpc(FUN_M59_T0, "NW_TROLLAREA_PORTALTEMPEL_12"); }
-	else if (t == 1) { Wld_InsertNpc(FUN_M59_T1, "NW_TROLLAREA_PORTALTEMPEL_12"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M59_T2, "NW_TROLLAREA_PORTALTEMPEL_12"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M59_T3, "NW_TROLLAREA_PORTALTEMPEL_12"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M59_T4, "NW_TROLLAREA_PORTALTEMPEL_12"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M59_T5, "NW_TROLLAREA_PORTALTEMPEL_12"); }
-	else { Wld_InsertNpc(FUN_M59_T0, "NW_TROLLAREA_PORTALTEMPEL_12"); };
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M59_T0, "NW_TROLLAREA_PORTALTEMPEL_12");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M59_T1, "NW_TROLLAREA_PORTALTEMPEL_12");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M59_T2, "NW_TROLLAREA_PORTALTEMPEL_12");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M59_T3, "NW_TROLLAREA_PORTALTEMPEL_12");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M59_T4, "NW_TROLLAREA_PORTALTEMPEL_12");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M59_T5, "NW_TROLLAREA_PORTALTEMPEL_12");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M59_T0, "NW_TROLLAREA_PORTALTEMPEL_12");
+	};
 };
 func void Fun_Platz60()   // NW_TROLLAREA_PORTALTEMPEL_17_A (Original: Gobbo_Skeleton)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M60_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M60_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M60_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M60_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M60_T7); }
-	else { m = Hlp_GetNpc(FUN_M60_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M60_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M60_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M60_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M60_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M60_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M60_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -7041,26 +9717,68 @@ func void Fun_Platz60()   // NW_TROLLAREA_PORTALTEMPEL_17_A (Original: Gobbo_Ske
 		return;
 	};
 	FUNL_T60 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M60_T3, "NW_TROLLAREA_PORTALTEMPEL_17_A"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M60_T4, "NW_TROLLAREA_PORTALTEMPEL_17_A"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M60_T5, "NW_TROLLAREA_PORTALTEMPEL_17_A"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M60_T6, "NW_TROLLAREA_PORTALTEMPEL_17_A"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M60_T7, "NW_TROLLAREA_PORTALTEMPEL_17_A"); }
-	else { Wld_InsertNpc(FUN_M60_T3, "NW_TROLLAREA_PORTALTEMPEL_17_A"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M60_T3, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M60_T4, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M60_T5, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M60_T6, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M60_T7, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M60_T3, "NW_TROLLAREA_PORTALTEMPEL_17_A");
+	};
 };
 func void Fun_Platz61()   // NW_TROLLAREA_RITUALFOREST_04_MONSTER (Original: Molerat)
 {
 	var C_NPC m;
 	var int t;
 	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5) { t = 5; };
-	if (t == 0) { m = Hlp_GetNpc(FUN_M61_T0); }
-	else if (t == 1) { m = Hlp_GetNpc(FUN_M61_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M61_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M61_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M61_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M61_T5); }
-	else { m = Hlp_GetNpc(FUN_M61_T0); };
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M61_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M61_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M61_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M61_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M61_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M61_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M61_T0);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -7075,27 +9793,72 @@ func void Fun_Platz61()   // NW_TROLLAREA_RITUALFOREST_04_MONSTER (Original: Mol
 		return;
 	};
 	FUNL_T61 = 0;
-	if (t == 0) { Wld_InsertNpc(FUN_M61_T0, "NW_TROLLAREA_RITUALFOREST_04_MONSTER"); }
-	else if (t == 1) { Wld_InsertNpc(FUN_M61_T1, "NW_TROLLAREA_RITUALFOREST_04_MONSTER"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M61_T2, "NW_TROLLAREA_RITUALFOREST_04_MONSTER"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M61_T3, "NW_TROLLAREA_RITUALFOREST_04_MONSTER"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M61_T4, "NW_TROLLAREA_RITUALFOREST_04_MONSTER"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M61_T5, "NW_TROLLAREA_RITUALFOREST_04_MONSTER"); }
-	else { Wld_InsertNpc(FUN_M61_T0, "NW_TROLLAREA_RITUALFOREST_04_MONSTER"); };
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M61_T0, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M61_T1, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M61_T2, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M61_T3, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M61_T4, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M61_T5, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M61_T0, "NW_TROLLAREA_RITUALFOREST_04_MONSTER");
+	};
 };
 func void Fun_Platz62()   // NW_TROLLAREA_RITUALPATH_032 (Original: Bloodfly)
 {
 	var C_NPC m;
 	var int t;
 	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5) { t = 5; };
-	if (t == 0) { m = Hlp_GetNpc(FUN_M62_T0); }
-	else if (t == 1) { m = Hlp_GetNpc(FUN_M62_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M62_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M62_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M62_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M62_T5); }
-	else { m = Hlp_GetNpc(FUN_M62_T0); };
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M62_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M62_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M62_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M62_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M62_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M62_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M62_T0);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -7110,26 +9873,68 @@ func void Fun_Platz62()   // NW_TROLLAREA_RITUALPATH_032 (Original: Bloodfly)
 		return;
 	};
 	FUNL_T62 = 0;
-	if (t == 0) { Wld_InsertNpc(FUN_M62_T0, "NW_TROLLAREA_RITUALPATH_032"); }
-	else if (t == 1) { Wld_InsertNpc(FUN_M62_T1, "NW_TROLLAREA_RITUALPATH_032"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M62_T2, "NW_TROLLAREA_RITUALPATH_032"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M62_T3, "NW_TROLLAREA_RITUALPATH_032"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M62_T4, "NW_TROLLAREA_RITUALPATH_032"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M62_T5, "NW_TROLLAREA_RITUALPATH_032"); }
-	else { Wld_InsertNpc(FUN_M62_T0, "NW_TROLLAREA_RITUALPATH_032"); };
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M62_T0, "NW_TROLLAREA_RITUALPATH_032");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M62_T1, "NW_TROLLAREA_RITUALPATH_032");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M62_T2, "NW_TROLLAREA_RITUALPATH_032");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M62_T3, "NW_TROLLAREA_RITUALPATH_032");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M62_T4, "NW_TROLLAREA_RITUALPATH_032");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M62_T5, "NW_TROLLAREA_RITUALPATH_032");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M62_T0, "NW_TROLLAREA_RITUALPATH_032");
+	};
 };
 func void Fun_Platz63()   // NW_TROLLAREA_RITUAL_13 (Original: Gobbo_Skeleton)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M63_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M63_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M63_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M63_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M63_T7); }
-	else { m = Hlp_GetNpc(FUN_M63_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M63_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M63_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M63_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M63_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M63_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M63_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -7144,25 +9949,64 @@ func void Fun_Platz63()   // NW_TROLLAREA_RITUAL_13 (Original: Gobbo_Skeleton)
 		return;
 	};
 	FUNL_T63 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M63_T3, "NW_TROLLAREA_RITUAL_13"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M63_T4, "NW_TROLLAREA_RITUAL_13"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M63_T5, "NW_TROLLAREA_RITUAL_13"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M63_T6, "NW_TROLLAREA_RITUAL_13"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M63_T7, "NW_TROLLAREA_RITUAL_13"); }
-	else { Wld_InsertNpc(FUN_M63_T3, "NW_TROLLAREA_RITUAL_13"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M63_T3, "NW_TROLLAREA_RITUAL_13");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M63_T4, "NW_TROLLAREA_RITUAL_13");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M63_T5, "NW_TROLLAREA_RITUAL_13");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M63_T6, "NW_TROLLAREA_RITUAL_13");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M63_T7, "NW_TROLLAREA_RITUAL_13");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M63_T3, "NW_TROLLAREA_RITUAL_13");
+	};
 };
 func void Fun_Platz64()   // NW_TROLLAREA_RIVERSIDECAVE_02 (Original: Shadowbeast)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M64_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M64_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M64_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M64_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M64_T7); }
-	else { m = Hlp_GetNpc(FUN_M64_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M64_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M64_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M64_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M64_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M64_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M64_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -7177,26 +10021,68 @@ func void Fun_Platz64()   // NW_TROLLAREA_RIVERSIDECAVE_02 (Original: Shadowbeas
 		return;
 	};
 	FUNL_T64 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M64_T3, "NW_TROLLAREA_RIVERSIDECAVE_02"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M64_T4, "NW_TROLLAREA_RIVERSIDECAVE_02"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M64_T5, "NW_TROLLAREA_RIVERSIDECAVE_02"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M64_T6, "NW_TROLLAREA_RIVERSIDECAVE_02"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M64_T7, "NW_TROLLAREA_RIVERSIDECAVE_02"); }
-	else { Wld_InsertNpc(FUN_M64_T3, "NW_TROLLAREA_RIVERSIDECAVE_02"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M64_T3, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M64_T4, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M64_T5, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M64_T6, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M64_T7, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M64_T3, "NW_TROLLAREA_RIVERSIDECAVE_02");
+	};
 };
 func void Fun_Platz65()   // NW_TROLLAREA_RUINS_14 (Original: Gobbo_Black)
 {
 	var C_NPC m;
 	var int t;
 	t = 2 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 2) { m = Hlp_GetNpc(FUN_M65_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M65_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M65_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M65_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M65_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M65_T7); }
-	else { m = Hlp_GetNpc(FUN_M65_T2); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M65_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M65_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M65_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M65_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M65_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M65_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M65_T2);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -7211,26 +10097,68 @@ func void Fun_Platz65()   // NW_TROLLAREA_RUINS_14 (Original: Gobbo_Black)
 		return;
 	};
 	FUNL_T65 = 0;
-	if (t == 2) { Wld_InsertNpc(FUN_M65_T2, "NW_TROLLAREA_RUINS_14"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M65_T3, "NW_TROLLAREA_RUINS_14"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M65_T4, "NW_TROLLAREA_RUINS_14"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M65_T5, "NW_TROLLAREA_RUINS_14"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M65_T6, "NW_TROLLAREA_RUINS_14"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M65_T7, "NW_TROLLAREA_RUINS_14"); }
-	else { Wld_InsertNpc(FUN_M65_T2, "NW_TROLLAREA_RUINS_14"); };
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M65_T2, "NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M65_T3, "NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M65_T4, "NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M65_T5, "NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M65_T6, "NW_TROLLAREA_RUINS_14");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M65_T7, "NW_TROLLAREA_RUINS_14");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M65_T2, "NW_TROLLAREA_RUINS_14");
+	};
 };
 func void Fun_Platz66()   // NW_TROLLAREA_RUINS_32 (Original: Waran)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M66_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M66_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M66_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M66_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M66_T7); }
-	else { m = Hlp_GetNpc(FUN_M66_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M66_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M66_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M66_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M66_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M66_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M66_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -7245,26 +10173,68 @@ func void Fun_Platz66()   // NW_TROLLAREA_RUINS_32 (Original: Waran)
 		return;
 	};
 	FUNL_T66 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M66_T3, "NW_TROLLAREA_RUINS_32"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M66_T4, "NW_TROLLAREA_RUINS_32"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M66_T5, "NW_TROLLAREA_RUINS_32"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M66_T6, "NW_TROLLAREA_RUINS_32"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M66_T7, "NW_TROLLAREA_RUINS_32"); }
-	else { Wld_InsertNpc(FUN_M66_T3, "NW_TROLLAREA_RUINS_32"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M66_T3, "NW_TROLLAREA_RUINS_32");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M66_T4, "NW_TROLLAREA_RUINS_32");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M66_T5, "NW_TROLLAREA_RUINS_32");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M66_T6, "NW_TROLLAREA_RUINS_32");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M66_T7, "NW_TROLLAREA_RUINS_32");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M66_T3, "NW_TROLLAREA_RUINS_32");
+	};
 };
 func void Fun_Platz67()   // NW_TROLLAREA_TROLLLAKECAVE_02 (Original: Giant_Rat)
 {
 	var C_NPC m;
 	var int t;
 	t = 0 + Fun_KapitelNr() - 1;
-	if (t > 5) { t = 5; };
-	if (t == 0) { m = Hlp_GetNpc(FUN_M67_T0); }
-	else if (t == 1) { m = Hlp_GetNpc(FUN_M67_T1); }
-	else if (t == 2) { m = Hlp_GetNpc(FUN_M67_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M67_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M67_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M67_T5); }
-	else { m = Hlp_GetNpc(FUN_M67_T0); };
+	if (t > 5)
+	{
+		t = 5;
+	};
+	if (t == 0)
+	{
+		m = Hlp_GetNpc(FUN_M67_T0);
+	}
+	else if (t == 1)
+	{
+		m = Hlp_GetNpc(FUN_M67_T1);
+	}
+	else if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M67_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M67_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M67_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M67_T5);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M67_T0);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -7279,27 +10249,72 @@ func void Fun_Platz67()   // NW_TROLLAREA_TROLLLAKECAVE_02 (Original: Giant_Rat)
 		return;
 	};
 	FUNL_T67 = 0;
-	if (t == 0) { Wld_InsertNpc(FUN_M67_T0, "NW_TROLLAREA_TROLLLAKECAVE_02"); }
-	else if (t == 1) { Wld_InsertNpc(FUN_M67_T1, "NW_TROLLAREA_TROLLLAKECAVE_02"); }
-	else if (t == 2) { Wld_InsertNpc(FUN_M67_T2, "NW_TROLLAREA_TROLLLAKECAVE_02"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M67_T3, "NW_TROLLAREA_TROLLLAKECAVE_02"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M67_T4, "NW_TROLLAREA_TROLLLAKECAVE_02"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M67_T5, "NW_TROLLAREA_TROLLLAKECAVE_02"); }
-	else { Wld_InsertNpc(FUN_M67_T0, "NW_TROLLAREA_TROLLLAKECAVE_02"); };
+	if (t == 0)
+	{
+		Wld_InsertNpc(FUN_M67_T0, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	}
+	else if (t == 1)
+	{
+		Wld_InsertNpc(FUN_M67_T1, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	}
+	else if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M67_T2, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M67_T3, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M67_T4, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M67_T5, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M67_T0, "NW_TROLLAREA_TROLLLAKECAVE_02");
+	};
 };
 func void Fun_Platz68()   // NW_TROLLAREA_TROLLLAKECAVE_09 (Original: Gobbo_Green)
 {
 	var C_NPC m;
 	var int t;
 	t = 2 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 2) { m = Hlp_GetNpc(FUN_M68_T2); }
-	else if (t == 3) { m = Hlp_GetNpc(FUN_M68_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M68_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M68_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M68_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M68_T7); }
-	else { m = Hlp_GetNpc(FUN_M68_T2); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 2)
+	{
+		m = Hlp_GetNpc(FUN_M68_T2);
+	}
+	else if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M68_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M68_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M68_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M68_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M68_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M68_T2);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -7314,26 +10329,68 @@ func void Fun_Platz68()   // NW_TROLLAREA_TROLLLAKECAVE_09 (Original: Gobbo_Gree
 		return;
 	};
 	FUNL_T68 = 0;
-	if (t == 2) { Wld_InsertNpc(FUN_M68_T2, "NW_TROLLAREA_TROLLLAKECAVE_09"); }
-	else if (t == 3) { Wld_InsertNpc(FUN_M68_T3, "NW_TROLLAREA_TROLLLAKECAVE_09"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M68_T4, "NW_TROLLAREA_TROLLLAKECAVE_09"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M68_T5, "NW_TROLLAREA_TROLLLAKECAVE_09"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M68_T6, "NW_TROLLAREA_TROLLLAKECAVE_09"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M68_T7, "NW_TROLLAREA_TROLLLAKECAVE_09"); }
-	else { Wld_InsertNpc(FUN_M68_T2, "NW_TROLLAREA_TROLLLAKECAVE_09"); };
+	if (t == 2)
+	{
+		Wld_InsertNpc(FUN_M68_T2, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	}
+	else if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M68_T3, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M68_T4, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M68_T5, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M68_T6, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M68_T7, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M68_T2, "NW_TROLLAREA_TROLLLAKECAVE_09");
+	};
 };
 func void Fun_Platz69()   // NW_TROLLAREA_TROLLROCKCAVE_03 (Original: Skeleton)
 {
 	var C_NPC m;
 	var int t;
 	t = 3 + Fun_KapitelNr() - 1;
-	if (t > 7) { t = 7; };
-	if (t == 3) { m = Hlp_GetNpc(FUN_M69_T3); }
-	else if (t == 4) { m = Hlp_GetNpc(FUN_M69_T4); }
-	else if (t == 5) { m = Hlp_GetNpc(FUN_M69_T5); }
-	else if (t == 6) { m = Hlp_GetNpc(FUN_M69_T6); }
-	else if (t == 7) { m = Hlp_GetNpc(FUN_M69_T7); }
-	else { m = Hlp_GetNpc(FUN_M69_T3); };
+	if (t > 7)
+	{
+		t = 7;
+	};
+	if (t == 3)
+	{
+		m = Hlp_GetNpc(FUN_M69_T3);
+	}
+	else if (t == 4)
+	{
+		m = Hlp_GetNpc(FUN_M69_T4);
+	}
+	else if (t == 5)
+	{
+		m = Hlp_GetNpc(FUN_M69_T5);
+	}
+	else if (t == 6)
+	{
+		m = Hlp_GetNpc(FUN_M69_T6);
+	}
+	else if (t == 7)
+	{
+		m = Hlp_GetNpc(FUN_M69_T7);
+	}
+	else
+	{
+		m = Hlp_GetNpc(FUN_M69_T3);
+	};
 	if (Hlp_IsValidNpc(m))
 	{
 		if (!Npc_IsDead(m))
@@ -7348,24 +10405,63 @@ func void Fun_Platz69()   // NW_TROLLAREA_TROLLROCKCAVE_03 (Original: Skeleton)
 		return;
 	};
 	FUNL_T69 = 0;
-	if (t == 3) { Wld_InsertNpc(FUN_M69_T3, "NW_TROLLAREA_TROLLROCKCAVE_03"); }
-	else if (t == 4) { Wld_InsertNpc(FUN_M69_T4, "NW_TROLLAREA_TROLLROCKCAVE_03"); }
-	else if (t == 5) { Wld_InsertNpc(FUN_M69_T5, "NW_TROLLAREA_TROLLROCKCAVE_03"); }
-	else if (t == 6) { Wld_InsertNpc(FUN_M69_T6, "NW_TROLLAREA_TROLLROCKCAVE_03"); }
-	else if (t == 7) { Wld_InsertNpc(FUN_M69_T7, "NW_TROLLAREA_TROLLROCKCAVE_03"); }
-	else { Wld_InsertNpc(FUN_M69_T3, "NW_TROLLAREA_TROLLROCKCAVE_03"); };
+	if (t == 3)
+	{
+		Wld_InsertNpc(FUN_M69_T3, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	}
+	else if (t == 4)
+	{
+		Wld_InsertNpc(FUN_M69_T4, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	}
+	else if (t == 5)
+	{
+		Wld_InsertNpc(FUN_M69_T5, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	}
+	else if (t == 6)
+	{
+		Wld_InsertNpc(FUN_M69_T6, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	}
+	else if (t == 7)
+	{
+		Wld_InsertNpc(FUN_M69_T7, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_M69_T3, "NW_TROLLAREA_TROLLROCKCAVE_03");
+	};
 };
 
 func void Fun_Boss()
 {
 	var C_NPC b;
-	if (Fun_KapitelNr() == 1) { b = Hlp_GetNpc(FUN_BOSS_K1); }
-	else if (Fun_KapitelNr() == 2) { b = Hlp_GetNpc(FUN_BOSS_K2); }
-	else if (Fun_KapitelNr() == 3) { b = Hlp_GetNpc(FUN_BOSS_K3); }
-	else if (Fun_KapitelNr() == 4) { b = Hlp_GetNpc(FUN_BOSS_K4); }
-	else if (Fun_KapitelNr() == 5) { b = Hlp_GetNpc(FUN_BOSS_K5); }
-	else if (Fun_KapitelNr() == 6) { b = Hlp_GetNpc(FUN_BOSS_K6); }
-	else { b = Hlp_GetNpc(FUN_BOSS_K1); };
+	if (Fun_KapitelNr() == 1)
+	{
+		b = Hlp_GetNpc(FUN_BOSS_K1);
+	}
+	else if (Fun_KapitelNr() == 2)
+	{
+		b = Hlp_GetNpc(FUN_BOSS_K2);
+	}
+	else if (Fun_KapitelNr() == 3)
+	{
+		b = Hlp_GetNpc(FUN_BOSS_K3);
+	}
+	else if (Fun_KapitelNr() == 4)
+	{
+		b = Hlp_GetNpc(FUN_BOSS_K4);
+	}
+	else if (Fun_KapitelNr() == 5)
+	{
+		b = Hlp_GetNpc(FUN_BOSS_K5);
+	}
+	else if (Fun_KapitelNr() == 6)
+	{
+		b = Hlp_GetNpc(FUN_BOSS_K6);
+	}
+	else
+	{
+		b = Hlp_GetNpc(FUN_BOSS_K1);
+	};
 	if (Fun_NpcLebt(b))
 	{
 		FUNL_BOSS_T = 0;
@@ -7377,13 +10473,34 @@ func void Fun_Boss()
 		return;
 	};
 	FUNL_BOSS_T = 0;
-	if (Fun_KapitelNr() == 1) { Wld_InsertNpc(FUN_BOSS_K1, "NW_TAVERNE_CROSS"); }
-	else if (Fun_KapitelNr() == 2) { Wld_InsertNpc(FUN_BOSS_K2, "NW_TAVERNE_CROSS"); }
-	else if (Fun_KapitelNr() == 3) { Wld_InsertNpc(FUN_BOSS_K3, "NW_TAVERNE_CROSS"); }
-	else if (Fun_KapitelNr() == 4) { Wld_InsertNpc(FUN_BOSS_K4, "NW_TAVERNE_CROSS"); }
-	else if (Fun_KapitelNr() == 5) { Wld_InsertNpc(FUN_BOSS_K5, "NW_TAVERNE_CROSS"); }
-	else if (Fun_KapitelNr() == 6) { Wld_InsertNpc(FUN_BOSS_K6, "NW_TAVERNE_CROSS"); }
-	else { Wld_InsertNpc(FUN_BOSS_K1, "NW_TAVERNE_CROSS"); };
+	if (Fun_KapitelNr() == 1)
+	{
+		Wld_InsertNpc(FUN_BOSS_K1, "NW_TAVERNE_CROSS");
+	}
+	else if (Fun_KapitelNr() == 2)
+	{
+		Wld_InsertNpc(FUN_BOSS_K2, "NW_TAVERNE_CROSS");
+	}
+	else if (Fun_KapitelNr() == 3)
+	{
+		Wld_InsertNpc(FUN_BOSS_K3, "NW_TAVERNE_CROSS");
+	}
+	else if (Fun_KapitelNr() == 4)
+	{
+		Wld_InsertNpc(FUN_BOSS_K4, "NW_TAVERNE_CROSS");
+	}
+	else if (Fun_KapitelNr() == 5)
+	{
+		Wld_InsertNpc(FUN_BOSS_K5, "NW_TAVERNE_CROSS");
+	}
+	else if (Fun_KapitelNr() == 6)
+	{
+		Wld_InsertNpc(FUN_BOSS_K6, "NW_TAVERNE_CROSS");
+	}
+	else
+	{
+		Wld_InsertNpc(FUN_BOSS_K1, "NW_TAVERNE_CROSS");
+	};
 	Print("An der Taverne ist ein neuer Boss aufgetaucht!");
 };
 
@@ -7393,54 +10510,126 @@ func void Fun_Lager()
 	var int fehlt;
 	var C_NPC n;
 	n = Hlp_GetNpc(FUN_HAENDLER_MIL);
-	if (!Hlp_IsValidNpc(n)) { Wld_InsertNpc(FUN_HAENDLER_MIL, "NW_CITY_HABOUR_KASERN_CENTRE_03"); };
+	if (!Hlp_IsValidNpc(n))
+	{
+		Wld_InsertNpc(FUN_HAENDLER_MIL, "NW_CITY_HABOUR_KASERN_CENTRE_03");
+	};
 	n = Hlp_GetNpc(FUN_HAENDLER_SLD);
-	if (!Hlp_IsValidNpc(n)) { Wld_InsertNpc(FUN_HAENDLER_SLD, "NW_BIGFARM_HOUSE_08"); };
+	if (!Hlp_IsValidNpc(n))
+	{
+		Wld_InsertNpc(FUN_HAENDLER_SLD, "NW_BIGFARM_HOUSE_08");
+	};
 	n = Hlp_GetNpc(FUN_HAENDLER_NOV);
-	if (!Hlp_IsValidNpc(n)) { Wld_InsertNpc(FUN_HAENDLER_NOV, "NW_MONASTERY_PLACE_07"); };
+	if (!Hlp_IsValidNpc(n))
+	{
+		Wld_InsertNpc(FUN_HAENDLER_NOV, "NW_MONASTERY_PLACE_07");
+	};
 	n = Hlp_GetNpc(FUN_HAENDLER_BDT);
-	if (!Hlp_IsValidNpc(n)) { Wld_InsertNpc(FUN_HAENDLER_BDT, "NW_CASTLEMINE_TOWER_CAMPFIRE_03"); };
+	if (!Hlp_IsValidNpc(n))
+	{
+		Wld_InsertNpc(FUN_HAENDLER_BDT, "NW_CASTLEMINE_TOWER_CAMPFIRE_03");
+	};
 	fehlt = FALSE;
 	n = Hlp_GetNpc(FUN_MIL_1);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	n = Hlp_GetNpc(FUN_MIL_2);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	n = Hlp_GetNpc(FUN_MIL_3);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	n = Hlp_GetNpc(FUN_MIL_4);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	n = Hlp_GetNpc(FUN_MIL_5);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	n = Hlp_GetNpc(FUN_SLD_1);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	n = Hlp_GetNpc(FUN_SLD_2);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	n = Hlp_GetNpc(FUN_SLD_3);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	n = Hlp_GetNpc(FUN_SLD_4);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	n = Hlp_GetNpc(FUN_SLD_5);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	n = Hlp_GetNpc(FUN_NOV_1);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	n = Hlp_GetNpc(FUN_NOV_2);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	n = Hlp_GetNpc(FUN_NOV_3);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	n = Hlp_GetNpc(FUN_NOV_4);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	n = Hlp_GetNpc(FUN_NOV_5);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	n = Hlp_GetNpc(FUN_BDT_1);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	n = Hlp_GetNpc(FUN_BDT_2);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	n = Hlp_GetNpc(FUN_BDT_3);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	n = Hlp_GetNpc(FUN_BDT_4);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	n = Hlp_GetNpc(FUN_BDT_5);
-	if (!Fun_NpcLebt(n)) { fehlt = TRUE; };
+	if (!Fun_NpcLebt(n))
+	{
+		fehlt = TRUE;
+	};
 	if (fehlt)
 	{
 		FUNL_BEGL_T = FUNL_BEGL_T + 1;
@@ -7448,45 +10637,105 @@ func void Fun_Lager()
 		{
 			FUNL_BEGL_T = 0;
 			n = Hlp_GetNpc(FUN_MIL_1);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_MIL_1, "NW_CITY_HABOUR_KASERN_05_01"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_MIL_1, "NW_CITY_HABOUR_KASERN_05_01");
+			};
 			n = Hlp_GetNpc(FUN_MIL_2);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_MIL_2, "NW_CITY_HABOUR_KASERN_08"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_MIL_2, "NW_CITY_HABOUR_KASERN_08");
+			};
 			n = Hlp_GetNpc(FUN_MIL_3);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_MIL_3, "NW_CITY_HABOUR_KASERN_10"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_MIL_3, "NW_CITY_HABOUR_KASERN_10");
+			};
 			n = Hlp_GetNpc(FUN_MIL_4);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_MIL_4, "NW_CITY_HABOUR_KASERN_12"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_MIL_4, "NW_CITY_HABOUR_KASERN_12");
+			};
 			n = Hlp_GetNpc(FUN_MIL_5);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_MIL_5, "NW_CITY_HABOUR_KASERN_14"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_MIL_5, "NW_CITY_HABOUR_KASERN_14");
+			};
 			n = Hlp_GetNpc(FUN_SLD_1);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_SLD_1, "NW_BIGFARM_HOUSE_12"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_SLD_1, "NW_BIGFARM_HOUSE_12");
+			};
 			n = Hlp_GetNpc(FUN_SLD_2);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_SLD_2, "NW_BIGFARM_HOUSE_14"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_SLD_2, "NW_BIGFARM_HOUSE_14");
+			};
 			n = Hlp_GetNpc(FUN_SLD_3);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_SLD_3, "NW_BIGFARM_ALLEE_04"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_SLD_3, "NW_BIGFARM_ALLEE_04");
+			};
 			n = Hlp_GetNpc(FUN_SLD_4);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_SLD_4, "NW_BIGFARM_TREE"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_SLD_4, "NW_BIGFARM_TREE");
+			};
 			n = Hlp_GetNpc(FUN_SLD_5);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_SLD_5, "NW_BIGFARM_KITCHEN_09"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_SLD_5, "NW_BIGFARM_KITCHEN_09");
+			};
 			n = Hlp_GetNpc(FUN_NOV_1);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_NOV_1, "NW_MONASTERY_PLACE_09"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_NOV_1, "NW_MONASTERY_PLACE_09");
+			};
 			n = Hlp_GetNpc(FUN_NOV_2);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_NOV_2, "NW_MONASTERY_GRASS_01"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_NOV_2, "NW_MONASTERY_GRASS_01");
+			};
 			n = Hlp_GetNpc(FUN_NOV_3);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_NOV_3, "NW_MONASTERY_HERB_05"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_NOV_3, "NW_MONASTERY_HERB_05");
+			};
 			n = Hlp_GetNpc(FUN_NOV_4);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_NOV_4, "NW_MONASTERY_CHURCH_03"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_NOV_4, "NW_MONASTERY_CHURCH_03");
+			};
 			n = Hlp_GetNpc(FUN_NOV_5);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_NOV_5, "NW_MONASTERY_CHAPELL_02"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_NOV_5, "NW_MONASTERY_CHAPELL_02");
+			};
 			n = Hlp_GetNpc(FUN_BDT_1);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_BDT_1, "NW_CASTLEMINE_TOWER_CAMPFIRE_02"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_BDT_1, "NW_CASTLEMINE_TOWER_CAMPFIRE_02");
+			};
 			n = Hlp_GetNpc(FUN_BDT_2);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_BDT_2, "NW_CASTLEMINE_TOWER_CAMPFIRE_04"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_BDT_2, "NW_CASTLEMINE_TOWER_CAMPFIRE_04");
+			};
 			n = Hlp_GetNpc(FUN_BDT_3);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_BDT_3, "NW_CASTLEMINE_TOWER_STAND_01"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_BDT_3, "NW_CASTLEMINE_TOWER_STAND_01");
+			};
 			n = Hlp_GetNpc(FUN_BDT_4);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_BDT_4, "NW_CASTLEMINE_TOWER_STAND_02"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_BDT_4, "NW_CASTLEMINE_TOWER_STAND_02");
+			};
 			n = Hlp_GetNpc(FUN_BDT_5);
-			if (!Fun_NpcLebt(n)) { Wld_InsertNpc(FUN_BDT_5, "NW_CASTLEMINE_TOWER_REP_HUT"); };
+			if (!Fun_NpcLebt(n))
+			{
+				Wld_InsertNpc(FUN_BDT_5, "NW_CASTLEMINE_TOWER_REP_HUT");
+			};
 		};
 	}
 	else
@@ -7497,45 +10746,125 @@ func void Fun_Lager()
 	{
 		FUNL_BEGL_KAP = FUN_KAPITEL;
 		n = Hlp_GetNpc(FUN_MIL_1);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 		n = Hlp_GetNpc(FUN_MIL_2);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 		n = Hlp_GetNpc(FUN_MIL_3);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 		n = Hlp_GetNpc(FUN_MIL_4);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 		n = Hlp_GetNpc(FUN_MIL_5);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 		n = Hlp_GetNpc(FUN_SLD_1);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 		n = Hlp_GetNpc(FUN_SLD_2);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 		n = Hlp_GetNpc(FUN_SLD_3);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 		n = Hlp_GetNpc(FUN_SLD_4);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 		n = Hlp_GetNpc(FUN_SLD_5);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 		n = Hlp_GetNpc(FUN_NOV_1);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 		n = Hlp_GetNpc(FUN_NOV_2);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 		n = Hlp_GetNpc(FUN_NOV_3);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 		n = Hlp_GetNpc(FUN_NOV_4);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 		n = Hlp_GetNpc(FUN_NOV_5);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 		n = Hlp_GetNpc(FUN_BDT_1);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 		n = Hlp_GetNpc(FUN_BDT_2);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 		n = Hlp_GetNpc(FUN_BDT_3);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 		n = Hlp_GetNpc(FUN_BDT_4);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 		n = Hlp_GetNpc(FUN_BDT_5);
-		if (Fun_NpcLebt(n)) { B_SetAttributesToChapter(n, Fun_KapitelNr()); B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr()); };
+		if (Fun_NpcLebt(n))
+		{
+			B_SetAttributesToChapter(n, Fun_KapitelNr());
+			B_SetFightSkills(n, 30 + 10 * Fun_KapitelNr());
+		};
 	};
 };
 

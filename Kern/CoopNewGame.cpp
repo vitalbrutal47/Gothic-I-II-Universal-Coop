@@ -352,7 +352,7 @@ namespace GOTHIC_ENGINE {
         if (!NewGameRun.empty())   // v93: Game_LoadBegin_NewGame hat den Durchlauf geleert - jetzt der gemeinsame
             CoopSaveSyncSetRun(NewGameRun, "gemeinsames neues Spiel");
         const bool client = ClientThread && !ServerThread;
-        if (!NewGameHost && client) {
+        if (!NewGameHost && client && !CoopFunArmed) {   // u203: im Fun-Spiel startet jeder in seinem Lager (COOP_FUN.D)
             NewGamePlacePending = true;
             NewGameInfoUntil = NewGameLoadEndMs + 180000;
         }

@@ -32,6 +32,7 @@ namespace GOTHIC_ENGINE {
 
     void CoopNoWhirl(oCNpc* npc);   // v100 (C21, Hooks.cpp): ZS_ATTACK-Neustart ohne Ueberraschungs-Sprung
     bool CoopRulePvp();             // PvP (CoopDifficulty.cpp, Host gibt vor)
+    bool CoopFunActive();           // u203: Fun-Modus (CoopFun.cpp) - PvP immer an, eigene Gilde ist Team
 
     // --- PvP: Spieler gegen Spieler (07.11.2026) -------------------------------------------------------------------------------
     //
@@ -543,8 +544,12 @@ namespace GOTHIC_ENGINE {
         const bool pvp = a.contains("pvp") && a["pvp"].is_number() && a["pvp"].get<int>() != 0;
         if (!player)
             return;
-        if (pvp && !CoopRulePvp()) {
+        if (pvp && !CoopRulePvp() && !CoopFunActive()) {
             SwingLog("PvP: %s trifft mich - PvP ist aus, zaehlt nicht", an);
+            return;
+        }
+        if (pvp && attacker && CoopFunActive() && attacker->guild == player->guild) {   // u203: Fun-Modus - eigene Gilde ist Team
+            SwingLog("PvP: %s trifft mich - gleiche Gilde (Fun-Modus), zaehlt nicht", an);
             return;
         }
         if (pvp && attacker && !PlayerNpcs.count(attacker)) {

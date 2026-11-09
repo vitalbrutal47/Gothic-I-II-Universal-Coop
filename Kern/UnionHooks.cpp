@@ -45,6 +45,7 @@ namespace GOTHIC_ENGINE {
             Game_Loop();
             CoopDiffPulse();            // v67: Schwierigkeitsgrad (Host sendet, Kampf-EP-Konstante)
             CoopNewGamePulse();         // v91: gemeinsames neues Spiel (Intro-Abgleich aus, Platz neben dem Host, Diego-Sperre)
+            CoopFunPulse();             // u203: Fun-Modus - Takt alle 10 s (auch ohne Verbindung)
         }
         catch (std::exception& e) {
             CoopErrorLog("Game_Loop", e.what(), PluginState.c_str());
@@ -227,6 +228,7 @@ namespace GOTHIC_ENGINE {
         _LoadEnd();
         try {
             CoopNewGameLoadEnd();   // v91: gemeinsames neues Spiel - Client neben den Host, Diego-Sperre
+            CoopFunLoadEnd(true);   // u203: Fun-Modus - erster Takt, Merker fuer das neue Spiel aus
         }
         catch (std::exception& e) {
             CoopErrorLog("CoopNewGameLoadEnd", e.what(), PluginState.c_str());
@@ -260,6 +262,7 @@ namespace GOTHIC_ENGINE {
 
     void _Game_LoadEnd_SaveGame() {
         try {
+            CoopFunLoadEnd(false);   // u203: Fun-Modus - erster Takt 3 s nach dem Laden
             Game_LoadEnd_SaveGame();
         }
         catch (std::exception& e) {
@@ -279,6 +282,7 @@ namespace GOTHIC_ENGINE {
 
     void _Game_LoadEnd_ChangeLevel() {
         _LoadEnd();
+        CoopFunLoadEnd(false);   // u203
     }
 
     // u64 (Othello-Coop v114, COOP-FIXES B10, nur Othello; dort Test v113: Absturz beim Client 2 s nach dem gemeinsamen Weltwechsel
@@ -332,6 +336,12 @@ namespace GOTHIC_ENGINE {
     }
 
     void _Game_DefineExternals() {
+        try {
+            CoopFunDefineExternals();   // u203: COOP_FUNMODUS, COOP_FUNGILDE fuer COOP_FUN.D
+        }
+        catch (...) {
+            CoopErrorLog("Game_DefineExternals", "Ausnahme", "CoopFunDefineExternals");
+        }
     }
 
     void _Game_ApplyOptions() {

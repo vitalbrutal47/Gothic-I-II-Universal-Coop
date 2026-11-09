@@ -31,6 +31,7 @@
 #include "CoopHitAuthority.cpp" // v53: Treffer auf den Helden eines Clients entscheidet der Client
 #include "CoopDialogSync.cpp"  // v26: Dialoge - einer je NPC, von aussen beobachtbar
 #include "CoopTruhe.cpp"       // u97: gemeinsame Coop-Truhe im Inventar (ITMI_COOP_TRUHE, Inhalt beim Host, im Spielstand)
+#include "CoopFun.cpp"         // u203: Fun-Modus Gothic 2 (COOP_FUN.D: Gilde waehlen, Lager, Haendler, Begleiter, Boss, Gilden-PvP)
 #include "CoopLogShip.cpp"     // v34/v35: Coop-Logs zum Partner (GothicCoopOthelloClient.log / GothicCoopOthelloHost.log)
 #include "CoopCombatLead.cpp"  // v72: Kampf-Uebergabe - NPCs, die gegen einen Client kaempfen, rechnet dessen PC
 #include "CoopTeleport.cpp"    // v102: Teleport-Rune zum Mitspieler (COOP_ITEMS.D, Ziel Mitspieler, Mana 0, Startausstattung)

@@ -30,6 +30,7 @@ namespace GOTHIC_ENGINE {
         zSTRING lastWeapon1Name;
         zSTRING lastWeapon2Name;
         zSTRING lastArmorName;
+        int lastGuild = -1;   // u203: Gilde des eigenen Helden fuer die Figur beim Partner (Fun-Modus)
         zSTRING lastLeftHandInstanceName;
         zSTRING lastRightHandInstanceName;
         zSTRING revivedFriend = "";
@@ -99,6 +100,7 @@ namespace GOTHIC_ENGINE {
             lastWeapon1Name = zSTRING();
             lastWeapon2Name = zSTRING();
             lastArmorName = zSTRING();
+            lastGuild = -1;
             lastLeftHandInstanceName = zSTRING();
             lastRightHandInstanceName = zSTRING();
             lastSpellInstanceName = "NULL";
@@ -290,9 +292,11 @@ namespace GOTHIC_ENGINE {
             auto armor = npc->GetEquippedArmor();
             auto armorName = armor ? armor->GetInstanceName().ToChar() : "NULL";
 
-            if (!lastArmorName.Compare(armorName)) {
+            const int gu = npc == player ? npc->guild : -1;   // u203
+            if (!lastArmorName.Compare(armorName) || gu != lastGuild) {
                 addUpdate(SYNC_ARMOR);
                 lastArmorName = armorName;
+                lastGuild = gu;
             }
         }
 
@@ -545,6 +549,8 @@ namespace GOTHIC_ENGINE {
                 case SYNC_ARMOR:
                 {
                     j["armor"] = lastArmorName;
+                    if (npc == player)
+                        j["gu"] = npc->guild;   // u203: Gilde fuer die Figur (wirkt beim Partner nur im Fun-Modus)
                     break;
                 }
                 case SYNC_WEAPONS:

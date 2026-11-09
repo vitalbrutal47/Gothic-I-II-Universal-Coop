@@ -1,6 +1,7 @@
 namespace GOTHIC_ENGINE {
     // v41: Abgleich ausserhalb der Reichweite (CoopFarSync.cpp)
     bool CoopFollowActive();
+    bool CoopFunActive();   // u203: CoopFun.cpp
     bool CoopFollowNear(const zVEC3& p, float range);
     bool CoopFarFromMe(oCNpc* npc);
     bool CoopDiffXpNoShare();            // v67/v68: CoopDifficulty.cpp
@@ -591,6 +592,14 @@ namespace GOTHIC_ENGINE {
         }
 
         void UpdateArmor(json update) {
+            // u203: Fun-Modus - die Figur traegt die Gilde des Mitspielers (Begleiter, Haendler und PvP sehen sie richtig)
+            if (hasNpc && npc && update.contains("gu") && update["gu"].is_number_integer() && CoopFunActive()) {
+                const int g = update["gu"].get<int>();
+                if (g >= 0 && g < 66 && npc->guild != g) {
+                    npc->guild = g;
+                    npc->SetTrueGuild(g);
+                }
+            }
             if (hasNpc && npc) {
                 auto armor = update["armor"].get<std::string>();
 

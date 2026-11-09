@@ -1050,7 +1050,7 @@ namespace GOTHIC_ENGINE {
 
     // u97: COOP_TRUHE_OEFFNEN - Merker "Coop-Truhe benutzt" (COOP_ITEMS.D) gilt nur auf diesem PC
     static bool DlgNeverSync(const char* nm) {
-        return nm && (!strcmp(nm, "PLAYER_MOBSI_PRODUCTION") || !strcmp(nm, "CURRENTLEVEL") || !strcmp(nm, "HERO_HACKCHANCE")
+        return nm && (!strncmp(nm, "FUNL_", 5) /* u203: Fun-Modus, je PC */ || !strcmp(nm, "PLAYER_MOBSI_PRODUCTION") || !strcmp(nm, "CURRENTLEVEL") || !strcmp(nm, "HERO_HACKCHANCE")
             || !strcmp(nm, "ZSTALKBUGFIX") || !strcmp(nm, "COOP_TRUHE_OEFFNEN") || DlgWorldEntryVar(nm) || DlgScriptLibraryVar(nm) ||
             CoopModNeverSync(nm));
     }
@@ -2357,9 +2357,10 @@ namespace GOTHIC_ENGINE {
                 if (i >= 0 && i < COOP_AIV_MAX)   // u3: G1 50, G2 100
                     npc->aiscriptvars[i] = a.at(1).get<int>();
             }
-        if (jn.contains("at") && npc->attitude != jn["at"].get<int>())   // v110: nur bei Abweichung (Gesamtliste beim RESYNC)
+        const bool funNpc = n.compare(0, 4, "FUN_") == 0;   // u203: Fun-Modus - Haltung der Lager-NPCs gilt je Held (COOP_FUN.D)
+        if (!funNpc && jn.contains("at") && npc->attitude != jn["at"].get<int>())   // v110: nur bei Abweichung (Gesamtliste beim RESYNC)
             npc->SetAttitude(jn["at"].get<int>());
-        if (jn.contains("tt"))
+        if (!funNpc && jn.contains("tt"))
             npc->SetTmpAttitude(jn["tt"].get<int>());
         int rtnNow = npc->daily_routine;
         if (jn.contains("r")) {
@@ -3151,6 +3152,8 @@ namespace GOTHIC_ENGINE {
         static const char suffix[] = "_RANDOMIZER";
         const size_t n = sizeof(suffix) - 1;
         if (nm.size() > n && nm.compare(nm.size() - n, n, suffix) == 0)
+            return true;
+        if (nm.compare(0, 5, "FUNL_") == 0)   // u203: Fun-Modus - Variablen je PC
             return true;
         return StoryIgnore.count(nm) > 0;
     }

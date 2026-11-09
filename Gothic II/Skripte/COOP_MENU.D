@@ -124,6 +124,7 @@ instance MENU_COOP(C_MENU_DEF)
 	items[13] = "MENUITEM_COOP_STOP";
 	items[14] = "MENUITEM_COOP_BACK";
 	items[15] = "MENUITEM_COOP_VERSION";
+	items[16] = "MENUITEM_COOP_FUN";   // u203: Fun-Modus
 	defaultoutgame = 5;
 	defaultingame = 5;
 	flags = flags | MENU_SHOW_INFO;
@@ -570,7 +571,7 @@ instance MENUITEM_COOP_NEWGAME(C_MENU_ITEM_DEF)
 	text[1] = "Neues Abenteuer. Als Host mit Mitspieler: erst die COOP-Schwierigkeit, dann starten beide.";
 	posx = COOPHUB_X;
 	posy = 4610;
-	dimx = COOPHUB_DX;
+	dimx = 2550;   // u203: daneben "Fun-Modus"
 	dimy = COOPHUB_DY;
 	onselaction[0] = SEL_ACTION_CLOSE;
 	onselaction_s[0] = "NEW_GAME";   // u5: wie Gothics MENUITEM_MAIN_NEWGAME
@@ -2469,5 +2470,191 @@ instance MENUITEM_COOP_PREVIEW(C_MENU_ITEM_DEF)
 	posy = COOP_Y0 - 100;
 	dimx = 2050;
 	dimy = COOP_DY * 8 + 100;   // v95: neben den 8 Zeilen von Schritt 1
+	flags = IT_CHROMAKEYED | IT_TRANSPARENT | IT_TXT_CENTER;
+};
+
+// --- u203: Fun-Modus (Gothic 2) - Gilde wählen, ohne Story, Lager mit Händler und Begleitern, Boss an der Taverne, Gilden-PvP ---------
+// Inhalt: system\Autorun\COOP_FUN.D. "Fun-Spiel starten" (COOP_FUN_NEW_GAME) startet wie "Neues Spiel" (Host mit Mitspieler: erst
+// die COOP-Schwierigkeit, dann beide als Fun-Spiel). Die Gilde gilt je Spieler (Gothic.ini [GOTHICCOOP] coopFunGilde).
+instance MENUITEM_COOP_FUN(C_MENU_ITEM_DEF)
+{
+	backpic = MENU_ITEM_BACK_PIC;
+	text[0] = "Fun-Modus ...";
+	text[1] = "Ohne Story: Gilde wählen, Lager mit Händler und Begleitern, Boss an der Taverne, Gilde gegen Gilde.";
+	posx = 4142;
+	posy = 4610;
+	dimx = 2550;
+	dimy = COOPHUB_DY;
+	onselaction[0] = SEL_ACTION_STARTMENU;
+	onselaction_s[0] = "MENU_COOP_FUN";
+	flags = flags | IT_TXT_CENTER;
+	userString[2] = "Fun mode ..."; userString[3] = "No story: pick a guild, camp with trader and companions, boss at the tavern, guild vs guild.";
+};
+
+instance MENU_COOP_FUN(C_MENU_DEF)
+{
+	backpic = MENU_BACK_PIC;
+	items[0] = "MENUITEM_COOPFUN_HEADLINE";
+	items[1] = "MENUITEM_COOPFUN_GILDE";
+	items[2] = "MENUITEM_COOPFUN_GILDE_CHOICE";
+	items[3] = "MENUITEM_COOPFUN_INFO1";
+	items[4] = "MENUITEM_COOPFUN_INFO2";
+	items[5] = "MENUITEM_COOPFUN_INFO3";
+	items[6] = "MENUITEM_COOPFUN_INFO4";
+	items[7] = "MENUITEM_COOPFUN_INFO5";
+	items[8] = "MENUITEM_COOPFUN_START";
+	items[9] = "MENUITEM_COOPFUN_BACK";
+	items[10] = "MENUITEM_COOPFUN_VERSION";
+	defaultoutgame = 8;
+	defaultingame = 8;
+	flags = flags | MENU_SHOW_INFO;
+};
+
+instance MENUITEM_COOPFUN_HEADLINE(C_MENU_ITEM_DEF)
+{
+	text[0] = "FUN-MODUS";
+	type = MENU_ITEM_TEXT;
+	posx = 0;
+	posy = MENU_TITLE_Y - 500;
+	dimx = 8192;
+	flags = flags & ~IT_SELECTABLE;
+	flags = flags | IT_TXT_CENTER;
+	userString[2] = "FUN MODE";
+};
+
+instance MENUITEM_COOPFUN_GILDE(C_MENU_ITEM_DEF)
+{
+	backpic = MENU_ITEM_BACK_PIC;
+	text[0] = "Deine Gilde";
+	text[1] = "Links/rechts: dein Lager. Gleiche Gilde = Team, die anderen Gilden sind Gegner.";
+	fontname = MENU_FONT_SMALL;
+	posx = COOP_LBL_X;
+	posy = COOP_Y0 + COOP_DY * 0;
+	dimx = COOP_LBL_DX;
+	dimy = COOP_ROW_DY;
+	onselaction[0] = SEL_ACTION_UNDEF;
+	flags = flags | IT_EFFECTS_NEXT;
+	userString[2] = "Your guild"; userString[3] = "Left/right: your camp. Same guild = team, the other guilds are enemies.";
+};
+
+instance MENUITEM_COOPFUN_GILDE_CHOICE(C_MENU_ITEM_DEF)
+{
+	backpic = MENU_CHOICE_BACK_PIC;
+	type = MENU_ITEM_CHOICEBOX;
+	text[0] = "Miliz (Kaserne)|Söldner (Onars Hof)|Novize (Kloster)|Bandit (Turm)";
+	fontname = MENU_FONT_SMALL;
+	posx = COOP_VAL_X;
+	posy = COOP_Y0 + COOP_DY * 0 + 30;
+	dimx = 3400;
+	dimy = MENU_CHOICE_DY;
+	onchgsetoption = "coopFunGilde";
+	onchgsetoptionsection = "GOTHICCOOP";
+	flags = flags & ~IT_SELECTABLE;
+	flags = flags | IT_TXT_CENTER;
+};
+
+instance MENUITEM_COOPFUN_INFO1(C_MENU_ITEM_DEF)
+{
+	fontname = MENU_FONT_SMALL;
+	text[0] = "Ohne Story und ohne NPCs der Geschichte - du startest in Kapitel 1 in deinem Lager.";
+	type = MENU_ITEM_TEXT;
+	posx = 400;
+	posy = COOP_Y0 + COOP_DY * 2;
+	dimx = 7392;
+	dimy = 330;
+	flags = IT_CHROMAKEYED | IT_TRANSPARENT | IT_TXT_CENTER;
+	userString[2] = "No story and no story NPCs - you start in chapter 1 in your camp.";
+};
+
+instance MENUITEM_COOPFUN_INFO2(C_MENU_ITEM_DEF)
+{
+	fontname = MENU_FONT_SMALL;
+	text[0] = "Im Lager: Händler mit unendlich Gold (kauft Felle, lehrt Attribute und Kampf) und 5 Begleiter.";
+	type = MENU_ITEM_TEXT;
+	posx = 400;
+	posy = COOP_Y0 + COOP_DY * 3;
+	dimx = 7392;
+	dimy = 330;
+	flags = IT_CHROMAKEYED | IT_TRANSPARENT | IT_TXT_CENTER;
+	userString[2] = "In the camp: a trader with endless gold (buys furs, teaches attributes and combat) and 5 companions.";
+};
+
+instance MENUITEM_COOPFUN_INFO3(C_MENU_ITEM_DEF)
+{
+	fontname = MENU_FONT_SMALL;
+	text[0] = "Monster spawnen immer wieder - EP, Gold und Felle farmen.";
+	type = MENU_ITEM_TEXT;
+	posx = 400;
+	posy = COOP_Y0 + COOP_DY * 4;
+	dimx = 7392;
+	dimy = 330;
+	flags = IT_CHROMAKEYED | IT_TRANSPARENT | IT_TXT_CENTER;
+	userString[2] = "Monsters keep respawning - farm XP, gold and furs.";
+};
+
+instance MENUITEM_COOPFUN_INFO4(C_MENU_ITEM_DEF)
+{
+	fontname = MENU_FONT_SMALL;
+	text[0] = "Der Boss an der Taverne trägt den Kapitelstein: benutzen = nächstes Kapitel, bessere Ware (bis Kapitel 6).";
+	type = MENU_ITEM_TEXT;
+	posx = 400;
+	posy = COOP_Y0 + COOP_DY * 5;
+	dimx = 7392;
+	dimy = 330;
+	flags = IT_CHROMAKEYED | IT_TRANSPARENT | IT_TXT_CENTER;
+	userString[2] = "The boss at the tavern carries the chapter stone: use it = next chapter, better wares (up to chapter 6).";
+};
+
+instance MENUITEM_COOPFUN_INFO5(C_MENU_ITEM_DEF)
+{
+	fontname = MENU_FONT_SMALL;
+	text[0] = "Coop: der Host startet, jeder Mitspieler wählt hier vorher seine eigene Gilde. PvP ist an.";
+	type = MENU_ITEM_TEXT;
+	posx = 400;
+	posy = COOP_Y0 + COOP_DY * 6;
+	dimx = 7392;
+	dimy = 330;
+	flags = IT_CHROMAKEYED | IT_TRANSPARENT | IT_TXT_CENTER;
+	userString[2] = "Coop: the host starts, every player picks their own guild here first. PvP is on.";
+};
+
+instance MENUITEM_COOPFUN_START(C_MENU_ITEM_DEF)
+{
+	backpic = MENU_ITEM_BACK_PIC;
+	text[0] = "Fun-Spiel starten";
+	text[1] = "Neues Fun-Spiel. Als Host mit Mitspieler: erst die COOP-Schwierigkeit, dann starten alle.";
+	posx = COOPHUB_X;
+	posy = 5450;
+	dimx = COOPHUB_DX;
+	dimy = COOPHUB_DY;
+	onselaction[0] = SEL_ACTION_CLOSE;
+	onselaction_s[0] = "COOP_FUN_NEW_GAME";
+	flags = flags | IT_TXT_CENTER;
+	userString[2] = "Start fun game"; userString[3] = "New fun game. As host with players: first the COOP difficulty, then everyone starts.";
+};
+
+instance MENUITEM_COOPFUN_BACK(C_MENU_ITEM_DEF)
+{
+	backpic = MENU_ITEM_BACK_PIC;
+	text[0] = "ZURÜCK";
+	text[1] = "Zurück zum COOP-Menü.";
+	posx = COOPHUB_X;
+	posy = 5920;
+	dimx = COOPHUB_DX;
+	dimy = COOPHUB_DY;
+	onselaction[0] = SEL_ACTION_BACK;
+	flags = flags | IT_TXT_CENTER;
+	userString[2] = "BACK"; userString[3] = "Back to the COOP menu.";
+};
+
+instance MENUITEM_COOPFUN_VERSION(C_MENU_ITEM_DEF)
+{
+	fontname = MENU_FONT_SMALL;
+	text[0] = "GothicCoop";
+	type = MENU_ITEM_TEXT;
+	posx = 5300;
+	posy = 150;
+	dimx = 2800;
+	dimy = 300;
 	flags = IT_CHROMAKEYED | IT_TRANSPARENT | IT_TXT_CENTER;
 };

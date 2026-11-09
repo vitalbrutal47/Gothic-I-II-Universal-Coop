@@ -189,6 +189,7 @@ def main():
         ('system/Autorun/COOP_MENU.D', os.path.join(a.scripts, 'COOP_MENU.D')),
         ('system/Autorun/PC_MULTIPLAYER_HERO.D', os.path.join(a.scripts, 'PC_MULTIPLAYER_HERO.D')),
         ('system/Autorun/COOP_ITEMS.D', os.path.join(a.scripts, 'COOP_ITEMS.D')),   # u12
+        ('system/Autorun/COOP_FUN.D', os.path.join(a.scripts, 'COOP_FUN.D')),       # u203: Fun-Modus
         ('system/GothicCoopConfig.json', os.path.join(a.scripts, 'GothicCoopConfig.json')),
         ('system/GothicCoopMod.vorlage.json', os.path.join(a.scripts, 'GothicCoopMod.vorlage.json')),   # u194 (P196)
         ('system/steam_api.dll', pfade.STEAM_API),

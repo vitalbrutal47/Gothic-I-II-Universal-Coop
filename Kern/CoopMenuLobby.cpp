@@ -362,6 +362,7 @@ namespace GOTHIC_ENGINE {
                 return;
             }
             Lobby.ngAct = act;
+            CoopFunFromHost(e.contains("fun") && e["fun"].is_number() && e["fun"].get<int>() != 0);   // u203
             Lobby.ngRun = e.contains("run") && e["run"].is_string() ? e["run"].get<std::string>() : std::string();   // v93: Durchlauf
             if (Lobby.ngRun.find_first_of("\\/:*?\"<>|") != std::string::npos || Lobby.ngRun.find("..") != std::string::npos)
                 Lobby.ngRun.clear();
@@ -734,6 +735,14 @@ namespace GOTHIC_ENGINE {
     static bool LobbyHandleSelAction(zCMenu* menu, int action, const zSTRING& s, int& result) {
         const std::string arg = LobbyUpper(s);
         result = 0;
+        // u203: Fun-Modus (CoopFun.cpp) - "Fun-Spiel starten" laeuft als NEW_GAME weiter, ein normales neues Spiel loescht den Merker
+        if (CoopFunMenuAction(menu, action, arg, result, ClientThread && !ServerThread && Lobby.allowNewGame))
+            return true;
+        if (action == SEL_ACTION_CLOSE && arg == "COOP_FUN_NEW_GAME") {   // verbundener Mitspieler: der Host startet
+            LobbyNote(CoopTr("Verbunden: das Fun-Spiel startet der Host (du startest mit, deine Gilde gilt) - oder erst \"Verbindung trennen\".",
+                "Connected: the host starts the fun game (you join in with your guild) - or \"Disconnect\" first."), menu);
+            return true;
+        }
         if (IngameLoadOwn && action == SEL_ACTION_CLOSE && (arg == "SAVEGAME_LOAD" || arg == "OTHELLO_SAVEGAME_LOAD")) {
             IngameLoadOwn = false;   // u91: unser Schliessen zum Laden (CoopIngameMenuLoadPulse) - Gothic laedt
             LobbyLog("im Spiel: Men" COOP_UE " schlie" "\xDF" "t, Gothic l" COOP_AE "dt Slot %d", gameMan && gameMan->menu_load_savegame ? (int)gameMan->menu_load_savegame->m_selSlot : -1);
@@ -946,6 +955,7 @@ namespace GOTHIC_ENGINE {
         j["op"] = "newgame";
         j["act"] = act;
         j["run"] = run;
+        j["fun"] = CoopFunArmed ? 1 : 0;   // u203: Fun-Modus - der Mitspieler startet ebenfalls als Fun-Spiel
         LobbySend(j);
         Lobby.loading = true;
         CoopNewGameBegin(true, run);

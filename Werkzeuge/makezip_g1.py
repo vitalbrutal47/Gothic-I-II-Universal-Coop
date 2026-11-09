@@ -66,11 +66,14 @@ den passenden nach system\\Autorun (auch wenn Othello spaeter installiert oder e
 """
 
 SKRIPTE = ('COOP_MENU.D', 'COOP_ITEMS.D', 'PC_MULTIPLAYER_HERO.D')
+OPTIONAL = ('COOP_FUN.D',)   # u203: Fun-Modus (nur Gothic 2)
 
 
 def store_entries(saetze):
     """u195 (P204): Skriptsaetze nach system/GothicCoop/Skripte/<Satz>/ - Quelle der Skript-Weiche (CoopCore.cpp)"""
-    return [('system/GothicCoop/Skripte/%s/%s' % (satz, s), os.path.join(pfade.SKRIPTE[satz], s)) for satz in saetze for s in SKRIPTE]
+    # u203: COOP_FUN.D (Fun-Modus) gibt es nur im Satz g2 - optionale Dateien nur, wenn der Satz sie hat
+    return [('system/GothicCoop/Skripte/%s/%s' % (satz, s), os.path.join(pfade.SKRIPTE[satz], s)) for satz in saetze for s in SKRIPTE + OPTIONAL
+            if s in SKRIPTE or os.path.exists(os.path.join(ROOT, pfade.SKRIPTE[satz], s))]
 
 
 def sha16(data):

@@ -202,7 +202,11 @@ namespace GOTHIC_ENGINE {
         // Getroffenen melden, er entscheidet und rechnet; PvP aus: verwerfen.
         if ((ServerThread || ClientThread) && !IsCoopPaused && _this && _this != player && player && d.pNpcAttacker == player &&
             PlayerNpcs.count(_this)) {
-            if (CoopRulePvp())
+            // u203: Fun-Modus - PvP immer an, aber nicht gegen die eigene Gilde (Figur traegt die Gilde des Mitspielers, SYNC_ARMOR "gu")
+            const bool fun = CoopFunActive();
+            if (fun && _this->guild == player->guild)
+                return;
+            if (CoopRulePvp() || fun)
                 CoopPvpReport(_this, d);
             return;
         }

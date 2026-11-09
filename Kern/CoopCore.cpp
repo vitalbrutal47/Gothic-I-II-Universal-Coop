@@ -9,7 +9,7 @@ namespace GOTHIC_ENGINE {
     // OthelloCompatLog/DiagSeconds nicht (Plan Phase 1, Schritt 1). Hier steht nur engine-neutraler Code (Windows-Aufrufe,
     // keine Engine-Stelle); Othello-Eigenes bleibt in OthelloCompat.cpp.
 
-#define COOP_FASSUNG "u202-pvp1"   // 09.11.2026: Bogen/Armbrust des Helden wieder (Schuss-Haken); 08.11.: 3-4 Spieler (Geister-Verfolgungspunkt, Lobby-Anzeige, Hinweis anderer Spielstand); 07.11.: PvP (Fork vitalbrutal47)
+#define COOP_FASSUNG "u203-fun1"   // 09.11.2026: Fun-Modus (COOP > Fun-Modus, COOP_FUN.D); Bogen/Armbrust des Helden wieder (Schuss-Haken); Bogen/Armbrust des Helden wieder (Schuss-Haken); 08.11.: 3-4 Spieler (Geister-Verfolgungspunkt, Lobby-Anzeige, Hinweis anderer Spielstand); 07.11.: PvP (Fork vitalbrutal47)
 
     // Auswahl je Engine, z. B. Adressen: COOP_ENGINE_SWITCH(G1, G1A, G2, G2A). ENGINE wird erst an der Stelle des Gebrauchs
     // eingesetzt - in Mehr-Engine-Builds (MP x2/x4) bindet Interface.cpp Sources.h je Engine neu ein.
@@ -403,7 +403,7 @@ namespace GOTHIC_ENGINE {
     // ersetzt; eine fehlende kommt dazu (wirkt erst beim naechsten Start - Union hat seine Liste schon); eine eigene oder andere
     // Fassung bleibt (Hinweis im Log). Ohne den Ordner (aeltere Installation, Testinstanz) und im Weltprozess tut sie nichts.
     // Geschrieben wird ueber eine neue Datei und Umbenennen (eine harte Verknuepfung auf die alte Datei bleibt unberuehrt).
-    static const char* const CoopScriptSetFiles[] = { "COOP_MENU.D", "COOP_ITEMS.D", "PC_MULTIPLAYER_HERO.D" };
+    static const char* const CoopScriptSetFiles[] = { "COOP_MENU.D", "COOP_ITEMS.D", "PC_MULTIPLAYER_HERO.D", "COOP_FUN.D" };   // u203: Fun-Modus (nur Satz g2)
 
     static bool CoopReadWholeFile(const std::string& path, std::string& out) {
         out.clear();

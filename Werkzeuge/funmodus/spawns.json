@@ -1,0 +1,802 @@
+{
+"NW_CITY_SHEEP_SPAWN_01": [
+"City_01",
+"Sheep",
+0
+],
+"NW_CASTLEMINE_TROLL_08": [
+"City_01",
+"Troll",
+6
+],
+"NW_CASTLEMINE_TROLL_07": [
+"City_01",
+"Troll",
+6
+],
+"FP_ROAM_CASTLEMINE2_01": [
+"City_01",
+"Skeleton",
+4
+],
+"FP_ROAM_CASTLEMINE2_02": [
+"City_01",
+"Skeleton",
+4
+],
+"FP_ROAM_CASTLEMINE2_03": [
+"City_01",
+"Skeleton",
+4
+],
+"FP_ROAM_CASTLEMINE2_04": [
+"City_01",
+"Skeleton",
+4
+],
+"FP_ROAM_CASTLEMINE2_05": [
+"City_01",
+"Skeleton",
+4
+],
+"FP_ROAM_CASTLEMINE2_06": [
+"City_01",
+"Skeleton",
+4
+],
+"FP_ROAM_CASTLEMINE2_07": [
+"City_01",
+"Skeleton",
+4
+],
+"FP_ROAM_CASTLEMINE2_09": [
+"City_01",
+"Zombie01",
+4
+],
+"FP_ROAM_CASTLEMINE2_10": [
+"City_01",
+"Zombie02",
+4
+],
+"FP_ROAM_CASTLEMINE2_11": [
+"City_01",
+"Zombie03",
+4
+],
+"FP_ROAM_CASTLEMINE2_12": [
+"City_01",
+"Zombie04",
+4
+],
+"FP_ROAM_CASTLEMINE2_13": [
+"City_01",
+"Zombie01",
+4
+],
+"NW_CASTLEMINE_13": [
+"City_01",
+"Minecrawler",
+3
+],
+"NW_CASTLEMINE_10": [
+"City_01",
+"MinecrawlerWarrior",
+4
+],
+"NW_CASTLEMINE_12": [
+"City_01",
+"Minecrawler",
+3
+],
+"NW_CASTLEMINE_06": [
+"City_01",
+"MinecrawlerWarrior",
+4
+],
+"FP_ROAM_NW_BIGFARMFORESTCAVE_01": [
+"City_01",
+"Gobbo_Black",
+2
+],
+"FP_ROAM_NW_BIGFARMFORESTCAVE_02": [
+"City_01",
+"Gobbo_Warrior",
+3
+],
+"FP_ROAM_NW_BIGFARMFORESTCAVE_03": [
+"City_01",
+"Gobbo_Black",
+2
+],
+"FP_ROAM_NW_BIGFARMFORESTCAVE_04": [
+"City_01",
+"Gobbo_Black",
+2
+],
+"FP_ROAM_BIGFARM_LAKE_CAVE_02": [
+"City_01",
+"Gobbo_Green",
+2
+],
+"FP_ROAM_BIGFARM_LAKE_CAVE_07": [
+"City_01",
+"Gobbo_Black",
+2
+],
+"FP_ROAM_BIGFARM_LAKE_CAVE_08": [
+"City_01",
+"Gobbo_Green",
+2
+],
+"FP_ROAM_BIGFARM_LAKE_CAVE_10": [
+"City_01",
+"Gobbo_Green",
+2
+],
+"FP_ROAM_BIGFARM_LAKE_CAVE_11": [
+"City_01",
+"Gobbo_Black",
+2
+],
+"FP_ROAM_BIGFARM_LAKE_CAVE_13": [
+"City_01",
+"Gobbo_Green",
+2
+],
+"FP_ROAM_NW_BIGFARMFORESTCAVE_05": [
+"City_01",
+"Gobbo_Green",
+2
+],
+"FP_ROAM_NW_BIGFARMFORESTCAVE_07": [
+"City_01",
+"Gobbo_Green",
+2
+],
+"FP_ROAM_NW_BIGFARMFORESTCAVE_08": [
+"City_01",
+"Gobbo_Green",
+2
+],
+"FP_ROAM_NW_BIGFARMFORESTCAVE_10": [
+"City_01",
+"Gobbo_Green",
+2
+],
+"FP_ROAM_BIGFARM_LAKE_CAVE_01": [
+"City_01",
+"Gobbo_Green",
+2
+],
+"FP_ROAM_BIGFARM_LAKE_CAVE_03": [
+"City_01",
+"Gobbo_Green",
+2
+],
+"FP_ROAM_BIGFARM_LAKE_CAVE_04": [
+"City_01",
+"Gobbo_Green",
+2
+],
+"FP_ROAM_BIGFARM_LAKE_CAVE_05": [
+"City_01",
+"Gobbo_Green",
+2
+],
+"FP_ROAM_BIGFARM_LAKE_CAVE_06": [
+"City_01",
+"Gobbo_Green",
+2
+],
+"NW_BIGFARM_LAKE_MONSTER_BLOODFLY": [
+"City_01",
+"Bloodfly",
+1
+],
+"NW_TAVERNE_TROLLAREA_MONSTER_03_01M1": [
+"City_01",
+"Giant_Bug",
+1
+],
+"NW_SAGITTA_MOREMONSTER_01": [
+"City_01",
+"Wolf",
+1
+],
+"NW_SAGITTA_MOREMONSTER_03": [
+"City_01",
+"Giant_Bug",
+1
+],
+"NW_FARM4_WOOD_NEARPEASANT7": [
+"City_01",
+"Bloodfly",
+1
+],
+"NW_FARM4_WOOD_NEARPEASANT2_14": [
+"City_01",
+"Bloodfly",
+1
+],
+"NW_FARM4_WOOD_NEARPEASANT2_10": [
+"City_01",
+"Bloodfly",
+1
+],
+"NW_FARM4_WOOD_NEARPEASANT2_8": [
+"City_01",
+"Wolf",
+1
+],
+"NW_FARM4_WOOD_NEARPEASANT2_7": [
+"City_01",
+"Scavenger",
+0
+],
+"NW_FARM4_WOOD_NEARPEASANT2_12": [
+"City_01",
+"Giant_Bug",
+1
+],
+"NW_FARM4_WOOD_MONSTER_MORE_02": [
+"City_01",
+"Gobbo_skeleton",
+3
+],
+"NW_FARM4_WOOD_MONSTER_MORE_01": [
+"City_01",
+"Giant_Bug",
+1
+],
+"NW_FARM4_WOOD_MONSTER_N_3": [
+"City_01",
+"Giant_Bug",
+1
+],
+"NW_FARM4_WOOD_MONSTER_N_2": [
+"City_01",
+"Giant_Bug",
+1
+],
+"NW_BIGFARM_FOREST_02": [
+"City_01",
+"Giant_Bug",
+1
+],
+"NW_CRYPT_MONSTER08": [
+"City_01",
+"Gobbo_skeleton",
+3
+],
+"NW_CRYPT_MONSTER02": [
+"City_01",
+"Gobbo_skeleton",
+3
+],
+"NW_CRYPT_MONSTER04": [
+"City_01",
+"Lesser_skeleton",
+3
+],
+"NW_CRYPT_MONSTER06": [
+"City_01",
+"Lesser_skeleton",
+3
+],
+"NW_BIGFARM_FOREST_03_NAVIGATION": [
+"City_01",
+"Keiler",
+2
+],
+"NW_FARM4_WOOD_NAVIGATION_09": [
+"City_01",
+"Keiler",
+2
+],
+"NW_CASTLEMINE_TROLL_05": [
+"City_01",
+"Wolf",
+1
+],
+"NW_BIGFARM_ALLEE_08_N": [
+"City_01",
+"Giant_Bug",
+1
+],
+"NW_BIGFARM_ALLEE_08_N_2": [
+"City_01",
+"Giant_Bug",
+1
+],
+"NW_BIGFARM_ALLEE_08_N_5": [
+"City_01",
+"Giant_Bug",
+1
+],
+"NW_BIGMILL_05": [
+"City_01",
+"Scavenger",
+0
+],
+"NW_BIGMILL_FARM3_03": [
+"City_01",
+"Scavenger",
+0
+],
+"NW_FARM3_BIGWOOD_02": [
+"City_01",
+"Scavenger",
+0
+],
+"NW_FARM3_BIGWOOD_03": [
+"City_01",
+"Keiler",
+2
+],
+"NW_FARM3_PATH_11_SMALLRIVER_02": [
+"City_01",
+"Lurker",
+2
+],
+"NW_FARM3_PATH_11_SMALLRIVER_04": [
+"City_01",
+"Lurker",
+2
+],
+"NW_FARM3_PATH_11_SMALLRIVER_08": [
+"City_01",
+"Scavenger",
+0
+],
+"NW_FARM3_PATH_11_SMALLRIVER_10": [
+"City_01",
+"Scavenger",
+0
+],
+"NW_FARM3_PATH_11_SMALLRIVER_17": [
+"City_01",
+"Lurker",
+2
+],
+"NW_FARM3_PATH_11_SMALLRIVER_20": [
+"City_01",
+"Lurker",
+2
+],
+"NW_FARM3_PATH_11_SMALLRIVER_24": [
+"City_01",
+"Bloodfly",
+1
+],
+"NW_FARM3_PATH_11_SMALLRIVERMID_03": [
+"City_01",
+"Lurker",
+2
+],
+"NW_FARM3_PATH_11_SMALLRIVERMID_02": [
+"City_01",
+"Lurker",
+2
+],
+"NW_FARM3_PATH_12_MONSTER_01": [
+"City_01",
+"Keiler",
+2
+],
+"NW_FARM3_PATH_12_MONSTER_03": [
+"City_01",
+"Keiler",
+2
+],
+"NW_FARM3_MOUNTAINLAKE_03": [
+"City_01",
+"Lurker",
+2
+],
+"NW_FARM3_MOUNTAINLAKE_MONSTER_01": [
+"City_01",
+"Lurker",
+2
+],
+"NW_BIGFARM_LAKE_03_MOVEMENT": [
+"City_01",
+"Keiler",
+2
+],
+"NW_BIGFARM_LAKE_03_MOVEMENT3": [
+"City_01",
+"Giant_Bug",
+1
+],
+"NW_BIGFARM_LAKE_03_MOVEMENT5": [
+"City_01",
+"Gobbo_skeleton",
+3
+],
+"NW_MAGECAVE_20": [
+"City_01",
+"Meatbug",
+0
+],
+"NW_MAGECAVE_23": [
+"City_01",
+"Minecrawler",
+3
+],
+"NW_MAGECAVE_27": [
+"City_01",
+"MinecrawlerWarrior",
+4
+],
+"NW_TROLLAREA_PATH_84": [
+"City_01",
+"Troll_Black",
+7
+],
+"NW_TROLLAREA_PATH_56": [
+"City_01",
+"Gobbo_Green",
+2
+],
+"FP_ROAM_TROLLAREA_SEA_01": [
+"City_01",
+"Bloodfly",
+1
+],
+"FP_ROAM_TROLLAREA_SEA_02": [
+"City_01",
+"Bloodfly",
+1
+],
+"FP_ROAM_TROLLAREA_SEA_03": [
+"City_01",
+"Bloodfly",
+1
+],
+"FP_ROAM_TROLLAREA_SEA_04": [
+"City_01",
+"Bloodfly",
+1
+],
+"FP_ROAM_RITUALFOREST_CAVE_05": [
+"City_01",
+"Giant_Rat",
+0
+],
+"FP_ROAM_RITUALFOREST_CAVE_07": [
+"City_01",
+"MinecrawlerWarrior",
+4
+],
+"FP_ROAM_RITUALFOREST_CAVE_08": [
+"City_01",
+"Skeleton",
+4
+],
+"FP_ROAM_RITUALFOREST_CAVE_09": [
+"City_01",
+"Skeleton",
+4
+],
+"FP_ROAM_RITUALFOREST_CAVE_11": [
+"City_01",
+"MinecrawlerWarrior",
+4
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_01": [
+"City_01",
+"Giant_Bug",
+1
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_05": [
+"City_01",
+"Snapper",
+3
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_09": [
+"City_01",
+"Snapper",
+3
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_14": [
+"City_01",
+"Giant_Rat",
+0
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_15": [
+"City_01",
+"Giant_Rat",
+0
+],
+"NW_TROLLAREA_RUINS_21": [
+"City_01",
+"FireWaran",
+5
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_21": [
+"City_01",
+"FireWaran",
+5
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_22": [
+"City_01",
+"Bloodfly",
+1
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_24": [
+"City_01",
+"Bloodfly",
+1
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_28": [
+"City_01",
+"Waran",
+4
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_29": [
+"City_01",
+"Waran",
+4
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_30": [
+"City_01",
+"Waran",
+4
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_10": [
+"City_01",
+"Shadowbeast",
+4
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_CAVE_01": [
+"City_01",
+"Gobbo_Black",
+2
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_CAVE_02": [
+"City_01",
+"Gobbo_Black",
+2
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_CAVE_03": [
+"City_01",
+"Gobbo_Black",
+2
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_CAVE_05": [
+"City_01",
+"Gobbo_Black",
+2
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_CAVE_06": [
+"City_01",
+"Gobbo_Black",
+2
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_CAVE_07": [
+"City_01",
+"Gobbo_Black",
+2
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_CAVE_09": [
+"City_01",
+"Gobbo_Black",
+2
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_CAVE_10": [
+"City_01",
+"Gobbo_Warrior",
+3
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_CAVE_11": [
+"City_01",
+"Gobbo_Black",
+2
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_CAVE_12": [
+"City_01",
+"Gobbo_Black",
+2
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_CAVE_14": [
+"City_01",
+"Gobbo_Black",
+2
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_CAVE_16": [
+"City_01",
+"Minecrawler",
+3
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_CAVE_21": [
+"City_01",
+"Minecrawler",
+3
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_CAVE_23": [
+"City_01",
+"Minecrawler",
+3
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_CAVE_20": [
+"City_01",
+"MinecrawlerWarrior",
+4
+],
+"FP_ROAM_NW_TROLLAREA_RUINS_CAVE_26": [
+"City_01",
+"MinecrawlerWarrior",
+4
+],
+"NW_TROLLAREA_PORTALTEMPEL_15_A": [
+"City_01",
+"Gobbo_Skeleton",
+3
+],
+"NW_TROLLAREA_PORTALTEMPEL_15_B": [
+"City_01",
+"Gobbo_Skeleton",
+3
+],
+"NW_TROLLAREA_PORTALTEMPEL_17_A": [
+"City_01",
+"Gobbo_Skeleton",
+3
+],
+"NW_TROLLAREA_PORTALTEMPEL_12": [
+"City_01",
+"Giant_Rat",
+0
+],
+"NW_TROLLAREA_PORTALTEMPEL_09": [
+"City_01",
+"Giant_Rat",
+0
+],
+"NW_TROLLAREA_PORTALTEMPEL_08": [
+"City_01",
+"Giant_Rat",
+0
+],
+"NW_TROLLAREA_PORTALTEMPEL_06": [
+"City_01",
+"Giant_Rat",
+0
+],
+"NW_TROLLAREA_PATH_66_MONSTER": [
+"City_01",
+"Wolf",
+1
+],
+"NW_TROLLAREA_PLANE_07": [
+"City_01",
+"Scavenger",
+0
+],
+"NW_TROLLAREA_NOVCHASE_01": [
+"City_01",
+"Molerat",
+0
+],
+"NW_TROLLAREA_PATH_38_MONSTER": [
+"City_01",
+"Bloodfly",
+1
+],
+"NW_TROLLAREA_PLANE_04": [
+"City_01",
+"Scavenger",
+0
+],
+"NW_TROLLAREA_RUINS_17": [
+"City_01",
+"Scavenger",
+0
+],
+"NW_TROLLAREA_RUINS_14": [
+"City_01",
+"Gobbo_Black",
+2
+],
+"NW_TROLLAREA_RUINS_32": [
+"City_01",
+"Waran",
+4
+],
+"NW_TROLLAREA_PATH_71_MONSTER": [
+"City_01",
+"Lurker",
+2
+],
+"NW_TROLLAREA_PATH_71_MONSTER2": [
+"City_01",
+"Scavenger",
+0
+],
+"NW_TROLLAREA_PATH_15_MONSTER": [
+"City_01",
+"Scavenger",
+0
+],
+"NW_TROLLAREA_RITUALFOREST_04_MONSTER": [
+"City_01",
+"Molerat",
+0
+],
+"NW_TROLLAREA_RITUALPATH_04": [
+"City_01",
+"Scavenger",
+0
+],
+"NW_TROLLAREA_RITUAL_13": [
+"City_01",
+"Gobbo_Skeleton",
+3
+],
+"NW_TROLLAREA_RITUALPATH_032": [
+"City_01",
+"Bloodfly",
+1
+],
+"NW_TROLLAREA_PATH_22_MONSTER": [
+"City_01",
+"Scavenger",
+0
+],
+"NW_TROLLAREA_RITUALFOREST_06_MONSTER": [
+"City_01",
+"Molerat",
+0
+],
+"NW_TROLLAREA_PATH_08": [
+"City_01",
+"Lurker",
+2
+],
+"NW_TROLLAREA_BRIGDE_05": [
+"City_01",
+"Giant_Rat",
+0
+],
+"NW_TROLLAREA_TROLLROCKCAVE_03": [
+"City_01",
+"Skeleton",
+4
+],
+"NW_TROLLAREA_TROLLROCKCAVE_05": [
+"City_01",
+"Skeleton",
+4
+],
+"NW_TROLLAREA_TROLLLAKECAVE_03A": [
+"City_01",
+"Meatbug",
+0
+],
+"NW_TROLLAREA_TROLLLAKECAVE_02": [
+"City_01",
+"Giant_Rat",
+0
+],
+"NW_TROLLAREA_TROLLLAKECAVE_08": [
+"City_01",
+"Gobbo_Warrior",
+3
+],
+"NW_TROLLAREA_TROLLLAKECAVE_09": [
+"City_01",
+"Gobbo_Green",
+2
+],
+"NW_TROLLAREA_RIVERSIDECAVE_02": [
+"City_01",
+"Shadowbeast",
+4
+],
+"NW_TROLLAREA_RIVERSIDECAVE_07": [
+"City_01",
+"Shadowbeast",
+4
+]
+}

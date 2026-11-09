@@ -326,11 +326,22 @@ class Parser:
         if self.at("("):
             self.next()
             n = 0
+            bare = []   # Argument ist ein einzelner Name (Gothics Parser verlangt das fuer Instanz-Parameter)
             while not self.at(")"):
+                i0 = self.i
                 self.expr(); n += 1
+                bare.append(self.i - i0 == 1 and self.t[i0][0] == "id" or
+                            (self.i - i0 >= 3 and all(t[0] == "id" or t[1] in ".[]" or t[0] == "int" for t in self.t[i0:self.i])
+                             and "(" not in [t[1] for t in self.t[i0:self.i]]))
                 if self.at(","):
                     self.next()
             self.expect(")")
+            sf = self.db.get(x[1].lower())
+            if self.check and sf and sf.kind in ("func", "func_ext") and sf.params and len(sf.params) == n:
+                for k, pt in enumerate(sf.params):
+                    c = self.db.get(pt)
+                    if c and c.kind == "class" and not bare[k]:
+                        self.err(x[2], f"{x[1]}: Argument {k + 1} ({pt}) muss ein Name sein, kein Ausdruck (Gothics Parser: 'expected')")
             if not self.check and x[1].lower() not in self.db and (self.locals is None or x[1].lower() not in self.locals):
                 IMPLICIT.setdefault(x[1].lower(), set()).add(n)
                 return

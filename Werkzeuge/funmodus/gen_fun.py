@@ -4,7 +4,7 @@
 Quelle der Monster: die Original-Skripte (Prototyp + Rumpf der Original-Instanz werden uebernommen), Spawnpunkte aus
 STARTUP_NewWorld_Part_City_01 (spawns.json). Ausgabe Windows-1252.
 """
-import json, os, re, sys
+import json, math, os, re, sys
 
 SCRIPTS = sys.argv[1] if len(sys.argv) > 1 else "g2scripts/_work/Data/Scripts/Content"   # Original-Skripte: github.com/VaanaCZ/gothic-2-addon-scripts (Zweig 2.6-DE)
 OUT = sys.argv[2] if len(sys.argv) > 2 else os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "Gothic II", "Skripte", "COOP_FUN.D")
@@ -70,14 +70,33 @@ for wp, inst, tier in cand:
         continue
     _groups.setdefault("_".join(wp.split("_")[:3]), []).append((wp, inst, min(tier, 2)))
 SLOTS = []
-# u203c (Nutzer: "die mobs sollen mehr ausgeglichen verteilt werden"): je Gebiet hoechstens 4 Punkte, gleichmaessig aus der Liste
-# gezogen (bisher alle - dichte Haufen in Hoehlen und an Freipunkten, z. B. 36 an FP_ROAM_NW, 12 Skelette in einer Gruft), dafuer
-# 3 Monster je Punkt; Startstufe hoechstens 2, Stufe steigt mit dem Kapitel
-for _k, _v in _groups.items():
-    if len(_v) > 6:   # u203d: 6 statt 4 je Gebiet (die Lager-Punkte fallen weg)
-        _step = len(_v) / 6.0
-        _v = [_v[int(i * _step)] for i in range(6)]
-    SLOTS += _v
+# u205c (Nutzer: "mob naeher in die mitte"): Spawnpunkte nicht mehr aus den Original-Monsterpunkten, sondern Wegpunkte der Welt
+# (Werkzeuge/funmodus/wegpunkte_nw.json, aus NEWWORLD.ZEN gelesen) rund um die Kreuzung an der Taverne - die Mitte zwischen den
+# vier Lagern. Nah zuerst, mindestens 18 m Abstand untereinander, 50 m weg von jedem Lager, 25 m weg von den Eroberungspunkten und dem Boss,
+# keine Wegpunkte in Haeusern. Startstufe: innen 2, Mitte 1, aussen 0 (steigt mit dem Kapitel).
+_WP = json.load(open(os.path.join(HERE, "wegpunkte_nw.json")))
+_MITTE = _WP["NW_TAVERNE_CROSS"]
+_LAGER = [_WP[g] for g in ("NW_CITY_HABOUR_KASERN_CENTRE_01", "NW_BIGFARM_HOUSE_OUT_05", "NW_MONASTERY_PLACE_03",
+                           "NW_CASTLEMINE_TOWER_CAMPFIRE_01")]
+_PUNKTE = [_WP[g] for g in ("NW_FARM1_OUT_01", "NW_TAVERNE_OUT_01", "NW_FARM3_HOUSE", "NW_FARM4_04", "NW_TAVERNE_CROSS")]
+def _d2(a, b):
+    return math.hypot(a[0] - b[0], a[2] - b[2])
+_BAD = ("NW_CITY", "NW_BIGFARM", "NW_MONASTERY", "NW_CASTLEMINE", "NW_TROLLAREA_NOVCHASE", "NW_MAGECAVE", "NW_XARDAS",
+        "NW_LIGHTHOUSE", "NW_PASS")
+_BADIN = ("HOUSE", "INSIDE", "_IN_", "INHOUSE", "ROOM", "BED", "STAIRS", "KELLER", "CELLAR", "TAVERNE_IN", "_UP_", "TOWER",
+          "BENCH", "THRONE", "WATER", "LEVELCHANGE")
+_cand = sorted((n for n, p in _WP.items() if not n.startswith(_BAD) and not any(x in n for x in _BADIN)
+                and min(_d2(p, l) for l in _LAGER) > 5000 and min(_d2(p, q) for q in _PUNKTE) > 2500),
+               key=lambda n: _d2(_WP[n], _MITTE))
+_chosen = []
+for n in _cand:
+    if len(_chosen) >= 70:
+        break
+    if all(_d2(_WP[n], _WP[c]) > 1800 for c in _chosen):
+        _chosen.append(n)
+for n in _chosen:
+    _d = _d2(_WP[n], _MITTE)
+    SLOTS.append((n, "Mitte %d m" % (_d / 100), 2 if _d < 9000 else (1 if _d < 16000 else 0)))
 SLOTS = [x for x in SLOTS for _ in range(3)]   # je Punkt drei Monster (eigene Instanzen, damit jedes einzeln nachkommt)
 RESPAWN_TAKTE = 9   # Takte zu 10 s - 90 Sekunden nach dem Tod
 
@@ -267,7 +286,7 @@ w("};")
 w()
 for si, (wp, orig, base) in enumerate(SLOTS):
     for t in range(base, min(7, base + 5) + 1):
-        kind = TIERS[t][si % 3]
+        kind = TIERS[t][(si // 3) % 3]   # u205c: alle drei Monster eines Punkts von derselben Art (greifen sich nicht an)
         proto, body = mon(kind)
         w(f"instance FUN_M{si:03d}_T{t} ({proto})")
         w("{")

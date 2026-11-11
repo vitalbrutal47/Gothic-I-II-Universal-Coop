@@ -310,24 +310,57 @@ namespace GOTHIC_ENGINE {
 #endif
     }
 
-    // Beim Laden/Weltwechsel und ohne Fun-Spiel: Gothics Belegung und Zielerfassung zurueck
-    void CoopFunInputRestore() {
-        FunBindApply(0);
-#if ENGINE == Engine_G2A
-        if (FunFocusOrig >= 0.0f && oCNpcFocus::focuslist && oCNpcFocus::focuslist[FOCUS_RANGED])
-            oCNpcFocus::focuslist[FOCUS_RANGED]->n_range2 = FunFocusOrig;
-#endif
+    // u203-fun7: Zielerfassung nur ueber oCNpcFocus::focus (aktueller Modus, Zeiger-Variable). fun6 las oCNpcFocus::focuslist
+    // jedes Bild - das ist in Gothic ein Feld, kein Zeiger: Zugriffsfehler in GameLoop_End. Jetzt nur bei Zustandswechsel,
+    // nur solange der Bogen gezogen ist (dann ist focus der Fernkampf-Modus), abgesichert gegen Zugriffsfehler.
+    static oCNpcFocus* FunFocusObj = NULL;
+    static bool FunFocusIsOff = false;
+
+    static bool FunFocusSet(oCNpcFocus* f, float v, float* old) {
+        __try {
+            if (old)
+                *old = f->n_range2;
+            f->n_range2 = v;
+            return true;
+        }
+        __except (EXCEPTION_EXECUTE_HANDLER) {
+            return false;
+        }
     }
 
     static void CoopFunFocusOff(bool off) {
 #if ENGINE == Engine_G2A
-        if (!oCNpcFocus::focuslist || !oCNpcFocus::focuslist[FOCUS_RANGED])
+        if (off == FunFocusIsOff)
             return;
-        oCNpcFocus* f = oCNpcFocus::focuslist[FOCUS_RANGED];
-        if (FunFocusOrig < 0.0f)
-            FunFocusOrig = f->n_range2 > 1.0f ? f->n_range2 : 3500.0f;
-        f->n_range2 = off ? 1.0f : FunFocusOrig;
+        if (off) {
+            oCNpcFocus* f = oCNpcFocus::focus;
+            if (!f)
+                return;
+            float old = 0.0f;
+            if (!FunFocusSet(f, 1.0f, &old)) {
+                FunLog("Zielerfassung: Zugriff fehlgeschlagen - bleibt an");
+                FunFocusIsOff = true;   // nicht jedes Bild neu versuchen
+                FunFocusObj = NULL;
+                return;
+            }
+            FunFocusObj = f;
+            FunFocusOrig = old > 1.0f ? old : 3500.0f;
+            FunFocusIsOff = true;
+            FunLog("Zielerfassung aus (vorher %.0f cm)", FunFocusOrig);
+        }
+        else {
+            if (FunFocusObj && FunFocusOrig > 1.0f)
+                FunFocusSet(FunFocusObj, FunFocusOrig, NULL);
+            FunFocusObj = NULL;
+            FunFocusIsOff = false;
+        }
 #endif
+    }
+
+    // Beim Laden/Weltwechsel und ohne Fun-Spiel: Gothics Belegung und Zielerfassung zurueck
+    void CoopFunInputRestore() {
+        FunBindApply(0);
+        CoopFunFocusOff(false);
     }
 
     static bool FunKeyHeld(int l) {
@@ -417,8 +450,7 @@ namespace GOTHIC_ENGINE {
         if (bow)
             mode = zinput && zinput->GetMouseButtonPressedRight() ? 2 : 1;
         FunBindApply(mode);
-        if (active)
-            CoopFunFocusOff(bow);
+        CoopFunFocusOff(bow);
 #endif
     }
 

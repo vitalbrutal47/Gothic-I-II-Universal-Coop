@@ -198,7 +198,10 @@ namespace GOTHIC_ENGINE {
     // u203-fun9 (Nutzer: "freies Zielen mit Fadenkreuz an, Distanz 150 m, bei mehr Geschick weitere Meter, beim Zielen die Maus
     // bewegen koennen, automatisch Ziel anvisieren aus"): Gothics Tasten bleiben (keine Umbelegung wie in fun6), der Pfeil fliegt
     // zum Fadenkreuz. Maus waagerecht dreht den Helden, senkrecht hebt/senkt das Fadenkreuz (FunAimPitch, Grad, + = hoch).
-    static const bool FUN_FREIES_ZIELEN = true;
+    // u203-fun10: wieder aus - Nutzer nimmt das freie Zielen aus dem Workshop (FreeAiming, Ninja). Ausserdem war fun9 fehlerhaft:
+    // ai->targetNPC ohne AddRef gesetzt - oCAIArrow gibt das Ziel beim Aufraeumen frei, der NPC wurde zu frueh geloescht
+    // (Absturz in BuildGlobalNpcList).
+    static const bool FUN_FREIES_ZIELEN = false;
     static float FunAimPitch = 0.0f;
 
     void CoopFunFreeAim(oCItem* arrow, oCAIArrow* ai) {
@@ -263,7 +266,13 @@ namespace GOTHIC_ENGINE {
             if (ai->timeLeft < t)
                 ai->timeLeft = t;
             oCNpc* hitNpc = hitVob ? zDYNAMIC_CAST<oCNpc>(hitVob) : NULL;
-            ai->targetNPC = hitNpc;   // Ziel nur, wenn das Fadenkreuz auf einem NPC liegt
+            if (hitNpc != ai->targetNPC) {   // fun10: Verweiszaehler wie in der Engine
+                if (hitNpc)
+                    hitNpc->AddRef();
+                if (ai->targetNPC)
+                    ai->targetNPC->Release();
+                ai->targetNPC = hitNpc;
+            }   // Ziel nur, wenn das Fadenkreuz auf einem NPC liegt
         }
         if (logged++ < 30)
             FunLog("freies Zielen: Schuss auf %.0f m (Reichweite %.0f m, Tempo %.0f m/s)%s%s", len / 100.0f, range / 100.0f, speed / 100.0f,
@@ -581,9 +590,11 @@ namespace GOTHIC_ENGINE {
         const long long now = GetCurrentMs();
         CoopFunRespawnPulse(now);
         // fun9: Gothics Tasten bleiben; Zielerfassung aus, solange Bogen/Armbrust gezogen sind
-        CoopFunFocusOff(CoopFunAiming() && !player->IsDead());
-        CoopFunAimMouse();
-        CoopFunAimCross();
+        if (FUN_FREIES_ZIELEN) {
+            CoopFunFocusOff(CoopFunAiming() && !player->IsDead());
+            CoopFunAimMouse();
+            CoopFunAimCross();
+        }
         if (now < CoopFunNextTick)
             return;
         CoopFunNextTick = now + 10000;

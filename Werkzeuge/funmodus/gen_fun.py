@@ -181,14 +181,15 @@ GUILD_WARE = {
 
 # Bosse an der Taverne je Kapitel: Grundart, Name, Lebensfaktor (x10), Groesse
 BOSSES = [   # u203d (Nutzer: "die bosse doch mehr leben hinzufuegen aber schwaecher machen damit man laenger braucht"):
-    # Leben x10 (40 = 4-fach), Staerke (Schaden) x10 (6 = 60 %)
+    # Leben x100 (460 = 4,6-fach), Staerke (Schaden) x100 (48 = 48 %)
     # u205 (Nutzer: "die bosse wieder groesser machen von der statur"): groesser als zu Beginn (1.5/1.4/1.3)
-    ("Gobbo_Warrior", "Goblin-Häuptling", 40, "1.8", 6),
-    ("Razor", "Reißzahn der Taverne", 40, "1.7", 6),
-    ("Bloodhound", "Bluthund der Taverne", 40, "1.7", 6),
-    ("Shadowbeast", "Schattenfürst", 35, "1.6", 5),
-    ("FireWaran", "Feuerechse", 35, "1.7", 5),
-    ("Troll", "Bergtroll", 30, "1.35", 4),
+    # u205b (Nutzer: "die bosse 20 prozent schwaecher/schaden, 15 prozent mehr leben"): Werte jetzt x100
+    ("Gobbo_Warrior", "Goblin-Häuptling", 460, "1.8", 48),
+    ("Razor", "Reißzahn der Taverne", 460, "1.7", 48),
+    ("Bloodhound", "Bluthund der Taverne", 460, "1.7", 48),
+    ("Shadowbeast", "Schattenfürst", 403, "1.6", 40),
+    ("FireWaran", "Feuerechse", 403, "1.7", 40),
+    ("Troll", "Bergtroll", 345, "1.35", 32),
 ]
 BOSS_WP = "NW_TAVERNE_CROSS"
 
@@ -283,9 +284,9 @@ for k, (kind, bname, hpx10, scale, strx10) in enumerate(BOSSES, 1):
     w("{")
     w(body)
     w(f'\tname = "{bname}";')
-    w(f"\tattribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * {hpx10} / 10;")
+    w(f"\tattribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * {hpx10} / 100;")
     w("\tattribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];")
-    w(f"\tattribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] * {strx10} / 10;")
+    w(f"\tattribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] * {strx10} / 100;")
     w(f"\tMdl_SetModelScale(self, {scale}, {scale}, {scale});")
     w(f"\tCreateInvItems(self, ItMi_Gold, {250 * k});")
     if k < 6:

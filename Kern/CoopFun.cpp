@@ -195,8 +195,13 @@ namespace GOTHIC_ENGINE {
         return player && (player->fmode == 5 || player->fmode == 6);   // Bogen / Armbrust gezogen
     }
 
+    // u203-fun8 (Nutzer: "das freie zielen ist irgendwie muell, setzt das zurueck"): aus - Gothics eigenes Zielen.
+    static const bool FUN_FREIES_ZIELEN = false;
+
     void CoopFunFreeAim(oCItem* arrow, oCAIArrow* ai) {
 #if ENGINE == Engine_G2A
+        if (!FUN_FREIES_ZIELEN)
+            return;
         static int logged = 0;
         if (!arrow || !player || !CoopFunActive() || !ogame || !zCCamera::activeCam || !zCCamera::activeCam->connectedVob)
             return;
@@ -454,6 +459,41 @@ namespace GOTHIC_ENGINE {
 #endif
     }
 
+    // u203-fun8 (Nutzer: "mach das man beim zielen die maus bewegen kann"): Gothic dreht den Helden beim Zielen mit Bogen/Armbrust
+    // nicht mit der Maus (er bleibt aufs erfasste Ziel gerichtet). Solange gezielt wird, dreht GT den Helden um die waagerechte
+    // Mausbewegung; bewegt sich die Maus deutlich, wird das erfasste Ziel geloest - Gothic erfasst dann, was vor dem Helden ist.
+    static void CoopFunAimMouse() {
+#if ENGINE == Engine_G2A
+        static int logged = 0;
+        static float sens = -1.0f;
+        if (!zinput || !player || player->IsDead() || !CoopFunAiming() || player->inventory2.IsOpen())
+            return;
+        oCAniCtrl_Human* ac = player->anictrl;
+        if (!ac || !ac->IsAiming())
+            return;
+        if (sens < 0.0f) {
+            sens = zoptions ? zoptions->ReadReal("GAME", "mouseSensitivity", 0.5f) : 0.5f;
+            if (sens < 0.05f)
+                sens = 0.05f;
+            FunLog("Zielen mit Maus: an (Empfindlichkeit %.2f)", sens);
+        }
+        float mx = 0.0f, my = 0.0f, mz = 0.0f;
+        zinput->GetMousePos(mx, my, mz);
+        if (mx > -0.5f && mx < 0.5f)
+            return;
+        float deg = mx * sens * 0.35f;
+        if (deg > 20.0f)
+            deg = 20.0f;
+        if (deg < -20.0f)
+            deg = -20.0f;
+        player->RotateWorldY(deg);
+        if (mx > 3.0f || mx < -3.0f)
+            player->ClearFocusVob();
+        if (logged++ < 5)
+            FunLog("Zielen mit Maus: gedreht um %.1f Grad (Maus %.0f)", deg, mx);
+#endif
+    }
+
     // Fadenkreuz in der Bildmitte, solange Bogen oder Armbrust gezogen sind
     static void CoopFunCrosshair() {
         if (!screen || !CoopFunAiming() || !CoopFunAimHeld())
@@ -483,9 +523,13 @@ namespace GOTHIC_ENGINE {
         }
         const long long now = GetCurrentMs();
         CoopFunRespawnPulse(now);
-        CoopFunRangedControls(true);
-        CoopFunAimMove();
-        CoopFunCrosshair();
+        if (FUN_FREIES_ZIELEN) {
+            CoopFunRangedControls(true);
+            CoopFunAimMove();
+            CoopFunCrosshair();
+        }
+        else
+            CoopFunAimMouse();
         if (now < CoopFunNextTick)
             return;
         CoopFunNextTick = now + 10000;

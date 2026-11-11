@@ -589,6 +589,18 @@ namespace GOTHIC_ENGINE {
         }
         const long long now = GetCurrentMs();
         CoopFunRespawnPulse(now);
+        // u203-fun11 (Nutzer: "der Pfeil soll genauer zum Fadenkreuz fliegen"): FreeAiming (Workshop, Ninja) streut nach der
+        // Trefferchance des Helden (Bogen/Armbrust) - im Fun-Spiel immer 100 %, dann hoechstens ~10 cm Abweichung.
+        {
+            static int loggedAcc = 0;
+            if (!player->IsDead() && (player->hitChance[NPC_HITCHANCE_BOW] != 100 || player->hitChance[NPC_HITCHANCE_CROSSBOW] != 100)) {
+                if (loggedAcc++ < 3)
+                    FunLog("Treffsicherheit Bogen/Armbrust: %d/%d %% -> 100 %%", player->hitChance[NPC_HITCHANCE_BOW],
+                        player->hitChance[NPC_HITCHANCE_CROSSBOW]);
+                player->hitChance[NPC_HITCHANCE_BOW] = 100;
+                player->hitChance[NPC_HITCHANCE_CROSSBOW] = 100;
+            }
+        }
         // fun9: Gothics Tasten bleiben; Zielerfassung aus, solange Bogen/Armbrust gezogen sind
         if (FUN_FREIES_ZIELEN) {
             CoopFunFocusOff(CoopFunAiming() && !player->IsDead());

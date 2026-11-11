@@ -211,7 +211,15 @@ namespace GOTHIC_ENGINE {
         zVEC3 ray(dir.n[0] * range, dir.n[1] * range, dir.n[2] * range);
         zVEC3 target(from.n[0] + ray.n[0], from.n[1] + ray.n[1], from.n[2] + ray.n[2]);
         zCVob* hitVob = NULL;
-        if (zCWorld* w = ogame->GetGameWorld()) {
+        // u203e (Nutzer: "beim freien Zielen kann ich nicht anvisieren"): ist ein Ziel erfasst (Fokus, Reichweite jetzt wie der
+        // Schuss), fliegt der Pfeil genau dorthin - sonst zum Fadenkreuz
+        oCNpc* focusNpc = player->GetFocusNpc();
+        if (focusNpc && focusNpc != player && !focusNpc->IsDead()) {
+            target = focusNpc->GetPositionWorld();
+            target.n[1] += 40.0f;   // Brust statt Huefte
+            hitVob = focusNpc;
+        }
+        else if (zCWorld* w = ogame->GetGameWorld()) {
             // Strahl ab der Kamera; Held und Geschoss ignorieren (der Held steht vor der Kamera)
             const int flags = zTRACERAY_STAT_POLY | zTRACERAY_VOB_BBOX | zTRACERAY_VOB_IGNORE_NO_CD_DYN | zTRACERAY_POLY_IGNORE_TRANSP;
             zVEC3 f2(from.n[0] + dir.n[0] * 150.0f, from.n[1] + dir.n[1] * 150.0f, from.n[2] + dir.n[2] * 150.0f);
@@ -252,6 +260,88 @@ namespace GOTHIC_ENGINE {
 #endif
     }
 
+    // Reichweite der Zielerfassung fuer Fernkampf (Focus_Ranged, Gothic: 35 m) auf die Schussweite heben
+    static void CoopFunFocusRange() {
+#if ENGINE == Engine_G2A
+        if (!oCNpcFocus::focuslist)
+            return;
+        oCNpcFocus* f = oCNpcFocus::focuslist[FOCUS_RANGED];
+        if (!f)
+            return;
+        const float r = CoopFunRangedRange();
+        if (f->n_range2 != r) {
+            f->n_range2 = r;
+            if (f->max_range < r)
+                f->max_range = r;
+        }
+#endif
+    }
+
+    // u203e (Nutzer: "ich sollte beim Zielen mich auch bewegen koennen um das Ziel weiter im Visier zu behalten"): solange Gothic
+    // den Helden im Zielen haelt (oCAniCtrl_Human::IsAiming), schieben Vor/Zurueck/Seitwaerts-Tasten ihn langsam weiter (1,8 m/s,
+    // rueckwaerts und seitwaerts 1,4 m/s) - Waende halten ihn auf (Strahl auf Brusthoehe), der Boden wird nachgefuehrt (Strahl nach
+    // unten, Stufen bis 60 cm). Die Zielhaltung bleibt, ein erfasstes Ziel bleibt erfasst.
+    static void CoopFunAimMove() {
+#if ENGINE == Engine_G2A
+        if (!CoopFunAiming() || !zinput || !ztimer || !ogame)
+            return;
+        oCAniCtrl_Human* ac = player->GetAnictrl();
+        if (!ac || !ac->IsAiming())
+            return;
+        float fwd = 0.0f, side = 0.0f;
+        if (zinput->GetState(GAME_UP) > 0.0f)
+            fwd += 1.0f;
+        if (zinput->GetState(GAME_DOWN) > 0.0f)
+            fwd -= 1.0f;
+        if (zinput->GetState(GAME_STRAFELEFT) > 0.0f)
+            side -= 1.0f;
+        if (zinput->GetState(GAME_STRAFERIGHT) > 0.0f)
+            side += 1.0f;
+        if (fwd == 0.0f && side == 0.0f)
+            return;
+        float dt = ztimer->frameTimeFloat / 1000.0f;
+        if (dt <= 0.0f)
+            return;
+        if (dt > 0.1f)
+            dt = 0.1f;
+        zCWorld* w = ogame->GetGameWorld();
+        if (!w)
+            return;
+        zVEC3 at = player->GetAtVectorWorld();
+        zVEC3 rt = player->GetRightVectorWorld();
+        at.n[1] = 0.0f;
+        rt.n[1] = 0.0f;
+        zVEC3 mv(at.n[0] * fwd + rt.n[0] * side, 0.0f, at.n[2] * fwd + rt.n[2] * side);
+        const float ml = sqrtf(mv.n[0] * mv.n[0] + mv.n[2] * mv.n[2]);
+        if (ml < 0.001f)
+            return;
+        const float speed = fwd > 0.0f && side == 0.0f ? 180.0f : 140.0f;
+        mv.n[0] = mv.n[0] / ml * speed * dt;
+        mv.n[2] = mv.n[2] / ml * speed * dt;
+        const int flags = zTRACERAY_STAT_POLY | zTRACERAY_VOB_IGNORE | zTRACERAY_POLY_IGNORE_TRANSP;
+        const zVEC3 pos = player->GetPositionWorld();
+        // Wand? (Brusthoehe, 40 cm voraus)
+        const zVEC3 chest(pos.n[0], pos.n[1] + 40.0f, pos.n[2]);
+        const zVEC3 probe(mv.n[0] / (speed * dt) * 40.0f + mv.n[0], 0.0f, mv.n[2] / (speed * dt) * 40.0f + mv.n[2]);
+        if (w->TraceRayNearestHit(chest, probe, (zCVob*)player, flags) && w->traceRayReport.foundHit)
+            return;
+        // Boden jetzt und am neuen Ort
+        const zVEC3 down(0.0f, -400.0f, 0.0f);
+        const zVEC3 top0(pos.n[0], pos.n[1] + 60.0f, pos.n[2]);
+        if (!w->TraceRayNearestHit(top0, down, (zCVob*)player, flags) || !w->traceRayReport.foundHit)
+            return;
+        const float floor0 = w->traceRayReport.foundIntersection.n[1];
+        const zVEC3 top1(pos.n[0] + mv.n[0], pos.n[1] + 60.0f, pos.n[2] + mv.n[2]);
+        if (!w->TraceRayNearestHit(top1, down, (zCVob*)player, flags) || !w->traceRayReport.foundHit)
+            return;
+        const float floor1 = w->traceRayReport.foundIntersection.n[1];
+        if (floor1 - floor0 > 60.0f || floor0 - floor1 > 150.0f)
+            return;   // zu hohe Stufe oder Abgrund
+        const zVEC3 np(pos.n[0] + mv.n[0], pos.n[1] + (floor1 - floor0), pos.n[2] + mv.n[2]);
+        player->SetPositionWorld(np);
+#endif
+    }
+
     // Fadenkreuz in der Bildmitte, solange Bogen oder Armbrust gezogen sind
     static void CoopFunCrosshair() {
         if (!screen || !CoopFunAiming())
@@ -279,6 +369,8 @@ namespace GOTHIC_ENGINE {
             return;
         const long long now = GetCurrentMs();
         CoopFunRespawnPulse(now);
+        CoopFunFocusRange();
+        CoopFunAimMove();
         CoopFunCrosshair();
         if (now < CoopFunNextTick)
             return;

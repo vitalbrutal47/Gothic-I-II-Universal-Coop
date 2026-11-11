@@ -751,6 +751,28 @@ namespace GOTHIC_ENGINE {
         PmShownAt.clear();
     }
 
+    // u203e (Nutzer: "Name und Distanz verbergen koennen durch druecken von 'oe' zum Beispiel"): Taste Oe (DIK 0x27, auf der
+    // deutschen Tastatur Oe) schaltet Name und Entfernung ueber dem Mitspieler und am Bildrand aus und wieder an; gemerkt in
+    // Gothic.ini [GOTHICCOOP] coopNamesHidden. Die Marke auf der (Othello-)Karte bleibt.
+    static int PmNamesHidden = -1;
+    static void PmToggleKey() {
+        if (PmNamesHidden < 0)
+            PmNamesHidden = zoptions ? zoptions->ReadInt("GOTHICCOOP", "coopNamesHidden", 0) : 0;
+        if (!zinput || !zinput->KeyToggled(KEY_SEMICOLON) || player->inventory2.IsOpen())
+            return;
+        oCInformationManager& im = oCInformationManager::GetInformationManager();
+        if (im.Npc && !im.IsDone)
+            return;
+        PmNamesHidden = PmNamesHidden ? 0 : 1;
+        if (zoptions)
+            zoptions->WriteInt("GOTHICCOOP", "coopNamesHidden", PmNamesHidden, 0);
+        if (screen) {
+            zCOLOR col(255, 220, 120, 255);
+            screen->PrintTimedCX(2600, zSTRING(PmNamesHidden ? "Namen und Entfernung aus (\xD6 = wieder an)" : "Namen und Entfernung an (\xD6 = aus)"),
+                2500.0f, &col);
+        }
+    }
+
     // Plugin.cpp, Game_Loop
     void CoopPartnerMarkerPulse() {
         if (!ServerThread && !ClientThread)
@@ -758,6 +780,9 @@ namespace GOTHIC_ENGINE {
         if (!player || IsLoadingLevel)
             return;
         PmMapPulse();
+        PmToggleKey();
+        if (PmNamesHidden > 0)
+            return;
         if (PmHudOff())
             return;
         zCCamera* cam = zCCamera::activeCam;

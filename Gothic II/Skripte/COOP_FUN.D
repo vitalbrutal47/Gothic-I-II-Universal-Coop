@@ -11985,21 +11985,10 @@ func void FUN_HELD_NACH_TOD()
 	{
 		return;
 	};
-	hero.attribute[ATR_STRENGTH] = Fun_StartStaerke(Npc_GetTrueGuild(hero));
-	hero.attribute[ATR_DEXTERITY] = Fun_StartGeschick(Npc_GetTrueGuild(hero));
-	hero.aivar[REAL_STRENGTH] = hero.attribute[ATR_STRENGTH];
-	hero.aivar[REAL_DEXTERITY] = hero.attribute[ATR_DEXTERITY];
 	hero.aivar[AIV_FUN_GEZAEHLT] = FALSE;
-	hero.attribute[ATR_HITPOINTS_MAX] = 100;
-	hero.attribute[ATR_HITPOINTS] = 100;
-	hero.attribute[ATR_MANA_MAX] = 20;
-	if (Npc_GetTrueGuild(hero) == GIL_NOV)
-	{
-		hero.attribute[ATR_MANA_MAX] = 40;
-	};
-	hero.aivar[REAL_MANA_MAX] = hero.attribute[ATR_MANA_MAX];
+	hero.attribute[ATR_HITPOINTS] = hero.attribute[ATR_HITPOINTS_MAX];
 	hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
-	Print("Du bist gefallen - Stärke, Geschick, Leben und Mana sind wieder auf den Startwerten.");
+	Print("Du bist gefallen - Ausrüstung und Werte bleiben erhalten.");
 };
 
 // --- u204: Schlacht-Paket - Haltungen, Tod, Befehle, Takte -------------------------------------------------------

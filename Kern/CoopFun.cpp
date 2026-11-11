@@ -154,7 +154,7 @@ namespace GOTHIC_ENGINE {
             CoopFunDeadSince = now;
             FunLog("eigener Held tot - Wiederbeleben im Lager in 30 s");
         }
-        // u204: solange der Anfuehrer der eigenen Gilde tot ist, 60 s; der Schlachtruf endet mit dem Tod (Startwerte)
+        // u204: solange der Anfuehrer der eigenen Gilde tot ist, 60 s; der Schlachtruf endet mit dem Tod
         FunRufEndeAbbrechen();
         const int delay = FunEigenerFuehrerTot() ? 60 : 30;
         const int left = delay - (int)((now - CoopFunDeadSince) / 1000);
@@ -182,7 +182,7 @@ namespace GOTHIC_ENGINE {
         player->SetAttribute(NPC_ATR_HITPOINTS, player->GetAttribute(NPC_ATR_HITPOINTSMAX));
         CoopResetPosSafe(player, pos);
         player->SetBodyState(0);   // BS_STAND
-        FunCall("FUN_HELD_NACH_TOD");   // Startwerte (u203d)
+        FunCall("FUN_HELD_NACH_TOD");   // u205: volle Lebensenergie und Mana, Werte bleiben
         player->SetAttribute(NPC_ATR_HITPOINTS, player->GetAttribute(NPC_ATR_HITPOINTSMAX));
         CoopFunPrint("Du bist wieder im Lager.");
         FunLog("Held wiederbelebt bei %s", wp ? wpName : "der Leiche (kein Lager-Wegpunkt)");
@@ -1100,7 +1100,12 @@ namespace GOTHIC_ENGINE {
     }
 
     static void FunRufEndeAbbrechen() {
+        // u205: Werte bleiben nach dem Tod (keine Startwerte mehr) - den Schlachtruf hier beenden, sonst bliebe +15 Staerke
+        if (!FunRufEnde)
+            return;
         FunRufEnde = 0;
+        FunCall("FUN_SCHLACHTRUF_ENDE");
+        FunLog("Schlachtruf mit dem Tod beendet");
     }
 
     static bool FunEigenerFuehrerTot() {

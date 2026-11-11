@@ -17,9 +17,29 @@ META
 // FUN_AKTIV und FUN_KAPITEL gelten für alle. Ohne Fun-Spiel (FUN_AKTIV = 0) läuft alles wie im Original.
 
 var int FUN_AKTIV;              // dieses Spiel ist ein Fun-Spiel
-var int FUN_KAPITEL;            // 1-6, steigt mit dem Kapitelstein
+var int FUN_KAPITEL;            // u206: höchstes Kapitel aller Spieler (Stärke der Welt)
 var int FUNL_KAPITEL_GESEHEN;   // je PC: zuletzt angezeigtes Kapitel
-var int FUNL_BOSS_T;            // je PC (Host): Takte seit dem Tod des Bosses
+var int FUNL_BOSS_T;            // alt (bis u205)
+var int FUNL_KAPITEL;           // u206: je PC - das eigene Kapitel des Spielers (1-6)
+var int FUNL_BOSS_INIT;
+var int FUNL_BOSS_T1;           // Host: Takte seit dem Tod von Boss 1
+var int FUN_BOSS_TOD_1;         // Host zählt jeden Tod von Boss 1 (jeder PC: Stein für Spieler in der Nähe)
+var int FUNL_BOSS_TOD_GES_1;
+var int FUNL_BOSS_T2;           // Host: Takte seit dem Tod von Boss 2
+var int FUN_BOSS_TOD_2;         // Host zählt jeden Tod von Boss 2 (jeder PC: Stein für Spieler in der Nähe)
+var int FUNL_BOSS_TOD_GES_2;
+var int FUNL_BOSS_T3;           // Host: Takte seit dem Tod von Boss 3
+var int FUN_BOSS_TOD_3;         // Host zählt jeden Tod von Boss 3 (jeder PC: Stein für Spieler in der Nähe)
+var int FUNL_BOSS_TOD_GES_3;
+var int FUNL_BOSS_T4;           // Host: Takte seit dem Tod von Boss 4
+var int FUN_BOSS_TOD_4;         // Host zählt jeden Tod von Boss 4 (jeder PC: Stein für Spieler in der Nähe)
+var int FUNL_BOSS_TOD_GES_4;
+var int FUNL_BOSS_T5;           // Host: Takte seit dem Tod von Boss 5
+var int FUN_BOSS_TOD_5;         // Host zählt jeden Tod von Boss 5 (jeder PC: Stein für Spieler in der Nähe)
+var int FUNL_BOSS_TOD_GES_5;
+var int FUNL_BOSS_T6;           // Host: Takte seit dem Tod von Boss 6
+var int FUN_BOSS_TOD_6;         // Host zählt jeden Tod von Boss 6 (jeder PC: Stein für Spieler in der Nähe)
+var int FUNL_BOSS_TOD_GES_6;
 var int FUNL_BEGL_KAP;          // je PC (Host): Kapitel, für das die Begleiter zuletzt verstärkt wurden
 const int FUN_RESPAWN_TAKTE = 9;
 const int FUN_BOSS_TAKTE = 18;
@@ -103,6 +123,20 @@ const int FUN_EREIGNIS_TAKTE = 90;
 const int FUN_EREIGNIS_DAUER = 60;
 const int FUN_BANNER_TAKTE = 30;
 
+// u206: das eigene Kapitel des Spielers (Händlerware, Belohnungen, Kapitelsteine)
+func int Fun_EigenesKapitel()
+{
+	if (FUNL_KAPITEL < 1)
+	{
+		return 1;
+	};
+	if (FUNL_KAPITEL > 6)
+	{
+		return 6;
+	};
+	return FUNL_KAPITEL;
+};
+// Stärke der Welt (Monster, Begleiter, Anführer): höchstes Kapitel aller Spieler
 func int Fun_KapitelNr()
 {
 	if (FUN_KAPITEL < 1)
@@ -637,7 +671,8 @@ func void Fun_Entfernen(var C_NPC n)
 	Npc_ChangeAttribute(n, ATR_HITPOINTS, -n.attribute[ATR_HITPOINTS_MAX]);
 };
 
-// --- Kapitelstein: der Boss an der Taverne trägt ihn. Benutzen hebt das Kapitel für alle -----------------------------
+// --- Kapitelsteine: Boss N trägt Kapitelstein N. Er wirkt nur in Kapitel N und hebt nur das eigene Kapitel (u206) ---------
+// alter Stein (Spielstände bis u205): wirkt wie der Stein des eigenen Kapitels
 instance ItMi_Fun_Kapitelstein (C_Item)
 {
 	name = "Kapitelstein";
@@ -650,8 +685,82 @@ instance ItMi_Fun_Kapitelstein (C_Item)
 	on_state[0] = Use_Fun_Kapitelstein;
 	effect = "SPELLFX_WEAKGLIMMER";
 	description = name;
-	text[0] = "Benutzen: nächstes Kapitel für alle.";
-	text[1] = "Die Händler bieten dann bessere Ware.";
+	text[0] = "Benutzen: dein nächstes Kapitel.";
+};
+instance ItMi_Fun_Kapitelstein_1 (C_Item)
+{
+	name = "Kapitelstein I";
+	mainflag = ITEM_KAT_NONE;
+	flags = ITEM_MISSION;
+	value = 0;
+	visual = "ItMi_StonePlate_PowerUp_03.3DS";
+	material = MAT_STONE;
+	scemename = "MAPSEALED";
+	on_state[0] = Use_Fun_Kapitelstein_1;
+	effect = "SPELLFX_WEAKGLIMMER";
+	description = name;
+	text[0] = "Nur in Kapitel 1: bringt dich in Kapitel 2.";
+	text[1] = "Die Händler bieten dir dann bessere Ware.";
+};
+instance ItMi_Fun_Kapitelstein_2 (C_Item)
+{
+	name = "Kapitelstein II";
+	mainflag = ITEM_KAT_NONE;
+	flags = ITEM_MISSION;
+	value = 0;
+	visual = "ItMi_StonePlate_PowerUp_03.3DS";
+	material = MAT_STONE;
+	scemename = "MAPSEALED";
+	on_state[0] = Use_Fun_Kapitelstein_2;
+	effect = "SPELLFX_WEAKGLIMMER";
+	description = name;
+	text[0] = "Nur in Kapitel 2: bringt dich in Kapitel 3.";
+	text[1] = "Die Händler bieten dir dann bessere Ware.";
+};
+instance ItMi_Fun_Kapitelstein_3 (C_Item)
+{
+	name = "Kapitelstein III";
+	mainflag = ITEM_KAT_NONE;
+	flags = ITEM_MISSION;
+	value = 0;
+	visual = "ItMi_StonePlate_PowerUp_03.3DS";
+	material = MAT_STONE;
+	scemename = "MAPSEALED";
+	on_state[0] = Use_Fun_Kapitelstein_3;
+	effect = "SPELLFX_WEAKGLIMMER";
+	description = name;
+	text[0] = "Nur in Kapitel 3: bringt dich in Kapitel 4.";
+	text[1] = "Die Händler bieten dir dann bessere Ware.";
+};
+instance ItMi_Fun_Kapitelstein_4 (C_Item)
+{
+	name = "Kapitelstein IV";
+	mainflag = ITEM_KAT_NONE;
+	flags = ITEM_MISSION;
+	value = 0;
+	visual = "ItMi_StonePlate_PowerUp_03.3DS";
+	material = MAT_STONE;
+	scemename = "MAPSEALED";
+	on_state[0] = Use_Fun_Kapitelstein_4;
+	effect = "SPELLFX_WEAKGLIMMER";
+	description = name;
+	text[0] = "Nur in Kapitel 4: bringt dich in Kapitel 5.";
+	text[1] = "Die Händler bieten dir dann bessere Ware.";
+};
+instance ItMi_Fun_Kapitelstein_5 (C_Item)
+{
+	name = "Kapitelstein V";
+	mainflag = ITEM_KAT_NONE;
+	flags = ITEM_MISSION;
+	value = 0;
+	visual = "ItMi_StonePlate_PowerUp_03.3DS";
+	material = MAT_STONE;
+	scemename = "MAPSEALED";
+	on_state[0] = Use_Fun_Kapitelstein_5;
+	effect = "SPELLFX_WEAKGLIMMER";
+	description = name;
+	text[0] = "Nur in Kapitel 5: bringt dich in Kapitel 6.";
+	text[1] = "Die Händler bieten dir dann bessere Ware.";
 };
 
 // --- Reliquien der Lager: der Anführer trägt sie; wer sie ins eigene Lager bringt, bekommt 100 Siegpunkte ----------
@@ -8737,7 +8846,7 @@ instance FUN_M209_T5 (Mst_Default_Warg)
 	Fun_MobBeute(5);
 };
 
-// --- Bosse an der Taverne ("Zur toten Harpie"), einer je Kapitel ------------------------------------------------
+// --- Bosse, einer je Kapitel, alle gleichzeitig über die Karte verteilt (u206) --------------------------------------
 instance FUN_BOSS_K1 (Mst_Default_Gobbo_Warrior)
 {
 	B_SetVisuals_Gobbo_Warrior();
@@ -8749,7 +8858,7 @@ instance FUN_BOSS_K1 (Mst_Default_Gobbo_Warrior)
 	attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] * 48 / 100;
 	Mdl_SetModelScale(self, 1.8, 1.8, 1.8);
 	CreateInvItems(self, ItMi_Gold, 250);
-	CreateInvItems(self, ItMi_Fun_Kapitelstein, 1);
+	CreateInvItems(self, ItMi_Fun_Kapitelstein_1, 1);
 };
 instance FUN_BOSS_K2 (Mst_Default_Razor)
 {
@@ -8761,7 +8870,7 @@ instance FUN_BOSS_K2 (Mst_Default_Razor)
 	attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] * 48 / 100;
 	Mdl_SetModelScale(self, 1.7, 1.7, 1.7);
 	CreateInvItems(self, ItMi_Gold, 500);
-	CreateInvItems(self, ItMi_Fun_Kapitelstein, 1);
+	CreateInvItems(self, ItMi_Fun_Kapitelstein_2, 1);
 };
 instance FUN_BOSS_K3 (Mst_Default_Bloodhound)
 {
@@ -8773,7 +8882,7 @@ instance FUN_BOSS_K3 (Mst_Default_Bloodhound)
 	attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] * 48 / 100;
 	Mdl_SetModelScale(self, 1.7, 1.7, 1.7);
 	CreateInvItems(self, ItMi_Gold, 750);
-	CreateInvItems(self, ItMi_Fun_Kapitelstein, 1);
+	CreateInvItems(self, ItMi_Fun_Kapitelstein_3, 1);
 };
 instance FUN_BOSS_K4 (Mst_Default_Shadowbeast)
 {
@@ -8786,7 +8895,7 @@ instance FUN_BOSS_K4 (Mst_Default_Shadowbeast)
 	attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] * 40 / 100;
 	Mdl_SetModelScale(self, 1.6, 1.6, 1.6);
 	CreateInvItems(self, ItMi_Gold, 1000);
-	CreateInvItems(self, ItMi_Fun_Kapitelstein, 1);
+	CreateInvItems(self, ItMi_Fun_Kapitelstein_4, 1);
 };
 instance FUN_BOSS_K5 (Mst_Default_FireWaran)
 {
@@ -8798,7 +8907,7 @@ instance FUN_BOSS_K5 (Mst_Default_FireWaran)
 	attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] * 40 / 100;
 	Mdl_SetModelScale(self, 1.7, 1.7, 1.7);
 	CreateInvItems(self, ItMi_Gold, 1250);
-	CreateInvItems(self, ItMi_Fun_Kapitelstein, 1);
+	CreateInvItems(self, ItMi_Fun_Kapitelstein_5, 1);
 };
 instance FUN_BOSS_K6 (Mst_Default_Troll)
 {
@@ -10165,56 +10274,129 @@ func void Fun_Haltungen()
 // Kapitel: Anzeige und Belohnung je PC, sobald FUN_KAPITEL steigt (auch wenn der Mitspieler den Stein benutzt hat)
 func void Fun_KapitelPruefen()
 {
-	if (FUNL_KAPITEL_GESEHEN >= FUN_KAPITEL)
+	if (FUNL_KAPITEL < 1)
+	{
+		FUNL_KAPITEL = 1;
+	};
+	if (FUN_KAPITEL < FUNL_KAPITEL)
+	{
+		FUN_KAPITEL = FUNL_KAPITEL;
+	};
+	if (Kapitel != Fun_KapitelNr())
+	{
+		Kapitel = Fun_KapitelNr();
+	};
+	if (FUNL_KAPITEL_GESEHEN >= FUNL_KAPITEL)
 	{
 		return;
 	};
 	if (FUNL_KAPITEL_GESEHEN == 0)
 	{
-		FUNL_KAPITEL_GESEHEN = FUN_KAPITEL;
+		FUNL_KAPITEL_GESEHEN = FUNL_KAPITEL;
 		return;
 	};
-	FUNL_KAPITEL_GESEHEN = FUN_KAPITEL;
-	Kapitel = FUN_KAPITEL;
+	FUNL_KAPITEL_GESEHEN = FUNL_KAPITEL;
 	hero.lp = hero.lp + 5;
-	CreateInvItems(hero, ItMi_Gold, 300 * FUN_KAPITEL);
+	CreateInvItems(hero, ItMi_Gold, 300 * FUNL_KAPITEL);
 	if (Npc_GetTrueGuild(hero) == GIL_NOV)
 	{
-		Npc_SetTalentSkill(hero, NPC_TALENT_MAGE, FUN_KAPITEL);
+		Npc_SetTalentSkill(hero, NPC_TALENT_MAGE, FUNL_KAPITEL);
 	};
-	if (FUN_KAPITEL == 2)
+	if (FUNL_KAPITEL == 2)
 	{
 		IntroduceChapter("Kapitel 2", "Die Händler haben neue Ware", "chapter2.tga", "chapter_01.wav", 6000);
 	};
-	if (FUN_KAPITEL == 3)
+	if (FUNL_KAPITEL == 3)
 	{
 		IntroduceChapter("Kapitel 3", "Die Wälder werden gefährlicher", "chapter2.tga", "chapter_01.wav", 6000);
 	};
-	if (FUN_KAPITEL == 4)
+	if (FUNL_KAPITEL == 4)
 	{
 		IntroduceChapter("Kapitel 4", "Die Lager rüsten auf", "chapter4.tga", "chapter_01.wav", 6000);
 	};
-	if (FUN_KAPITEL == 5)
+	if (FUNL_KAPITEL == 5)
 	{
 		IntroduceChapter("Kapitel 5", "Trolle im Land", "chapter4.tga", "chapter_01.wav", 6000);
 	};
-	if (FUN_KAPITEL == 6)
+	if (FUNL_KAPITEL == 6)
 	{
 		IntroduceChapter("Kapitel 6", "Das letzte Kapitel", "chapter6.tga", "chapter_01.wav", 6000);
 	};
 };
 
+func void Fun_KapitelAuf(var int k)
+{
+	if (FUNL_KAPITEL < 1)
+	{
+		FUNL_KAPITEL = 1;
+	};
+	if (FUNL_KAPITEL > k)
+	{
+		Print("Dieses Kapitel hast du schon hinter dir.");
+		return;
+	};
+	if (FUNL_KAPITEL < k)
+	{
+		Print(ConcatStrings(ConcatStrings("Du bist erst in Kapitel ", IntToString(FUNL_KAPITEL)), " - dafür brauchst du zuerst den Stein deines Kapitels."));
+		return;
+	};
+	FUNL_KAPITEL = k + 1;
+	if (FUN_KAPITEL < FUNL_KAPITEL)
+	{
+		FUN_KAPITEL = FUNL_KAPITEL;
+	};
+	Fun_SiegAdd(Fun_EigeneIdx(), 25);
+	Fun_KapitelPruefen();
+};
 func void Use_Fun_Kapitelstein()
 {
-	if (FUN_KAPITEL >= 6)
+	if (FUNL_KAPITEL >= 6)
 	{
 		Print("Das letzte Kapitel ist schon erreicht.");
 		return;
 	};
 	Npc_RemoveInvItems(self, ItMi_Fun_Kapitelstein, 1);
-	FUN_KAPITEL = FUN_KAPITEL + 1;
-	Kapitel = FUN_KAPITEL;
-	Fun_KapitelPruefen();
+	Fun_KapitelAuf(Fun_EigenesKapitel());
+};
+func void Use_Fun_Kapitelstein_1()
+{
+	if (Fun_EigenesKapitel() == 1)
+	{
+		Npc_RemoveInvItems(self, ItMi_Fun_Kapitelstein_1, 1);
+	};
+	Fun_KapitelAuf(1);
+};
+func void Use_Fun_Kapitelstein_2()
+{
+	if (Fun_EigenesKapitel() == 2)
+	{
+		Npc_RemoveInvItems(self, ItMi_Fun_Kapitelstein_2, 1);
+	};
+	Fun_KapitelAuf(2);
+};
+func void Use_Fun_Kapitelstein_3()
+{
+	if (Fun_EigenesKapitel() == 3)
+	{
+		Npc_RemoveInvItems(self, ItMi_Fun_Kapitelstein_3, 1);
+	};
+	Fun_KapitelAuf(3);
+};
+func void Use_Fun_Kapitelstein_4()
+{
+	if (Fun_EigenesKapitel() == 4)
+	{
+		Npc_RemoveInvItems(self, ItMi_Fun_Kapitelstein_4, 1);
+	};
+	Fun_KapitelAuf(4);
+};
+func void Use_Fun_Kapitelstein_5()
+{
+	if (Fun_EigenesKapitel() == 5)
+	{
+		Npc_RemoveInvItems(self, ItMi_Fun_Kapitelstein_5, 1);
+	};
+	Fun_KapitelAuf(5);
 };
 
 instance DIA_FUN_MIL_1_EXIT (C_INFO)
@@ -11364,7 +11546,7 @@ func void Fun_HaendlerWare(var C_NPC slf)
 	{
 		CreateInvItems(slf, ItMi_Gold, FUN_HAENDLER_GOLD - vorrat);
 	};
-	if (FUN_KAPITEL >= 1)
+	if (Fun_EigenesKapitel() >= 1)
 	{
 		Fun_Ware(slf, ItPo_Health_01, 20);
 		Fun_Ware(slf, ItRw_Arrow, 300);
@@ -11405,7 +11587,7 @@ func void Fun_HaendlerWare(var C_NPC slf)
 			Fun_Ware(slf, ITAR_Leather_L, 1);
 		};
 	};
-	if (FUN_KAPITEL >= 2)
+	if (Fun_EigenesKapitel() >= 2)
 	{
 		Fun_Ware(slf, ItPo_Health_02, 10);
 		Fun_Ware(slf, ItSc_InstantFireball, 3);
@@ -11444,7 +11626,7 @@ func void Fun_HaendlerWare(var C_NPC slf)
 			Fun_Ware(slf, ITAR_BDT_M, 1);
 		};
 	};
-	if (FUN_KAPITEL >= 3)
+	if (Fun_EigenesKapitel() >= 3)
 	{
 		Fun_Ware(slf, ItSc_MediumHeal, 3);
 		Fun_Ware(slf, ItPo_Speed, 3);
@@ -11484,7 +11666,7 @@ func void Fun_HaendlerWare(var C_NPC slf)
 			Fun_Ware(slf, ITAR_BDT_H, 1);
 		};
 	};
-	if (FUN_KAPITEL >= 4)
+	if (Fun_EigenesKapitel() >= 4)
 	{
 		Fun_Ware(slf, ItPo_Health_03, 10);
 		Fun_Ware(slf, ItSc_ChargeFireball, 2);
@@ -11524,7 +11706,7 @@ func void Fun_HaendlerWare(var C_NPC slf)
 			Fun_Ware(slf, ITAR_Thorus_Addon, 1);
 		};
 	};
-	if (FUN_KAPITEL >= 5)
+	if (Fun_EigenesKapitel() >= 5)
 	{
 		Fun_Ware(slf, ItPo_Perm_STR, 1);
 		Fun_Ware(slf, ItPo_Perm_DEX, 1);
@@ -11564,7 +11746,7 @@ func void Fun_HaendlerWare(var C_NPC slf)
 			Fun_Ware(slf, ITAR_Raven_Addon, 1);
 		};
 	};
-	if (FUN_KAPITEL >= 6)
+	if (Fun_EigenesKapitel() >= 6)
 	{
 		Fun_Ware(slf, ItPo_Perm_Mana, 1);
 		Fun_Ware(slf, ItSc_Firerain, 1);
@@ -12288,50 +12470,32 @@ func void Fun_TodZaehlen()
 	};
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_BOSS_K1))
 	{
-		if (kg > 0)
-		{
-			Fun_SiegAdd(kg, 25);
-		};
+		FUN_BOSS_TOD_1 = FUN_BOSS_TOD_1 + 1;
 		return;
 	};
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_BOSS_K2))
 	{
-		if (kg > 0)
-		{
-			Fun_SiegAdd(kg, 25);
-		};
+		FUN_BOSS_TOD_2 = FUN_BOSS_TOD_2 + 1;
 		return;
 	};
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_BOSS_K3))
 	{
-		if (kg > 0)
-		{
-			Fun_SiegAdd(kg, 25);
-		};
+		FUN_BOSS_TOD_3 = FUN_BOSS_TOD_3 + 1;
 		return;
 	};
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_BOSS_K4))
 	{
-		if (kg > 0)
-		{
-			Fun_SiegAdd(kg, 25);
-		};
+		FUN_BOSS_TOD_4 = FUN_BOSS_TOD_4 + 1;
 		return;
 	};
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_BOSS_K5))
 	{
-		if (kg > 0)
-		{
-			Fun_SiegAdd(kg, 25);
-		};
+		FUN_BOSS_TOD_5 = FUN_BOSS_TOD_5 + 1;
 		return;
 	};
 	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_BOSS_K6))
 	{
-		if (kg > 0)
-		{
-			Fun_SiegAdd(kg, 25);
-		};
+		FUN_BOSS_TOD_6 = FUN_BOSS_TOD_6 + 1;
 		return;
 	};
 	if ((kg > 0) && (self.guild < GIL_SEPERATOR_HUM))
@@ -14352,6 +14516,7 @@ func void Fun_Startup()
 	FUN_KAPITEL = 1;
 	Kapitel = 1;
 	FUNL_KAPITEL_GESEHEN = 1;
+	FUNL_KAPITEL = 1;
 	FUNL_BEGL_KAP = 1;
 	Hero_HackChance = 10;
 	Wld_InsertNpc(FUN_HAENDLER_MIL, "NW_CITY_HABOUR_KASERN_CENTRE_03");
@@ -14588,7 +14753,12 @@ func void Fun_Startup()
 	Wld_InsertNpc(FUN_M207_T0, "NW_TAVERNE_TROLLAREA_MONSTER_04_01");
 	Wld_InsertNpc(FUN_M208_T0, "NW_TAVERNE_TROLLAREA_MONSTER_04_01");
 	Wld_InsertNpc(FUN_M209_T0, "NW_TAVERNE_TROLLAREA_MONSTER_04_01");
-	Wld_InsertNpc(FUN_BOSS_K1, "NW_TAVERNE_CROSS");
+	Wld_InsertNpc(FUN_BOSS_K1, "NW_FARM1_PATH_BANDITS_04");
+	Wld_InsertNpc(FUN_BOSS_K2, "NW_TAVERNE_CROSS");
+	Wld_InsertNpc(FUN_BOSS_K3, "NW_PATH_TO_MONASTER_AREA_08");
+	Wld_InsertNpc(FUN_BOSS_K4, "NW_FARM4_WOOD_MONSTER_09");
+	Wld_InsertNpc(FUN_BOSS_K5, "NW_FARM3_PATH_11_SMALLRIVER_13");
+	Wld_InsertNpc(FUN_BOSS_K6, "NW_TROLLAREA_PLANE_05");
 	Fun_SchlachtStart();
 };
 
@@ -32475,77 +32645,157 @@ func void Fun_Platz209()   // NW_TAVERNE_TROLLAREA_MONSTER_04_01 (Original: Mitt
 	};
 };
 
+// u206: Host - jeder der sechs Bosse kommt drei Minuten nach seinem Tod an seinem Ort wieder
 func void Fun_Boss()
 {
 	var C_NPC b;
-	if (Fun_KapitelNr() == 1)
-	{
-		b = Hlp_GetNpc(FUN_BOSS_K1);
-	}
-	else if (Fun_KapitelNr() == 2)
-	{
-		b = Hlp_GetNpc(FUN_BOSS_K2);
-	}
-	else if (Fun_KapitelNr() == 3)
-	{
-		b = Hlp_GetNpc(FUN_BOSS_K3);
-	}
-	else if (Fun_KapitelNr() == 4)
-	{
-		b = Hlp_GetNpc(FUN_BOSS_K4);
-	}
-	else if (Fun_KapitelNr() == 5)
-	{
-		b = Hlp_GetNpc(FUN_BOSS_K5);
-	}
-	else if (Fun_KapitelNr() == 6)
-	{
-		b = Hlp_GetNpc(FUN_BOSS_K6);
-	}
-	else
-	{
-		b = Hlp_GetNpc(FUN_BOSS_K1);
-	};
+	b = Hlp_GetNpc(FUN_BOSS_K1);
 	if (Fun_NpcLebt(b))
 	{
-		FUNL_BOSS_T = 0;
-		return;
-	};
-	FUNL_BOSS_T = FUNL_BOSS_T + 1;
-	if (FUNL_BOSS_T < FUN_BOSS_TAKTE)
-	{
-		return;
-	};
-	FUNL_BOSS_T = 0;
-	if (Fun_KapitelNr() == 1)
-	{
-		Wld_InsertNpc(FUN_BOSS_K1, "NW_TAVERNE_CROSS");
-	}
-	else if (Fun_KapitelNr() == 2)
-	{
-		Wld_InsertNpc(FUN_BOSS_K2, "NW_TAVERNE_CROSS");
-	}
-	else if (Fun_KapitelNr() == 3)
-	{
-		Wld_InsertNpc(FUN_BOSS_K3, "NW_TAVERNE_CROSS");
-	}
-	else if (Fun_KapitelNr() == 4)
-	{
-		Wld_InsertNpc(FUN_BOSS_K4, "NW_TAVERNE_CROSS");
-	}
-	else if (Fun_KapitelNr() == 5)
-	{
-		Wld_InsertNpc(FUN_BOSS_K5, "NW_TAVERNE_CROSS");
-	}
-	else if (Fun_KapitelNr() == 6)
-	{
-		Wld_InsertNpc(FUN_BOSS_K6, "NW_TAVERNE_CROSS");
+		FUNL_BOSS_T1 = 0;
 	}
 	else
 	{
-		Wld_InsertNpc(FUN_BOSS_K1, "NW_TAVERNE_CROSS");
+		FUNL_BOSS_T1 = FUNL_BOSS_T1 + 1;
+		if (FUNL_BOSS_T1 >= FUN_BOSS_TAKTE)
+		{
+			FUNL_BOSS_T1 = 0;
+			Wld_InsertNpc(FUN_BOSS_K1, "NW_FARM1_PATH_BANDITS_04");
+		};
 	};
-	Print("An der Taverne ist ein neuer Boss aufgetaucht!");
+	b = Hlp_GetNpc(FUN_BOSS_K2);
+	if (Fun_NpcLebt(b))
+	{
+		FUNL_BOSS_T2 = 0;
+	}
+	else
+	{
+		FUNL_BOSS_T2 = FUNL_BOSS_T2 + 1;
+		if (FUNL_BOSS_T2 >= FUN_BOSS_TAKTE)
+		{
+			FUNL_BOSS_T2 = 0;
+			Wld_InsertNpc(FUN_BOSS_K2, "NW_TAVERNE_CROSS");
+		};
+	};
+	b = Hlp_GetNpc(FUN_BOSS_K3);
+	if (Fun_NpcLebt(b))
+	{
+		FUNL_BOSS_T3 = 0;
+	}
+	else
+	{
+		FUNL_BOSS_T3 = FUNL_BOSS_T3 + 1;
+		if (FUNL_BOSS_T3 >= FUN_BOSS_TAKTE)
+		{
+			FUNL_BOSS_T3 = 0;
+			Wld_InsertNpc(FUN_BOSS_K3, "NW_PATH_TO_MONASTER_AREA_08");
+		};
+	};
+	b = Hlp_GetNpc(FUN_BOSS_K4);
+	if (Fun_NpcLebt(b))
+	{
+		FUNL_BOSS_T4 = 0;
+	}
+	else
+	{
+		FUNL_BOSS_T4 = FUNL_BOSS_T4 + 1;
+		if (FUNL_BOSS_T4 >= FUN_BOSS_TAKTE)
+		{
+			FUNL_BOSS_T4 = 0;
+			Wld_InsertNpc(FUN_BOSS_K4, "NW_FARM4_WOOD_MONSTER_09");
+		};
+	};
+	b = Hlp_GetNpc(FUN_BOSS_K5);
+	if (Fun_NpcLebt(b))
+	{
+		FUNL_BOSS_T5 = 0;
+	}
+	else
+	{
+		FUNL_BOSS_T5 = FUNL_BOSS_T5 + 1;
+		if (FUNL_BOSS_T5 >= FUN_BOSS_TAKTE)
+		{
+			FUNL_BOSS_T5 = 0;
+			Wld_InsertNpc(FUN_BOSS_K5, "NW_FARM3_PATH_11_SMALLRIVER_13");
+		};
+	};
+	b = Hlp_GetNpc(FUN_BOSS_K6);
+	if (Fun_NpcLebt(b))
+	{
+		FUNL_BOSS_T6 = 0;
+	}
+	else
+	{
+		FUNL_BOSS_T6 = FUNL_BOSS_T6 + 1;
+		if (FUNL_BOSS_T6 >= FUN_BOSS_TAKTE)
+		{
+			FUNL_BOSS_T6 = 0;
+			Wld_InsertNpc(FUN_BOSS_K6, "NW_TROLLAREA_PLANE_05");
+		};
+	};
+};
+
+// u206: jeder PC - stirbt ein Boss (FUN_BOSS_TOD_n), bekommt der eigene Held seinen Kapitelstein, wenn er in der Nähe war
+// (60 m um den Boss-Ort) und genau in diesem Kapitel ist
+func void Fun_BossSteine()
+{
+	if (!FUNL_BOSS_INIT)
+	{
+		FUNL_BOSS_INIT = TRUE;
+		FUNL_BOSS_TOD_GES_1 = FUN_BOSS_TOD_1;
+		FUNL_BOSS_TOD_GES_2 = FUN_BOSS_TOD_2;
+		FUNL_BOSS_TOD_GES_3 = FUN_BOSS_TOD_3;
+		FUNL_BOSS_TOD_GES_4 = FUN_BOSS_TOD_4;
+		FUNL_BOSS_TOD_GES_5 = FUN_BOSS_TOD_5;
+		FUNL_BOSS_TOD_GES_6 = FUN_BOSS_TOD_6;
+		return;
+	};
+	if (FUNL_BOSS_TOD_GES_1 != FUN_BOSS_TOD_1)
+	{
+		FUNL_BOSS_TOD_GES_1 = FUN_BOSS_TOD_1;
+		if ((Fun_EigenesKapitel() == 1) && (Npc_GetDistToWP(hero, "NW_FARM1_PATH_BANDITS_04") < 6000) && (Npc_HasItems(hero, ItMi_Fun_Kapitelstein_1) == 0))
+		{
+			CreateInvItems(hero, ItMi_Fun_Kapitelstein_1, 1);
+			Print("Du warst beim Sieg dabei: Kapitelstein I ist in deinem Inventar.");
+		};
+	};
+	if (FUNL_BOSS_TOD_GES_2 != FUN_BOSS_TOD_2)
+	{
+		FUNL_BOSS_TOD_GES_2 = FUN_BOSS_TOD_2;
+		if ((Fun_EigenesKapitel() == 2) && (Npc_GetDistToWP(hero, "NW_TAVERNE_CROSS") < 6000) && (Npc_HasItems(hero, ItMi_Fun_Kapitelstein_2) == 0))
+		{
+			CreateInvItems(hero, ItMi_Fun_Kapitelstein_2, 1);
+			Print("Du warst beim Sieg dabei: Kapitelstein II ist in deinem Inventar.");
+		};
+	};
+	if (FUNL_BOSS_TOD_GES_3 != FUN_BOSS_TOD_3)
+	{
+		FUNL_BOSS_TOD_GES_3 = FUN_BOSS_TOD_3;
+		if ((Fun_EigenesKapitel() == 3) && (Npc_GetDistToWP(hero, "NW_PATH_TO_MONASTER_AREA_08") < 6000) && (Npc_HasItems(hero, ItMi_Fun_Kapitelstein_3) == 0))
+		{
+			CreateInvItems(hero, ItMi_Fun_Kapitelstein_3, 1);
+			Print("Du warst beim Sieg dabei: Kapitelstein III ist in deinem Inventar.");
+		};
+	};
+	if (FUNL_BOSS_TOD_GES_4 != FUN_BOSS_TOD_4)
+	{
+		FUNL_BOSS_TOD_GES_4 = FUN_BOSS_TOD_4;
+		if ((Fun_EigenesKapitel() == 4) && (Npc_GetDistToWP(hero, "NW_FARM4_WOOD_MONSTER_09") < 6000) && (Npc_HasItems(hero, ItMi_Fun_Kapitelstein_4) == 0))
+		{
+			CreateInvItems(hero, ItMi_Fun_Kapitelstein_4, 1);
+			Print("Du warst beim Sieg dabei: Kapitelstein IV ist in deinem Inventar.");
+		};
+	};
+	if (FUNL_BOSS_TOD_GES_5 != FUN_BOSS_TOD_5)
+	{
+		FUNL_BOSS_TOD_GES_5 = FUN_BOSS_TOD_5;
+		if ((Fun_EigenesKapitel() == 5) && (Npc_GetDistToWP(hero, "NW_FARM3_PATH_11_SMALLRIVER_13") < 6000) && (Npc_HasItems(hero, ItMi_Fun_Kapitelstein_5) == 0))
+		{
+			CreateInvItems(hero, ItMi_Fun_Kapitelstein_5, 1);
+			Print("Du warst beim Sieg dabei: Kapitelstein V ist in deinem Inventar.");
+		};
+	};
+	FUNL_BOSS_TOD_GES_6 = FUN_BOSS_TOD_6;
 };
 
 // Händler fehlen nie, tote Begleiter kommen nach 5 Minuten zurück; beim Kapitelaufstieg werden die Begleiter stärker
@@ -33145,5 +33395,6 @@ func void FUN_TAKT_ALLE()
 	};
 	Fun_Haltungen();
 	Fun_KapitelPruefen();
+	Fun_BossSteine();
 	Fun_SchlachtAlle();
 };

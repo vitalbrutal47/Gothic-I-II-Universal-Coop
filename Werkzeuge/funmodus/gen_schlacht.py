@@ -468,12 +468,10 @@ for t, (ename, binst, kind, hpx10, akind, an) in enumerate(EVT, 1):
     w("\t\treturn;")
     w("\t};")
 for k in range(1, 7):
+    # u206: Siegpunkte gibt es beim Benutzen des Kapitelsteins (Fun_KapitelAuf), hier nur der Zaehler fuer die Steine
     w(f"\tif (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_BOSS_K{k}))")
     w("\t{")
-    w("\t\tif (kg > 0)")
-    w("\t\t{")
-    w("\t\t\tFun_SiegAdd(kg, 25);")
-    w("\t\t};")
+    w(f"\t\tFUN_BOSS_TOD_{k} = FUN_BOSS_TOD_{k} + 1;")
     w("\t\treturn;")
     w("\t};")
 w("\tif ((kg > 0) && (self.guild < GIL_SEPERATOR_HUM))")

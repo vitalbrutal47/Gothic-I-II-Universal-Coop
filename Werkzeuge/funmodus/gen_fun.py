@@ -63,7 +63,10 @@ cand = sorted((wp, v[1], ORIG_TIER[v[1].lower()]) for wp, v in spawns.items()
 from collections import OrderedDict
 _groups = OrderedDict()
 for wp, inst, tier in cand:
-    if wp.startswith(("NW_BIGFARM_ALLEE", "NW_CASTLEMINE_TROLL")):
+    # u203d (Nutzer: "die mobs spawnen in den lagern teilweise"): keine Punkte in/an den Lagern (Onars Hof mit See, Wald und Muehle,
+    # Burgmine neben dem Banditenturm, Kloster, Stadt); dazu schickt der Takt Monster, die ins Lager laufen, an ihren Punkt zurueck
+    if wp.startswith(("NW_BIGFARM", "FP_ROAM_BIGFARM", "FP_ROAM_NW_BIGFARM", "NW_BIGMILL", "NW_CASTLEMINE", "FP_ROAM_CASTLEMINE",
+                      "NW_MONASTERY", "FP_ROAM_MONASTERY", "NW_CITY", "NW_TROLLAREA_NOVCHASE", "NW_MAGECAVE")):
         continue
     _groups.setdefault("_".join(wp.split("_")[:3]), []).append((wp, inst, min(tier, 2)))
 SLOTS = []
@@ -71,9 +74,9 @@ SLOTS = []
 # gezogen (bisher alle - dichte Haufen in Hoehlen und an Freipunkten, z. B. 36 an FP_ROAM_NW, 12 Skelette in einer Gruft), dafuer
 # 3 Monster je Punkt; Startstufe hoechstens 2, Stufe steigt mit dem Kapitel
 for _k, _v in _groups.items():
-    if len(_v) > 4:
-        _step = len(_v) / 4.0
-        _v = [_v[int(i * _step)] for i in range(4)]
+    if len(_v) > 6:   # u203d: 6 statt 4 je Gebiet (die Lager-Punkte fallen weg)
+        _step = len(_v) / 6.0
+        _v = [_v[int(i * _step)] for i in range(6)]
     SLOTS += _v
 SLOTS = [x for x in SLOTS for _ in range(3)]   # je Punkt drei Monster (eigene Instanzen, damit jedes einzeln nachkommt)
 RESPAWN_TAKTE = 9   # Takte zu 10 s - 90 Sekunden nach dem Tod
@@ -117,7 +120,7 @@ START = {
     "MIL": ("ITAR_MIL_L", "ItMw_ShortSword3", "ItRw_Crossbow_L_01", "ItRw_Bolt"),
     "SLD": ("ITAR_SLD_L", "ItMw_Nagelkeule", "ItRw_Bow_L_02", "ItRw_Arrow"),
     "NOV": ("ITAR_NOV_L", "ItMw_1h_Nov_Mace", "", ""),
-    "BDT": ("ITAR_Leather_L", "ItMw_ShortSword4", "ItRw_Bow_L_02", "ItRw_Arrow"),
+    "BDT": ("ITAR_BDT_M", "ItMw_ShortSword4", "ItRw_Bow_L_02", "ItRw_Arrow"),   # u203d: Banditenruestung (35) statt Leder (25)
 }
 
 # Ware je Kapitel (gilt ab diesem Kapitel): Liste (Gegenstand, Anzahl)
@@ -177,13 +180,14 @@ GUILD_WARE = {
 }
 
 # Bosse an der Taverne je Kapitel: Grundart, Name, Lebensfaktor (x10), Groesse
-BOSSES = [   # u203c (Nutzer: "die bosse etwas schwaecher machen"): leichtere Arten, weniger Lebenspunkte
-    ("Gobbo_Warrior", "Goblin-Häuptling", 15, "1.3"),
-    ("Razor", "Reißzahn der Taverne", 12, "1.25"),
-    ("Bloodhound", "Bluthund der Taverne", 12, "1.25"),
-    ("Shadowbeast", "Schattenfürst", 10, "1.2"),
-    ("FireWaran", "Feuerechse", 10, "1.2"),
-    ("Troll", "Bergtroll", 8, "1.1"),
+BOSSES = [   # u203d (Nutzer: "die bosse doch mehr leben hinzufuegen aber schwaecher machen damit man laenger braucht"):
+    # Leben x10 (40 = 4-fach), Staerke (Schaden) x10 (6 = 60 %)
+    ("Gobbo_Warrior", "Goblin-Häuptling", 40, "1.3", 6),
+    ("Razor", "Reißzahn der Taverne", 40, "1.25", 6),
+    ("Bloodhound", "Bluthund der Taverne", 40, "1.25", 6),
+    ("Shadowbeast", "Schattenfürst", 35, "1.2", 5),
+    ("FireWaran", "Feuerechse", 35, "1.2", 5),
+    ("Troll", "Bergtroll", 30, "1.1", 4),
 ]
 BOSS_WP = "NW_TAVERNE_CROSS"
 
@@ -272,7 +276,7 @@ w()
 
 # ---- Bosse
 w("// --- Bosse an der Taverne (\"Zur toten Harpie\"), einer je Kapitel ------------------------------------------------")
-for k, (kind, bname, hpx10, scale) in enumerate(BOSSES, 1):
+for k, (kind, bname, hpx10, scale, strx10) in enumerate(BOSSES, 1):
     proto, body = mon(kind)
     w(f"instance FUN_BOSS_K{k} ({proto})")
     w("{")
@@ -280,6 +284,7 @@ for k, (kind, bname, hpx10, scale) in enumerate(BOSSES, 1):
     w(f'\tname = "{bname}";')
     w(f"\tattribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * {hpx10} / 10;")
     w("\tattribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];")
+    w(f"\tattribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] * {strx10} / 10;")
     w(f"\tMdl_SetModelScale(self, {scale}, {scale}, {scale});")
     w(f"\tCreateInvItems(self, ItMi_Gold, {250 * k});")
     if k < 6:
@@ -464,6 +469,19 @@ w("\treturn GIL_NONE;")
 w("};")
 w()
 sect("dialogfunk")
+w("func void Fun_LehreLeben(var int lp)")
+w("{")
+w("\tif (other.lp < lp)")
+w("\t{")
+w('\t\tPrint("Zu wenige Lernpunkte!");')
+w("\t\treturn;")
+w("\t};")
+w("\tother.lp = other.lp - lp;")
+w("\tother.attribute[ATR_HITPOINTS_MAX] = other.attribute[ATR_HITPOINTS_MAX] + lp * 10;")
+w("\tother.attribute[ATR_HITPOINTS] = other.attribute[ATR_HITPOINTS] + lp * 10;")
+w('\tPrint(ConcatStrings("Lebensenergie + ", IntToString(lp * 10)));')
+w("};")
+w()
 # Lehrer: Attribute und Kampf (Lernpunkte wie bei Gothics Lehrern)
 TEACH = {
     "ATTR": [("STR1", "PRINT_LearnSTR1", "B_GetLearnCostAttribute(other, ATR_STRENGTH)", "B_TeachAttributePoints(self, other, ATR_STRENGTH, 1, T_MAX)"),
@@ -471,7 +489,10 @@ TEACH = {
              ("DEX1", "PRINT_LearnDEX1", "B_GetLearnCostAttribute(other, ATR_DEXTERITY)", "B_TeachAttributePoints(self, other, ATR_DEXTERITY, 1, T_MAX)"),
              ("DEX5", "PRINT_LearnDEX5", "B_GetLearnCostAttribute(other, ATR_DEXTERITY) * 5", "B_TeachAttributePoints(self, other, ATR_DEXTERITY, 5, T_MAX)"),
              ("MANA1", "PRINT_LearnMANA1", "B_GetLearnCostAttribute(other, ATR_MANA_MAX)", "B_TeachAttributePoints(self, other, ATR_MANA_MAX, 1, T_MEGA)"),
-             ("MANA5", "PRINT_LearnMANA5", "B_GetLearnCostAttribute(other, ATR_MANA_MAX) * 5", "B_TeachAttributePoints(self, other, ATR_MANA_MAX, 5, T_MEGA)")],
+             ("MANA5", "PRINT_LearnMANA5", "B_GetLearnCostAttribute(other, ATR_MANA_MAX) * 5", "B_TeachAttributePoints(self, other, ATR_MANA_MAX, 5, T_MEGA)"),
+             # u203d (Nutzer: "leben sollte man auch durch lernpunkte aufbauen koennen"): 1 LP = 10 Lebenspunkte
+             ("HP1", '"Lebensenergie + 10"', "1", "Fun_LehreLeben(1)"),
+             ("HP5", '"Lebensenergie + 50"', "5", "Fun_LehreLeben(5)")],
     "KAMPF": [("1H1", "PRINT_Learn1h1", "B_GetLearnCostTalent(other, NPC_TALENT_1H, 1)", "B_TeachFightTalentPercent(self, other, NPC_TALENT_1H, 1, 100)"),
               ("1H5", "PRINT_Learn1h5", "B_GetLearnCostTalent(other, NPC_TALENT_1H, 1) * 5", "B_TeachFightTalentPercent(self, other, NPC_TALENT_1H, 5, 100)"),
               ("2H1", "PRINT_Learn2h1", "B_GetLearnCostTalent(other, NPC_TALENT_2H, 1)", "B_TeachFightTalentPercent(self, other, NPC_TALENT_2H, 1, 100)"),
@@ -587,10 +608,14 @@ for i, g in enumerate(GUILDS):
     w("\t{")
     w(f"\t\tCreateInvItem(hero, {arm});")
     w(f"\t\tAI_EquipArmor(hero, {arm});")
-    w(f"\t\tEquipItem(hero, {wpn});")
+    # u203d (Nutzer: "die anfangsarmbrust kann nicht ausgeruestet werden erst wenn man eine neue kauft"): wie gekaufte Ware ins
+    # Inventar legen und von Gothic anlegen lassen (EquipItem beim Helden lieferte eine nicht anlegbare Waffe)
+    w(f"\t\tCreateInvItem(hero, {wpn});")
+    w("\t\tAI_EquipBestMeleeWeapon(hero);")
     if rng:
-        w(f"\t\tEquipItem(hero, {rng});")
         w(f"\t\tCreateInvItems(hero, {ammo}, 60);")
+        w(f"\t\tCreateInvItem(hero, {rng});")
+        w("\t\tAI_EquipBestRangedWeapon(hero);")
     if g["k"] == "NOV":
         w("\t\tif (hero.attribute[ATR_MANA_MAX] < 30) { hero.attribute[ATR_MANA_MAX] = 30; };")
         w("\t\thero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];")
@@ -679,6 +704,60 @@ for k in range(2, 7):
 w("};")
 w()
 
+# u203d: nach dem Tod Startwerte (Nutzer: "nach dem man stirbt und respawn sollten staerke etc. zurueckgesetzt werden")
+sect("heldstart")
+w("func void FUN_HELD_NACH_TOD()")
+w("{")
+w("\tif (!FUN_AKTIV)")
+w("\t{")
+w("\t\treturn;")
+w("\t};")
+w("\thero.attribute[ATR_STRENGTH] = 30;")
+w("\thero.attribute[ATR_DEXTERITY] = 30;")
+w("\thero.aivar[REAL_STRENGTH] = 30;")
+w("\thero.aivar[REAL_DEXTERITY] = 30;")
+w("\thero.attribute[ATR_HITPOINTS_MAX] = 100;")
+w("\thero.attribute[ATR_HITPOINTS] = 100;")
+w("\thero.attribute[ATR_MANA_MAX] = 20;")
+w("\tif (Npc_GetTrueGuild(hero) == GIL_NOV)")
+w("\t{")
+w("\t\thero.attribute[ATR_MANA_MAX] = 30;")
+w("\t};")
+w("\thero.aivar[REAL_MANA_MAX] = hero.attribute[ATR_MANA_MAX];")
+w("\thero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];")
+w('\tPrint("Du bist gefallen - Stärke, Geschick, Leben und Mana sind wieder auf den Startwerten.");')
+w("};")
+w()
+
+# u203d (Nutzer: "die eigenen npc duerfen einen selber nicht angreifen"): Menschen greifen im Fun-Spiel keinen Spieler ihrer Gilde
+# an (auch die Figur des Mitspielers, sie traegt seine Gilde); Banditen sehen jeden Spieler der Gilde Bandit als einen der Ihren,
+# egal welche Ruestung er traegt (sonst greifen sie jeden ohne Banditenruestung an, C_PlayerIsFakeBandit)
+sect("start")
+w("func void B_Attack(var C_NPC slf, var C_NPC oth, var int attack_reason, var int wait)")
+w("{")
+w("\tif (FUN_AKTIV)")
+w("\t{")
+w("\t\tif ((slf.guild < GIL_SEPERATOR_HUM) && (slf.guild != GIL_NONE) && (slf.guild == Npc_GetTrueGuild(oth)))")
+w("\t\t{")
+w("\t\t\treturn;")
+w("\t\t};")
+w("\t};")
+w("\tB_Attack_Old(slf, oth, attack_reason, wait);")
+w("};")
+w()
+w("func int C_PlayerIsFakeBandit(var C_NPC slf, var C_NPC oth)")
+w("{")
+w("\tif (FUN_AKTIV)")
+w("\t{")
+w("\t\tif (Npc_GetTrueGuild(oth) == GIL_BDT)")
+w("\t\t{")
+w("\t\t\treturn TRUE;")
+w("\t\t};")
+w("\t};")
+w("\treturn C_PlayerIsFakeBandit_Old(slf, oth);")
+w("};")
+w()
+
 # Startup und Init
 sect("start")
 w("// --- Start: keine Story, keine Story-NPCs, nur Lager, Händler, Begleiter, Monster und der Boss --------------------------")
@@ -752,6 +831,10 @@ for si, (wp, orig, base) in enumerate(SLOTS):
     w("\t\tif (!Npc_IsDead(m))")
     w("\t\t{")
     w(f"\t\t\tFUNL_T{si:03d} = 0;")
+    w("\t\t\tif (Fun_NaheLager(m))")
+    w("\t\t\t{")
+    w(f'\t\t\t\tAI_Teleport(m, "{wp}");')
+    w("\t\t\t};")
     w("\t\t\treturn;")
     w("\t\t};")
     w("\t};")
@@ -768,6 +851,20 @@ for si, (wp, orig, base) in enumerate(SLOTS):
     w("};")
 w()
 sect("hilfe")
+w("// u203d: Monster in einem Lager? (30 m um Start-, Haendler- und Begleiterpunkte)")
+w("func int Fun_NaheLager(var C_NPC m)")
+w("{")
+_lagerwps = []
+for _g in GUILDS:
+    _lagerwps += [_g["start"], _g["hdl"]] + _g["begl"]
+for _wp in _lagerwps:
+    w(f'\tif (Npc_GetDistToWP(m, "{_wp}") < 3000)')
+    w("\t{")
+    w("\t\treturn TRUE;")
+    w("\t};")
+w("\treturn FALSE;")
+w("};")
+w()
 w("func int Fun_NpcLebt(var C_NPC n)")
 w("{")
 w("\tif (!Hlp_IsValidNpc(n)) { return FALSE; };")

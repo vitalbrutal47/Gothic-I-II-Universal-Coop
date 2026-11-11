@@ -174,9 +174,96 @@ namespace GOTHIC_ENGINE {
         player->SetAttribute(NPC_ATR_HITPOINTS, player->GetAttribute(NPC_ATR_HITPOINTSMAX));
         CoopResetPosSafe(player, pos);
         player->SetBodyState(0);   // BS_STAND
+        FunCall("FUN_HELD_NACH_TOD");   // Startwerte (u203d)
+        player->SetAttribute(NPC_ATR_HITPOINTS, player->GetAttribute(NPC_ATR_HITPOINTSMAX));
         CoopFunPrint("Du bist wieder im Lager.");
         FunLog("Held wiederbelebt bei %s", wp ? wpName : "der Leiche (kein Lager-Wegpunkt)");
     }
+
+    // --- u203d (Nutzer: "fuege freies zielen mit bogen und armbrust hinzu, die reichweite fuer bogen und armbrust soll 150m gehen
+    // eventuell durch mehr geschick noch weiter"): im Fun-Spiel fliegt der Pfeil/Bolzen des eigenen Helden dorthin, wohin die Kamera
+    // blickt (Fadenkreuz in der Bildmitte), statt zum anvisierten Ziel. Reichweite 150 m, ab Geschick 30 je Punkt 1 m mehr (hoechstens
+    // 300 m). Der Schuss selbst bleibt Gothics (Munition, Animation, Schaden beim Aufprall); nur Richtung, Tempo und Flugzeit des
+    // Geschosses werden nach oCNpc::DoShootArrow gesetzt (CoopWorldSync.cpp merkt das Geschoss in oCAIArrow::SetupAIVob).
+    static float CoopFunRangedRange() {
+        int dex = player ? player->GetAttribute(NPC_ATR_DEXTERITY) : 30;
+        float r = 15000.0f + (dex > 30 ? (float)(dex - 30) * 100.0f : 0.0f);
+        return r > 30000.0f ? 30000.0f : r;
+    }
+
+    static bool CoopFunAiming() {
+        return player && (player->fmode == 5 || player->fmode == 6);   // Bogen / Armbrust gezogen
+    }
+
+    void CoopFunFreeAim(oCItem* arrow, oCAIArrow* ai) {
+#if ENGINE == Engine_G2A
+        static int logged = 0;
+        if (!arrow || !player || !CoopFunActive() || !ogame || !zCCamera::activeCam || !zCCamera::activeCam->connectedVob)
+            return;
+        zCVob* cam = zCCamera::activeCam->connectedVob;
+        zVEC3 from = cam->GetPositionWorld();
+        zVEC3 dir = cam->GetAtVectorWorld();
+        const float dl = sqrtf(dir.n[0] * dir.n[0] + dir.n[1] * dir.n[1] + dir.n[2] * dir.n[2]);
+        if (dl < 0.001f)
+            return;
+        dir.n[0] /= dl; dir.n[1] /= dl; dir.n[2] /= dl;
+        const float range = CoopFunRangedRange();
+        zVEC3 ray(dir.n[0] * range, dir.n[1] * range, dir.n[2] * range);
+        zVEC3 target(from.n[0] + ray.n[0], from.n[1] + ray.n[1], from.n[2] + ray.n[2]);
+        zCVob* hitVob = NULL;
+        if (zCWorld* w = ogame->GetGameWorld()) {
+            // Strahl ab der Kamera; Held und Geschoss ignorieren (der Held steht vor der Kamera)
+            const int flags = zTRACERAY_STAT_POLY | zTRACERAY_VOB_BBOX | zTRACERAY_VOB_IGNORE_NO_CD_DYN | zTRACERAY_POLY_IGNORE_TRANSP;
+            zVEC3 f2(from.n[0] + dir.n[0] * 150.0f, from.n[1] + dir.n[1] * 150.0f, from.n[2] + dir.n[2] * 150.0f);
+            if (w->TraceRayNearestHit(f2, ray, (zCVob*)player, flags) && w->traceRayReport.foundHit) {
+                target = w->traceRayReport.foundIntersection;
+                hitVob = w->traceRayReport.foundVob;
+                if (hitVob == arrow)
+                    hitVob = NULL;
+            }
+        }
+        zVEC3 start = arrow->GetPositionWorld();
+        zVEC3 d(target.n[0] - start.n[0], target.n[1] - start.n[1], target.n[2] - start.n[2]);
+        const float len = sqrtf(d.n[0] * d.n[0] + d.n[1] * d.n[1] + d.n[2] * d.n[2]);
+        if (len < 1.0f)
+            return;
+        d.n[0] /= len; d.n[1] /= len; d.n[2] /= len;
+        float speed = 0.0f;
+        zCRigidBody* rb = arrow->GetRigidBody();
+        if (rb)
+            speed = sqrtf(rb->v.n[0] * rb->v.n[0] + rb->v.n[1] * rb->v.n[1] + rb->v.n[2] * rb->v.n[2]);
+        if (speed < 6000.0f)
+            speed = 6000.0f;   // 60 m/s - 150 m in 2,5 s
+        arrow->SetHeadingAtWorld(d);
+        if (rb) {
+            rb->gravityOn = FALSE;   // gerade Flugbahn bis zur Reichweite
+            rb->SetVelocity(zVEC3(d.n[0] * speed, d.n[1] * speed, d.n[2] * speed));
+        }
+        if (ai) {
+            const float t = range / speed + 0.5f;
+            if (ai->timeLeft < t)
+                ai->timeLeft = t;
+            oCNpc* hitNpc = hitVob ? zDYNAMIC_CAST<oCNpc>(hitVob) : NULL;
+            ai->targetNPC = hitNpc;   // Ziel nur, wenn das Fadenkreuz auf einem NPC liegt
+        }
+        if (logged++ < 30)
+            FunLog("freies Zielen: Schuss auf %.0f m (Reichweite %.0f m, Tempo %.0f m/s)%s%s", len / 100.0f, range / 100.0f, speed / 100.0f,
+                hitVob ? " - Treffer auf " : "", hitVob ? hitVob->GetObjectName().ToChar() : "");
+#endif
+    }
+
+    // Fadenkreuz in der Bildmitte, solange Bogen oder Armbrust gezogen sind
+    static void CoopFunCrosshair() {
+        if (!screen || !CoopFunAiming())
+            return;
+        static zSTRING plus("+");
+        const int w = screen->FontSize(plus);
+        const int h = screen->FontY();
+        screen->Print(4096 - w / 2, 4096 - h / 2, plus);
+    }
+
+    // --- u203d (Nutzer: "nach dem man stirbt und respawn sollten staerke etc. zurueckgesetzt werden" - gewaehlt: auf Startwerte,
+    // ausgegebene Lernpunkte verloren): COOP_FUN.D FUN_HELD_NACH_TOD setzt Staerke, Geschick, Leben und Mana auf die Startwerte.
 
     // UnionHooks.cpp: Game_Loop (immer, auch ohne Verbindung)
     void CoopFunPulse() {
@@ -192,6 +279,7 @@ namespace GOTHIC_ENGINE {
             return;
         const long long now = GetCurrentMs();
         CoopFunRespawnPulse(now);
+        CoopFunCrosshair();
         if (now < CoopFunNextTick)
             return;
         CoopFunNextTick = now + 10000;

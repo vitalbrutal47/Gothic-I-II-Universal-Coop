@@ -2467,9 +2467,17 @@ namespace GOTHIC_ENGINE {
     void __fastcall oCAIArrow_SetupAIVob_Coop(oCAIArrow* _this, void* vtable, zCVob* arrow, zCVob* shooter, zCVob* target);
     CInvoke<void(__thiscall*)(oCAIArrow*, zCVob*, zCVob*, zCVob*)> Ivk_oCAIArrow_SetupAIVob_Coop(CoopAddr::oCAIArrow_SetupAIVob, &oCAIArrow_SetupAIVob_Coop,
         COOP_IVK(World));
+    // u203d: Fun-Modus freies Zielen (CoopFun.cpp) - Pfeil des eigenen Helden merken, DoShootArrow richtet ihn danach aus
+    static oCItem* CoopFunShotArrow = NULL;
+    static oCAIArrow* CoopFunShotAI = NULL;
+    void CoopFunFreeAim(oCItem* arrow, oCAIArrow* ai);
     void __fastcall oCAIArrow_SetupAIVob_Coop(oCAIArrow* _this, void* vtable, zCVob* arrow, zCVob* shooter, zCVob* target) {
         Ivk_oCAIArrow_SetupAIVob_Coop(_this, arrow, shooter, target);
         oCItem* it = arrow ? zDYNAMIC_CAST<oCItem>(arrow) : NULL;
+        if (shooter && shooter == player) {
+            CoopFunShotArrow = it;
+            CoopFunShotAI = _this;
+        }
         if (it && WorldSyncAktiv() && !Projectiles.count(it)) {
             it->AddRef();
             Projectiles[it] = CurrentMs;
@@ -2504,6 +2512,16 @@ namespace GOTHIC_ENGINE {
                         _this == player ? "Held" : "NPC");
                 return 0;
             }
+        }
+        if (_this && _this == player) {   // u203d: freies Zielen im Fun-Spiel
+            CoopFunShotArrow = NULL;
+            CoopFunShotAI = NULL;
+            const int r = Ivk_oCNpc_DoShootArrow_Coop(_this, autoAim);
+            if (r && CoopFunShotArrow)
+                CoopFunFreeAim(CoopFunShotArrow, CoopFunShotAI);
+            CoopFunShotArrow = NULL;
+            CoopFunShotAI = NULL;
+            return r;
         }
         return Ivk_oCNpc_DoShootArrow_Coop(_this, autoAim);
     }

@@ -211,15 +211,8 @@ namespace GOTHIC_ENGINE {
         zVEC3 ray(dir.n[0] * range, dir.n[1] * range, dir.n[2] * range);
         zVEC3 target(from.n[0] + ray.n[0], from.n[1] + ray.n[1], from.n[2] + ray.n[2]);
         zCVob* hitVob = NULL;
-        // u203e (Nutzer: "beim freien Zielen kann ich nicht anvisieren"): ist ein Ziel erfasst (Fokus, Reichweite jetzt wie der
-        // Schuss), fliegt der Pfeil genau dorthin - sonst zum Fadenkreuz
-        oCNpc* focusNpc = player->GetFocusNpc();
-        if (focusNpc && focusNpc != player && !focusNpc->IsDead()) {
-            target = focusNpc->GetPositionWorld();
-            target.n[1] += 40.0f;   // Brust statt Huefte
-            hitVob = focusNpc;
-        }
-        else if (zCWorld* w = ogame->GetGameWorld()) {
+        // u203f: kein Erfassen mehr - immer zum Fadenkreuz (Nutzer: "ich ziele selber")
+        if (zCWorld* w = ogame->GetGameWorld()) {
             // Strahl ab der Kamera; Held und Geschoss ignorieren (der Held steht vor der Kamera)
             const int flags = zTRACERAY_STAT_POLY | zTRACERAY_VOB_BBOX | zTRACERAY_VOB_IGNORE_NO_CD_DYN | zTRACERAY_POLY_IGNORE_TRANSP;
             zVEC3 f2(from.n[0] + dir.n[0] * 150.0f, from.n[1] + dir.n[1] * 150.0f, from.n[2] + dir.n[2] * 150.0f);
@@ -260,42 +253,106 @@ namespace GOTHIC_ENGINE {
 #endif
     }
 
-    // Reichweite der Zielerfassung fuer Fernkampf (Focus_Ranged, Gothic: 35 m) auf die Schussweite heben
-    static void CoopFunFocusRange() {
+    // --- u203f (Nutzer: "das mit anvisieren meinte, dass ich ihn selber anvisiere, er soll nicht automatisch anvisieren, und das
+    // freie Bewegen beim Zielen geht nicht - kannst du einstellen, dass man mit Rechtsklick zielt und Linksklick schiesst?"):
+    // Solange im Fun-Spiel Bogen oder Armbrust gezogen sind, legt GT die Tasten um (zCInput::Bind; beim Wegstecken, Laden und
+    // ausserhalb des Fun-Spiels wieder Gothics Belegung):
+    //  - rechte Maustaste = Gothics Aktionstaste (gedrueckt halten = zielen), linke Maustaste = "vor" (im Zielen: Schuss) - in
+    //    Gothic schiesst "Aktion halten + vor". Die linke Maustaste ist dabei keine Aktionstaste mehr; die rechte loest sonst nichts aus.
+    //  - Kein automatisches Erfassen: Reichweite der Fernkampf-Zielerfassung (Focus_Ranged) 0 - der Pfeil fliegt zum Fadenkreuz.
+    //  - Waehrend die rechte Maustaste gehalten wird, gehoeren die Lauftasten (vor/zurueck/links/rechts/seitwaerts, Tastatur) nicht
+    //    Gothic: GT schiebt den Helden damit (vor 1,8 m/s, sonst 1,4 m/s; Waende halten auf, Boden wird nachgefuehrt, Stufen bis
+    //    60 cm). Drehen mit der Maus wie sonst.
+    static const int FUN_BIND_MAX = 40;
+    static std::vector<unsigned short> FunBindOrig[FUN_BIND_MAX];
+    static int FunBindMode = 0;   // 0 Gothic, 1 Bogen gezogen, 2 Bogen + rechte Maustaste
+    static float FunFocusOrig = -1.0f;
+
+    static bool FunIsMoveKey(int l) {
+        return l == GAME_UP || l == GAME_DOWN || l == GAME_LEFT || l == GAME_RIGHT || l == GAME_STRAFELEFT || l == GAME_STRAFERIGHT;
+    }
+
+    static void FunBindApply(int mode) {
 #if ENGINE == Engine_G2A
-        if (!oCNpcFocus::focuslist)
+        if (!zinput || mode == FunBindMode)
             return;
-        oCNpcFocus* f = oCNpcFocus::focuslist[FOCUS_RANGED];
-        if (!f)
-            return;
-        const float r = CoopFunRangedRange();
-        if (f->n_range2 != r) {
-            f->n_range2 = r;
-            if (f->max_range < r)
-                f->max_range = r;
+        if (FunBindMode == 0) {   // Gothics Belegung merken
+            for (int l = 1; l < FUN_BIND_MAX; l++) {
+                zCArray<unsigned short> a;
+                zinput->GetBinding((unsigned short)l, a);
+                FunBindOrig[l].clear();
+                for (int i = 0; i < a.GetNum(); i++)
+                    FunBindOrig[l].push_back(a[i]);
+            }
         }
+        for (int l = 1; l < FUN_BIND_MAX; l++) {
+            zCArray<unsigned short> a;
+            for (unsigned short c : FunBindOrig[l]) {
+                if (mode == 0) {
+                    a.Insert(c);
+                    continue;
+                }
+                if (c == MOUSE_BUTTONLEFT || c == MOUSE_BUTTONRIGHT)
+                    continue;
+                if (mode == 2 && FunIsMoveKey(l) && c < MIN_MOUSE_BTNS_AND_CODES)
+                    continue;   // Lauftasten schiebt GT
+                a.Insert(c);
+            }
+            if (mode != 0 && l == GAME_ACTION)
+                a.Insert(MOUSE_BUTTONRIGHT);
+            if (mode != 0 && l == GAME_UP)
+                a.Insert(MOUSE_BUTTONLEFT);
+            zinput->Bind((unsigned short)l, a);
+        }
+        FunLog("Tasten: %s", mode == 0 ? "Gothics Belegung" : mode == 1 ? "Bogen gezogen (rechts = zielen, links = schiessen)"
+            : "Zielen - Lauftasten bewegen");
+        FunBindMode = mode;
 #endif
     }
 
-    // u203e (Nutzer: "ich sollte beim Zielen mich auch bewegen koennen um das Ziel weiter im Visier zu behalten"): solange Gothic
-    // den Helden im Zielen haelt (oCAniCtrl_Human::IsAiming), schieben Vor/Zurueck/Seitwaerts-Tasten ihn langsam weiter (1,8 m/s,
-    // rueckwaerts und seitwaerts 1,4 m/s) - Waende halten ihn auf (Strahl auf Brusthoehe), der Boden wird nachgefuehrt (Strahl nach
-    // unten, Stufen bis 60 cm). Die Zielhaltung bleibt, ein erfasstes Ziel bleibt erfasst.
+    // Beim Laden/Weltwechsel und ohne Fun-Spiel: Gothics Belegung und Zielerfassung zurueck
+    void CoopFunInputRestore() {
+        FunBindApply(0);
+#if ENGINE == Engine_G2A
+        if (FunFocusOrig >= 0.0f && oCNpcFocus::focuslist && oCNpcFocus::focuslist[FOCUS_RANGED])
+            oCNpcFocus::focuslist[FOCUS_RANGED]->n_range2 = FunFocusOrig;
+#endif
+    }
+
+    static void CoopFunFocusOff(bool off) {
+#if ENGINE == Engine_G2A
+        if (!oCNpcFocus::focuslist || !oCNpcFocus::focuslist[FOCUS_RANGED])
+            return;
+        oCNpcFocus* f = oCNpcFocus::focuslist[FOCUS_RANGED];
+        if (FunFocusOrig < 0.0f)
+            FunFocusOrig = f->n_range2 > 1.0f ? f->n_range2 : 3500.0f;
+        f->n_range2 = off ? 1.0f : FunFocusOrig;
+#endif
+    }
+
+    static bool FunKeyHeld(int l) {
+        for (unsigned short c : FunBindOrig[l])
+            if (c < MIN_MOUSE_BTNS_AND_CODES && zinput->KeyPressed(c))
+                return true;
+        return false;
+    }
+
+    static bool CoopFunAimHeld() {
+        return FunBindMode == 2;
+    }
+
     static void CoopFunAimMove() {
 #if ENGINE == Engine_G2A
-        if (!CoopFunAiming() || !zinput || !ztimer || !ogame)
-            return;
-        oCAniCtrl_Human* ac = player->GetAnictrl();
-        if (!ac || !ac->IsAiming())
+        if (FunBindMode != 2 || !zinput || !ztimer || !ogame)
             return;
         float fwd = 0.0f, side = 0.0f;
-        if (zinput->GetState(GAME_UP) > 0.0f)
+        if (FunKeyHeld(GAME_UP))
             fwd += 1.0f;
-        if (zinput->GetState(GAME_DOWN) > 0.0f)
+        if (FunKeyHeld(GAME_DOWN))
             fwd -= 1.0f;
-        if (zinput->GetState(GAME_STRAFELEFT) > 0.0f)
+        if (FunKeyHeld(GAME_STRAFELEFT) || FunKeyHeld(GAME_LEFT))
             side -= 1.0f;
-        if (zinput->GetState(GAME_STRAFERIGHT) > 0.0f)
+        if (FunKeyHeld(GAME_STRAFERIGHT) || FunKeyHeld(GAME_RIGHT))
             side += 1.0f;
         if (fwd == 0.0f && side == 0.0f)
             return;
@@ -309,42 +366,65 @@ namespace GOTHIC_ENGINE {
             return;
         zVEC3 at = player->GetAtVectorWorld();
         zVEC3 rt = player->GetRightVectorWorld();
-        at.n[1] = 0.0f;
-        rt.n[1] = 0.0f;
         zVEC3 mv(at.n[0] * fwd + rt.n[0] * side, 0.0f, at.n[2] * fwd + rt.n[2] * side);
         const float ml = sqrtf(mv.n[0] * mv.n[0] + mv.n[2] * mv.n[2]);
         if (ml < 0.001f)
             return;
         const float speed = fwd > 0.0f && side == 0.0f ? 180.0f : 140.0f;
-        mv.n[0] = mv.n[0] / ml * speed * dt;
-        mv.n[2] = mv.n[2] / ml * speed * dt;
+        const float ux = mv.n[0] / ml, uz = mv.n[2] / ml;
+        mv.n[0] = ux * speed * dt;
+        mv.n[2] = uz * speed * dt;
         const int flags = zTRACERAY_STAT_POLY | zTRACERAY_VOB_IGNORE | zTRACERAY_POLY_IGNORE_TRANSP;
         const zVEC3 pos = player->GetPositionWorld();
-        // Wand? (Brusthoehe, 40 cm voraus)
+        static int logged = 0;
         const zVEC3 chest(pos.n[0], pos.n[1] + 40.0f, pos.n[2]);
-        const zVEC3 probe(mv.n[0] / (speed * dt) * 40.0f + mv.n[0], 0.0f, mv.n[2] / (speed * dt) * 40.0f + mv.n[2]);
-        if (w->TraceRayNearestHit(chest, probe, (zCVob*)player, flags) && w->traceRayReport.foundHit)
+        const zVEC3 probe(ux * 40.0f + mv.n[0], 0.0f, uz * 40.0f + mv.n[2]);
+        if (w->TraceRayNearestHit(chest, probe, (zCVob*)player, flags) && w->traceRayReport.foundHit) {
+            if (logged++ < 10)
+                FunLog("Zielen: Wand voraus - stehen bleiben");
             return;
-        // Boden jetzt und am neuen Ort
-        const zVEC3 down(0.0f, -400.0f, 0.0f);
+        }
+        const zVEC3 down(0.0f, -500.0f, 0.0f);
         const zVEC3 top0(pos.n[0], pos.n[1] + 60.0f, pos.n[2]);
-        if (!w->TraceRayNearestHit(top0, down, (zCVob*)player, flags) || !w->traceRayReport.foundHit)
-            return;
-        const float floor0 = w->traceRayReport.foundIntersection.n[1];
         const zVEC3 top1(pos.n[0] + mv.n[0], pos.n[1] + 60.0f, pos.n[2] + mv.n[2]);
-        if (!w->TraceRayNearestHit(top1, down, (zCVob*)player, flags) || !w->traceRayReport.foundHit)
-            return;
-        const float floor1 = w->traceRayReport.foundIntersection.n[1];
-        if (floor1 - floor0 > 60.0f || floor0 - floor1 > 150.0f)
-            return;   // zu hohe Stufe oder Abgrund
-        const zVEC3 np(pos.n[0] + mv.n[0], pos.n[1] + (floor1 - floor0), pos.n[2] + mv.n[2]);
-        player->SetPositionWorld(np);
+        float floor0 = 0.0f, floor1 = 0.0f;
+        const bool f0 = w->TraceRayNearestHit(top0, down, (zCVob*)player, flags) && w->traceRayReport.foundHit;
+        if (f0)
+            floor0 = w->traceRayReport.foundIntersection.n[1];
+        const bool f1 = w->TraceRayNearestHit(top1, down, (zCVob*)player, flags) && w->traceRayReport.foundHit;
+        if (f1)
+            floor1 = w->traceRayReport.foundIntersection.n[1];
+        float dy = 0.0f;
+        if (f0 && f1) {
+            dy = floor1 - floor0;
+            if (dy > 60.0f || dy < -150.0f) {
+                if (logged++ < 10)
+                    FunLog("Zielen: Stufe %.0f cm - stehen bleiben", dy);
+                return;
+            }
+        }
+        player->SetPositionWorld(zVEC3(pos.n[0] + mv.n[0], pos.n[1] + dy, pos.n[2] + mv.n[2]));
+        if (logged++ < 10)
+            FunLog("Zielen: bewegt um %.0f/%.0f cm (Boden %s)", mv.n[0], mv.n[2], f0 && f1 ? "gefunden" : "nicht gefunden");
+#endif
+    }
+
+    // Jedes Bild: Belegung nach Zustand (Bogen gezogen? rechte Maustaste?), Zielerfassung aus
+    static void CoopFunRangedControls(bool active) {
+#if ENGINE == Engine_G2A
+        const bool bow = active && player && !player->IsDead() && CoopFunAiming() && !player->inventory2.IsOpen();
+        int mode = 0;
+        if (bow)
+            mode = zinput && zinput->GetMouseButtonPressedRight() ? 2 : 1;
+        FunBindApply(mode);
+        if (active)
+            CoopFunFocusOff(bow);
 #endif
     }
 
     // Fadenkreuz in der Bildmitte, solange Bogen oder Armbrust gezogen sind
     static void CoopFunCrosshair() {
-        if (!screen || !CoopFunAiming())
+        if (!screen || !CoopFunAiming() || !CoopFunAimHeld())
             return;
         static zSTRING plus("+");
         const int w = screen->FontSize(plus);
@@ -365,11 +445,13 @@ namespace GOTHIC_ENGINE {
             CoopFunWasActive = active;
             FunLog(active ? "Fun-Spiel l\xE4uft (Gilde im Men\xFC: %s)" : "kein Fun-Spiel", CoopFunGuildName(CoopFunGuildChoice()));
         }
-        if (!active)
+        if (!active) {
+            CoopFunRangedControls(false);
             return;
+        }
         const long long now = GetCurrentMs();
         CoopFunRespawnPulse(now);
-        CoopFunFocusRange();
+        CoopFunRangedControls(true);
         CoopFunAimMove();
         CoopFunCrosshair();
         if (now < CoopFunNextTick)
@@ -384,6 +466,7 @@ namespace GOTHIC_ENGINE {
 
     // UnionHooks.cpp: Ladeende - erster Takt 3 s danach; nach einem neuen Spiel gilt der Merker nicht mehr
     void CoopFunLoadEnd(bool newGame) {
+        CoopFunInputRestore();   // u203f: Gothics Tastenbelegung, bis wieder ein Bogen gezogen ist
         CoopFunNextTick = GetCurrentMs() + 3000;
         CoopFunSymParser = NULL;
         if (newGame && CoopFunArmed) {

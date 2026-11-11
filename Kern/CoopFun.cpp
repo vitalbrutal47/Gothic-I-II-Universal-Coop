@@ -195,8 +195,11 @@ namespace GOTHIC_ENGINE {
         return player && (player->fmode == 5 || player->fmode == 6);   // Bogen / Armbrust gezogen
     }
 
-    // u203-fun8 (Nutzer: "das freie zielen ist irgendwie muell, setzt das zurueck"): aus - Gothics eigenes Zielen.
-    static const bool FUN_FREIES_ZIELEN = false;
+    // u203-fun9 (Nutzer: "freies Zielen mit Fadenkreuz an, Distanz 150 m, bei mehr Geschick weitere Meter, beim Zielen die Maus
+    // bewegen koennen, automatisch Ziel anvisieren aus"): Gothics Tasten bleiben (keine Umbelegung wie in fun6), der Pfeil fliegt
+    // zum Fadenkreuz. Maus waagerecht dreht den Helden, senkrecht hebt/senkt das Fadenkreuz (FunAimPitch, Grad, + = hoch).
+    static const bool FUN_FREIES_ZIELEN = true;
+    static float FunAimPitch = 0.0f;
 
     void CoopFunFreeAim(oCItem* arrow, oCAIArrow* ai) {
 #if ENGINE == Engine_G2A
@@ -212,6 +215,16 @@ namespace GOTHIC_ENGINE {
         if (dl < 0.001f)
             return;
         dir.n[0] /= dl; dir.n[1] /= dl; dir.n[2] /= dl;
+        if (FunAimPitch != 0.0f) {
+            const zVEC3 up = cam->GetUpVectorWorld();
+            const float a = FunAimPitch * 3.14159265f / 180.0f, c = cosf(a), sn = sinf(a);
+            for (int i = 0; i < 3; i++)
+                dir.n[i] = dir.n[i] * c + up.n[i] * sn;
+            const float l2 = sqrtf(dir.n[0] * dir.n[0] + dir.n[1] * dir.n[1] + dir.n[2] * dir.n[2]);
+            if (l2 > 0.001f) {
+                dir.n[0] /= l2; dir.n[1] /= l2; dir.n[2] /= l2;
+            }
+        }
         const float range = CoopFunRangedRange();
         zVEC3 ray(dir.n[0] * range, dir.n[1] * range, dir.n[2] * range);
         zVEC3 target(from.n[0] + ray.n[0], from.n[1] + ray.n[1], from.n[2] + ray.n[2]);
@@ -335,6 +348,13 @@ namespace GOTHIC_ENGINE {
 
     static void CoopFunFocusOff(bool off) {
 #if ENGINE == Engine_G2A
+        if (off && FunFocusIsOff && FunFocusObj && oCNpcFocus::focus && oCNpcFocus::focus != FunFocusObj) {
+            // Gothic hat den Modus erst nach dem Ziehen umgestellt - alten Wert zurueck, neuen Modus abschalten
+            if (FunFocusOrig > 1.0f)
+                FunFocusSet(FunFocusObj, FunFocusOrig, NULL);
+            FunFocusObj = NULL;
+            FunFocusIsOff = false;
+        }
         if (off == FunFocusIsOff)
             return;
         if (off) {
@@ -462,15 +482,21 @@ namespace GOTHIC_ENGINE {
     // u203-fun8 (Nutzer: "mach das man beim zielen die maus bewegen kann"): Gothic dreht den Helden beim Zielen mit Bogen/Armbrust
     // nicht mit der Maus (er bleibt aufs erfasste Ziel gerichtet). Solange gezielt wird, dreht GT den Helden um die waagerechte
     // Mausbewegung; bewegt sich die Maus deutlich, wird das erfasste Ziel geloest - Gothic erfasst dann, was vor dem Helden ist.
+    static bool CoopFunAimNow() {
+        if (!player || player->IsDead() || !CoopFunAiming() || player->inventory2.IsOpen())
+            return false;
+        oCAniCtrl_Human* ac = player->anictrl;
+        return ac && ac->IsAiming();
+    }
+
     static void CoopFunAimMouse() {
 #if ENGINE == Engine_G2A
         static int logged = 0;
         static float sens = -1.0f;
-        if (!zinput || !player || player->IsDead() || !CoopFunAiming() || player->inventory2.IsOpen())
+        if (!zinput || !CoopFunAimNow()) {
+            FunAimPitch = 0.0f;
             return;
-        oCAniCtrl_Human* ac = player->anictrl;
-        if (!ac || !ac->IsAiming())
-            return;
+        }
         if (sens < 0.0f) {
             sens = zoptions ? zoptions->ReadReal("GAME", "mouseSensitivity", 0.5f) : 0.5f;
             if (sens < 0.05f)
@@ -479,6 +505,13 @@ namespace GOTHIC_ENGINE {
         }
         float mx = 0.0f, my = 0.0f, mz = 0.0f;
         zinput->GetMousePos(mx, my, mz);
+        if (my > 0.5f || my < -0.5f) {
+            FunAimPitch -= my * sens * 0.25f;
+            if (FunAimPitch > 35.0f)
+                FunAimPitch = 35.0f;
+            if (FunAimPitch < -35.0f)
+                FunAimPitch = -35.0f;
+        }
         if (mx > -0.5f && mx < 0.5f)
             return;
         float deg = mx * sens * 0.35f;
@@ -487,10 +520,34 @@ namespace GOTHIC_ENGINE {
         if (deg < -20.0f)
             deg = -20.0f;
         player->RotateWorldY(deg);
-        if (mx > 3.0f || mx < -3.0f)
-            player->ClearFocusVob();
         if (logged++ < 5)
-            FunLog("Zielen mit Maus: gedreht um %.1f Grad (Maus %.0f)", deg, mx);
+            FunLog("Zielen mit Maus: gedreht um %.1f Grad, Hoehe %.1f Grad (Maus %.0f/%.0f)", deg, FunAimPitch, mx, my);
+#endif
+    }
+
+    // Fadenkreuz beim Zielen: Bildmitte, um FunAimPitch nach oben/unten verschoben
+    static void CoopFunAimCross() {
+#if ENGINE == Engine_G2A
+        if (!screen || !CoopFunAimNow())
+            return;
+        int dy = 0;
+        if (FunAimPitch != 0.0f && zCCamera::activeCam) {
+            float fx = 90.0f, fy = 67.5f;
+            zCCamera::activeCam->GetFOV(fx, fy);
+            if (fy < 10.0f || fy > 170.0f)
+                fy = 67.5f;
+            const float t = tanf(FunAimPitch * 3.14159265f / 180.0f) / tanf(fy * 0.5f * 3.14159265f / 180.0f);
+            dy = (int)(t * 4096.0f);
+        }
+        static zSTRING plus("+");
+        const int w = screen->FontSize(plus);
+        const int h = screen->FontY();
+        int y = 4096 - dy - h / 2;
+        if (y < 0)
+            y = 0;
+        if (y > 8191 - h)
+            y = 8191 - h;
+        screen->Print(4096 - w / 2, y, plus);
 #endif
     }
 
@@ -523,13 +580,10 @@ namespace GOTHIC_ENGINE {
         }
         const long long now = GetCurrentMs();
         CoopFunRespawnPulse(now);
-        if (FUN_FREIES_ZIELEN) {
-            CoopFunRangedControls(true);
-            CoopFunAimMove();
-            CoopFunCrosshair();
-        }
-        else
-            CoopFunAimMouse();
+        // fun9: Gothics Tasten bleiben; Zielerfassung aus, solange Bogen/Armbrust gezogen sind
+        CoopFunFocusOff(CoopFunAiming() && !player->IsDead());
+        CoopFunAimMouse();
+        CoopFunAimCross();
         if (now < CoopFunNextTick)
             return;
         CoopFunNextTick = now + 10000;

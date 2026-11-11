@@ -89,6 +89,8 @@ namespace GOTHIC_ENGINE {
     }
 #endif
 
+    static int __cdecl CoopFunExtHost();   // u204 (unten)
+
     // UnionHooks.cpp: Game_DefineExternals
     void CoopFunDefineExternals() {
 #if ENGINE == Engine_G2A
@@ -96,7 +98,8 @@ namespace GOTHIC_ENGINE {
             return;
         parser->DefineExternal(zSTRING("COOP_FUNMODUS"), CoopFunExtModus, zPAR_TYPE_INT, zPAR_TYPE_VOID);
         parser->DefineExternal(zSTRING("COOP_FUNGILDE"), CoopFunExtGilde, zPAR_TYPE_INT, zPAR_TYPE_VOID);
-        FunLog("Engine-Funktionen COOP_FUNMODUS und COOP_FUNGILDE angelegt");
+        parser->DefineExternal(zSTRING("COOP_FUNHOST"), CoopFunExtHost, zPAR_TYPE_INT, zPAR_TYPE_VOID);   // u204
+        FunLog("Engine-Funktionen COOP_FUNMODUS, COOP_FUNGILDE und COOP_FUNHOST angelegt");
 #endif
     }
 
@@ -119,6 +122,8 @@ namespace GOTHIC_ENGINE {
     // u203b (Nutzer: "wenn man stirbt soll man nach 30 sec in der basis wieder spawnen"): Tod des eigenen Helden im Fun-Spiel -
     // nach 30 s wieder aufstehen (volle Lebenspunkte, wie die Coop-Wiederbelebung RemoteNpc::UpdateRevived) am Startpunkt des
     // eigenen Lagers. Bewusstlos (Nahkampf zwischen Menschen) bleibt wie im Spiel.
+    static void FunRufEndeAbbrechen();     // u204 (unten)
+    static bool FunEigenerFuehrerTot();    // u204 (unten)
     static long long CoopFunDeadSince = 0;
     static int CoopFunDeadShown = -1;
 
@@ -149,9 +154,12 @@ namespace GOTHIC_ENGINE {
             CoopFunDeadSince = now;
             FunLog("eigener Held tot - Wiederbeleben im Lager in 30 s");
         }
-        const int left = 30 - (int)((now - CoopFunDeadSince) / 1000);
+        // u204: solange der Anfuehrer der eigenen Gilde tot ist, 60 s; der Schlachtruf endet mit dem Tod (Startwerte)
+        FunRufEndeAbbrechen();
+        const int delay = FunEigenerFuehrerTot() ? 60 : 30;
+        const int left = delay - (int)((now - CoopFunDeadSince) / 1000);
         if (left > 0) {
-            const int step = left > 5 ? (left + 4) / 5 * 5 : left;   // 30, 25, ... 10, 5, 4, 3, 2, 1
+            const int step = left > 5 ? (left + 4) / 5 * 5 : left;   // 30 (60), 25, ... 10, 5, 4, 3, 2, 1
             if (step != CoopFunDeadShown) {
                 CoopFunDeadShown = step;
                 char b[120];
@@ -573,6 +581,559 @@ namespace GOTHIC_ENGINE {
     // --- u203d (Nutzer: "nach dem man stirbt und respawn sollten staerke etc. zurueckgesetzt werden" - gewaehlt: auf Startwerte,
     // ausgegebene Lernpunkte verloren): COOP_FUN.D FUN_HELD_NACH_TOD setzt Staerke, Geschick, Leben und Mana auf die Startwerte.
 
+    // --- u204: Schlacht-Paket (Nutzer: "was man noch machen koennte, das die 'schlachten' epischer werden zwischen pvp der gilden"
+    // ... "kannst du starten und alles hinzufuegen"). Skriptteil in COOP_FUN.D (Werkzeuge\funmodus\gen_schlacht.py). Hier:
+    //  - Eroberungspunkte (Host, jede Sekunde): wer allein mit Menschen seiner Gilde (Spieler, Figuren der Mitspieler, Begleiter)
+    //    15 m um den Punkt steht, nimmt ihn ein (12 s frei, 20 s vom Gegner, mehr Leute schneller). FUN_PUNKT_n / _ANGRIFF_n.
+    //  - Ansagen (jeder PC): Eroberung, Angriff auf eigene Punkte (Kriegshorn), Anfuehrer, Reliquien, Weltereignisse, Siegeszuege,
+    //    Runde, Nacht.
+    //  - Tasten: Ue Schlachtuebersicht, Ae Schlachtruf (Abklingzeit 3 min), # Begleiter-Befehl (Ziel im Blick: Angriff, sonst
+    //    Folgen), Umschalt+# Begleiter zurueck ins Lager.
+    //  - Nachts (22-5 Uhr) keine Namen ueber Mitspielern (CoopPartnerMarker.cpp); Wiederbeleben 60 s, solange der Anfuehrer tot ist.
+    static zCParser* FunVarParser = NULL;
+    static std::map<std::string, zCPar_Symbol*> FunVarCache;
+
+    static zCPar_Symbol* FunSym(const char* nm) {
+        if (!parser)
+            return NULL;
+        if (FunVarParser != parser) {
+            FunVarParser = parser;
+            FunVarCache.clear();
+        }
+        auto it = FunVarCache.find(nm);
+        if (it != FunVarCache.end())
+            return it->second;
+        zCPar_Symbol* s = parser->GetSymbol(zSTRING(nm));
+        if (s && s->type != zPAR_TYPE_INT)
+            s = NULL;
+        FunVarCache[nm] = s;
+        return s;
+    }
+
+    static int FunGet(const char* nm) {
+        zCPar_Symbol* s = FunSym(nm);
+        int v = 0;
+        if (s)
+            s->GetValue(v, 0);
+        return v;
+    }
+
+    static void FunSet(const char* nm, int v) {
+        zCPar_Symbol* s = FunSym(nm);
+        if (s)
+            s->SetValue(v, 0);
+    }
+
+    static int FunGetK(const char* pre, int i) {   // pre + MIL/SLD/NOV/BDT
+        static const char* const k[5] = { "", "MIL", "SLD", "NOV", "BDT" };
+        if (i < 1 || i > 4)
+            return 0;
+        char b[64];
+        _snprintf(b, sizeof(b), "%s%s", pre, k[i]);
+        b[sizeof(b) - 1] = 0;
+        return FunGet(b);
+    }
+
+    static int FunGetN(const char* pre, int n) {   // pre + 1..4
+        char b[64];
+        _snprintf(b, sizeof(b), "%s%d", pre, n);
+        b[sizeof(b) - 1] = 0;
+        return FunGet(b);
+    }
+
+    static void FunSetN(const char* pre, int n, int v) {
+        char b[64];
+        _snprintf(b, sizeof(b), "%s%d", pre, n);
+        b[sizeof(b) - 1] = 0;
+        FunSet(b, v);
+    }
+
+    static int FunIdx(int gil) {
+        switch (gil) {
+        case 2: return 1;   // GIL_MIL
+        case 7: return 2;   // GIL_SLD
+        case 5: return 3;   // GIL_NOV
+        case 9: return 4;   // GIL_BDT
+        default: return 0;
+        }
+    }
+
+    static const char* FunGilde(int i, bool gross) {   // "die Miliz" / "Die Miliz"
+        static const char* const kl[7] = { "niemand", "die Miliz", "die S\xF6ldner", "die Novizen", "die Banditen", "niemand", "niemand" };
+        static const char* const gr[7] = { "Niemand", "Die Miliz", "Die S\xF6ldner", "Die Novizen", "Die Banditen", "Niemand", "Niemand" };
+        if (i < 0 || i > 6)
+            i = 0;
+        return gross ? gr[i] : kl[i];
+    }
+
+    static const char* FunGildeKurz(int i) {
+        static const char* const n[5] = { "-", "Miliz", "S\xF6ldner", "Novizen", "Banditen" };
+        return (i >= 0 && i <= 4) ? n[i] : "-";
+    }
+
+    static const char* FunGildeVerb(int i) {   // "hat" (Miliz) / "haben"
+        return i == 1 ? "hat" : "haben";
+    }
+
+    static const char* FunFuehrer(int i) {
+        static const char* const n[5] = { "", "Hauptmann Wulfgar", "Kriegsherr Sturmfaust", "Meister Aldric", "Bandenf\xFChrer Rabenkralle" };
+        return (i >= 1 && i <= 4) ? n[i] : "";
+    }
+
+    static const char* FunReliquie(int i) {
+        static const char* const n[5] = { "", "der Miliz", "der S\xF6ldner", "der Novizen", "der Banditen" };
+        return (i >= 1 && i <= 4) ? n[i] : "";
+    }
+
+    struct FunPunkt {
+        const char* nom;    // "Lobarts Hof" / "die Taverne"
+        const char* gross;  // Satzanfang
+        const char* wp;
+        bool havePos;
+        zVEC3 pos;
+        int capG;
+        float prog;
+    };
+    static FunPunkt FunPunkte[4] = {
+        { "Lobarts Hof", "Lobarts Hof", "NW_FARM1_OUT_01", false, zVEC3(0, 0, 0), 0, 0.0f },
+        { "die Taverne", "Die Taverne", "NW_TAVERNE_OUT_01", false, zVEC3(0, 0, 0), 0, 0.0f },
+        { "Bengars Hof", "Bengars Hof", "NW_FARM3_HOUSE", false, zVEC3(0, 0, 0), 0, 0.0f },
+        { "Sekobs Hof", "Sekobs Hof", "NW_FARM4_04", false, zVEC3(0, 0, 0), 0, 0.0f },
+    };
+    static const char* const FunEvtName[5] = { "", "Ein Ork-Kriegstrupp", "Ein Schwarzer Troll", "Ein Untoter F\xFCrst", "Eine Schatzkarawane" };
+    static const char* const FunEvtOrt[5] = { "", "am Leuchtturmweg", "in der Trollschlucht", "im Wald bei Sekobs Hof",
+        "zwischen Taverne und Onars Hof" };
+
+    static int FunMe() {
+        return player ? FunIdx(player->guild) : 0;
+    }
+
+    // Host: Eroberung
+    static int FunCapRunde = -1;
+    static void FunCapturePulse(long long now) {
+        static long long next = 0;
+        static int logged = 0;
+        if (now < next)
+            return;
+        next = now + 1000;
+        oCWorld* w = ogame->GetGameWorld();
+        if (!w)
+            return;
+        const int runde = FunGet("FUN_RUNDE");
+        if (runde != FunCapRunde) {
+            FunCapRunde = runde;
+            for (FunPunkt& p : FunPunkte) {
+                p.capG = 0;
+                p.prog = 0.0f;
+            }
+        }
+        for (FunPunkt& p : FunPunkte)
+            if (!p.havePos) {
+                zCWaypoint* wp = w->wayNet ? w->wayNet->GetWaypoint(zSTRING(p.wp)) : NULL;
+                if (wp) {
+                    p.pos = wp->GetPositionWorld();
+                    p.havePos = true;
+                }
+                else if (logged++ < 8)
+                    FunLog("Eroberung: Wegpunkt %s fehlt", p.wp);
+            }
+        int cnt[4][5];
+        memset(cnt, 0, sizeof(cnt));
+        for (zCListSort<oCNpc>* l = CoopWorldNpcListFirst(w); l; l = l->next) {
+            oCNpc* n = l->data;
+            if (!n || n->attribute[NPC_ATR_HITPOINTS] <= 0)
+                continue;
+            const int gi = FunIdx(n->guild);
+            if (!gi)
+                continue;
+            const zVEC3 q = n->GetPositionWorld();
+            for (int i = 0; i < 4; i++) {
+                const FunPunkt& p = FunPunkte[i];
+                if (!p.havePos)
+                    continue;
+                const float dx = q.n[0] - p.pos.n[0], dy = q.n[1] - p.pos.n[1], dz = q.n[2] - p.pos.n[2];
+                if (dx * dx + dz * dz < 1500.0f * 1500.0f && dy < 800.0f && dy > -800.0f)
+                    cnt[i][gi]++;
+            }
+        }
+        for (int i = 0; i < 4; i++) {
+            FunPunkt& p = FunPunkte[i];
+            const int owner = FunGetN("FUN_PUNKT_", i + 1);
+            const int att = FunGetN("FUN_PUNKT_ANGRIFF_", i + 1);
+            int present = 0, only = 0, foreign = 0;
+            for (int g = 1; g <= 4; g++)
+                if (cnt[i][g]) {
+                    present++;
+                    only = g;
+                    if (g != owner && !foreign)
+                        foreign = g;
+                }
+            int newAtt = 0;
+            if (present == 0) {
+                p.prog = p.prog > 1.0f ? p.prog - 1.0f : 0.0f;
+                if (p.prog <= 0.0f)
+                    p.capG = 0;
+            }
+            else if (present > 1)
+                newAtt = foreign;   // umkaempft - nichts bewegt sich
+            else if (only == owner) {
+                p.prog = 0.0f;
+                p.capG = 0;
+            }
+            else {
+                if (p.capG != only) {
+                    p.capG = only;
+                    p.prog = 0.0f;
+                }
+                const int c = cnt[i][only];
+                p.prog += 1.0f + (c > 1 ? (c > 3 ? 1.0f : 0.5f * (c - 1)) : 0.0f);
+                newAtt = only;
+                const float need = owner ? 20.0f : 12.0f;
+                if (p.prog >= need) {
+                    FunSetN("FUN_PUNKT_", i + 1, only);
+                    FunLog("Eroberung: %s geh\xF6rt jetzt %s (vorher %s)", p.nom, FunGilde(only, false), FunGilde(owner, false));
+                    p.prog = 0.0f;
+                    p.capG = 0;
+                    newAtt = 0;
+                }
+            }
+            if (newAtt != att)
+                FunSetN("FUN_PUNKT_ANGRIFF_", i + 1, newAtt);
+        }
+    }
+
+    // Ansagen
+    static bool FunAnnInit = false;
+    static int FunAnnSlot = 0;
+    static int FunAnnPunkt[4], FunAnnAngriff[4], FunAnnFuehrer[5], FunAnnBanner[5], FunAnnSerie[5];
+    static int FunAnnEvt = 0, FunAnnRunde = 0, FunAnnNacht = -1;
+
+    static void FunAnn(const char* text, int kind) {   // 0 neutral, 1 gut, 2 schlecht, 3 gross
+        if (!screen)
+            return;
+        zCOLOR col = kind == 1 ? zCOLOR(120, 255, 120, 255) : kind == 2 ? zCOLOR(255, 110, 90, 255) : kind == 3 ? zCOLOR(255, 215, 80, 255)
+            : zCOLOR(235, 235, 235, 255);
+        const int y = 1500 + 330 * (FunAnnSlot++ % 4);
+        screen->PrintTimedCX(y, zSTRING(text), 6000.0f, &col);
+        if (kind == 1)
+            FunCall("FUN_SND_GUT");
+        else if (kind == 2)
+            FunCall("FUN_SND_ALARM");
+        else if (kind == 3)
+            FunCall("FUN_SND_GROSS");
+        FunLog("Ansage: %s", text);
+    }
+
+    static bool FunIsNight() {
+        oCWorldTimer* t = ogame ? ogame->GetWorldTimer() : NULL;
+        if (!t)
+            return false;
+        int h = 12, m = 0;
+        t->GetTime(h, m);
+        return h >= 22 || h < 5;
+    }
+
+    bool CoopFunNightHide() {   // CoopPartnerMarker.cpp
+#if ENGINE == Engine_G2A
+        return CoopFunActive() && FunIsNight();
+#else
+        return false;
+#endif
+    }
+
+    static void FunAnnPulse(long long now) {
+        static long long next = 0;
+        if (now < next)
+            return;
+        next = now + 250;
+        const int me = FunMe();
+        char b[300];
+        int punkt[4], angriff[4], fuehrer[5], banner[5], serie[5];
+        for (int i = 0; i < 4; i++) {
+            punkt[i] = FunGetN("FUN_PUNKT_", i + 1);
+            angriff[i] = FunGetN("FUN_PUNKT_ANGRIFF_", i + 1);
+        }
+        for (int g = 1; g <= 4; g++) {
+            fuehrer[g] = FunGetK("FUN_FUEHRER_AUS_", g);
+            banner[g] = FunGetK("FUN_BANNER_", g);
+            serie[g] = FunGetK("FUN_SERIE_", g);
+        }
+        const int evt = FunGet("FUN_EREIGNIS");
+        const int runde = FunGet("FUN_RUNDE");
+        const int nacht = FunIsNight() ? 1 : 0;
+        if (!FunAnnInit) {
+            FunAnnInit = true;
+            memcpy(FunAnnPunkt, punkt, sizeof(punkt));
+            memcpy(FunAnnAngriff, angriff, sizeof(angriff));
+            memcpy(FunAnnFuehrer, fuehrer, sizeof(fuehrer));
+            memcpy(FunAnnBanner, banner, sizeof(banner));
+            memcpy(FunAnnSerie, serie, sizeof(serie));
+            FunAnnEvt = evt;
+            FunAnnRunde = runde;
+            FunAnnNacht = nacht;
+            return;
+        }
+        if (runde > FunAnnRunde && FunAnnRunde > 0) {
+            const int s = FunGet("FUN_SIEGER");
+            _snprintf(b, sizeof(b), "Runde %d ist vorbei - %s %s gewonnen! Neue Runde beginnt.", FunAnnRunde, FunGilde(s, true),
+                FunGildeVerb(s));
+            b[sizeof(b) - 1] = 0;
+            FunAnn(b, 3);
+        }
+        const bool rundeNeu = runde != FunAnnRunde;
+        FunAnnRunde = runde;
+        for (int i = 0; i < 4; i++) {
+            if (punkt[i] != FunAnnPunkt[i] && punkt[i] > 0 && !rundeNeu) {
+                _snprintf(b, sizeof(b), "%s %s %s erobert!", FunGilde(punkt[i], true), FunGildeVerb(punkt[i]), FunPunkte[i].nom);
+                b[sizeof(b) - 1] = 0;
+                FunAnn(b, punkt[i] == me ? 1 : (FunAnnPunkt[i] == me ? 2 : 0));
+            }
+            if (angriff[i] != FunAnnAngriff[i] && angriff[i] > 0 && angriff[i] != me && punkt[i] == me && me) {
+                _snprintf(b, sizeof(b), "Kriegshorn! %s wird von %s angegriffen!", FunPunkte[i].gross, FunGilde(angriff[i], false));
+                b[sizeof(b) - 1] = 0;
+                FunAnn(b, 2);
+            }
+        }
+        memcpy(FunAnnPunkt, punkt, sizeof(punkt));
+        memcpy(FunAnnAngriff, angriff, sizeof(angriff));
+        for (int g = 1; g <= 4; g++) {
+            if (fuehrer[g] > 0 && FunAnnFuehrer[g] == 0) {
+                if (g == me)
+                    _snprintf(b, sizeof(b), "Euer Anf\xFChrer %s ist gefallen! Kein Handel, Wiederbeleben dauert 60 s.", FunFuehrer(g));
+                else
+                    _snprintf(b, sizeof(b), "%s, Anf\xFChrer %s, ist gefallen!", FunFuehrer(g), FunReliquie(g));
+                b[sizeof(b) - 1] = 0;
+                FunAnn(b, g == me ? 2 : 1);
+            }
+            else if (fuehrer[g] == 0 && FunAnnFuehrer[g] > 0) {
+                _snprintf(b, sizeof(b), "%s ist zur\xFC" "ck in seinem Lager.", FunFuehrer(g));
+                b[sizeof(b) - 1] = 0;
+                FunAnn(b, 0);
+            }
+            if (banner[g] > 0 && FunAnnBanner[g] != banner[g]) {
+                _snprintf(b, sizeof(b), "%s %s die Reliquie %s erbeutet!", FunGilde(banner[g], true), FunGildeVerb(banner[g]), FunReliquie(g));
+                b[sizeof(b) - 1] = 0;
+                FunAnn(b, g == me ? 2 : (banner[g] == me ? 1 : 0));
+            }
+            else if (banner[g] == 0 && FunAnnBanner[g] > 0) {
+                const int letzt = FunGetK("FUN_BANNER_LETZT_", g);
+                if (letzt == 1)
+                    _snprintf(b, sizeof(b), "%s %s die Reliquie %s in ihr Lager gebracht! (+100 Siegpunkte)", FunGilde(FunAnnBanner[g], true),
+                        FunGildeVerb(FunAnnBanner[g]), FunReliquie(g));
+                else
+                    _snprintf(b, sizeof(b), "Die Reliquie %s ist zu ihrem Lager zur\xFC" "ckgekehrt.", FunReliquie(g));
+                b[sizeof(b) - 1] = 0;
+                FunAnn(b, letzt == 1 ? (FunAnnBanner[g] == me ? 1 : (g == me ? 2 : 0)) : 0);
+            }
+            if (serie[g] > FunAnnSerie[g] && (serie[g] == 3 || serie[g] == 5 || serie[g] == 10 || serie[g] == 15 || serie[g] == 20)) {
+                _snprintf(b, sizeof(b), "%s %s einen Siegeszug: %d Siege in Folge!", FunGilde(g, true), FunGildeVerb(g), serie[g]);
+                b[sizeof(b) - 1] = 0;
+                FunAnn(b, g == me ? 1 : 0);
+            }
+            else if (serie[g] == 0 && FunAnnSerie[g] >= 3) {
+                _snprintf(b, sizeof(b), "Der Siegeszug %s ist gebrochen!", FunReliquie(g));
+                b[sizeof(b) - 1] = 0;
+                FunAnn(b, g == me ? 2 : 0);
+            }
+        }
+        memcpy(FunAnnFuehrer, fuehrer, sizeof(fuehrer));
+        memcpy(FunAnnBanner, banner, sizeof(banner));
+        memcpy(FunAnnSerie, serie, sizeof(serie));
+        if (evt != FunAnnEvt) {
+            if (evt > 0 && evt <= 4) {
+                const int ort = FunGet("FUN_EREIGNIS_ORT");
+                _snprintf(b, sizeof(b), "Weltereignis: %s %s! Wer gewinnt, bekommt 40 Siegpunkte und Beute.", FunEvtName[evt],
+                    (ort >= 1 && ort <= 4) ? FunEvtOrt[ort] : "");
+                b[sizeof(b) - 1] = 0;
+                FunAnn(b, 3);
+            }
+            else if (evt == 0 && FunAnnEvt > 0) {
+                const int s = FunGet("FUN_EREIGNIS_SIEGER");
+                if (s >= 1 && s <= 4)
+                    _snprintf(b, sizeof(b), "%s %s das Weltereignis gewonnen!", FunGilde(s, true), FunGildeVerb(s));
+                else if (s == 6)
+                    _snprintf(b, sizeof(b), "Die Schatzkarawane hat die Taverne erreicht - niemand hat sie erbeutet.");
+                else
+                    _snprintf(b, sizeof(b), "Das Weltereignis ist vorbei - ohne Sieger.");
+                b[sizeof(b) - 1] = 0;
+                FunAnn(b, s == me ? 1 : 0);
+            }
+            FunAnnEvt = evt;
+        }
+        if (nacht != FunAnnNacht) {
+            FunAnn(nacht ? "Die Nacht bricht herein - Namen \xFC" "ber den K\xF6pfen sind verborgen. Zeit f\xFCr Hinterhalte!"
+                : "Der Morgen graut - Namen sind wieder sichtbar.", 0);
+            FunAnnNacht = nacht;
+        }
+    }
+
+    // Tasten und Uebersicht
+    static bool FunHudOn = false;
+    static long long FunRufEnde = 0, FunRufBereit = 0;
+
+    static bool FunKeysBlocked() {
+        if (!zinput || !player || player->IsDead() || player->inventory2.IsOpen() || !screen)
+            return true;
+        oCInformationManager& im = oCInformationManager::GetInformationManager();
+        return im.Npc && !im.IsDone;
+    }
+
+    static bool FunCallOther(const char* name, oCNpc* other) {
+        zCPar_Symbol* o = parser ? parser->GetSymbol(zSTRING("OTHER")) : NULL;
+        void* old = o ? (void*)o->offset : NULL;
+        if (parser)
+            parser->SetInstance(zSTRING("OTHER"), other);
+        const bool r = FunCall(name);
+        if (parser)
+            parser->SetInstance(zSTRING("OTHER"), old);
+        return r;
+    }
+
+    static void FunKeysPulse(long long now) {
+        if (FunRufEnde && now >= FunRufEnde) {
+            FunRufEnde = 0;
+            if (player && !player->IsDead()) {
+                FunCall("FUN_SCHLACHTRUF_ENDE");
+                FunAnn("Der Schlachtruf verhallt.", 0);
+            }
+        }
+        if (FunKeysBlocked())
+            return;
+        if (zinput->KeyToggled(KEY_LBRACKET)) {   // Ue
+            FunHudOn = !FunHudOn;
+            FunLog("Schlacht\xFC" "bersicht %s", FunHudOn ? "an" : "aus");
+        }
+        if (zinput->KeyToggled(KEY_APOSTROPHE)) {   // Ae
+            char b[160];
+            if (now < FunRufBereit) {
+                _snprintf(b, sizeof(b), "Der Schlachtruf ist in %d s wieder bereit.", (int)((FunRufBereit - now + 999) / 1000));
+                b[sizeof(b) - 1] = 0;
+                FunAnn(b, 0);
+            }
+            else if (FunCall("FUN_SCHLACHTRUF")) {
+                FunRufEnde = now + 30000;
+                FunRufBereit = now + 180000;
+                FunAnn("Schlachtruf! 30 Sekunden lang +15 St\xE4rke, Begleiter in der N\xE4he sind geheilt.", 1);
+            }
+        }
+        if (zinput->KeyToggled(KEY_BACKSLASH)) {   // #
+            const bool shift = zinput->KeyPressed(KEY_LSHIFT) || zinput->KeyPressed(KEY_RSHIFT);
+            if (shift)
+                FunCall("FUN_BEFEHL_HALT");
+            else {
+                oCNpc* f = player->GetFocusNpc();
+                if (f && (f == player || f->IsDead()))
+                    f = NULL;
+                FunCallOther("FUN_BEFEHL", f);
+            }
+        }
+    }
+
+    static void FunHudLine(int& y, const char* text) {
+        screen->Print(150, y, zSTRING(text));
+        y += screen->FontY() + 20;
+    }
+
+    static void FunHudPulse(long long now) {
+        if (!FunHudOn || !screen)
+            return;
+        oCInformationManager& im = oCInformationManager::GetInformationManager();
+        if ((im.Npc && !im.IsDone) || (player && player->inventory2.IsOpen()))
+            return;
+        char b[400];
+        int y = 500;
+        const int me = FunMe();
+        _snprintf(b, sizeof(b), "SCHLACHT - Runde %d - Ziel 1000 Siegpunkte - noch %d min   (\xDC schlie\xDF" "t)", FunGet("FUN_RUNDE"),
+            FunGet("FUN_RUNDE_MIN"));
+        b[sizeof(b) - 1] = 0;
+        FunHudLine(y, b);
+        _snprintf(b, sizeof(b), "Siegpunkte:  Miliz %d   S\xF6ldner %d   Novizen %d   Banditen %d", FunGetK("FUN_SIEG_", 1),
+            FunGetK("FUN_SIEG_", 2), FunGetK("FUN_SIEG_", 3), FunGetK("FUN_SIEG_", 4));
+        b[sizeof(b) - 1] = 0;
+        FunHudLine(y, b);
+        for (int i = 0; i < 4; i++) {
+            const int o = FunGetN("FUN_PUNKT_", i + 1), a = FunGetN("FUN_PUNKT_ANGRIFF_", i + 1);
+            const FunPunkt& p = FunPunkte[i];
+            if (a)
+                _snprintf(b, sizeof(b), "Punkt %s: %s  - wird eingenommen von: %s", p.gross, o ? FunGildeKurz(o) : "frei", FunGildeKurz(a));
+            else
+                _snprintf(b, sizeof(b), "Punkt %s: %s", p.gross, o ? FunGildeKurz(o) : "frei");
+            b[sizeof(b) - 1] = 0;
+            FunHudLine(y, b);
+        }
+        for (int g = 1; g <= 4; g++) {
+            const int aus = FunGetK("FUN_FUEHRER_AUS_", g), ban = FunGetK("FUN_BANNER_", g);
+            char f[80], r[80];
+            if (aus > 0)
+                _snprintf(f, sizeof(f), "gefallen (noch %d min)", (aus + 5) / 6);
+            else
+                _snprintf(f, sizeof(f), "im Lager");
+            f[sizeof(f) - 1] = 0;
+            if (ban > 0)
+                _snprintf(r, sizeof(r), "erbeutet von: %s", FunGildeKurz(ban));
+            else
+                _snprintf(r, sizeof(r), "beim Anf\xFChrer");
+            r[sizeof(r) - 1] = 0;
+            _snprintf(b, sizeof(b), "%s%s: Anf\xFChrer %s, Reliquie %s, Siegeszug %d", g == me ? "> " : "  ", FunGildeKurz(g), f, r,
+                FunGetK("FUN_SERIE_", g));
+            b[sizeof(b) - 1] = 0;
+            FunHudLine(y, b);
+        }
+        const int evt = FunGet("FUN_EREIGNIS"), ort = FunGet("FUN_EREIGNIS_ORT");
+        if (evt >= 1 && evt <= 4)
+            _snprintf(b, sizeof(b), "Weltereignis: %s %s", FunEvtName[evt], (ort >= 1 && ort <= 4) ? FunEvtOrt[ort] : "");
+        else
+            _snprintf(b, sizeof(b), "Weltereignis: keins - das n\xE4" "chste kommt bald");
+        b[sizeof(b) - 1] = 0;
+        FunHudLine(y, b);
+        if (FunRufEnde)
+            _snprintf(b, sizeof(b), "Schlachtruf: aktiv (%d s)", (int)((FunRufEnde - now + 999) / 1000));
+        else if (now < FunRufBereit)
+            _snprintf(b, sizeof(b), "Schlachtruf: in %d s bereit", (int)((FunRufBereit - now + 999) / 1000));
+        else
+            _snprintf(b, sizeof(b), "Schlachtruf: bereit (\xC4)");
+        b[sizeof(b) - 1] = 0;
+        FunHudLine(y, b);
+        FunHudLine(y, "Tasten: \xC4 Schlachtruf, # Begleiter greifen dein Ziel an (ohne Ziel: folgen), Umschalt+# zur\xFC" "ck ins Lager");
+        if (FunIsNight())
+            FunHudLine(y, "Nacht: Namen der Mitspieler sind verborgen.");
+    }
+
+    static void FunRufEndeAbbrechen() {
+        FunRufEnde = 0;
+    }
+
+    static bool FunEigenerFuehrerTot() {
+        const int me = FunMe();
+        return me && FunGetK("FUN_FUEHRER_AUS_", me) > 0;
+    }
+
+    static void CoopFunSchlachtReset() {
+        FunAnnInit = false;
+        FunRufEnde = 0;
+        FunRufBereit = 0;
+        FunCapRunde = -1;
+        FunVarParser = NULL;
+        for (FunPunkt& p : FunPunkte) {
+            p.havePos = false;
+            p.capG = 0;
+            p.prog = 0.0f;
+        }
+    }
+
+    static void CoopFunSchlachtPulse(long long now, bool host) {
+        if (host)
+            FunCapturePulse(now);
+        FunAnnPulse(now);
+        FunKeysPulse(now);
+        FunHudPulse(now);
+    }
+
+    static int __cdecl CoopFunExtHost() {
+        parser->SetReturn((ServerThread != NULL || ClientThread == NULL) ? 1 : 0);
+        return 0;
+    }
+
     // UnionHooks.cpp: Game_Loop (immer, auch ohne Verbindung)
     void CoopFunPulse() {
 #if ENGINE == Engine_G2A
@@ -607,10 +1168,11 @@ namespace GOTHIC_ENGINE {
             CoopFunAimMouse();
             CoopFunAimCross();
         }
+        const bool host = ServerThread != NULL || ClientThread == NULL;
+        CoopFunSchlachtPulse(now, host);   // u204
         if (now < CoopFunNextTick)
             return;
         CoopFunNextTick = now + 10000;
-        const bool host = ServerThread != NULL || ClientThread == NULL;
         if (host && !FunCall("FUN_TAKT_HOST"))
             FunLog("FUN_TAKT_HOST fehlt im Skript (system\\Autorun\\COOP_FUN.D nicht geladen?)");
         FunCall("FUN_TAKT_ALLE");
@@ -622,6 +1184,7 @@ namespace GOTHIC_ENGINE {
         CoopFunInputRestore();   // u203f: Gothics Tastenbelegung, bis wieder ein Bogen gezogen ist
         CoopFunNextTick = GetCurrentMs() + 3000;
         CoopFunSymParser = NULL;
+        CoopFunSchlachtReset();   // u204
         if (newGame && CoopFunArmed) {
             FunLog("neues Fun-Spiel geladen (Gilde %s)", CoopFunGuildName(CoopFunGuildChoice()));
             CoopFunArmed = false;

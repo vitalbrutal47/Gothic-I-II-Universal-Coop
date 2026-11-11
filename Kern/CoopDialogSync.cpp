@@ -3363,7 +3363,7 @@ namespace GOTHIC_ENGINE {
             times.push_back(CurrentMs);
             while (!times.empty() && times.front() < CurrentMs - 30000)
                 times.pop_front();
-            if ((int)times.size() > STORY_NOISY_MAX) {
+            if ((int)times.size() > STORY_NOISY_MAX && strncmp(nm, "FUN_", 4)) {   // u204: Fun-Modus-Werte (Schlacht) nie ausschliessen
                 StoryNoisy[i] = 1;
                 DialogLog("Story-Abgleich: %s aendert sich staendig - fuer diese Sitzung ausgeschlossen", nm);
                 continue;

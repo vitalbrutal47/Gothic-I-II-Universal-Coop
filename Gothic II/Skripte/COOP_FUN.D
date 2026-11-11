@@ -26,6 +26,83 @@ const int FUN_BOSS_TAKTE = 18;
 const int FUN_BEGL_TAKTE = 30;
 const int FUN_HAENDLER_GOLD = 100000;
 
+// --- u204: Schlacht-Paket ------------------------------------------------------------------------------------------
+var int FUN_PUNKT_1;          // Besitzer des Eroberungspunkts (0 keiner, 1 Miliz, 2 Söldner, 3 Novizen, 4 Banditen) - DLL (Host)
+var int FUN_PUNKT_ANGRIFF_1;  // Gilde, die gerade einnimmt - DLL (Host)
+var int FUN_PUNKT_2;          // Besitzer des Eroberungspunkts (0 keiner, 1 Miliz, 2 Söldner, 3 Novizen, 4 Banditen) - DLL (Host)
+var int FUN_PUNKT_ANGRIFF_2;  // Gilde, die gerade einnimmt - DLL (Host)
+var int FUN_PUNKT_3;          // Besitzer des Eroberungspunkts (0 keiner, 1 Miliz, 2 Söldner, 3 Novizen, 4 Banditen) - DLL (Host)
+var int FUN_PUNKT_ANGRIFF_3;  // Gilde, die gerade einnimmt - DLL (Host)
+var int FUN_PUNKT_4;          // Besitzer des Eroberungspunkts (0 keiner, 1 Miliz, 2 Söldner, 3 Novizen, 4 Banditen) - DLL (Host)
+var int FUN_PUNKT_ANGRIFF_4;  // Gilde, die gerade einnimmt - DLL (Host)
+var int FUN_SIEG_MIL;
+var int FUN_BEUTE_MIL;
+var int FUN_SERIE_MIL;
+var int FUN_FUEHRER_AUS_MIL;
+var int FUN_BANNER_MIL;          // 0 beim Anführer, sonst Index der Gilde, die sie trägt
+var int FUN_BANNER_LETZT_MIL;    // 1 erobert, 2 heimgekehrt
+var int FUN_BANNER_NEU_MIL;
+var int FUN_HEUER_MIL;
+var int FUNL_HEUER_GES_MIL;
+var int FUNL_BANNER_NEU_GES_MIL;
+var int FUNL_BANNER_T_MIL;
+var int FUNL_TRAEGT_MIL;
+var int FUN_SIEG_SLD;
+var int FUN_BEUTE_SLD;
+var int FUN_SERIE_SLD;
+var int FUN_FUEHRER_AUS_SLD;
+var int FUN_BANNER_SLD;          // 0 beim Anführer, sonst Index der Gilde, die sie trägt
+var int FUN_BANNER_LETZT_SLD;    // 1 erobert, 2 heimgekehrt
+var int FUN_BANNER_NEU_SLD;
+var int FUN_HEUER_SLD;
+var int FUNL_HEUER_GES_SLD;
+var int FUNL_BANNER_NEU_GES_SLD;
+var int FUNL_BANNER_T_SLD;
+var int FUNL_TRAEGT_SLD;
+var int FUN_SIEG_NOV;
+var int FUN_BEUTE_NOV;
+var int FUN_SERIE_NOV;
+var int FUN_FUEHRER_AUS_NOV;
+var int FUN_BANNER_NOV;          // 0 beim Anführer, sonst Index der Gilde, die sie trägt
+var int FUN_BANNER_LETZT_NOV;    // 1 erobert, 2 heimgekehrt
+var int FUN_BANNER_NEU_NOV;
+var int FUN_HEUER_NOV;
+var int FUNL_HEUER_GES_NOV;
+var int FUNL_BANNER_NEU_GES_NOV;
+var int FUNL_BANNER_T_NOV;
+var int FUNL_TRAEGT_NOV;
+var int FUN_SIEG_BDT;
+var int FUN_BEUTE_BDT;
+var int FUN_SERIE_BDT;
+var int FUN_FUEHRER_AUS_BDT;
+var int FUN_BANNER_BDT;          // 0 beim Anführer, sonst Index der Gilde, die sie trägt
+var int FUN_BANNER_LETZT_BDT;    // 1 erobert, 2 heimgekehrt
+var int FUN_BANNER_NEU_BDT;
+var int FUN_HEUER_BDT;
+var int FUNL_HEUER_GES_BDT;
+var int FUNL_BANNER_NEU_GES_BDT;
+var int FUNL_BANNER_T_BDT;
+var int FUNL_TRAEGT_BDT;
+var int FUN_EREIGNIS;           // 0 keins, 1-4 Typ
+var int FUN_EREIGNIS_ORT;       // 1-4
+var int FUN_EREIGNIS_SIEGER;    // 1-4 Gilde, 5 ohne Sieger, 6 Karawane am Ziel
+var int FUN_EREIGNIS_NR;
+var int FUN_RUNDE;
+var int FUN_SIEGER;
+var int FUN_RUNDE_MIN;
+var int FUNL_RUNDE_T;
+var int FUNL_RUNDE_GES;
+var int FUNL_EREIGNIS_T;
+var int FUNL_BEUTE_GES;
+var int FUNL_BEUTE_INIT;
+const int AIV_FUN_GEZAEHLT = 92;
+const int FUN_SIEG_ZIEL = 1000;
+const int FUN_RUNDE_TAKTE = 360;
+const int FUN_FUEHRER_TAKTE = 30;
+const int FUN_EREIGNIS_TAKTE = 90;
+const int FUN_EREIGNIS_DAUER = 60;
+const int FUN_BANNER_TAKTE = 30;
+
 func int Fun_KapitelNr()
 {
 	if (FUN_KAPITEL < 1)
@@ -191,6 +268,375 @@ func int Fun_NpcLebt(var C_NPC n)
 	return TRUE;
 };
 
+func int Fun_GIdx(var int gil)
+{
+	if (gil == GIL_MIL)
+	{
+		return 1;
+	};
+	if (gil == GIL_SLD)
+	{
+		return 2;
+	};
+	if (gil == GIL_NOV)
+	{
+		return 3;
+	};
+	if (gil == GIL_BDT)
+	{
+		return 4;
+	};
+	return 0;
+};
+
+func int Fun_EigeneIdx()
+{
+	return Fun_GIdx(Npc_GetTrueGuild(hero));
+};
+
+func int Fun_SiegVon(var int i)
+{
+	if (i == 1)
+	{
+		return FUN_SIEG_MIL;
+	};
+	if (i == 2)
+	{
+		return FUN_SIEG_SLD;
+	};
+	if (i == 3)
+	{
+		return FUN_SIEG_NOV;
+	};
+	if (i == 4)
+	{
+		return FUN_SIEG_BDT;
+	};
+	return 0;
+};
+func int Fun_BeuteVon(var int i)
+{
+	if (i == 1)
+	{
+		return FUN_BEUTE_MIL;
+	};
+	if (i == 2)
+	{
+		return FUN_BEUTE_SLD;
+	};
+	if (i == 3)
+	{
+		return FUN_BEUTE_NOV;
+	};
+	if (i == 4)
+	{
+		return FUN_BEUTE_BDT;
+	};
+	return 0;
+};
+func int Fun_SerieVon(var int i)
+{
+	if (i == 1)
+	{
+		return FUN_SERIE_MIL;
+	};
+	if (i == 2)
+	{
+		return FUN_SERIE_SLD;
+	};
+	if (i == 3)
+	{
+		return FUN_SERIE_NOV;
+	};
+	if (i == 4)
+	{
+		return FUN_SERIE_BDT;
+	};
+	return 0;
+};
+func int Fun_FuehrerAusVon(var int i)
+{
+	if (i == 1)
+	{
+		return FUN_FUEHRER_AUS_MIL;
+	};
+	if (i == 2)
+	{
+		return FUN_FUEHRER_AUS_SLD;
+	};
+	if (i == 3)
+	{
+		return FUN_FUEHRER_AUS_NOV;
+	};
+	if (i == 4)
+	{
+		return FUN_FUEHRER_AUS_BDT;
+	};
+	return 0;
+};
+func int Fun_BannerVon(var int i)
+{
+	if (i == 1)
+	{
+		return FUN_BANNER_MIL;
+	};
+	if (i == 2)
+	{
+		return FUN_BANNER_SLD;
+	};
+	if (i == 3)
+	{
+		return FUN_BANNER_NOV;
+	};
+	if (i == 4)
+	{
+		return FUN_BANNER_BDT;
+	};
+	return 0;
+};
+func int Fun_HeuerVon(var int i)
+{
+	if (i == 1)
+	{
+		return FUN_HEUER_MIL;
+	};
+	if (i == 2)
+	{
+		return FUN_HEUER_SLD;
+	};
+	if (i == 3)
+	{
+		return FUN_HEUER_NOV;
+	};
+	if (i == 4)
+	{
+		return FUN_HEUER_BDT;
+	};
+	return 0;
+};
+func void Fun_SiegAdd(var int i, var int n)
+{
+	if (i == 1)
+	{
+		FUN_SIEG_MIL = FUN_SIEG_MIL + n;
+	};
+	if (i == 2)
+	{
+		FUN_SIEG_SLD = FUN_SIEG_SLD + n;
+	};
+	if (i == 3)
+	{
+		FUN_SIEG_NOV = FUN_SIEG_NOV + n;
+	};
+	if (i == 4)
+	{
+		FUN_SIEG_BDT = FUN_SIEG_BDT + n;
+	};
+};
+func void Fun_BeuteAdd(var int i, var int n)
+{
+	if (i == 1)
+	{
+		FUN_BEUTE_MIL = FUN_BEUTE_MIL + n;
+	};
+	if (i == 2)
+	{
+		FUN_BEUTE_SLD = FUN_BEUTE_SLD + n;
+	};
+	if (i == 3)
+	{
+		FUN_BEUTE_NOV = FUN_BEUTE_NOV + n;
+	};
+	if (i == 4)
+	{
+		FUN_BEUTE_BDT = FUN_BEUTE_BDT + n;
+	};
+};
+func void Fun_HeuerAdd(var int i, var int n)
+{
+	if (i == 1)
+	{
+		FUN_HEUER_MIL = FUN_HEUER_MIL + n;
+	};
+	if (i == 2)
+	{
+		FUN_HEUER_SLD = FUN_HEUER_SLD + n;
+	};
+	if (i == 3)
+	{
+		FUN_HEUER_NOV = FUN_HEUER_NOV + n;
+	};
+	if (i == 4)
+	{
+		FUN_HEUER_BDT = FUN_HEUER_BDT + n;
+	};
+};
+func void Fun_BannerNeuAdd(var int i, var int n)
+{
+	if (i == 1)
+	{
+		FUN_BANNER_NEU_MIL = FUN_BANNER_NEU_MIL + n;
+	};
+	if (i == 2)
+	{
+		FUN_BANNER_NEU_SLD = FUN_BANNER_NEU_SLD + n;
+	};
+	if (i == 3)
+	{
+		FUN_BANNER_NEU_NOV = FUN_BANNER_NEU_NOV + n;
+	};
+	if (i == 4)
+	{
+		FUN_BANNER_NEU_BDT = FUN_BANNER_NEU_BDT + n;
+	};
+};
+func void Fun_SerieSet(var int i, var int n)
+{
+	if (i == 1)
+	{
+		FUN_SERIE_MIL = n;
+	};
+	if (i == 2)
+	{
+		FUN_SERIE_SLD = n;
+	};
+	if (i == 3)
+	{
+		FUN_SERIE_NOV = n;
+	};
+	if (i == 4)
+	{
+		FUN_SERIE_BDT = n;
+	};
+};
+
+func int Fun_FuehrerDa(var C_NPC oth)
+{
+	return (Fun_FuehrerAusVon(Fun_GIdx(Npc_GetTrueGuild(oth))) == 0);
+};
+
+// Gilden-Stärken: Söldner Stärke 40, Banditen Geschick 40 (Start und nach dem Tod); Miliz +15 Schutz vor Waffen und
+// Geschossen, Novizen Mana 40 und +15 Schutz vor Magie (einmal beim Start)
+func int Fun_StartStaerke(var int gil)
+{
+	if (gil == GIL_SLD)
+	{
+		return 40;
+	};
+	return 30;
+};
+func int Fun_StartGeschick(var int gil)
+{
+	if (gil == GIL_BDT)
+	{
+		return 40;
+	};
+	return 30;
+};
+func void Fun_GildenStaerke(var int gil)
+{
+	if (gil == GIL_MIL)
+	{
+		hero.protection[PROT_EDGE] = hero.protection[PROT_EDGE] + 15;
+		hero.protection[PROT_BLUNT] = hero.protection[PROT_BLUNT] + 15;
+		hero.protection[PROT_POINT] = hero.protection[PROT_POINT] + 15;
+	};
+	if (gil == GIL_NOV)
+	{
+		hero.protection[PROT_MAGIC] = hero.protection[PROT_MAGIC] + 15;
+		hero.protection[PROT_FIRE] = hero.protection[PROT_FIRE] + 10;
+	};
+};
+
+// Kopfgeld: führt die Gilde deutlich (mind. 150 Siegpunkte vor allen anderen)?
+func int Fun_FuehrtDeutlich(var int i)
+{
+	var int s;
+	var int j;
+	s = Fun_SiegVon(i);
+	if (s < 150)
+	{
+		return FALSE;
+	};
+	if (i != 1)
+	{
+		if (Fun_SiegVon(1) + 150 > s)
+		{
+			return FALSE;
+		};
+	};
+	if (i != 2)
+	{
+		if (Fun_SiegVon(2) + 150 > s)
+		{
+			return FALSE;
+		};
+	};
+	if (i != 3)
+	{
+		if (Fun_SiegVon(3) + 150 > s)
+		{
+			return FALSE;
+		};
+	};
+	if (i != 4)
+	{
+		if (Fun_SiegVon(4) + 150 > s)
+		{
+			return FALSE;
+		};
+	};
+	return TRUE;
+};
+
+func int Fun_ImEigenenLager(var int i)
+{
+	if (i == 1)
+	{
+		if (Npc_GetDistToWP(hero, "NW_CITY_HABOUR_KASERN_CENTRE_01") < 1500)
+		{
+			return TRUE;
+		};
+	};
+	if (i == 2)
+	{
+		if (Npc_GetDistToWP(hero, "NW_BIGFARM_HOUSE_OUT_05") < 1500)
+		{
+			return TRUE;
+		};
+	};
+	if (i == 3)
+	{
+		if (Npc_GetDistToWP(hero, "NW_MONASTERY_PLACE_03") < 1500)
+		{
+			return TRUE;
+		};
+	};
+	if (i == 4)
+	{
+		if (Npc_GetDistToWP(hero, "NW_CASTLEMINE_TOWER_CAMPFIRE_01") < 1500)
+		{
+			return TRUE;
+		};
+	};
+	return FALSE;
+};
+
+func void Fun_Entfernen(var C_NPC n)
+{
+	if (!Hlp_IsValidNpc(n))
+	{
+		return;
+	};
+	if (Npc_IsDead(n))
+	{
+		return;
+	};
+	n.flags = 0;
+	AI_Teleport(n, "TOT");
+	Npc_ChangeAttribute(n, ATR_HITPOINTS, -n.attribute[ATR_HITPOINTS_MAX]);
+};
+
 // --- Kapitelstein: der Boss an der Taverne trägt ihn. Benutzen hebt das Kapitel für alle -----------------------------
 instance ItMi_Fun_Kapitelstein (C_Item)
 {
@@ -206,6 +652,60 @@ instance ItMi_Fun_Kapitelstein (C_Item)
 	description = name;
 	text[0] = "Benutzen: nächstes Kapitel für alle.";
 	text[1] = "Die Händler bieten dann bessere Ware.";
+};
+
+// --- Reliquien der Lager: der Anführer trägt sie; wer sie ins eigene Lager bringt, bekommt 100 Siegpunkte ----------
+instance ItMi_Fun_Banner_MIL (C_Item)
+{
+	name = "Reliquie der Miliz";
+	mainflag = ITEM_KAT_NONE;
+	flags = ITEM_MISSION;
+	value = 0;
+	visual = "ItMi_InnosStatue.3DS";
+	material = MAT_METAL;
+	effect = "SPELLFX_WEAKGLIMMER";
+	description = name;
+	text[0] = "Bring sie in dein Lager: +100 Siegpunkte.";
+	text[1] = "Stirbst du, kehrt sie zu ihrem Lager zurück.";
+};
+instance ItMi_Fun_Banner_SLD (C_Item)
+{
+	name = "Reliquie der Söldner";
+	mainflag = ITEM_KAT_NONE;
+	flags = ITEM_MISSION;
+	value = 0;
+	visual = "ItMi_InnosStatue.3DS";
+	material = MAT_METAL;
+	effect = "SPELLFX_WEAKGLIMMER";
+	description = name;
+	text[0] = "Bring sie in dein Lager: +100 Siegpunkte.";
+	text[1] = "Stirbst du, kehrt sie zu ihrem Lager zurück.";
+};
+instance ItMi_Fun_Banner_NOV (C_Item)
+{
+	name = "Reliquie der Novizen";
+	mainflag = ITEM_KAT_NONE;
+	flags = ITEM_MISSION;
+	value = 0;
+	visual = "ItMi_InnosStatue.3DS";
+	material = MAT_METAL;
+	effect = "SPELLFX_WEAKGLIMMER";
+	description = name;
+	text[0] = "Bring sie in dein Lager: +100 Siegpunkte.";
+	text[1] = "Stirbst du, kehrt sie zu ihrem Lager zurück.";
+};
+instance ItMi_Fun_Banner_BDT (C_Item)
+{
+	name = "Reliquie der Banditen";
+	mainflag = ITEM_KAT_NONE;
+	flags = ITEM_MISSION;
+	value = 0;
+	visual = "ItMi_InnosStatue.3DS";
+	material = MAT_METAL;
+	effect = "SPELLFX_WEAKGLIMMER";
+	description = name;
+	text[0] = "Bring sie in dein Lager: +100 Siegpunkte.";
+	text[1] = "Stirbst du, kehrt sie zu ihrem Lager zurück.";
 };
 
 // --- Monster: je Spawnpunkt eine Instanz pro Stärkestufe (Prototyp und Rumpf wie im Original, dazu Gold) ---------------
@@ -8959,6 +9459,569 @@ func void Rtn_Follow_9644()
 	TA_Follow_Player(20,00,08,00,"NW_CASTLEMINE_TOWER_REP_HUT");
 };
 
+// --- u204: Lagerführer, Söldner zum Anheuern, Gegner der Weltereignisse ---------------------------------------------
+instance FUN_FUEHRER_MIL (Npc_Default)
+{
+	name = "Hauptmann Wulfgar";
+	guild = GIL_MIL;
+	id = 9650;
+	voice = 9;
+	flags = 0;
+	npctype = NPCTYPE_MAIN;
+	B_SetAttributesToChapter(self, Fun_KapitelNr());
+	fight_tactic = FAI_HUMAN_STRONG;
+	EquipItem(self, ItMw_Schwert4);
+	EquipItem(self, ItRw_Mil_Crossbow);
+	B_CreateAmbientInv(self);
+	B_SetNpcVisual(self, MALE, "Hum_Head_Bald", Face_N_NormalBart10, BodyTex_N, ITAR_MIL_M);
+	Mdl_SetModelFatness(self, 1);
+	Mdl_ApplyOverlayMds(self, "Humans_Arrogance.mds");
+	B_GiveNpcTalents(self);
+	B_SetFightSkills(self, 30 + 10 * Fun_KapitelNr());
+	daily_routine = Rtn_Start_9650;
+	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * 3;
+	attribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];
+	attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] + 20;
+	B_SetFightSkills(self, 60 + 5 * Fun_KapitelNr());
+	CreateInvItems(self, ItMi_Gold, 300);
+	if (FUN_BANNER_MIL == 0)
+	{
+		CreateInvItems(self, ItMi_Fun_Banner_MIL, 1);
+	};
+};
+func void Rtn_Start_9650()
+{
+	TA_Stand_ArmsCrossed(08,00,20,00,"NW_CITY_HABOUR_KASERN_CENTRE_01");
+	TA_Stand_ArmsCrossed(20,00,08,00,"NW_CITY_HABOUR_KASERN_CENTRE_01");
+};
+instance FUN_MIL_S1 (Npc_Default)
+{
+	name = "Söldner Harald";
+	guild = GIL_MIL;
+	id = 9660;
+	voice = 8;
+	flags = 0;
+	npctype = NPCTYPE_MAIN;
+	B_SetAttributesToChapter(self, Fun_KapitelNr());
+	fight_tactic = FAI_HUMAN_STRONG;
+	EquipItem(self, ItMw_1h_Mil_Sword);
+	EquipItem(self, ItRw_Mil_Crossbow);
+	B_CreateAmbientInv(self);
+	B_SetNpcVisual(self, MALE, "Hum_Head_Pony", Face_N_NormalBart10, BodyTex_N, ITAR_MIL_L);
+	Mdl_SetModelFatness(self, 1);
+	Mdl_ApplyOverlayMds(self, "Humans_Militia.mds");
+	B_GiveNpcTalents(self);
+	B_SetFightSkills(self, 30 + 10 * Fun_KapitelNr());
+	daily_routine = Rtn_Start_9660;
+};
+func void Rtn_Start_9660()
+{
+	TA_Stand_ArmsCrossed(08,00,20,00,"NW_CITY_HABOUR_KASERN_05_01");
+	TA_Stand_ArmsCrossed(20,00,08,00,"NW_CITY_HABOUR_KASERN_05_01");
+};
+func void Rtn_Follow_9660()
+{
+	TA_Follow_Player(08,00,20,00,"NW_CITY_HABOUR_KASERN_05_01");
+	TA_Follow_Player(20,00,08,00,"NW_CITY_HABOUR_KASERN_05_01");
+};
+instance FUN_MIL_S2 (Npc_Default)
+{
+	name = "Söldner Gunnar";
+	guild = GIL_MIL;
+	id = 9661;
+	voice = 9;
+	flags = 0;
+	npctype = NPCTYPE_MAIN;
+	B_SetAttributesToChapter(self, Fun_KapitelNr());
+	fight_tactic = FAI_HUMAN_STRONG;
+	EquipItem(self, ItMw_1h_Mil_Sword);
+	EquipItem(self, ItRw_Mil_Crossbow);
+	B_CreateAmbientInv(self);
+	B_SetNpcVisual(self, MALE, "Hum_Head_Thief", Face_B_Normal01, BodyTex_N, ITAR_MIL_L);
+	Mdl_SetModelFatness(self, 1);
+	Mdl_ApplyOverlayMds(self, "Humans_Militia.mds");
+	B_GiveNpcTalents(self);
+	B_SetFightSkills(self, 30 + 10 * Fun_KapitelNr());
+	daily_routine = Rtn_Start_9661;
+};
+func void Rtn_Start_9661()
+{
+	TA_Stand_ArmsCrossed(08,00,20,00,"NW_CITY_HABOUR_KASERN_08");
+	TA_Stand_ArmsCrossed(20,00,08,00,"NW_CITY_HABOUR_KASERN_08");
+};
+func void Rtn_Follow_9661()
+{
+	TA_Follow_Player(08,00,20,00,"NW_CITY_HABOUR_KASERN_08");
+	TA_Follow_Player(20,00,08,00,"NW_CITY_HABOUR_KASERN_08");
+};
+instance FUN_MIL_S3 (Npc_Default)
+{
+	name = "Söldner Reinhold";
+	guild = GIL_MIL;
+	id = 9662;
+	voice = 10;
+	flags = 0;
+	npctype = NPCTYPE_MAIN;
+	B_SetAttributesToChapter(self, Fun_KapitelNr());
+	fight_tactic = FAI_HUMAN_STRONG;
+	EquipItem(self, ItMw_1h_Mil_Sword);
+	EquipItem(self, ItRw_Mil_Crossbow);
+	B_CreateAmbientInv(self);
+	B_SetNpcVisual(self, MALE, "Hum_Head_FatBald", Face_L_Tough02, BodyTex_N, ITAR_MIL_L);
+	Mdl_SetModelFatness(self, 1);
+	Mdl_ApplyOverlayMds(self, "Humans_Militia.mds");
+	B_GiveNpcTalents(self);
+	B_SetFightSkills(self, 30 + 10 * Fun_KapitelNr());
+	daily_routine = Rtn_Start_9662;
+};
+func void Rtn_Start_9662()
+{
+	TA_Stand_ArmsCrossed(08,00,20,00,"NW_CITY_HABOUR_KASERN_10");
+	TA_Stand_ArmsCrossed(20,00,08,00,"NW_CITY_HABOUR_KASERN_10");
+};
+func void Rtn_Follow_9662()
+{
+	TA_Follow_Player(08,00,20,00,"NW_CITY_HABOUR_KASERN_10");
+	TA_Follow_Player(20,00,08,00,"NW_CITY_HABOUR_KASERN_10");
+};
+instance FUN_FUEHRER_SLD (Npc_Default)
+{
+	name = "Kriegsherr Sturmfaust";
+	guild = GIL_SLD;
+	id = 9651;
+	voice = 9;
+	flags = 0;
+	npctype = NPCTYPE_MAIN;
+	B_SetAttributesToChapter(self, Fun_KapitelNr());
+	fight_tactic = FAI_HUMAN_STRONG;
+	EquipItem(self, ItMw_Zweihaender2);
+	EquipItem(self, ItRw_Sld_Bow);
+	B_CreateAmbientInv(self);
+	B_SetNpcVisual(self, MALE, "Hum_Head_Bald", Face_N_NormalBart10, BodyTex_N, ITAR_SLD_H);
+	Mdl_SetModelFatness(self, 1);
+	Mdl_ApplyOverlayMds(self, "Humans_Arrogance.mds");
+	B_GiveNpcTalents(self);
+	B_SetFightSkills(self, 30 + 10 * Fun_KapitelNr());
+	daily_routine = Rtn_Start_9651;
+	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * 3;
+	attribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];
+	attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] + 20;
+	B_SetFightSkills(self, 60 + 5 * Fun_KapitelNr());
+	CreateInvItems(self, ItMi_Gold, 300);
+	if (FUN_BANNER_SLD == 0)
+	{
+		CreateInvItems(self, ItMi_Fun_Banner_SLD, 1);
+	};
+};
+func void Rtn_Start_9651()
+{
+	TA_Stand_ArmsCrossed(08,00,20,00,"NW_BIGFARM_HOUSE_OUT_05");
+	TA_Stand_ArmsCrossed(20,00,08,00,"NW_BIGFARM_HOUSE_OUT_05");
+};
+instance FUN_SLD_S1 (Npc_Default)
+{
+	name = "Söldner Brakk";
+	guild = GIL_SLD;
+	id = 9670;
+	voice = 11;
+	flags = 0;
+	npctype = NPCTYPE_MAIN;
+	B_SetAttributesToChapter(self, Fun_KapitelNr());
+	fight_tactic = FAI_HUMAN_STRONG;
+	EquipItem(self, ItMw_2h_Sld_Sword);
+	EquipItem(self, ItRw_Sld_Bow);
+	B_CreateAmbientInv(self);
+	B_SetNpcVisual(self, MALE, "Hum_Head_Pony", Face_L_Tough02, BodyTex_N, ITAR_SLD_M);
+	Mdl_SetModelFatness(self, 1);
+	Mdl_ApplyOverlayMds(self, "Humans_Relaxed.mds");
+	B_GiveNpcTalents(self);
+	B_SetFightSkills(self, 30 + 10 * Fun_KapitelNr());
+	daily_routine = Rtn_Start_9670;
+};
+func void Rtn_Start_9670()
+{
+	TA_Stand_ArmsCrossed(08,00,20,00,"NW_BIGFARM_HOUSE_12");
+	TA_Stand_ArmsCrossed(20,00,08,00,"NW_BIGFARM_HOUSE_12");
+};
+func void Rtn_Follow_9670()
+{
+	TA_Follow_Player(08,00,20,00,"NW_BIGFARM_HOUSE_12");
+	TA_Follow_Player(20,00,08,00,"NW_BIGFARM_HOUSE_12");
+};
+instance FUN_SLD_S2 (Npc_Default)
+{
+	name = "Söldner Hagen";
+	guild = GIL_SLD;
+	id = 9671;
+	voice = 12;
+	flags = 0;
+	npctype = NPCTYPE_MAIN;
+	B_SetAttributesToChapter(self, Fun_KapitelNr());
+	fight_tactic = FAI_HUMAN_STRONG;
+	EquipItem(self, ItMw_2h_Sld_Sword);
+	EquipItem(self, ItRw_Sld_Bow);
+	B_CreateAmbientInv(self);
+	B_SetNpcVisual(self, MALE, "Hum_Head_Thief", Face_P_Normal01, BodyTex_N, ITAR_SLD_M);
+	Mdl_SetModelFatness(self, 1);
+	Mdl_ApplyOverlayMds(self, "Humans_Relaxed.mds");
+	B_GiveNpcTalents(self);
+	B_SetFightSkills(self, 30 + 10 * Fun_KapitelNr());
+	daily_routine = Rtn_Start_9671;
+};
+func void Rtn_Start_9671()
+{
+	TA_Stand_ArmsCrossed(08,00,20,00,"NW_BIGFARM_HOUSE_14");
+	TA_Stand_ArmsCrossed(20,00,08,00,"NW_BIGFARM_HOUSE_14");
+};
+func void Rtn_Follow_9671()
+{
+	TA_Follow_Player(08,00,20,00,"NW_BIGFARM_HOUSE_14");
+	TA_Follow_Player(20,00,08,00,"NW_BIGFARM_HOUSE_14");
+};
+instance FUN_SLD_S3 (Npc_Default)
+{
+	name = "Söldner Vork";
+	guild = GIL_SLD;
+	id = 9672;
+	voice = 13;
+	flags = 0;
+	npctype = NPCTYPE_MAIN;
+	B_SetAttributesToChapter(self, Fun_KapitelNr());
+	fight_tactic = FAI_HUMAN_STRONG;
+	EquipItem(self, ItMw_2h_Sld_Sword);
+	EquipItem(self, ItRw_Sld_Bow);
+	B_CreateAmbientInv(self);
+	B_SetNpcVisual(self, MALE, "Hum_Head_FatBald", Face_N_Normal14, BodyTex_N, ITAR_SLD_M);
+	Mdl_SetModelFatness(self, 1);
+	Mdl_ApplyOverlayMds(self, "Humans_Relaxed.mds");
+	B_GiveNpcTalents(self);
+	B_SetFightSkills(self, 30 + 10 * Fun_KapitelNr());
+	daily_routine = Rtn_Start_9672;
+};
+func void Rtn_Start_9672()
+{
+	TA_Stand_ArmsCrossed(08,00,20,00,"NW_BIGFARM_ALLEE_04");
+	TA_Stand_ArmsCrossed(20,00,08,00,"NW_BIGFARM_ALLEE_04");
+};
+func void Rtn_Follow_9672()
+{
+	TA_Follow_Player(08,00,20,00,"NW_BIGFARM_ALLEE_04");
+	TA_Follow_Player(20,00,08,00,"NW_BIGFARM_ALLEE_04");
+};
+instance FUN_FUEHRER_NOV (Npc_Default)
+{
+	name = "Meister Aldric";
+	guild = GIL_NOV;
+	id = 9652;
+	voice = 9;
+	flags = 0;
+	npctype = NPCTYPE_MAIN;
+	B_SetAttributesToChapter(self, Fun_KapitelNr());
+	fight_tactic = FAI_HUMAN_STRONG;
+	EquipItem(self, ItMw_Morgenstern);
+	B_CreateAmbientInv(self);
+	B_SetNpcVisual(self, MALE, "Hum_Head_Bald", Face_N_NormalBart10, BodyTex_N, ITAR_KDF_L);
+	Mdl_SetModelFatness(self, 1);
+	Mdl_ApplyOverlayMds(self, "Humans_Arrogance.mds");
+	B_GiveNpcTalents(self);
+	B_SetFightSkills(self, 30 + 10 * Fun_KapitelNr());
+	daily_routine = Rtn_Start_9652;
+	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * 3;
+	attribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];
+	attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] + 20;
+	B_SetFightSkills(self, 60 + 5 * Fun_KapitelNr());
+	CreateInvItems(self, ItMi_Gold, 300);
+	if (FUN_BANNER_NOV == 0)
+	{
+		CreateInvItems(self, ItMi_Fun_Banner_NOV, 1);
+	};
+};
+func void Rtn_Start_9652()
+{
+	TA_Stand_ArmsCrossed(08,00,20,00,"NW_MONASTERY_PLACE_03");
+	TA_Stand_ArmsCrossed(20,00,08,00,"NW_MONASTERY_PLACE_03");
+};
+instance FUN_NOV_S1 (Npc_Default)
+{
+	name = "Tempelwächter Ivo";
+	guild = GIL_NOV;
+	id = 9680;
+	voice = 6;
+	flags = 0;
+	npctype = NPCTYPE_MAIN;
+	B_SetAttributesToChapter(self, Fun_KapitelNr());
+	fight_tactic = FAI_HUMAN_STRONG;
+	EquipItem(self, ItMw_1h_Nov_Mace);
+	B_CreateAmbientInv(self);
+	B_SetNpcVisual(self, MALE, "Hum_Head_Pony", Face_N_Normal14, BodyTex_N, ITAR_NOV_L);
+	Mdl_SetModelFatness(self, 1);
+	Mdl_ApplyOverlayMds(self, "Humans_Mage.mds");
+	B_GiveNpcTalents(self);
+	B_SetFightSkills(self, 30 + 10 * Fun_KapitelNr());
+	daily_routine = Rtn_Start_9680;
+};
+func void Rtn_Start_9680()
+{
+	TA_Stand_ArmsCrossed(08,00,20,00,"NW_MONASTERY_PLACE_09");
+	TA_Stand_ArmsCrossed(20,00,08,00,"NW_MONASTERY_PLACE_09");
+};
+func void Rtn_Follow_9680()
+{
+	TA_Follow_Player(08,00,20,00,"NW_MONASTERY_PLACE_09");
+	TA_Follow_Player(20,00,08,00,"NW_MONASTERY_PLACE_09");
+};
+instance FUN_NOV_S2 (Npc_Default)
+{
+	name = "Tempelwächter Lukas";
+	guild = GIL_NOV;
+	id = 9681;
+	voice = 7;
+	flags = 0;
+	npctype = NPCTYPE_MAIN;
+	B_SetAttributesToChapter(self, Fun_KapitelNr());
+	fight_tactic = FAI_HUMAN_STRONG;
+	EquipItem(self, ItMw_1h_Nov_Mace);
+	B_CreateAmbientInv(self);
+	B_SetNpcVisual(self, MALE, "Hum_Head_Thief", Face_N_Normal16, BodyTex_N, ITAR_NOV_L);
+	Mdl_SetModelFatness(self, 1);
+	Mdl_ApplyOverlayMds(self, "Humans_Mage.mds");
+	B_GiveNpcTalents(self);
+	B_SetFightSkills(self, 30 + 10 * Fun_KapitelNr());
+	daily_routine = Rtn_Start_9681;
+};
+func void Rtn_Start_9681()
+{
+	TA_Stand_ArmsCrossed(08,00,20,00,"NW_MONASTERY_GRASS_01");
+	TA_Stand_ArmsCrossed(20,00,08,00,"NW_MONASTERY_GRASS_01");
+};
+func void Rtn_Follow_9681()
+{
+	TA_Follow_Player(08,00,20,00,"NW_MONASTERY_GRASS_01");
+	TA_Follow_Player(20,00,08,00,"NW_MONASTERY_GRASS_01");
+};
+instance FUN_NOV_S3 (Npc_Default)
+{
+	name = "Tempelwächter Marek";
+	guild = GIL_NOV;
+	id = 9682;
+	voice = 8;
+	flags = 0;
+	npctype = NPCTYPE_MAIN;
+	B_SetAttributesToChapter(self, Fun_KapitelNr());
+	fight_tactic = FAI_HUMAN_STRONG;
+	EquipItem(self, ItMw_1h_Nov_Mace);
+	B_CreateAmbientInv(self);
+	B_SetNpcVisual(self, MALE, "Hum_Head_FatBald", Face_N_Normal02, BodyTex_N, ITAR_NOV_L);
+	Mdl_SetModelFatness(self, 1);
+	Mdl_ApplyOverlayMds(self, "Humans_Mage.mds");
+	B_GiveNpcTalents(self);
+	B_SetFightSkills(self, 30 + 10 * Fun_KapitelNr());
+	daily_routine = Rtn_Start_9682;
+};
+func void Rtn_Start_9682()
+{
+	TA_Stand_ArmsCrossed(08,00,20,00,"NW_MONASTERY_HERB_05");
+	TA_Stand_ArmsCrossed(20,00,08,00,"NW_MONASTERY_HERB_05");
+};
+func void Rtn_Follow_9682()
+{
+	TA_Follow_Player(08,00,20,00,"NW_MONASTERY_HERB_05");
+	TA_Follow_Player(20,00,08,00,"NW_MONASTERY_HERB_05");
+};
+instance FUN_FUEHRER_BDT (Npc_Default)
+{
+	name = "Bandenführer Rabenkralle";
+	guild = GIL_BDT;
+	id = 9653;
+	voice = 9;
+	flags = 0;
+	npctype = NPCTYPE_MAIN;
+	B_SetAttributesToChapter(self, Fun_KapitelNr());
+	fight_tactic = FAI_HUMAN_STRONG;
+	EquipItem(self, ItMw_Schwert4);
+	EquipItem(self, ItRw_Sld_Bow);
+	B_CreateAmbientInv(self);
+	B_SetNpcVisual(self, MALE, "Hum_Head_Bald", Face_N_NormalBart10, BodyTex_N, ITAR_BDT_H);
+	Mdl_SetModelFatness(self, 1);
+	Mdl_ApplyOverlayMds(self, "Humans_Arrogance.mds");
+	B_GiveNpcTalents(self);
+	B_SetFightSkills(self, 30 + 10 * Fun_KapitelNr());
+	daily_routine = Rtn_Start_9653;
+	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * 3;
+	attribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];
+	attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] + 20;
+	B_SetFightSkills(self, 60 + 5 * Fun_KapitelNr());
+	CreateInvItems(self, ItMi_Gold, 300);
+	if (FUN_BANNER_BDT == 0)
+	{
+		CreateInvItems(self, ItMi_Fun_Banner_BDT, 1);
+	};
+};
+func void Rtn_Start_9653()
+{
+	TA_Stand_ArmsCrossed(08,00,20,00,"NW_CASTLEMINE_TOWER_CAMPFIRE_01");
+	TA_Stand_ArmsCrossed(20,00,08,00,"NW_CASTLEMINE_TOWER_CAMPFIRE_01");
+};
+instance FUN_BDT_S1 (Npc_Default)
+{
+	name = "Halsabschneider Gero";
+	guild = GIL_BDT;
+	id = 9690;
+	voice = 9;
+	flags = 0;
+	npctype = NPCTYPE_MAIN;
+	B_SetAttributesToChapter(self, Fun_KapitelNr());
+	fight_tactic = FAI_HUMAN_STRONG;
+	EquipItem(self, ItMw_1h_Sld_Sword);
+	EquipItem(self, ItRw_Sld_Bow);
+	B_CreateAmbientInv(self);
+	B_SetNpcVisual(self, MALE, "Hum_Head_Pony", Face_N_Normal02, BodyTex_N, ITAR_BDT_M);
+	Mdl_SetModelFatness(self, 1);
+	Mdl_ApplyOverlayMds(self, "Humans_Arrogance.mds");
+	B_GiveNpcTalents(self);
+	B_SetFightSkills(self, 30 + 10 * Fun_KapitelNr());
+	daily_routine = Rtn_Start_9690;
+};
+func void Rtn_Start_9690()
+{
+	TA_Stand_ArmsCrossed(08,00,20,00,"NW_CASTLEMINE_TOWER_CAMPFIRE_02");
+	TA_Stand_ArmsCrossed(20,00,08,00,"NW_CASTLEMINE_TOWER_CAMPFIRE_02");
+};
+func void Rtn_Follow_9690()
+{
+	TA_Follow_Player(08,00,20,00,"NW_CASTLEMINE_TOWER_CAMPFIRE_02");
+	TA_Follow_Player(20,00,08,00,"NW_CASTLEMINE_TOWER_CAMPFIRE_02");
+};
+instance FUN_BDT_S2 (Npc_Default)
+{
+	name = "Halsabschneider Ratte";
+	guild = GIL_BDT;
+	id = 9691;
+	voice = 10;
+	flags = 0;
+	npctype = NPCTYPE_MAIN;
+	B_SetAttributesToChapter(self, Fun_KapitelNr());
+	fight_tactic = FAI_HUMAN_STRONG;
+	EquipItem(self, ItMw_1h_Sld_Sword);
+	EquipItem(self, ItRw_Sld_Bow);
+	B_CreateAmbientInv(self);
+	B_SetNpcVisual(self, MALE, "Hum_Head_Thief", Face_N_Normal03, BodyTex_N, ITAR_BDT_M);
+	Mdl_SetModelFatness(self, 1);
+	Mdl_ApplyOverlayMds(self, "Humans_Arrogance.mds");
+	B_GiveNpcTalents(self);
+	B_SetFightSkills(self, 30 + 10 * Fun_KapitelNr());
+	daily_routine = Rtn_Start_9691;
+};
+func void Rtn_Start_9691()
+{
+	TA_Stand_ArmsCrossed(08,00,20,00,"NW_CASTLEMINE_TOWER_CAMPFIRE_04");
+	TA_Stand_ArmsCrossed(20,00,08,00,"NW_CASTLEMINE_TOWER_CAMPFIRE_04");
+};
+func void Rtn_Follow_9691()
+{
+	TA_Follow_Player(08,00,20,00,"NW_CASTLEMINE_TOWER_CAMPFIRE_04");
+	TA_Follow_Player(20,00,08,00,"NW_CASTLEMINE_TOWER_CAMPFIRE_04");
+};
+instance FUN_BDT_S3 (Npc_Default)
+{
+	name = "Halsabschneider Krall";
+	guild = GIL_BDT;
+	id = 9692;
+	voice = 11;
+	flags = 0;
+	npctype = NPCTYPE_MAIN;
+	B_SetAttributesToChapter(self, Fun_KapitelNr());
+	fight_tactic = FAI_HUMAN_STRONG;
+	EquipItem(self, ItMw_1h_Sld_Sword);
+	EquipItem(self, ItRw_Sld_Bow);
+	B_CreateAmbientInv(self);
+	B_SetNpcVisual(self, MALE, "Hum_Head_FatBald", Face_N_NormalBart04, BodyTex_N, ITAR_BDT_M);
+	Mdl_SetModelFatness(self, 1);
+	Mdl_ApplyOverlayMds(self, "Humans_Arrogance.mds");
+	B_GiveNpcTalents(self);
+	B_SetFightSkills(self, 30 + 10 * Fun_KapitelNr());
+	daily_routine = Rtn_Start_9692;
+};
+func void Rtn_Start_9692()
+{
+	TA_Stand_ArmsCrossed(08,00,20,00,"NW_CASTLEMINE_TOWER_STAND_01");
+	TA_Stand_ArmsCrossed(20,00,08,00,"NW_CASTLEMINE_TOWER_STAND_01");
+};
+func void Rtn_Follow_9692()
+{
+	TA_Follow_Player(08,00,20,00,"NW_CASTLEMINE_TOWER_STAND_01");
+	TA_Follow_Player(20,00,08,00,"NW_CASTLEMINE_TOWER_STAND_01");
+};
+instance FUN_EVT_ORK (Mst_Default_OrcElite)
+{
+	B_SetVisuals_OrcElite();
+	EquipItem (self, ItMw_2H_OrcSword_02);
+	start_aistate				= ZS_MM_AllScheduler;
+	aivar[AIV_MM_RoamStart] 	= OnlyRoutine;
+	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * 30 / 10;
+	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * (3 + Fun_KapitelNr()) / 4;
+	attribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];
+	CreateInvItems(self, ItMi_Gold, 400);
+};
+instance FUN_EVT_ORK_A (Mst_Default_OrcWarrior)
+{
+	B_SetVisuals_OrcWarrior();
+	EquipItem (self, ItMw_2H_OrcAxe_03);
+	start_aistate				= ZS_MM_AllScheduler;
+	aivar[AIV_MM_RoamStart] 	= OnlyRoutine;
+	CreateInvItems(self, ItMi_Gold, 60);
+};
+instance FUN_EVT_TROLL (Mst_Default_Troll_Black)
+{
+	B_SetVisuals_Troll_Black();
+	Npc_SetToFistMode(self);
+	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * 15 / 10;
+	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * (3 + Fun_KapitelNr()) / 4;
+	attribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];
+	CreateInvItems(self, ItMi_Gold, 400);
+};
+instance FUN_EVT_UNTOT (Mst_Skeleton_Lord)
+{
+	B_SetVisuals_Skeleton_Lord ();
+	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * 30 / 10;
+	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * (3 + Fun_KapitelNr()) / 4;
+	attribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];
+	CreateInvItems(self, ItMi_Gold, 400);
+};
+instance FUN_EVT_UNTOT_A (Mst_Default_Skeleton)
+{
+	B_SetVisuals_Skeleton();
+	EquipItem (self, ItMw_2H_Sword_M_01);
+	CreateInvItems(self, ItMi_Gold, 60);
+};
+instance FUN_EVT_KARAWANE (Npc_Default)
+{
+	name = "Schatzkarawane";
+	guild = GIL_NONE;
+	id = 9699;
+	voice = 6;
+	flags = 0;
+	npctype = NPCTYPE_MAIN;
+	B_SetAttributesToChapter(self, Fun_KapitelNr());
+	fight_tactic = FAI_HUMAN_STRONG;
+	EquipItem(self, ItMw_1h_Vlk_Sword);
+	B_CreateAmbientInv(self);
+	B_SetNpcVisual(self, MALE, "Hum_Head_FatBald", Face_N_Normal02, BodyTex_N, ITAR_Vlk_H);
+	Mdl_SetModelFatness(self, 1);
+	Mdl_ApplyOverlayMds(self, "Humans_Relaxed.mds");
+	B_GiveNpcTalents(self);
+	B_SetFightSkills(self, 30 + 10 * Fun_KapitelNr());
+	daily_routine = Rtn_Start_9699;
+	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * 2;
+	attribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];
+	CreateInvItems(self, ItMi_Gold, 1500);
+};
+func void Rtn_Start_9699()
+{
+	TA_Stand_ArmsCrossed(08,00,20,00,"NW_TAVERNE_OUT_01");
+	TA_Stand_ArmsCrossed(20,00,08,00,"NW_TAVERNE_OUT_01");
+};
+
 // Haltung der Begleiter und Händler zum eigenen Helden (je PC; der Coop gleicht sie für FUN_-NPCs nicht ab)
 func void Fun_Haltung(var C_NPC n, var int gil)
 {
@@ -9790,6 +10853,403 @@ instance DIA_FUN_HAENDLER_BDT_KAMPF (C_INFO)
 	description = "Ich will besser kämpfen.";
 };
 
+instance DIA_FUN_MIL_S1_EXIT (C_INFO)
+{
+	npc = FUN_MIL_S1;
+	nr = 999;
+	condition = DIA_Fun_Exit_Condition;
+	information = DIA_Fun_Exit_Info;
+	permanent = TRUE;
+	description = DIALOG_ENDE;
+};
+instance DIA_FUN_MIL_S1_KOMM (C_INFO)
+{
+	npc = FUN_MIL_S1;
+	nr = 1;
+	condition = DIA_Fun_Komm_Condition;
+	information = DIA_Fun_Komm_Info;
+	permanent = TRUE;
+	description = "Komm mit, wir ziehen los!";
+};
+instance DIA_FUN_MIL_S1_WARTE (C_INFO)
+{
+	npc = FUN_MIL_S1;
+	nr = 2;
+	condition = DIA_Fun_Warte_Condition;
+	information = DIA_Fun_Warte_Info;
+	permanent = TRUE;
+	description = "Warte hier - geh zurück ins Lager.";
+};
+instance DIA_FUN_MIL_S2_EXIT (C_INFO)
+{
+	npc = FUN_MIL_S2;
+	nr = 999;
+	condition = DIA_Fun_Exit_Condition;
+	information = DIA_Fun_Exit_Info;
+	permanent = TRUE;
+	description = DIALOG_ENDE;
+};
+instance DIA_FUN_MIL_S2_KOMM (C_INFO)
+{
+	npc = FUN_MIL_S2;
+	nr = 1;
+	condition = DIA_Fun_Komm_Condition;
+	information = DIA_Fun_Komm_Info;
+	permanent = TRUE;
+	description = "Komm mit, wir ziehen los!";
+};
+instance DIA_FUN_MIL_S2_WARTE (C_INFO)
+{
+	npc = FUN_MIL_S2;
+	nr = 2;
+	condition = DIA_Fun_Warte_Condition;
+	information = DIA_Fun_Warte_Info;
+	permanent = TRUE;
+	description = "Warte hier - geh zurück ins Lager.";
+};
+instance DIA_FUN_MIL_S3_EXIT (C_INFO)
+{
+	npc = FUN_MIL_S3;
+	nr = 999;
+	condition = DIA_Fun_Exit_Condition;
+	information = DIA_Fun_Exit_Info;
+	permanent = TRUE;
+	description = DIALOG_ENDE;
+};
+instance DIA_FUN_MIL_S3_KOMM (C_INFO)
+{
+	npc = FUN_MIL_S3;
+	nr = 1;
+	condition = DIA_Fun_Komm_Condition;
+	information = DIA_Fun_Komm_Info;
+	permanent = TRUE;
+	description = "Komm mit, wir ziehen los!";
+};
+instance DIA_FUN_MIL_S3_WARTE (C_INFO)
+{
+	npc = FUN_MIL_S3;
+	nr = 2;
+	condition = DIA_Fun_Warte_Condition;
+	information = DIA_Fun_Warte_Info;
+	permanent = TRUE;
+	description = "Warte hier - geh zurück ins Lager.";
+};
+instance DIA_FUN_SLD_S1_EXIT (C_INFO)
+{
+	npc = FUN_SLD_S1;
+	nr = 999;
+	condition = DIA_Fun_Exit_Condition;
+	information = DIA_Fun_Exit_Info;
+	permanent = TRUE;
+	description = DIALOG_ENDE;
+};
+instance DIA_FUN_SLD_S1_KOMM (C_INFO)
+{
+	npc = FUN_SLD_S1;
+	nr = 1;
+	condition = DIA_Fun_Komm_Condition;
+	information = DIA_Fun_Komm_Info;
+	permanent = TRUE;
+	description = "Komm mit, wir ziehen los!";
+};
+instance DIA_FUN_SLD_S1_WARTE (C_INFO)
+{
+	npc = FUN_SLD_S1;
+	nr = 2;
+	condition = DIA_Fun_Warte_Condition;
+	information = DIA_Fun_Warte_Info;
+	permanent = TRUE;
+	description = "Warte hier - geh zurück ins Lager.";
+};
+instance DIA_FUN_SLD_S2_EXIT (C_INFO)
+{
+	npc = FUN_SLD_S2;
+	nr = 999;
+	condition = DIA_Fun_Exit_Condition;
+	information = DIA_Fun_Exit_Info;
+	permanent = TRUE;
+	description = DIALOG_ENDE;
+};
+instance DIA_FUN_SLD_S2_KOMM (C_INFO)
+{
+	npc = FUN_SLD_S2;
+	nr = 1;
+	condition = DIA_Fun_Komm_Condition;
+	information = DIA_Fun_Komm_Info;
+	permanent = TRUE;
+	description = "Komm mit, wir ziehen los!";
+};
+instance DIA_FUN_SLD_S2_WARTE (C_INFO)
+{
+	npc = FUN_SLD_S2;
+	nr = 2;
+	condition = DIA_Fun_Warte_Condition;
+	information = DIA_Fun_Warte_Info;
+	permanent = TRUE;
+	description = "Warte hier - geh zurück ins Lager.";
+};
+instance DIA_FUN_SLD_S3_EXIT (C_INFO)
+{
+	npc = FUN_SLD_S3;
+	nr = 999;
+	condition = DIA_Fun_Exit_Condition;
+	information = DIA_Fun_Exit_Info;
+	permanent = TRUE;
+	description = DIALOG_ENDE;
+};
+instance DIA_FUN_SLD_S3_KOMM (C_INFO)
+{
+	npc = FUN_SLD_S3;
+	nr = 1;
+	condition = DIA_Fun_Komm_Condition;
+	information = DIA_Fun_Komm_Info;
+	permanent = TRUE;
+	description = "Komm mit, wir ziehen los!";
+};
+instance DIA_FUN_SLD_S3_WARTE (C_INFO)
+{
+	npc = FUN_SLD_S3;
+	nr = 2;
+	condition = DIA_Fun_Warte_Condition;
+	information = DIA_Fun_Warte_Info;
+	permanent = TRUE;
+	description = "Warte hier - geh zurück ins Lager.";
+};
+instance DIA_FUN_NOV_S1_EXIT (C_INFO)
+{
+	npc = FUN_NOV_S1;
+	nr = 999;
+	condition = DIA_Fun_Exit_Condition;
+	information = DIA_Fun_Exit_Info;
+	permanent = TRUE;
+	description = DIALOG_ENDE;
+};
+instance DIA_FUN_NOV_S1_KOMM (C_INFO)
+{
+	npc = FUN_NOV_S1;
+	nr = 1;
+	condition = DIA_Fun_Komm_Condition;
+	information = DIA_Fun_Komm_Info;
+	permanent = TRUE;
+	description = "Komm mit, wir ziehen los!";
+};
+instance DIA_FUN_NOV_S1_WARTE (C_INFO)
+{
+	npc = FUN_NOV_S1;
+	nr = 2;
+	condition = DIA_Fun_Warte_Condition;
+	information = DIA_Fun_Warte_Info;
+	permanent = TRUE;
+	description = "Warte hier - geh zurück ins Lager.";
+};
+instance DIA_FUN_NOV_S2_EXIT (C_INFO)
+{
+	npc = FUN_NOV_S2;
+	nr = 999;
+	condition = DIA_Fun_Exit_Condition;
+	information = DIA_Fun_Exit_Info;
+	permanent = TRUE;
+	description = DIALOG_ENDE;
+};
+instance DIA_FUN_NOV_S2_KOMM (C_INFO)
+{
+	npc = FUN_NOV_S2;
+	nr = 1;
+	condition = DIA_Fun_Komm_Condition;
+	information = DIA_Fun_Komm_Info;
+	permanent = TRUE;
+	description = "Komm mit, wir ziehen los!";
+};
+instance DIA_FUN_NOV_S2_WARTE (C_INFO)
+{
+	npc = FUN_NOV_S2;
+	nr = 2;
+	condition = DIA_Fun_Warte_Condition;
+	information = DIA_Fun_Warte_Info;
+	permanent = TRUE;
+	description = "Warte hier - geh zurück ins Lager.";
+};
+instance DIA_FUN_NOV_S3_EXIT (C_INFO)
+{
+	npc = FUN_NOV_S3;
+	nr = 999;
+	condition = DIA_Fun_Exit_Condition;
+	information = DIA_Fun_Exit_Info;
+	permanent = TRUE;
+	description = DIALOG_ENDE;
+};
+instance DIA_FUN_NOV_S3_KOMM (C_INFO)
+{
+	npc = FUN_NOV_S3;
+	nr = 1;
+	condition = DIA_Fun_Komm_Condition;
+	information = DIA_Fun_Komm_Info;
+	permanent = TRUE;
+	description = "Komm mit, wir ziehen los!";
+};
+instance DIA_FUN_NOV_S3_WARTE (C_INFO)
+{
+	npc = FUN_NOV_S3;
+	nr = 2;
+	condition = DIA_Fun_Warte_Condition;
+	information = DIA_Fun_Warte_Info;
+	permanent = TRUE;
+	description = "Warte hier - geh zurück ins Lager.";
+};
+instance DIA_FUN_BDT_S1_EXIT (C_INFO)
+{
+	npc = FUN_BDT_S1;
+	nr = 999;
+	condition = DIA_Fun_Exit_Condition;
+	information = DIA_Fun_Exit_Info;
+	permanent = TRUE;
+	description = DIALOG_ENDE;
+};
+instance DIA_FUN_BDT_S1_KOMM (C_INFO)
+{
+	npc = FUN_BDT_S1;
+	nr = 1;
+	condition = DIA_Fun_Komm_Condition;
+	information = DIA_Fun_Komm_Info;
+	permanent = TRUE;
+	description = "Komm mit, wir ziehen los!";
+};
+instance DIA_FUN_BDT_S1_WARTE (C_INFO)
+{
+	npc = FUN_BDT_S1;
+	nr = 2;
+	condition = DIA_Fun_Warte_Condition;
+	information = DIA_Fun_Warte_Info;
+	permanent = TRUE;
+	description = "Warte hier - geh zurück ins Lager.";
+};
+instance DIA_FUN_BDT_S2_EXIT (C_INFO)
+{
+	npc = FUN_BDT_S2;
+	nr = 999;
+	condition = DIA_Fun_Exit_Condition;
+	information = DIA_Fun_Exit_Info;
+	permanent = TRUE;
+	description = DIALOG_ENDE;
+};
+instance DIA_FUN_BDT_S2_KOMM (C_INFO)
+{
+	npc = FUN_BDT_S2;
+	nr = 1;
+	condition = DIA_Fun_Komm_Condition;
+	information = DIA_Fun_Komm_Info;
+	permanent = TRUE;
+	description = "Komm mit, wir ziehen los!";
+};
+instance DIA_FUN_BDT_S2_WARTE (C_INFO)
+{
+	npc = FUN_BDT_S2;
+	nr = 2;
+	condition = DIA_Fun_Warte_Condition;
+	information = DIA_Fun_Warte_Info;
+	permanent = TRUE;
+	description = "Warte hier - geh zurück ins Lager.";
+};
+instance DIA_FUN_BDT_S3_EXIT (C_INFO)
+{
+	npc = FUN_BDT_S3;
+	nr = 999;
+	condition = DIA_Fun_Exit_Condition;
+	information = DIA_Fun_Exit_Info;
+	permanent = TRUE;
+	description = DIALOG_ENDE;
+};
+instance DIA_FUN_BDT_S3_KOMM (C_INFO)
+{
+	npc = FUN_BDT_S3;
+	nr = 1;
+	condition = DIA_Fun_Komm_Condition;
+	information = DIA_Fun_Komm_Info;
+	permanent = TRUE;
+	description = "Komm mit, wir ziehen los!";
+};
+instance DIA_FUN_BDT_S3_WARTE (C_INFO)
+{
+	npc = FUN_BDT_S3;
+	nr = 2;
+	condition = DIA_Fun_Warte_Condition;
+	information = DIA_Fun_Warte_Info;
+	permanent = TRUE;
+	description = "Warte hier - geh zurück ins Lager.";
+};
+instance DIA_FUN_HAENDLER_MIL_HEUER (C_INFO)
+{
+	npc = FUN_HAENDLER_MIL;
+	nr = 4;
+	condition = DIA_Fun_Heuer_Condition;
+	information = DIA_Fun_Heuer_Info;
+	permanent = TRUE;
+	description = "Ich will Söldner anheuern (3 Kämpfer, 600 Gold).";
+};
+instance DIA_FUN_HAENDLER_MIL_ZU (C_INFO)
+{
+	npc = FUN_HAENDLER_MIL;
+	nr = 5;
+	condition = DIA_Fun_Zu_Condition;
+	information = DIA_Fun_Zu_Info;
+	permanent = TRUE;
+	description = "Warum handelst du nicht mit mir?";
+};
+instance DIA_FUN_HAENDLER_SLD_HEUER (C_INFO)
+{
+	npc = FUN_HAENDLER_SLD;
+	nr = 4;
+	condition = DIA_Fun_Heuer_Condition;
+	information = DIA_Fun_Heuer_Info;
+	permanent = TRUE;
+	description = "Ich will Söldner anheuern (3 Kämpfer, 600 Gold).";
+};
+instance DIA_FUN_HAENDLER_SLD_ZU (C_INFO)
+{
+	npc = FUN_HAENDLER_SLD;
+	nr = 5;
+	condition = DIA_Fun_Zu_Condition;
+	information = DIA_Fun_Zu_Info;
+	permanent = TRUE;
+	description = "Warum handelst du nicht mit mir?";
+};
+instance DIA_FUN_HAENDLER_NOV_HEUER (C_INFO)
+{
+	npc = FUN_HAENDLER_NOV;
+	nr = 4;
+	condition = DIA_Fun_Heuer_Condition;
+	information = DIA_Fun_Heuer_Info;
+	permanent = TRUE;
+	description = "Ich will Söldner anheuern (3 Kämpfer, 600 Gold).";
+};
+instance DIA_FUN_HAENDLER_NOV_ZU (C_INFO)
+{
+	npc = FUN_HAENDLER_NOV;
+	nr = 5;
+	condition = DIA_Fun_Zu_Condition;
+	information = DIA_Fun_Zu_Info;
+	permanent = TRUE;
+	description = "Warum handelst du nicht mit mir?";
+};
+instance DIA_FUN_HAENDLER_BDT_HEUER (C_INFO)
+{
+	npc = FUN_HAENDLER_BDT;
+	nr = 4;
+	condition = DIA_Fun_Heuer_Condition;
+	information = DIA_Fun_Heuer_Info;
+	permanent = TRUE;
+	description = "Ich will Söldner anheuern (3 Kämpfer, 600 Gold).";
+};
+instance DIA_FUN_HAENDLER_BDT_ZU (C_INFO)
+{
+	npc = FUN_HAENDLER_BDT;
+	nr = 5;
+	condition = DIA_Fun_Zu_Condition;
+	information = DIA_Fun_Zu_Info;
+	permanent = TRUE;
+	description = "Warum handelst du nicht mit mir?";
+};
+
 // --- Dialoge -------------------------------------------------------------------------------------------------------
 func int DIA_Fun_Exit_Condition()
 {
@@ -10090,7 +11550,7 @@ func void Fun_HaendlerWare(var C_NPC slf)
 
 func int DIA_Fun_Handel_Condition()
 {
-	if (FUN_AKTIV && (Npc_GetTrueGuild(other) == Fun_GildeVonHaendler(self)))
+	if (FUN_AKTIV && (Npc_GetTrueGuild(other) == Fun_GildeVonHaendler(self)) && Fun_FuehrerDa(other))
 	{
 		return TRUE;
 	};
@@ -10330,6 +11790,40 @@ func void DIA_Fun_LehreKAMPF_Info()
 	DIA_Fun_LehreKAMPF_Menue();
 };
 
+func int DIA_Fun_Heuer_Condition()
+{
+	if (FUN_AKTIV && (Npc_GetTrueGuild(other) == Fun_GildeVonHaendler(self)) && Fun_FuehrerDa(other))
+	{
+		return TRUE;
+	};
+	return FALSE;
+};
+func void DIA_Fun_Heuer_Info()
+{
+	var int i;
+	if (Npc_HasItems(other, ItMi_Gold) < 600)
+	{
+		Print("Du hast nicht genug Gold (600).");
+		return;
+	};
+	Npc_RemoveInvItems(other, ItMi_Gold, 600);
+	i = Fun_GIdx(Npc_GetTrueGuild(other));
+	Fun_HeuerAdd(i, 1);
+	Print("Drei Söldner melden sich gleich im Lager - sprich sie an, dann folgen sie dir.");
+};
+func int DIA_Fun_Zu_Condition()
+{
+	if (FUN_AKTIV && (Npc_GetTrueGuild(other) == Fun_GildeVonHaendler(self)) && !Fun_FuehrerDa(other))
+	{
+		return TRUE;
+	};
+	return FALSE;
+};
+func void DIA_Fun_Zu_Info()
+{
+	Print("Unser Anführer ist gefallen - erst wenn er zurück ist, handle ich wieder.");
+};
+
 // --- Gilden: gleiche Gilde Freund, die vier Spielergilden untereinander Feind, Händler (GIL_NONE) neutral -------------
 func void Fun_Gilden()
 {
@@ -10387,14 +11881,17 @@ func void Fun_HeldStart(var int wahl)
 	g = Fun_GildeVonWahl(wahl);
 	hero.guild = g;
 	Npc_SetTrueGuild(hero, g);
-	if (hero.attribute[ATR_STRENGTH] < 30)
+	if (hero.attribute[ATR_STRENGTH] < Fun_StartStaerke(g))
 	{
-		hero.attribute[ATR_STRENGTH] = 30;
+		hero.attribute[ATR_STRENGTH] = Fun_StartStaerke(g);
 	};
-	if (hero.attribute[ATR_DEXTERITY] < 30)
+	if (hero.attribute[ATR_DEXTERITY] < Fun_StartGeschick(g))
 	{
-		hero.attribute[ATR_DEXTERITY] = 30;
+		hero.attribute[ATR_DEXTERITY] = Fun_StartGeschick(g);
 	};
+	hero.aivar[REAL_STRENGTH] = hero.attribute[ATR_STRENGTH];
+	hero.aivar[REAL_DEXTERITY] = hero.attribute[ATR_DEXTERITY];
+	Fun_GildenStaerke(g);
 	if (hero.attribute[ATR_HITPOINTS_MAX] < 100)
 	{
 		hero.attribute[ATR_HITPOINTS_MAX] = 100;
@@ -10433,7 +11930,7 @@ func void Fun_HeldStart(var int wahl)
 		AI_EquipBestRangedWeapon(hero);
 		CreateInvItems(hero, ItRu_TeleportSeaport, 1);
 		AI_Teleport(hero, "NW_CITY_HABOUR_KASERN_CENTRE_01");
-		Print("Fun-Modus: du gehörst zum Lager Kaserne in Khorinis.");
+		Print("Fun-Modus: du gehörst zum Lager Kaserne in Khorinis. Ü = Schlachtübersicht, Ä = Schlachtruf, # = Begleiter-Befehl.");
 	};
 	if (wahl == 1)
 	{
@@ -10446,7 +11943,7 @@ func void Fun_HeldStart(var int wahl)
 		AI_EquipBestRangedWeapon(hero);
 		CreateInvItems(hero, ItRu_TeleportFarm, 1);
 		AI_Teleport(hero, "NW_BIGFARM_HOUSE_OUT_05");
-		Print("Fun-Modus: du gehörst zum Lager Onars Hof.");
+		Print("Fun-Modus: du gehörst zum Lager Onars Hof. Ü = Schlachtübersicht, Ä = Schlachtruf, # = Begleiter-Befehl.");
 	};
 	if (wahl == 2)
 	{
@@ -10454,9 +11951,9 @@ func void Fun_HeldStart(var int wahl)
 		AI_EquipArmor(hero, ITAR_NOV_L);
 		CreateInvItem(hero, ItMw_1h_Nov_Mace);
 		AI_EquipBestMeleeWeapon(hero);
-		if (hero.attribute[ATR_MANA_MAX] < 30)
+		if (hero.attribute[ATR_MANA_MAX] < 40)
 		{
-			hero.attribute[ATR_MANA_MAX] = 30;
+			hero.attribute[ATR_MANA_MAX] = 40;
 		};
 		hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
 		Npc_SetTalentSkill(hero, NPC_TALENT_MAGE, 1);
@@ -10465,7 +11962,7 @@ func void Fun_HeldStart(var int wahl)
 		CreateInvItems(hero, ItKe_Innos_MIS, 1);
 		CreateInvItems(hero, ItRu_TeleportMonastery, 1);
 		AI_Teleport(hero, "NW_MONASTERY_PLACE_03");
-		Print("Fun-Modus: du gehörst zum Lager Kloster.");
+		Print("Fun-Modus: du gehörst zum Lager Kloster. Ü = Schlachtübersicht, Ä = Schlachtruf, # = Begleiter-Befehl.");
 	};
 	if (wahl == 3)
 	{
@@ -10477,7 +11974,7 @@ func void Fun_HeldStart(var int wahl)
 		CreateInvItem(hero, ItRw_Bow_L_02);
 		AI_EquipBestRangedWeapon(hero);
 		AI_Teleport(hero, "NW_CASTLEMINE_TOWER_CAMPFIRE_01");
-		Print("Fun-Modus: du gehörst zum Lager Banditenturm.");
+		Print("Fun-Modus: du gehörst zum Lager Banditenturm. Ü = Schlachtübersicht, Ä = Schlachtruf, # = Begleiter-Befehl.");
 	};
 	Fun_Haltungen();
 };
@@ -10488,20 +11985,2297 @@ func void FUN_HELD_NACH_TOD()
 	{
 		return;
 	};
-	hero.attribute[ATR_STRENGTH] = 30;
-	hero.attribute[ATR_DEXTERITY] = 30;
-	hero.aivar[REAL_STRENGTH] = 30;
-	hero.aivar[REAL_DEXTERITY] = 30;
+	hero.attribute[ATR_STRENGTH] = Fun_StartStaerke(Npc_GetTrueGuild(hero));
+	hero.attribute[ATR_DEXTERITY] = Fun_StartGeschick(Npc_GetTrueGuild(hero));
+	hero.aivar[REAL_STRENGTH] = hero.attribute[ATR_STRENGTH];
+	hero.aivar[REAL_DEXTERITY] = hero.attribute[ATR_DEXTERITY];
+	hero.aivar[AIV_FUN_GEZAEHLT] = FALSE;
 	hero.attribute[ATR_HITPOINTS_MAX] = 100;
 	hero.attribute[ATR_HITPOINTS] = 100;
 	hero.attribute[ATR_MANA_MAX] = 20;
 	if (Npc_GetTrueGuild(hero) == GIL_NOV)
 	{
-		hero.attribute[ATR_MANA_MAX] = 30;
+		hero.attribute[ATR_MANA_MAX] = 40;
 	};
 	hero.aivar[REAL_MANA_MAX] = hero.attribute[ATR_MANA_MAX];
 	hero.attribute[ATR_MANA] = hero.attribute[ATR_MANA_MAX];
 	Print("Du bist gefallen - Stärke, Geschick, Leben und Mana sind wieder auf den Startwerten.");
+};
+
+// --- u204: Schlacht-Paket - Haltungen, Tod, Befehle, Takte -------------------------------------------------------
+func void Fun_HaltungenSchlacht()
+{
+	var C_NPC n;
+	if (Npc_GetTrueGuild(hero) == GIL_NONE)
+	{
+		return;
+	};
+	n = Hlp_GetNpc(FUN_FUEHRER_MIL);
+	Fun_Haltung(n, GIL_MIL);
+	n = Hlp_GetNpc(FUN_FUEHRER_SLD);
+	Fun_Haltung(n, GIL_SLD);
+	n = Hlp_GetNpc(FUN_FUEHRER_NOV);
+	Fun_Haltung(n, GIL_NOV);
+	n = Hlp_GetNpc(FUN_FUEHRER_BDT);
+	Fun_Haltung(n, GIL_BDT);
+	n = Hlp_GetNpc(FUN_MIL_S1);
+	Fun_Haltung(n, GIL_MIL);
+	n = Hlp_GetNpc(FUN_MIL_S2);
+	Fun_Haltung(n, GIL_MIL);
+	n = Hlp_GetNpc(FUN_MIL_S3);
+	Fun_Haltung(n, GIL_MIL);
+	n = Hlp_GetNpc(FUN_SLD_S1);
+	Fun_Haltung(n, GIL_SLD);
+	n = Hlp_GetNpc(FUN_SLD_S2);
+	Fun_Haltung(n, GIL_SLD);
+	n = Hlp_GetNpc(FUN_SLD_S3);
+	Fun_Haltung(n, GIL_SLD);
+	n = Hlp_GetNpc(FUN_NOV_S1);
+	Fun_Haltung(n, GIL_NOV);
+	n = Hlp_GetNpc(FUN_NOV_S2);
+	Fun_Haltung(n, GIL_NOV);
+	n = Hlp_GetNpc(FUN_NOV_S3);
+	Fun_Haltung(n, GIL_NOV);
+	n = Hlp_GetNpc(FUN_BDT_S1);
+	Fun_Haltung(n, GIL_BDT);
+	n = Hlp_GetNpc(FUN_BDT_S2);
+	Fun_Haltung(n, GIL_BDT);
+	n = Hlp_GetNpc(FUN_BDT_S3);
+	Fun_Haltung(n, GIL_BDT);
+};
+
+// Tod zählen (einmal je NPC; nach dem Laden läuft ZS_Dead erneut - AIV_FUN_GEZAEHLT)
+func void Fun_TodZaehlen()
+{
+	var int kg;
+	var int me;
+	var int pkt;
+	var int hat;
+	if (self.aivar[AIV_FUN_GEZAEHLT])
+	{
+		return;
+	};
+	self.aivar[AIV_FUN_GEZAEHLT] = TRUE;
+	kg = 0;
+	if (Hlp_IsValidNpc(other))
+	{
+		kg = Fun_GIdx(other.guild);
+	};
+	if (Npc_IsPlayer(self))
+	{
+		me = Fun_EigeneIdx();
+		hat = Npc_HasItems(self, ItMi_Fun_Banner_MIL);
+		if (hat > 0)
+		{
+			Npc_RemoveInvItems(self, ItMi_Fun_Banner_MIL, hat);
+		};
+		if (FUNL_TRAEGT_MIL)
+		{
+			FUNL_TRAEGT_MIL = FALSE;
+			FUN_BANNER_LETZT_MIL = 2;
+			FUN_BANNER_MIL = 0;
+			FUN_BANNER_NEU_MIL = FUN_BANNER_NEU_MIL + 1;
+		};
+		hat = Npc_HasItems(self, ItMi_Fun_Banner_SLD);
+		if (hat > 0)
+		{
+			Npc_RemoveInvItems(self, ItMi_Fun_Banner_SLD, hat);
+		};
+		if (FUNL_TRAEGT_SLD)
+		{
+			FUNL_TRAEGT_SLD = FALSE;
+			FUN_BANNER_LETZT_SLD = 2;
+			FUN_BANNER_SLD = 0;
+			FUN_BANNER_NEU_SLD = FUN_BANNER_NEU_SLD + 1;
+		};
+		hat = Npc_HasItems(self, ItMi_Fun_Banner_NOV);
+		if (hat > 0)
+		{
+			Npc_RemoveInvItems(self, ItMi_Fun_Banner_NOV, hat);
+		};
+		if (FUNL_TRAEGT_NOV)
+		{
+			FUNL_TRAEGT_NOV = FALSE;
+			FUN_BANNER_LETZT_NOV = 2;
+			FUN_BANNER_NOV = 0;
+			FUN_BANNER_NEU_NOV = FUN_BANNER_NEU_NOV + 1;
+		};
+		hat = Npc_HasItems(self, ItMi_Fun_Banner_BDT);
+		if (hat > 0)
+		{
+			Npc_RemoveInvItems(self, ItMi_Fun_Banner_BDT, hat);
+		};
+		if (FUNL_TRAEGT_BDT)
+		{
+			FUNL_TRAEGT_BDT = FALSE;
+			FUN_BANNER_LETZT_BDT = 2;
+			FUN_BANNER_BDT = 0;
+			FUN_BANNER_NEU_BDT = FUN_BANNER_NEU_BDT + 1;
+		};
+		if ((kg > 0) && (kg != me))
+		{
+			pkt = 5;
+			if (Fun_FuehrtDeutlich(me))
+			{
+				pkt = 15;
+				Print("Auf dich war ein Kopfgeld ausgesetzt!");
+			};
+			Fun_SiegAdd(kg, pkt);
+			Fun_BeuteAdd(kg, pkt * 20 * Fun_KapitelNr());
+			Fun_SerieSet(kg, Fun_SerieVon(kg) + 1);
+		};
+		Fun_SerieSet(me, 0);
+		return;
+	};
+	if (!COOP_FUNHOST())
+	{
+		return;
+	};
+	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_FUEHRER_MIL))
+	{
+		FUN_FUEHRER_AUS_MIL = FUN_FUEHRER_TAKTE;
+		if ((kg > 0) && (kg != 1))
+		{
+			Fun_SiegAdd(kg, 50);
+			Fun_BeuteAdd(kg, 500);
+		};
+		return;
+	};
+	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_FUEHRER_SLD))
+	{
+		FUN_FUEHRER_AUS_SLD = FUN_FUEHRER_TAKTE;
+		if ((kg > 0) && (kg != 2))
+		{
+			Fun_SiegAdd(kg, 50);
+			Fun_BeuteAdd(kg, 500);
+		};
+		return;
+	};
+	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_FUEHRER_NOV))
+	{
+		FUN_FUEHRER_AUS_NOV = FUN_FUEHRER_TAKTE;
+		if ((kg > 0) && (kg != 3))
+		{
+			Fun_SiegAdd(kg, 50);
+			Fun_BeuteAdd(kg, 500);
+		};
+		return;
+	};
+	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_FUEHRER_BDT))
+	{
+		FUN_FUEHRER_AUS_BDT = FUN_FUEHRER_TAKTE;
+		if ((kg > 0) && (kg != 4))
+		{
+			Fun_SiegAdd(kg, 50);
+			Fun_BeuteAdd(kg, 500);
+		};
+		return;
+	};
+	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_EVT_ORK))
+	{
+		if (FUN_EREIGNIS == 1)
+		{
+			if (kg > 0)
+			{
+				FUN_EREIGNIS_SIEGER = kg;
+				Fun_SiegAdd(kg, 40);
+				Fun_BeuteAdd(kg, 800);
+			}
+			else
+			{
+				FUN_EREIGNIS_SIEGER = 5;
+			};
+			FUN_EREIGNIS = 0;
+		};
+		return;
+	};
+	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_EVT_TROLL))
+	{
+		if (FUN_EREIGNIS == 2)
+		{
+			if (kg > 0)
+			{
+				FUN_EREIGNIS_SIEGER = kg;
+				Fun_SiegAdd(kg, 40);
+				Fun_BeuteAdd(kg, 800);
+			}
+			else
+			{
+				FUN_EREIGNIS_SIEGER = 5;
+			};
+			FUN_EREIGNIS = 0;
+		};
+		return;
+	};
+	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_EVT_UNTOT))
+	{
+		if (FUN_EREIGNIS == 3)
+		{
+			if (kg > 0)
+			{
+				FUN_EREIGNIS_SIEGER = kg;
+				Fun_SiegAdd(kg, 40);
+				Fun_BeuteAdd(kg, 800);
+			}
+			else
+			{
+				FUN_EREIGNIS_SIEGER = 5;
+			};
+			FUN_EREIGNIS = 0;
+		};
+		return;
+	};
+	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_EVT_KARAWANE))
+	{
+		if (FUN_EREIGNIS == 4)
+		{
+			if (kg > 0)
+			{
+				FUN_EREIGNIS_SIEGER = kg;
+				Fun_SiegAdd(kg, 40);
+				Fun_BeuteAdd(kg, 1500);
+			}
+			else
+			{
+				FUN_EREIGNIS_SIEGER = 5;
+			};
+			FUN_EREIGNIS = 0;
+		};
+		return;
+	};
+	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_BOSS_K1))
+	{
+		if (kg > 0)
+		{
+			Fun_SiegAdd(kg, 25);
+		};
+		return;
+	};
+	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_BOSS_K2))
+	{
+		if (kg > 0)
+		{
+			Fun_SiegAdd(kg, 25);
+		};
+		return;
+	};
+	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_BOSS_K3))
+	{
+		if (kg > 0)
+		{
+			Fun_SiegAdd(kg, 25);
+		};
+		return;
+	};
+	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_BOSS_K4))
+	{
+		if (kg > 0)
+		{
+			Fun_SiegAdd(kg, 25);
+		};
+		return;
+	};
+	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_BOSS_K5))
+	{
+		if (kg > 0)
+		{
+			Fun_SiegAdd(kg, 25);
+		};
+		return;
+	};
+	if (Hlp_GetInstanceID(self) == Hlp_GetInstanceID(FUN_BOSS_K6))
+	{
+		if (kg > 0)
+		{
+			Fun_SiegAdd(kg, 25);
+		};
+		return;
+	};
+	if ((kg > 0) && (self.guild < GIL_SEPERATOR_HUM))
+	{
+		if ((Fun_GIdx(self.guild) > 0) && (Fun_GIdx(self.guild) != kg))
+		{
+			Fun_SiegAdd(kg, 2);
+			Fun_BeuteAdd(kg, 20 * Fun_KapitelNr());
+		};
+	};
+};
+
+func void ZS_Dead()
+{
+	if (FUN_AKTIV)
+	{
+		Fun_TodZaehlen();
+	};
+	ZS_Dead_Old();
+};
+
+// Taste (DLL): Begleiter und Söldner der eigenen Gilde in der Nähe greifen OTHER an (Ziel im Fokus) oder folgen
+func void FUN_BEFEHL()
+{
+	var C_NPC n;
+	var int ziel;
+	var int anz;
+	ziel = FALSE;
+	anz = 0;
+	if (Hlp_IsValidNpc(other))
+	{
+		if (!Npc_IsDead(other) && !Npc_IsPlayer(other))
+		{
+			if (Npc_GetDistToNpc(other, hero) < 4000)
+			{
+				ziel = TRUE;
+			};
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_4);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_5);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_4);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_5);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_4);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_5);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_4);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_5);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_S1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_S2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_S3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_S1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_S2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_S3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_S1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_S2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_S3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_S1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_S2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_S3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 3000))
+		{
+			if (ziel)
+			{
+				B_Attack(n, other, AR_GuildEnemy, 0);
+			}
+			else if (n.aivar[AIV_PARTYMEMBER] == FALSE)
+			{
+				n.aivar[AIV_PARTYMEMBER] = TRUE;
+				Npc_ExchangeRoutine(n, "FOLLOW");
+			};
+			anz = anz + 1;
+		};
+	};
+	if (anz == 0)
+	{
+		Print("Keine Begleiter in der Nähe (30 m).");
+	}
+	else if (ziel)
+	{
+		Print(ConcatStrings(IntToString(anz), " Begleiter greifen dein Ziel an!"));
+	}
+	else
+	{
+		Print(ConcatStrings(IntToString(anz), " Begleiter folgen dir."));
+	};
+};
+
+func void FUN_BEFEHL_HALT()
+{
+	var C_NPC n;
+	var int anz;
+	anz = 0;
+	n = Hlp_GetNpc(FUN_MIL_1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_4);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_5);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_4);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_5);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_4);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_5);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_4);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_5);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_S1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_S2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_S3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_S1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_S2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_S3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_S1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_S2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_S3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_S1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_S2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_S3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (n.aivar[AIV_PARTYMEMBER] == TRUE))
+		{
+			n.aivar[AIV_PARTYMEMBER] = FALSE;
+			Npc_ExchangeRoutine(n, "START");
+			anz = anz + 1;
+		};
+	};
+	Print(ConcatStrings(IntToString(anz), " Begleiter gehen zurück ins Lager."));
+};
+
+// Schlachtruf (Taste, DLL - Abklingzeit 3 Minuten): 30 s lang +15 Stärke, Begleiter in der Nähe voll geheilt
+func void FUN_SCHLACHTRUF()
+{
+	var C_NPC n;
+	hero.attribute[ATR_STRENGTH] = hero.attribute[ATR_STRENGTH] + 15;
+	n = Hlp_GetNpc(FUN_MIL_1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_4);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_5);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_4);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_5);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_4);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_5);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_4);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_5);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_S1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_S2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_MIL_S3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_S1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_S2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_SLD_S3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_S1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_S2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_NOV_S3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_S1);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_S2);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_BDT_S3);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_FUEHRER_MIL);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_FUEHRER_SLD);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_FUEHRER_NOV);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	n = Hlp_GetNpc(FUN_FUEHRER_BDT);
+	if (Fun_NpcLebt(n))
+	{
+		if ((n.guild == Npc_GetTrueGuild(hero)) && (Npc_GetDistToNpc(n, hero) < 2000))
+		{
+			n.attribute[ATR_HITPOINTS] = n.attribute[ATR_HITPOINTS_MAX];
+		};
+	};
+	Snd_Play("THRILLJINGLE_01");
+};
+func void FUN_SCHLACHTRUF_ENDE()
+{
+	hero.attribute[ATR_STRENGTH] = hero.attribute[ATR_STRENGTH] - 15;
+	if (hero.attribute[ATR_STRENGTH] < 10)
+	{
+		hero.attribute[ATR_STRENGTH] = 10;
+	};
+};
+func void FUN_SND_ALARM()
+{
+	Snd_Play("THRILLJINGLE_02");
+};
+func void FUN_SND_GUT()
+{
+	Snd_Play("LEVELUP");
+};
+func void FUN_SND_GROSS()
+{
+	Snd_Play("THRILLJINGLE_03");
+};
+
+func void Fun_SchlachtFuehrer()
+{
+	var C_NPC n;
+	n = Hlp_GetNpc(FUN_FUEHRER_MIL);
+	if (Fun_NpcLebt(n))
+	{
+		if (FUN_FUEHRER_AUS_MIL != 0)
+		{
+			FUN_FUEHRER_AUS_MIL = 0;
+		};
+		if ((FUN_BANNER_MIL == 0) && (Npc_HasItems(n, ItMi_Fun_Banner_MIL) == 0) && (FUNL_BANNER_NEU_GES_MIL < FUN_BANNER_NEU_MIL))
+		{
+			CreateInvItems(n, ItMi_Fun_Banner_MIL, 1);
+		};
+	}
+	else if (FUN_FUEHRER_AUS_MIL == 0)
+	{
+		FUN_FUEHRER_AUS_MIL = FUN_FUEHRER_TAKTE;
+	}
+	else
+	{
+		FUN_FUEHRER_AUS_MIL = FUN_FUEHRER_AUS_MIL - 1;
+		if (FUN_FUEHRER_AUS_MIL <= 0)
+		{
+			FUN_FUEHRER_AUS_MIL = 0;
+			Wld_InsertNpc(FUN_FUEHRER_MIL, "NW_CITY_HABOUR_KASERN_CENTRE_01");
+		};
+	};
+	FUNL_BANNER_NEU_GES_MIL = FUN_BANNER_NEU_MIL;
+	n = Hlp_GetNpc(FUN_FUEHRER_SLD);
+	if (Fun_NpcLebt(n))
+	{
+		if (FUN_FUEHRER_AUS_SLD != 0)
+		{
+			FUN_FUEHRER_AUS_SLD = 0;
+		};
+		if ((FUN_BANNER_SLD == 0) && (Npc_HasItems(n, ItMi_Fun_Banner_SLD) == 0) && (FUNL_BANNER_NEU_GES_SLD < FUN_BANNER_NEU_SLD))
+		{
+			CreateInvItems(n, ItMi_Fun_Banner_SLD, 1);
+		};
+	}
+	else if (FUN_FUEHRER_AUS_SLD == 0)
+	{
+		FUN_FUEHRER_AUS_SLD = FUN_FUEHRER_TAKTE;
+	}
+	else
+	{
+		FUN_FUEHRER_AUS_SLD = FUN_FUEHRER_AUS_SLD - 1;
+		if (FUN_FUEHRER_AUS_SLD <= 0)
+		{
+			FUN_FUEHRER_AUS_SLD = 0;
+			Wld_InsertNpc(FUN_FUEHRER_SLD, "NW_BIGFARM_HOUSE_OUT_05");
+		};
+	};
+	FUNL_BANNER_NEU_GES_SLD = FUN_BANNER_NEU_SLD;
+	n = Hlp_GetNpc(FUN_FUEHRER_NOV);
+	if (Fun_NpcLebt(n))
+	{
+		if (FUN_FUEHRER_AUS_NOV != 0)
+		{
+			FUN_FUEHRER_AUS_NOV = 0;
+		};
+		if ((FUN_BANNER_NOV == 0) && (Npc_HasItems(n, ItMi_Fun_Banner_NOV) == 0) && (FUNL_BANNER_NEU_GES_NOV < FUN_BANNER_NEU_NOV))
+		{
+			CreateInvItems(n, ItMi_Fun_Banner_NOV, 1);
+		};
+	}
+	else if (FUN_FUEHRER_AUS_NOV == 0)
+	{
+		FUN_FUEHRER_AUS_NOV = FUN_FUEHRER_TAKTE;
+	}
+	else
+	{
+		FUN_FUEHRER_AUS_NOV = FUN_FUEHRER_AUS_NOV - 1;
+		if (FUN_FUEHRER_AUS_NOV <= 0)
+		{
+			FUN_FUEHRER_AUS_NOV = 0;
+			Wld_InsertNpc(FUN_FUEHRER_NOV, "NW_MONASTERY_PLACE_03");
+		};
+	};
+	FUNL_BANNER_NEU_GES_NOV = FUN_BANNER_NEU_NOV;
+	n = Hlp_GetNpc(FUN_FUEHRER_BDT);
+	if (Fun_NpcLebt(n))
+	{
+		if (FUN_FUEHRER_AUS_BDT != 0)
+		{
+			FUN_FUEHRER_AUS_BDT = 0;
+		};
+		if ((FUN_BANNER_BDT == 0) && (Npc_HasItems(n, ItMi_Fun_Banner_BDT) == 0) && (FUNL_BANNER_NEU_GES_BDT < FUN_BANNER_NEU_BDT))
+		{
+			CreateInvItems(n, ItMi_Fun_Banner_BDT, 1);
+		};
+	}
+	else if (FUN_FUEHRER_AUS_BDT == 0)
+	{
+		FUN_FUEHRER_AUS_BDT = FUN_FUEHRER_TAKTE;
+	}
+	else
+	{
+		FUN_FUEHRER_AUS_BDT = FUN_FUEHRER_AUS_BDT - 1;
+		if (FUN_FUEHRER_AUS_BDT <= 0)
+		{
+			FUN_FUEHRER_AUS_BDT = 0;
+			Wld_InsertNpc(FUN_FUEHRER_BDT, "NW_CASTLEMINE_TOWER_CAMPFIRE_01");
+		};
+	};
+	FUNL_BANNER_NEU_GES_BDT = FUN_BANNER_NEU_BDT;
+};
+
+func void Fun_SchlachtHeuer()
+{
+	var C_NPC n;
+	if (FUNL_HEUER_GES_MIL < FUN_HEUER_MIL)
+	{
+		FUNL_HEUER_GES_MIL = FUN_HEUER_MIL;
+		n = Hlp_GetNpc(FUN_MIL_S1);
+		if (!Fun_NpcLebt(n))
+		{
+			Wld_InsertNpc(FUN_MIL_S1, "NW_CITY_HABOUR_KASERN_05_01");
+		};
+		n = Hlp_GetNpc(FUN_MIL_S2);
+		if (!Fun_NpcLebt(n))
+		{
+			Wld_InsertNpc(FUN_MIL_S2, "NW_CITY_HABOUR_KASERN_08");
+		};
+		n = Hlp_GetNpc(FUN_MIL_S3);
+		if (!Fun_NpcLebt(n))
+		{
+			Wld_InsertNpc(FUN_MIL_S3, "NW_CITY_HABOUR_KASERN_10");
+		};
+	};
+	if (FUNL_HEUER_GES_SLD < FUN_HEUER_SLD)
+	{
+		FUNL_HEUER_GES_SLD = FUN_HEUER_SLD;
+		n = Hlp_GetNpc(FUN_SLD_S1);
+		if (!Fun_NpcLebt(n))
+		{
+			Wld_InsertNpc(FUN_SLD_S1, "NW_BIGFARM_HOUSE_12");
+		};
+		n = Hlp_GetNpc(FUN_SLD_S2);
+		if (!Fun_NpcLebt(n))
+		{
+			Wld_InsertNpc(FUN_SLD_S2, "NW_BIGFARM_HOUSE_14");
+		};
+		n = Hlp_GetNpc(FUN_SLD_S3);
+		if (!Fun_NpcLebt(n))
+		{
+			Wld_InsertNpc(FUN_SLD_S3, "NW_BIGFARM_ALLEE_04");
+		};
+	};
+	if (FUNL_HEUER_GES_NOV < FUN_HEUER_NOV)
+	{
+		FUNL_HEUER_GES_NOV = FUN_HEUER_NOV;
+		n = Hlp_GetNpc(FUN_NOV_S1);
+		if (!Fun_NpcLebt(n))
+		{
+			Wld_InsertNpc(FUN_NOV_S1, "NW_MONASTERY_PLACE_09");
+		};
+		n = Hlp_GetNpc(FUN_NOV_S2);
+		if (!Fun_NpcLebt(n))
+		{
+			Wld_InsertNpc(FUN_NOV_S2, "NW_MONASTERY_GRASS_01");
+		};
+		n = Hlp_GetNpc(FUN_NOV_S3);
+		if (!Fun_NpcLebt(n))
+		{
+			Wld_InsertNpc(FUN_NOV_S3, "NW_MONASTERY_HERB_05");
+		};
+	};
+	if (FUNL_HEUER_GES_BDT < FUN_HEUER_BDT)
+	{
+		FUNL_HEUER_GES_BDT = FUN_HEUER_BDT;
+		n = Hlp_GetNpc(FUN_BDT_S1);
+		if (!Fun_NpcLebt(n))
+		{
+			Wld_InsertNpc(FUN_BDT_S1, "NW_CASTLEMINE_TOWER_CAMPFIRE_02");
+		};
+		n = Hlp_GetNpc(FUN_BDT_S2);
+		if (!Fun_NpcLebt(n))
+		{
+			Wld_InsertNpc(FUN_BDT_S2, "NW_CASTLEMINE_TOWER_CAMPFIRE_04");
+		};
+		n = Hlp_GetNpc(FUN_BDT_S3);
+		if (!Fun_NpcLebt(n))
+		{
+			Wld_InsertNpc(FUN_BDT_S3, "NW_CASTLEMINE_TOWER_STAND_01");
+		};
+	};
+};
+
+func void Fun_SchlachtBannerHost()
+{
+	if (FUN_BANNER_MIL > 0)
+	{
+		FUNL_BANNER_T_MIL = FUNL_BANNER_T_MIL + 1;
+		if (FUNL_BANNER_T_MIL >= FUN_BANNER_TAKTE)
+		{
+			FUNL_BANNER_T_MIL = 0;
+			FUN_BANNER_LETZT_MIL = 2;
+			FUN_BANNER_MIL = 0;
+			FUN_BANNER_NEU_MIL = FUN_BANNER_NEU_MIL + 1;
+		};
+	}
+	else
+	{
+		FUNL_BANNER_T_MIL = 0;
+	};
+	if (FUN_BANNER_SLD > 0)
+	{
+		FUNL_BANNER_T_SLD = FUNL_BANNER_T_SLD + 1;
+		if (FUNL_BANNER_T_SLD >= FUN_BANNER_TAKTE)
+		{
+			FUNL_BANNER_T_SLD = 0;
+			FUN_BANNER_LETZT_SLD = 2;
+			FUN_BANNER_SLD = 0;
+			FUN_BANNER_NEU_SLD = FUN_BANNER_NEU_SLD + 1;
+		};
+	}
+	else
+	{
+		FUNL_BANNER_T_SLD = 0;
+	};
+	if (FUN_BANNER_NOV > 0)
+	{
+		FUNL_BANNER_T_NOV = FUNL_BANNER_T_NOV + 1;
+		if (FUNL_BANNER_T_NOV >= FUN_BANNER_TAKTE)
+		{
+			FUNL_BANNER_T_NOV = 0;
+			FUN_BANNER_LETZT_NOV = 2;
+			FUN_BANNER_NOV = 0;
+			FUN_BANNER_NEU_NOV = FUN_BANNER_NEU_NOV + 1;
+		};
+	}
+	else
+	{
+		FUNL_BANNER_T_NOV = 0;
+	};
+	if (FUN_BANNER_BDT > 0)
+	{
+		FUNL_BANNER_T_BDT = FUNL_BANNER_T_BDT + 1;
+		if (FUNL_BANNER_T_BDT >= FUN_BANNER_TAKTE)
+		{
+			FUNL_BANNER_T_BDT = 0;
+			FUN_BANNER_LETZT_BDT = 2;
+			FUN_BANNER_BDT = 0;
+			FUN_BANNER_NEU_BDT = FUN_BANNER_NEU_BDT + 1;
+		};
+	}
+	else
+	{
+		FUNL_BANNER_T_BDT = 0;
+	};
+};
+
+func void Fun_EvtSpawn(var int typ, var string wp)
+{
+	if (typ == 1)
+	{
+		Wld_InsertNpc(FUN_EVT_ORK, wp);
+		Wld_InsertNpc(FUN_EVT_ORK_A, wp);
+		Wld_InsertNpc(FUN_EVT_ORK_A, wp);
+		Wld_InsertNpc(FUN_EVT_ORK_A, wp);
+	};
+	if (typ == 2)
+	{
+		Wld_InsertNpc(FUN_EVT_TROLL, wp);
+	};
+	if (typ == 3)
+	{
+		Wld_InsertNpc(FUN_EVT_UNTOT, wp);
+		Wld_InsertNpc(FUN_EVT_UNTOT_A, wp);
+		Wld_InsertNpc(FUN_EVT_UNTOT_A, wp);
+		Wld_InsertNpc(FUN_EVT_UNTOT_A, wp);
+	};
+	if (typ == 4)
+	{
+		Wld_InsertNpc(FUN_EVT_KARAWANE, wp);
+	};
+};
+func void Fun_EvtEntfernen(var int typ)
+{
+	var C_NPC b;
+	if (typ == 1)
+	{
+		b = Hlp_GetNpc(FUN_EVT_ORK);
+		Fun_Entfernen(b);
+	};
+	if (typ == 2)
+	{
+		b = Hlp_GetNpc(FUN_EVT_TROLL);
+		Fun_Entfernen(b);
+	};
+	if (typ == 3)
+	{
+		b = Hlp_GetNpc(FUN_EVT_UNTOT);
+		Fun_Entfernen(b);
+	};
+	if (typ == 4)
+	{
+		b = Hlp_GetNpc(FUN_EVT_KARAWANE);
+		Fun_Entfernen(b);
+	};
+};
+
+func void Fun_SchlachtEreignis()
+{
+	var C_NPC b;
+	var int typ;
+	var int ort;
+	FUNL_EREIGNIS_T = FUNL_EREIGNIS_T + 1;
+	if (FUN_EREIGNIS == 0)
+	{
+		if (FUNL_EREIGNIS_T < FUN_EREIGNIS_TAKTE)
+		{
+			return;
+		};
+		FUNL_EREIGNIS_T = 0;
+		typ = (FUN_EREIGNIS_NR % 4) + 1;
+		ort = ((FUN_EREIGNIS_NR + FUN_EREIGNIS_NR / 4) % 4) + 1;
+		FUN_EREIGNIS_NR = FUN_EREIGNIS_NR + 1;
+		FUN_EREIGNIS_SIEGER = 0;
+		if (ort == 1)
+		{
+			Fun_EvtSpawn(typ, "NW_CITY_TO_LIGHTHOUSE_03");
+		};
+		if (ort == 2)
+		{
+			Fun_EvtSpawn(typ, "NW_CASTLEMINE_TROLL_02");
+		};
+		if (ort == 3)
+		{
+			Fun_EvtSpawn(typ, "NW_FARM4_WOOD_MONSTER_01");
+		};
+		if (ort == 4)
+		{
+			Fun_EvtSpawn(typ, "NW_TAVERNE_BIGFARM_05");
+		};
+		FUN_EREIGNIS_ORT = ort;
+		FUN_EREIGNIS = typ;
+		return;
+	};
+	typ = FUN_EREIGNIS;
+	if (typ == 1)
+	{
+		b = Hlp_GetNpc(FUN_EVT_ORK);
+	};
+	if (typ == 2)
+	{
+		b = Hlp_GetNpc(FUN_EVT_TROLL);
+	};
+	if (typ == 3)
+	{
+		b = Hlp_GetNpc(FUN_EVT_UNTOT);
+	};
+	if (typ == 4)
+	{
+		b = Hlp_GetNpc(FUN_EVT_KARAWANE);
+	};
+	if (!Fun_NpcLebt(b))
+	{
+		if (FUN_EREIGNIS_SIEGER == 0)
+		{
+			FUN_EREIGNIS_SIEGER = 5;
+		};
+		FUN_EREIGNIS = 0;
+		return;
+	};
+	if ((typ == 4) && (Npc_GetDistToWP(b, "NW_TAVERNE_OUT_01") < 700))
+	{
+		FUN_EREIGNIS_SIEGER = 6;
+		FUN_EREIGNIS = 0;
+		Fun_Entfernen(b);
+		return;
+	};
+	if (FUNL_EREIGNIS_T >= FUN_EREIGNIS_DAUER)
+	{
+		FUN_EREIGNIS_SIEGER = 5;
+		FUN_EREIGNIS = 0;
+		Fun_EvtEntfernen(typ);
+	};
+};
+
+func void Fun_SchlachtRunde()
+{
+	var int best;
+	var int bs;
+	var int mins;
+	if (FUN_PUNKT_1 > 0)
+	{
+		Fun_SiegAdd(FUN_PUNKT_1, 1);
+	};
+	if (FUN_PUNKT_2 > 0)
+	{
+		Fun_SiegAdd(FUN_PUNKT_2, 1);
+	};
+	if (FUN_PUNKT_3 > 0)
+	{
+		Fun_SiegAdd(FUN_PUNKT_3, 1);
+	};
+	if (FUN_PUNKT_4 > 0)
+	{
+		Fun_SiegAdd(FUN_PUNKT_4, 1);
+	};
+	FUNL_RUNDE_T = FUNL_RUNDE_T + 1;
+	mins = (FUN_RUNDE_TAKTE - FUNL_RUNDE_T + 5) / 6;
+	if (mins < 0)
+	{
+		mins = 0;
+	};
+	if (FUN_RUNDE_MIN != mins)
+	{
+		FUN_RUNDE_MIN = mins;
+	};
+	best = 0;
+	bs = -1;
+	if (FUN_SIEG_MIL > bs)
+	{
+		bs = FUN_SIEG_MIL;
+		best = 1;
+	};
+	if (FUN_SIEG_SLD > bs)
+	{
+		bs = FUN_SIEG_SLD;
+		best = 2;
+	};
+	if (FUN_SIEG_NOV > bs)
+	{
+		bs = FUN_SIEG_NOV;
+		best = 3;
+	};
+	if (FUN_SIEG_BDT > bs)
+	{
+		bs = FUN_SIEG_BDT;
+		best = 4;
+	};
+	if ((bs < FUN_SIEG_ZIEL) && (FUNL_RUNDE_T < FUN_RUNDE_TAKTE))
+	{
+		return;
+	};
+	if (bs <= 0)
+	{
+		best = 0;
+	};
+	FUN_SIEGER = best;
+	FUN_SIEG_MIL = 0;
+	FUN_SIEG_SLD = 0;
+	FUN_SIEG_NOV = 0;
+	FUN_SIEG_BDT = 0;
+	FUN_PUNKT_1 = 0;
+	FUN_PUNKT_ANGRIFF_1 = 0;
+	FUN_PUNKT_2 = 0;
+	FUN_PUNKT_ANGRIFF_2 = 0;
+	FUN_PUNKT_3 = 0;
+	FUN_PUNKT_ANGRIFF_3 = 0;
+	FUN_PUNKT_4 = 0;
+	FUN_PUNKT_ANGRIFF_4 = 0;
+	FUNL_RUNDE_T = 0;
+	FUN_RUNDE_MIN = FUN_RUNDE_TAKTE / 6;
+	FUN_RUNDE = FUN_RUNDE + 1;
+};
+
+func void Fun_SchlachtHost()
+{
+	if (FUN_RUNDE < 1)
+	{
+		FUN_RUNDE = 1;
+		FUNL_RUNDE_GES = 1;
+	};
+	Fun_SchlachtFuehrer();
+	Fun_SchlachtHeuer();
+	Fun_SchlachtBannerHost();
+	Fun_SchlachtEreignis();
+	Fun_SchlachtRunde();
+};
+
+func void Fun_SchlachtReliquien(var int me)
+{
+	var int hat;
+	hat = Npc_HasItems(hero, ItMi_Fun_Banner_MIL);
+	if (FUNL_TRAEGT_MIL)
+	{
+		if (hat == 0)
+		{
+			FUNL_TRAEGT_MIL = FALSE;
+		}
+		else if (FUN_BANNER_MIL == 0)
+		{
+			Npc_RemoveInvItems(hero, ItMi_Fun_Banner_MIL, hat);
+			FUNL_TRAEGT_MIL = FALSE;
+			Print("Die Reliquie der Miliz ist zu ihrem Lager zurückgekehrt.");
+		}
+		else if (Fun_ImEigenenLager(me))
+		{
+			Npc_RemoveInvItems(hero, ItMi_Fun_Banner_MIL, hat);
+			FUNL_TRAEGT_MIL = FALSE;
+			Fun_SiegAdd(me, 100);
+			Fun_BeuteAdd(me, 1000);
+			FUN_BANNER_LETZT_MIL = 1;
+			FUN_BANNER_MIL = 0;
+			FUN_BANNER_NEU_MIL = FUN_BANNER_NEU_MIL + 1;
+		};
+	}
+	else if (hat > 0)
+	{
+		if (me == 1)
+		{
+			Npc_RemoveInvItems(hero, ItMi_Fun_Banner_MIL, hat);
+			if (FUN_BANNER_MIL == 0)
+			{
+				FUN_BANNER_NEU_MIL = FUN_BANNER_NEU_MIL + 1;
+			};
+			Print("Du gibst die Reliquie deinem Lager zurück.");
+		}
+		else if (FUN_BANNER_MIL == 0)
+		{
+			FUN_BANNER_LETZT_MIL = 0;
+			FUN_BANNER_MIL = me;
+			FUNL_TRAEGT_MIL = TRUE;
+			Print("Du trägst die Reliquie der Miliz - bring sie in dein Lager!");
+		}
+		else
+		{
+			Npc_RemoveInvItems(hero, ItMi_Fun_Banner_MIL, hat);
+			Print("Diese Reliquie trägt schon jemand anderes.");
+		};
+	};
+	hat = Npc_HasItems(hero, ItMi_Fun_Banner_SLD);
+	if (FUNL_TRAEGT_SLD)
+	{
+		if (hat == 0)
+		{
+			FUNL_TRAEGT_SLD = FALSE;
+		}
+		else if (FUN_BANNER_SLD == 0)
+		{
+			Npc_RemoveInvItems(hero, ItMi_Fun_Banner_SLD, hat);
+			FUNL_TRAEGT_SLD = FALSE;
+			Print("Die Reliquie der Söldner ist zu ihrem Lager zurückgekehrt.");
+		}
+		else if (Fun_ImEigenenLager(me))
+		{
+			Npc_RemoveInvItems(hero, ItMi_Fun_Banner_SLD, hat);
+			FUNL_TRAEGT_SLD = FALSE;
+			Fun_SiegAdd(me, 100);
+			Fun_BeuteAdd(me, 1000);
+			FUN_BANNER_LETZT_SLD = 1;
+			FUN_BANNER_SLD = 0;
+			FUN_BANNER_NEU_SLD = FUN_BANNER_NEU_SLD + 1;
+		};
+	}
+	else if (hat > 0)
+	{
+		if (me == 2)
+		{
+			Npc_RemoveInvItems(hero, ItMi_Fun_Banner_SLD, hat);
+			if (FUN_BANNER_SLD == 0)
+			{
+				FUN_BANNER_NEU_SLD = FUN_BANNER_NEU_SLD + 1;
+			};
+			Print("Du gibst die Reliquie deinem Lager zurück.");
+		}
+		else if (FUN_BANNER_SLD == 0)
+		{
+			FUN_BANNER_LETZT_SLD = 0;
+			FUN_BANNER_SLD = me;
+			FUNL_TRAEGT_SLD = TRUE;
+			Print("Du trägst die Reliquie der Söldner - bring sie in dein Lager!");
+		}
+		else
+		{
+			Npc_RemoveInvItems(hero, ItMi_Fun_Banner_SLD, hat);
+			Print("Diese Reliquie trägt schon jemand anderes.");
+		};
+	};
+	hat = Npc_HasItems(hero, ItMi_Fun_Banner_NOV);
+	if (FUNL_TRAEGT_NOV)
+	{
+		if (hat == 0)
+		{
+			FUNL_TRAEGT_NOV = FALSE;
+		}
+		else if (FUN_BANNER_NOV == 0)
+		{
+			Npc_RemoveInvItems(hero, ItMi_Fun_Banner_NOV, hat);
+			FUNL_TRAEGT_NOV = FALSE;
+			Print("Die Reliquie der Novizen ist zu ihrem Lager zurückgekehrt.");
+		}
+		else if (Fun_ImEigenenLager(me))
+		{
+			Npc_RemoveInvItems(hero, ItMi_Fun_Banner_NOV, hat);
+			FUNL_TRAEGT_NOV = FALSE;
+			Fun_SiegAdd(me, 100);
+			Fun_BeuteAdd(me, 1000);
+			FUN_BANNER_LETZT_NOV = 1;
+			FUN_BANNER_NOV = 0;
+			FUN_BANNER_NEU_NOV = FUN_BANNER_NEU_NOV + 1;
+		};
+	}
+	else if (hat > 0)
+	{
+		if (me == 3)
+		{
+			Npc_RemoveInvItems(hero, ItMi_Fun_Banner_NOV, hat);
+			if (FUN_BANNER_NOV == 0)
+			{
+				FUN_BANNER_NEU_NOV = FUN_BANNER_NEU_NOV + 1;
+			};
+			Print("Du gibst die Reliquie deinem Lager zurück.");
+		}
+		else if (FUN_BANNER_NOV == 0)
+		{
+			FUN_BANNER_LETZT_NOV = 0;
+			FUN_BANNER_NOV = me;
+			FUNL_TRAEGT_NOV = TRUE;
+			Print("Du trägst die Reliquie der Novizen - bring sie in dein Lager!");
+		}
+		else
+		{
+			Npc_RemoveInvItems(hero, ItMi_Fun_Banner_NOV, hat);
+			Print("Diese Reliquie trägt schon jemand anderes.");
+		};
+	};
+	hat = Npc_HasItems(hero, ItMi_Fun_Banner_BDT);
+	if (FUNL_TRAEGT_BDT)
+	{
+		if (hat == 0)
+		{
+			FUNL_TRAEGT_BDT = FALSE;
+		}
+		else if (FUN_BANNER_BDT == 0)
+		{
+			Npc_RemoveInvItems(hero, ItMi_Fun_Banner_BDT, hat);
+			FUNL_TRAEGT_BDT = FALSE;
+			Print("Die Reliquie der Banditen ist zu ihrem Lager zurückgekehrt.");
+		}
+		else if (Fun_ImEigenenLager(me))
+		{
+			Npc_RemoveInvItems(hero, ItMi_Fun_Banner_BDT, hat);
+			FUNL_TRAEGT_BDT = FALSE;
+			Fun_SiegAdd(me, 100);
+			Fun_BeuteAdd(me, 1000);
+			FUN_BANNER_LETZT_BDT = 1;
+			FUN_BANNER_BDT = 0;
+			FUN_BANNER_NEU_BDT = FUN_BANNER_NEU_BDT + 1;
+		};
+	}
+	else if (hat > 0)
+	{
+		if (me == 4)
+		{
+			Npc_RemoveInvItems(hero, ItMi_Fun_Banner_BDT, hat);
+			if (FUN_BANNER_BDT == 0)
+			{
+				FUN_BANNER_NEU_BDT = FUN_BANNER_NEU_BDT + 1;
+			};
+			Print("Du gibst die Reliquie deinem Lager zurück.");
+		}
+		else if (FUN_BANNER_BDT == 0)
+		{
+			FUN_BANNER_LETZT_BDT = 0;
+			FUN_BANNER_BDT = me;
+			FUNL_TRAEGT_BDT = TRUE;
+			Print("Du trägst die Reliquie der Banditen - bring sie in dein Lager!");
+		}
+		else
+		{
+			Npc_RemoveInvItems(hero, ItMi_Fun_Banner_BDT, hat);
+			Print("Diese Reliquie trägt schon jemand anderes.");
+		};
+	};
+};
+
+func void Fun_SchlachtAlle()
+{
+	var int me;
+	var int b;
+	me = Fun_EigeneIdx();
+	if (me == 0)
+	{
+		return;
+	};
+	Fun_HaltungenSchlacht();
+	if (FUN_PUNKT_1 == me)
+	{
+		CreateInvItems(hero, ItMi_Gold, 10 * Fun_KapitelNr());
+	};
+	if (FUN_PUNKT_2 == me)
+	{
+		CreateInvItems(hero, ItMi_Gold, 10 * Fun_KapitelNr());
+	};
+	if (FUN_PUNKT_3 == me)
+	{
+		CreateInvItems(hero, ItMi_Gold, 10 * Fun_KapitelNr());
+	};
+	if (FUN_PUNKT_4 == me)
+	{
+		CreateInvItems(hero, ItMi_Gold, 10 * Fun_KapitelNr());
+	};
+	b = Fun_BeuteVon(me);
+	if (!FUNL_BEUTE_INIT)
+	{
+		FUNL_BEUTE_INIT = TRUE;
+		FUNL_BEUTE_GES = b;
+	};
+	if (b > FUNL_BEUTE_GES)
+	{
+		CreateInvItems(hero, ItMi_Gold, b - FUNL_BEUTE_GES);
+		Print(ConcatStrings(ConcatStrings("Beute für deine Gilde: +", IntToString(b - FUNL_BEUTE_GES)), " Gold"));
+		FUNL_BEUTE_GES = b;
+	}
+	else if (b < FUNL_BEUTE_GES)
+	{
+		FUNL_BEUTE_GES = b;
+	};
+	Fun_SchlachtReliquien(me);
+	if ((FUN_RUNDE > 0) && (FUNL_RUNDE_GES < FUN_RUNDE))
+	{
+		if (FUNL_RUNDE_GES > 0)
+		{
+			if (FUN_SIEGER == me)
+			{
+				hero.lp = hero.lp + 10;
+				CreateInvItems(hero, ItMi_Gold, 3000);
+				Print("Deine Gilde hat die Runde gewonnen: +10 Lernpunkte, +3000 Gold!");
+			}
+			else
+			{
+				hero.lp = hero.lp + 3;
+				CreateInvItems(hero, ItMi_Gold, 500);
+				Print("Neue Runde - für deinen Einsatz: +3 Lernpunkte, +500 Gold.");
+			};
+		};
+		FUNL_RUNDE_GES = FUN_RUNDE;
+	};
+};
+
+func void Fun_SchlachtStart()
+{
+	Wld_InsertNpc(FUN_FUEHRER_MIL, "NW_CITY_HABOUR_KASERN_CENTRE_01");
+	Wld_InsertNpc(FUN_FUEHRER_SLD, "NW_BIGFARM_HOUSE_OUT_05");
+	Wld_InsertNpc(FUN_FUEHRER_NOV, "NW_MONASTERY_PLACE_03");
+	Wld_InsertNpc(FUN_FUEHRER_BDT, "NW_CASTLEMINE_TOWER_CAMPFIRE_01");
+	FUN_RUNDE = 1;
+	FUNL_RUNDE_GES = 1;
+	FUN_RUNDE_MIN = FUN_RUNDE_TAKTE / 6;
+	FUNL_EREIGNIS_T = FUN_EREIGNIS_TAKTE - 60;
 };
 
 func void B_Attack(var C_NPC slf, var C_NPC oth, var int attack_reason, var int wait)
@@ -10772,6 +14546,7 @@ func void Fun_Startup()
 	Wld_InsertNpc(FUN_M208_T2, "NW_TROLLAREA_TROLLROCKCAVE_05");
 	Wld_InsertNpc(FUN_M209_T2, "NW_TROLLAREA_TROLLROCKCAVE_05");
 	Wld_InsertNpc(FUN_BOSS_K1, "NW_TAVERNE_CROSS");
+	Fun_SchlachtStart();
 };
 
 func void Fun_Init()
@@ -10779,6 +14554,7 @@ func void Fun_Init()
 	B_InitMonsterAttitudes();
 	Fun_Gilden();
 	Fun_Haltungen();
+	Fun_HaltungenSchlacht();
 };
 
 FUNC VOID STARTUP_NewWorld()
@@ -29311,6 +33087,7 @@ func void FUN_TAKT_HOST()
 	Fun_Platz209();
 	Fun_Boss();
 	Fun_Lager();
+	Fun_SchlachtHost();
 };
 
 func void FUN_TAKT_ALLE()
@@ -29325,4 +33102,5 @@ func void FUN_TAKT_ALLE()
 	};
 	Fun_Haltungen();
 	Fun_KapitelPruefen();
+	Fun_SchlachtAlle();
 };

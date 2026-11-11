@@ -44,6 +44,11 @@ namespace GOTHIC_ENGINE {
     bool CoopModDeltaVar(const char* nm) {
         if (!nm || !*nm)
             return false;
+#if ENGINE == Engine_G2A
+        // u204: Fun-Modus (COOP_FUN.D) - Siegpunkte, Beute, Reliquien-Zaehler und Soeldner-Auftraege zaehlen beide PCs hoch
+        if (!strncmp(nm, "FUN_SIEG_", 9) || !strncmp(nm, "FUN_BEUTE_", 10) || !strncmp(nm, "FUN_BANNER_NEU_", 15) || !strncmp(nm, "FUN_HEUER_", 10))
+            return true;
+#endif
         const CoopModData& d = CoopModDataGet();
         if (!d.deltaExact.empty() && std::binary_search(d.deltaExact.begin(), d.deltaExact.end(), std::string(nm)))
             return true;

@@ -783,6 +783,8 @@ namespace GOTHIC_ENGINE {
         PmToggleKey();
         if (PmNamesHidden > 0)
             return;
+        if (CoopFunNightHide())   // u204: Fun-Spiel - nachts keine Namen (Hinterhalte)
+            return;
         if (PmHudOff())
             return;
         zCCamera* cam = zCCamera::activeCam;

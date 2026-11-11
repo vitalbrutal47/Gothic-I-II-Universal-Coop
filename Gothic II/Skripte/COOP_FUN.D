@@ -8700,7 +8700,7 @@ instance FUN_BOSS_K1 (Mst_Default_Gobbo_Warrior)
 	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * 40 / 10;
 	attribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];
 	attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] * 6 / 10;
-	Mdl_SetModelScale(self, 1.3, 1.3, 1.3);
+	Mdl_SetModelScale(self, 1.8, 1.8, 1.8);
 	CreateInvItems(self, ItMi_Gold, 250);
 	CreateInvItems(self, ItMi_Fun_Kapitelstein, 1);
 };
@@ -8712,7 +8712,7 @@ instance FUN_BOSS_K2 (Mst_Default_Razor)
 	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * 40 / 10;
 	attribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];
 	attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] * 6 / 10;
-	Mdl_SetModelScale(self, 1.25, 1.25, 1.25);
+	Mdl_SetModelScale(self, 1.7, 1.7, 1.7);
 	CreateInvItems(self, ItMi_Gold, 500);
 	CreateInvItems(self, ItMi_Fun_Kapitelstein, 1);
 };
@@ -8724,7 +8724,7 @@ instance FUN_BOSS_K3 (Mst_Default_Bloodhound)
 	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * 40 / 10;
 	attribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];
 	attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] * 6 / 10;
-	Mdl_SetModelScale(self, 1.25, 1.25, 1.25);
+	Mdl_SetModelScale(self, 1.7, 1.7, 1.7);
 	CreateInvItems(self, ItMi_Gold, 750);
 	CreateInvItems(self, ItMi_Fun_Kapitelstein, 1);
 };
@@ -8737,7 +8737,7 @@ instance FUN_BOSS_K4 (Mst_Default_Shadowbeast)
 	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * 35 / 10;
 	attribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];
 	attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] * 5 / 10;
-	Mdl_SetModelScale(self, 1.2, 1.2, 1.2);
+	Mdl_SetModelScale(self, 1.6, 1.6, 1.6);
 	CreateInvItems(self, ItMi_Gold, 1000);
 	CreateInvItems(self, ItMi_Fun_Kapitelstein, 1);
 };
@@ -8749,7 +8749,7 @@ instance FUN_BOSS_K5 (Mst_Default_FireWaran)
 	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * 35 / 10;
 	attribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];
 	attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] * 5 / 10;
-	Mdl_SetModelScale(self, 1.2, 1.2, 1.2);
+	Mdl_SetModelScale(self, 1.7, 1.7, 1.7);
 	CreateInvItems(self, ItMi_Gold, 1250);
 	CreateInvItems(self, ItMi_Fun_Kapitelstein, 1);
 };
@@ -8761,7 +8761,7 @@ instance FUN_BOSS_K6 (Mst_Default_Troll)
 	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * 30 / 10;
 	attribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];
 	attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] * 4 / 10;
-	Mdl_SetModelScale(self, 1.1, 1.1, 1.1);
+	Mdl_SetModelScale(self, 1.35, 1.35, 1.35);
 	CreateInvItems(self, ItMi_Gold, 1500);
 	CreateInvItems(self, ItMi_Gold, 5000);
 };
@@ -9484,6 +9484,7 @@ instance FUN_FUEHRER_MIL (Npc_Default)
 	attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] + 20;
 	B_SetFightSkills(self, 60 + 5 * Fun_KapitelNr());
 	CreateInvItems(self, ItMi_Gold, 300);
+	Mdl_SetModelScale(self, 1.12, 1.12, 1.12);
 	if (FUN_BANNER_MIL == 0)
 	{
 		CreateInvItems(self, ItMi_Fun_Banner_MIL, 1);
@@ -9608,6 +9609,7 @@ instance FUN_FUEHRER_SLD (Npc_Default)
 	attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] + 20;
 	B_SetFightSkills(self, 60 + 5 * Fun_KapitelNr());
 	CreateInvItems(self, ItMi_Gold, 300);
+	Mdl_SetModelScale(self, 1.12, 1.12, 1.12);
 	if (FUN_BANNER_SLD == 0)
 	{
 		CreateInvItems(self, ItMi_Fun_Banner_SLD, 1);
@@ -9731,6 +9733,7 @@ instance FUN_FUEHRER_NOV (Npc_Default)
 	attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] + 20;
 	B_SetFightSkills(self, 60 + 5 * Fun_KapitelNr());
 	CreateInvItems(self, ItMi_Gold, 300);
+	Mdl_SetModelScale(self, 1.12, 1.12, 1.12);
 	if (FUN_BANNER_NOV == 0)
 	{
 		CreateInvItems(self, ItMi_Fun_Banner_NOV, 1);
@@ -9852,6 +9855,7 @@ instance FUN_FUEHRER_BDT (Npc_Default)
 	attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] + 20;
 	B_SetFightSkills(self, 60 + 5 * Fun_KapitelNr());
 	CreateInvItems(self, ItMi_Gold, 300);
+	Mdl_SetModelScale(self, 1.12, 1.12, 1.12);
 	if (FUN_BANNER_BDT == 0)
 	{
 		CreateInvItems(self, ItMi_Fun_Banner_BDT, 1);
@@ -9959,6 +9963,7 @@ instance FUN_EVT_ORK (Mst_Default_OrcElite)
 	start_aistate				= ZS_MM_AllScheduler;
 	aivar[AIV_MM_RoamStart] 	= OnlyRoutine;
 	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * 30 / 10;
+	Mdl_SetModelScale(self, 1.4, 1.4, 1.4);
 	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * (3 + Fun_KapitelNr()) / 4;
 	attribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];
 	CreateInvItems(self, ItMi_Gold, 400);
@@ -9976,6 +9981,7 @@ instance FUN_EVT_TROLL (Mst_Default_Troll_Black)
 	B_SetVisuals_Troll_Black();
 	Npc_SetToFistMode(self);
 	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * 15 / 10;
+	Mdl_SetModelScale(self, 1.25, 1.25, 1.25);
 	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * (3 + Fun_KapitelNr()) / 4;
 	attribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];
 	CreateInvItems(self, ItMi_Gold, 400);
@@ -9984,6 +9990,7 @@ instance FUN_EVT_UNTOT (Mst_Skeleton_Lord)
 {
 	B_SetVisuals_Skeleton_Lord ();
 	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * 30 / 10;
+	Mdl_SetModelScale(self, 1.35, 1.35, 1.35);
 	attribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * (3 + Fun_KapitelNr()) / 4;
 	attribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];
 	CreateInvItems(self, ItMi_Gold, 400);

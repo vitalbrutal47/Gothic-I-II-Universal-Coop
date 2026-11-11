@@ -39,6 +39,7 @@ EVT = [  # Typ 1-4: Name, Boss-Instanz, Grundart, Lebensfaktor x10, Begleiter-Ar
     ("eine Schatzkarawane", "FUN_EVT_KARAWANE", None, 0, None, 0),
 ]
 EVT_PUNKTE, EVT_BEUTE = 40, 800
+EVT_GROESSE = ["1.4", "1.25", "1.35", "1"]   # u205: Ereignis-Bosse groesser
 
 # Orks liegen nicht im Monster-Ordner
 _ORC_DIR = os.path.join(SCRIPTS, "Story", "NPC", "Orc")
@@ -259,6 +260,7 @@ for gi, g in enumerate(GUILDS):
                  "attribute[ATR_STRENGTH] = attribute[ATR_STRENGTH] + 20;",
                  "B_SetFightSkills(self, 60 + 5 * Fun_KapitelNr());",
                  "CreateInvItems(self, ItMi_Gold, 300);",
+                 "Mdl_SetModelScale(self, 1.12, 1.12, 1.12);",
                  f"if (FUN_BANNER_{k} == 0)", "{", f"\tCreateInvItems(self, ItMi_Fun_Banner_{k}, 1);", "};"])
     LEADERS.append((linst, g))
     for j in range(3):
@@ -274,6 +276,7 @@ for t, (ename, binst, kind, hpx10, akind, an) in enumerate(EVT, 1):
         w("{")
         w(body)
         w(f"\tattribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * {hpx10} / 10;")
+        w(f"\tMdl_SetModelScale(self, {EVT_GROESSE[t - 1]}, {EVT_GROESSE[t - 1]}, {EVT_GROESSE[t - 1]});")
         w("\tattribute[ATR_HITPOINTS_MAX] = attribute[ATR_HITPOINTS_MAX] * (3 + Fun_KapitelNr()) / 4;")
         w("\tattribute[ATR_HITPOINTS] = attribute[ATR_HITPOINTS_MAX];")
         w("\tCreateInvItems(self, ItMi_Gold, 400);")

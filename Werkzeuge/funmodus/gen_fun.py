@@ -182,12 +182,13 @@ GUILD_WARE = {
 # Bosse an der Taverne je Kapitel: Grundart, Name, Lebensfaktor (x10), Groesse
 BOSSES = [   # u203d (Nutzer: "die bosse doch mehr leben hinzufuegen aber schwaecher machen damit man laenger braucht"):
     # Leben x10 (40 = 4-fach), Staerke (Schaden) x10 (6 = 60 %)
-    ("Gobbo_Warrior", "Goblin-Häuptling", 40, "1.3", 6),
-    ("Razor", "Reißzahn der Taverne", 40, "1.25", 6),
-    ("Bloodhound", "Bluthund der Taverne", 40, "1.25", 6),
-    ("Shadowbeast", "Schattenfürst", 35, "1.2", 5),
-    ("FireWaran", "Feuerechse", 35, "1.2", 5),
-    ("Troll", "Bergtroll", 30, "1.1", 4),
+    # u205 (Nutzer: "die bosse wieder groesser machen von der statur"): groesser als zu Beginn (1.5/1.4/1.3)
+    ("Gobbo_Warrior", "Goblin-Häuptling", 40, "1.8", 6),
+    ("Razor", "Reißzahn der Taverne", 40, "1.7", 6),
+    ("Bloodhound", "Bluthund der Taverne", 40, "1.7", 6),
+    ("Shadowbeast", "Schattenfürst", 35, "1.6", 5),
+    ("FireWaran", "Feuerechse", 35, "1.7", 5),
+    ("Troll", "Bergtroll", 30, "1.35", 4),
 ]
 BOSS_WP = "NW_TAVERNE_CROSS"
 
